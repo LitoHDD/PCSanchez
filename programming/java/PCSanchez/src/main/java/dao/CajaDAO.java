@@ -64,7 +64,7 @@ public class CajaDAO extends TablaDAO<Caja> {
             int stock = resultSet.getInt("stock");
             LocalDate fechaCreacion = resultSet.getDate("fecha_creacion").toLocalDate();
             LocalDate fechaModificacion = resultSet.getDate("fecha_modificacion").toLocalDate();
-            lista.add(new Caja(size, conexion, color, codigoArticulo, nombre, descripcion, pathFoto, iva, precio, stock, fechaCreacion, fechaModificacion, usuarioModifica, usuarioCrea, getCategorias(codigoArticulo)) {
+            lista.add(new Caja(size, conexion, color, codigoArticulo, nombre, descripcion, pathFoto, iva, precio, stock, fechaCreacion, fechaModificacion, usuarioModifica, usuarioCrea) {
             });
         }
 
@@ -92,7 +92,7 @@ public class CajaDAO extends TablaDAO<Caja> {
             int stock = resultSet.getInt("stock");
             LocalDate fechaCreacion = resultSet.getDate("fecha_creacion").toLocalDate();
             LocalDate fechaModificacion = resultSet.getDate("fecha_modificacion").toLocalDate();
-            return new Caja(size, conexion, color, codigoArticulo, nombre, descripcion, pathFoto, iva, precio, stock, fechaCreacion, fechaModificacion, usuarioModifica, usuarioCrea, getCategorias(codigo)) {
+            return new Caja(size, conexion, color, codigoArticulo, nombre, descripcion, pathFoto, iva, precio, stock, fechaCreacion, fechaModificacion, usuarioModifica, usuarioCrea) {
             };
         }
         return null;
