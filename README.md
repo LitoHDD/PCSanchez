@@ -1,7 +1,8 @@
 # PCSanchez
 
 ![Discord](https://img.shields.io/discord/1056947417842454678?label=discord%20server&style=for-the-badge)
-![GitHub language count](https://img.shields.io/github/languages/count/LitoHDD/PCSanchez?style=for-the-badge)
+
+[![](https://img.shields.io/github/languages/count/LitoHDD/PCSanchez?style=for-the-badge)](https://discord.gg/FVaPTTs7MY)
 
 👀 Intermodular Project (E-Commerce Store)
 
