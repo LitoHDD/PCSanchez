@@ -2,7 +2,7 @@
 
 [![Discord](https://img.shields.io/discord/1056947417842454678?label=SERVER%20DISCORD&style=for-the-badge)](https://discord.gg/FVaPTTs7MY)
 
-[![](https://img.shields.io/github/languages/count/LitoHDD/PCSanchez?style=for-the-badge)]()
+[![Languages](https://img.shields.io/github/languages/count/LitoHDD/PCSanchez?style=for-the-badge)](https://github.com/LitoHDD/PCSanchez)
 
 👀 Intermodular Project (E-Commerce Store)
 
