@@ -1,5 +1,6 @@
 # PCSanchez
 
+![Discord](https://img.shields.io/discord/1056947417842454678?label=discord%20server&style=for-the-badge)
 [![npm version][npm-badge]][npm-url]
 [![npm downloads][downloads-badge]][npm-url]
 [![npm bundle size][size-badge]][npm-url]
