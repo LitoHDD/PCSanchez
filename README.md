@@ -6,9 +6,7 @@
 
 👀 Intermodular Project (E-Commerce Store)
 
-[![](misc/demo.gif)](https://mkosir.github.io/react-parallax-tilt/?path=/story/react-parallax-tilt--glare-effect)
-
-## [Demo 💥](https://mkosir.github.io/react-parallax-tilt)
+## [Demo 💥](https://github.com/LitoHDD/PCSanchez)
 
 ## Install
 
