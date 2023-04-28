@@ -88,13 +88,13 @@ public class ArticuloDAO extends TablaDAO<Articulo> {
     }
 
     @Override
-    public Articulo getByCodigo(int codigo) throws SQLException {
+    public Articulo getByCodigo(int codigoArticulo) throws SQLException {
         String sentenciaSQL = "SELECT * FROM " + tabla + " WHERE codigo=?";
         PreparedStatement prepared = getPrepared(sentenciaSQL);
-        prepared.setInt(1, codigo);
+        prepared.setInt(1, codigoArticulo);
         ResultSet resultSet = prepared.executeQuery();
         while (resultSet.next()) {
-            int codigoArticulo = resultSet.getInt("codigo");
+            int codigoArticulos = resultSet.getInt("codigo");
             Usuario usuarioCrea = new UsuarioDAO().getByCodigo(resultSet.getInt("usuario_crea"));
             Usuario usuarioModifica = new UsuarioDAO().getByCodigo(resultSet.getInt("usuario_modifica"));
             String nombre = resultSet.getString("nombre");
@@ -105,7 +105,7 @@ public class ArticuloDAO extends TablaDAO<Articulo> {
             int stock = resultSet.getInt("stock");
             LocalDate fechaCreacion = resultSet.getDate("fecha_creacion").toLocalDate();
             LocalDate fechaModificacion = resultSet.getDate("fecha_modificacion").toLocalDate();
-            return new Articulo(codigoArticulo, nombre, descripcion, pathFoto, iva, precio, stock, fechaCreacion, fechaModificacion, usuarioModifica, usuarioCrea) {
+            return new Articulo(codigoArticulos, nombre, descripcion, pathFoto, iva, precio, stock, fechaCreacion, fechaModificacion, usuarioModifica, usuarioCrea) {
             };
         }
         return null;

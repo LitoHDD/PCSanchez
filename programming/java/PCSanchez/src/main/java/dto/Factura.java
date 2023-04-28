@@ -4,16 +4,15 @@ import java.time.LocalDateTime;
 
 public class Factura {
 
-    private int codFactura;
+    private int codFactura, direccion;
     private LocalDateTime fecha;
     private Pedido pedido;
-    private String direccion;
 
-    public Factura(int codFactura, LocalDateTime fecha, Pedido pedido, String direccion) {
+    public Factura(int codFactura, int direccion, LocalDateTime fecha, Pedido pedido) {
         this.codFactura = codFactura;
+        this.direccion = direccion;
         this.fecha = fecha;
         this.pedido = pedido;
-        this.direccion = direccion;
     }
 
     public int getCodFactura() {
@@ -22,6 +21,14 @@ public class Factura {
 
     public void setCodFactura(int codFactura) {
         this.codFactura = codFactura;
+    }
+
+    public int getDireccion() {
+        return direccion;
+    }
+
+    public void setDireccion(int direccion) {
+        this.direccion = direccion;
     }
 
     public LocalDateTime getFecha() {
@@ -38,14 +45,6 @@ public class Factura {
 
     public void setPedido(Pedido pedido) {
         this.pedido = pedido;
-    }
-
-    public String getDireccion() {
-        return direccion;
-    }
-
-    public void setDireccion(String direccion) {
-        this.direccion = direccion;
     }
 
     @Override
@@ -72,7 +71,7 @@ public class Factura {
 
     @Override
     public String toString() {
-        return "Factura{" + "codFactura=" + codFactura + ", fecha=" + fecha + ", pedido=" + pedido + ", direccion=" + direccion + '}';
+        return "Factura{" + "codFactura=" + codFactura + ", direccion=" + direccion + ", fecha=" + fecha + ", pedido=" + pedido + '}';
     }
 
 }

@@ -2,10 +2,11 @@ package dto;
 
 public class Tarjeta {
     
-    private int codPago, numeroTarjeta;
+    private int codPago;
+    private long numeroTarjeta;
     private Usuario usuario;
 
-    public Tarjeta(int codPago, int numeroTarjeta, Usuario usuario) {
+    public Tarjeta(int codPago, long numeroTarjeta, Usuario usuario) {
         this.codPago = codPago;
         this.numeroTarjeta = numeroTarjeta;
         this.usuario = usuario;
@@ -19,11 +20,11 @@ public class Tarjeta {
         this.codPago = codPago;
     }
 
-    public int getNumeroTarjeta() {
+    public long getNumeroTarjeta() {
         return numeroTarjeta;
     }
 
-    public void setNumeroTarjeta(int numeroTarjeta) {
+    public void setNumeroTarjeta(long numeroTarjeta) {
         this.numeroTarjeta = numeroTarjeta;
     }
 
@@ -59,7 +60,7 @@ public class Tarjeta {
 
     @Override
     public String toString() {
-        return "Tarjeta{" + "codPago=" + codPago + ", numeroTarjeta=" + numeroTarjeta + ", cliente=" + usuario + '}';
+        return "Tarjeta{" + "codPago=" + codPago + ", numeroTarjeta=" + numeroTarjeta + ", usuario=" + usuario + '}';
     }
     
 }

@@ -25,7 +25,7 @@ import java.util.List;
 public class PedidoDAO extends TablaDAO<Pedido> {
 
     public PedidoDAO() {
-        this.tabla = "pedido";
+        this.tabla = "ps_pedido";
     }
 
     @Override
@@ -97,13 +97,14 @@ public class PedidoDAO extends TablaDAO<Pedido> {
         prepared.setInt(1, numero);
         ResultSet resultSet = prepared.executeQuery();
         while (resultSet.next()) {
+            int numeros = resultSet.getInt("numero");
             boolean facturado = estaFacturado(numero);
             LocalDateTime fechapedido = resultSet.getTimestamp("fecha_pedido").toLocalDateTime();
             Usuario usuario = new UsuarioDAO().getByCodigo(resultSet.getInt("codigo_usuario"));
             Direccion direccion = new DireccionDAO().getByCodigo(resultSet.getInt("numero"));
             String cesta = resultSet.getString("nombre_cesta");
             List<Factura> facturas = getFacturas(numero);
-            return new Pedido(numero, facturado, fechapedido, direccion, cesta, usuario, facturas);
+            return new Pedido(numeros, facturado, fechapedido, direccion, cesta, usuario, facturas);
         }
 
         return null;
@@ -116,18 +117,18 @@ public class PedidoDAO extends TablaDAO<Pedido> {
         ResultSet resultSet = prepared.executeQuery();
         ArrayList<Factura> facturas = new ArrayList<>();
         while (resultSet.next()) {
-            int codFactura = resultSet.getInt("codFactura");
+            int codFactura = resultSet.getInt("cod_factura");
             Timestamp fechaTimestamp = resultSet.getTimestamp("fecha");
             LocalDateTime fecha = fechaTimestamp.toLocalDateTime();
-            Pedido pedido = new PedidoDAO().getByCodigo(resultSet.getInt("numero"));
-            String direccion = resultSet.getString("direccion");
-            facturas.add(new Factura(codFactura, fecha, pedido, direccion));
+            Pedido pedido = new PedidoDAO().getByCodigo(resultSet.getInt("numero_pedido"));
+            int direccion = resultSet.getInt("direccion");
+            facturas.add(new Factura(codFactura, direccion, fecha, pedido));
         }
         return facturas;
     }
 
     public boolean estaFacturado(int numeroPedido) throws SQLException {
-        String sentenciaSQL = "SELECT * FROM ps_factura WHERE numero=?";
+        String sentenciaSQL = "SELECT facturado FROM " + tabla + " WHERE numero=?";
         PreparedStatement prepared = getPrepared(sentenciaSQL);
         prepared.setInt(1, numeroPedido);
 

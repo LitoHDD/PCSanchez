@@ -18,6 +18,10 @@ import java.util.ArrayList;
  */
 public class ArticuloCategoriaDAO extends TablaDAO<ArticuloCategoria> {
 
+    public ArticuloCategoriaDAO() {
+        this.tabla = "ps_articulo_categoria";
+    }
+
     @Override
     public int actualizar(ArticuloCategoria objeto) throws SQLException {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
@@ -41,11 +45,11 @@ public class ArticuloCategoriaDAO extends TablaDAO<ArticuloCategoria> {
     @Override
     public ArrayList<ArticuloCategoria> getAll() throws SQLException {
         ArrayList<ArticuloCategoria> lista = new ArrayList<>();
-        String sentenciaSQL = "SELECT * FROM " + tabla + " ORDER BY nombre";
+        String sentenciaSQL = "SELECT * FROM " + tabla + " ORDER BY nombre_categoria";
         PreparedStatement prepared = getPrepared(sentenciaSQL);
         ResultSet resultSet = prepared.executeQuery();
         while (resultSet.next()) {
-            Articulo articulo = new ArticuloDAO().getByCodigo(resultSet.getInt("codigo"));
+            Articulo articulo = new ArticuloDAO().getByCodigo(resultSet.getInt("codigo_articulo_categoria"));
             lista.add(new ArticuloCategoria(articulo, getCategorias()) {
             });
         }
@@ -54,21 +58,21 @@ public class ArticuloCategoriaDAO extends TablaDAO<ArticuloCategoria> {
     }
 
     @Override
-    public ArticuloCategoria getByCodigo(int codigo) throws SQLException {
-        String sentenciaSQL = "SELECT * FROM " + tabla + " WHERE codigo=?";
+    public ArticuloCategoria getByCodigo(int codigoArticulo) throws SQLException {
+        String sentenciaSQL = "SELECT * FROM " + tabla + " WHERE codigo_articulo_categoria=?";
         PreparedStatement prepared = getPrepared(sentenciaSQL);
-        prepared.setInt(1, codigo);
+        prepared.setInt(1, codigoArticulo);
         ResultSet resultSet = prepared.executeQuery();
         while (resultSet.next()) {
-            Articulo articulo = new ArticuloDAO().getByCodigo(resultSet.getInt("codigo"));
-            return new ArticuloCategoria(articulo, getCategoria(codigo)) {
+            Articulo articulo = new ArticuloDAO().getByCodigo(resultSet.getInt("codigo_articulo_categoria"));
+            return new ArticuloCategoria(articulo, getCategoria(codigoArticulo)) {
             };
         }
         return null;
     }
 
     public Categoria getCategoria(int codigoArticulo) throws SQLException {
-        String sentenciaSQL = "SELECT * FROM ps_articulo_categoria WHERE codigo_articulo_categoria=? LIMIT 1";
+        String sentenciaSQL = "SELECT * FROM ps_articulo_categoria WHERE codigo_articulo_categoria=?";
         PreparedStatement prepared = getPrepared(sentenciaSQL);
         prepared.setInt(1, codigoArticulo);
         ResultSet resultSet = prepared.executeQuery();

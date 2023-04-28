@@ -3,12 +3,12 @@ package dao;
 import dto.Direccion;
 import dto.Factura;
 import dto.Pedido;
-import dto.Usuario;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
+import java.util.List;
 
 public class FacturaDAO extends TablaDAO<Factura> {
 
@@ -45,16 +45,15 @@ public class FacturaDAO extends TablaDAO<Factura> {
     @Override
     public ArrayList<Factura> getAll() throws SQLException {
         ArrayList<Factura> lista = new ArrayList<>();
-        String sentenciaSQL = "SELECT * FROM " + tabla + " ORDER BY codigo";
+        String sentenciaSQL = "SELECT * FROM " + tabla + " ORDER BY cod_factura";
         PreparedStatement prepared = getPrepared(sentenciaSQL);
         ResultSet resultSet = prepared.executeQuery();
         while (resultSet.next()) {
-            String direccion = resultSet.getString("direccion");
-            int codigo = resultSet.getInt("codigo");
-            Pedido pedidoAsociado = new PedidoDAO().getByCodigo(resultSet.getInt("pedido"));
-            Usuario usuario = new UsuarioDAO().getByCodigo(resultSet.getInt("codigo_usuario_direccion"));
+            int direccion = resultSet.getInt("numero_direccion");
+            int codigo = resultSet.getInt("cod_factura");
+            Pedido pedidoAsociado = new PedidoDAO().getByCodigo(resultSet.getInt("numero_pedido"));
             LocalDateTime fecha = resultSet.getTimestamp("fecha").toLocalDateTime();
-            lista.add(new Factura(codigo, fecha, pedidoAsociado, direccion));
+            lista.add(new Factura(codigo, direccion, fecha, pedidoAsociado));
         }
 
         return lista;
@@ -67,14 +66,30 @@ public class FacturaDAO extends TablaDAO<Factura> {
         prepared.setInt(1, codigo);
         ResultSet resultSet = prepared.executeQuery();
         while (resultSet.next()) {
-            String direccion = resultSet.getString("direccion");
+            int direccion = resultSet.getInt("direccion");
+            int codigos = resultSet.getInt("cod_factura");
             Pedido pedidoAsociado = new PedidoDAO().getByCodigo(resultSet.getInt("pedido"));
-            Direccion direccionObj = new DireccionDAO().getByCodigo(resultSet.getInt("coddir"));
             LocalDateTime fecha = resultSet.getTimestamp("fecha").toLocalDateTime();
-            return new Factura(codigo, fecha, pedidoAsociado, direccion);
+            return new Factura(codigos, direccion, fecha, pedidoAsociado);
         }
 
         return null;
     }
 
+    public List<Direccion> getDirecciones(int codigoUsuario) throws SQLException {
+        String sentenciaSQL = "SELECT * FROM ps_direccion WHERE codigo_usuario=?";
+        PreparedStatement prepared = getPrepared(sentenciaSQL);
+        prepared.setInt(1, codigoUsuario);
+        ResultSet resultSet = prepared.executeQuery();
+        ArrayList<Direccion> direcciones = new ArrayList<>();
+        while (resultSet.next()) {
+            int numero = resultSet.getInt("numero");
+            String tipo = resultSet.getString("tipo");
+            String direccion = resultSet.getString("direccion");
+            String poblacion = resultSet.getString("poblacion");
+            String provincia = resultSet.getString("provincia");
+            direcciones.add(new Direccion(numero, tipo, direccion, poblacion, provincia));
+        }
+        return direcciones;
+    }
 }

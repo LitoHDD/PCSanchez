@@ -96,11 +96,11 @@ public class CestaDAO extends TablaDAO<Cesta> {
         return lista;
     }
 
-    public Cesta getByNombreCesta(String codigoCesta) throws SQLException {
+    public Cesta getByNombreCesta(String nombreCesta) throws SQLException {
 
         String sentenciaSQL = "SELECT * FROM " + tabla + " WHERE nombre=?";
         PreparedStatement prepared = getPrepared(sentenciaSQL);
-        prepared.setString(1, codigoCesta);
+        prepared.setString(1, nombreCesta);
         ResultSet resultSet = prepared.executeQuery();
 
         while (resultSet.next()) {

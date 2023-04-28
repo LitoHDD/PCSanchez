@@ -73,7 +73,7 @@ public class UsuarioDAO extends TablaDAO<Usuario> {
             String foto = resultSet.getString("foto");
             LocalDate fechaNacimiento = resultSet.getDate("fecha_nacimiento").toLocalDate();
             int telefono = resultSet.getInt("telefono");
-            TipoUsuario tipoUsuario = TipoUsuario.valueOf(resultSet.getString("tipo"));
+            TipoUsuario tipoUsuario = TipoUsuario.valueOf(resultSet.getString("tipousuario"));
             lista.add(new Usuario(codigo, telefono, email, contrasenya, nombreCompleto, foto, fechaNacimiento, getDirecciones(codigo), getCestas(codigo), tipoUsuario));
         }
 
@@ -81,12 +81,13 @@ public class UsuarioDAO extends TablaDAO<Usuario> {
     }
     
     @Override
-    public Usuario getByCodigo(int codigo) throws SQLException {
+    public Usuario getByCodigo(int codigoUsuario) throws SQLException {
         String sentenciaSQL = "SELECT * FROM " + tabla + " WHERE codigo=?";
         PreparedStatement prepared = getPrepared(sentenciaSQL);
-        prepared.setInt(1, codigo);
+        prepared.setInt(1, codigoUsuario);
         ResultSet resultSet = prepared.executeQuery();
         while (resultSet.next()) {
+            int codigo = resultSet.getInt("codigo");
             String nombreCompleto = resultSet.getString("nombre_comp");
             String contrasenya = resultSet.getString("pass");
             String email = resultSet.getString("email");
@@ -101,7 +102,7 @@ public class UsuarioDAO extends TablaDAO<Usuario> {
     }
 
     public List<Direccion> getDirecciones(int codigoUsuario) throws SQLException {
-        String sentenciaSQL = "SELECT numero, tipo, direccion, poblacion, provincia FROM ps_direccion WHERE codigo_usuario_direccion=?";
+        String sentenciaSQL = "SELECT * FROM ps_direccion WHERE codigo_usuario_direccion=?";
         PreparedStatement prepared = getPrepared(sentenciaSQL);
         prepared.setInt(1, codigoUsuario);
         ResultSet resultSet = prepared.executeQuery();

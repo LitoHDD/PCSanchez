@@ -13,6 +13,10 @@ import java.util.ArrayList;
 
 public class CajaDAO extends TablaDAO<Caja> {
 
+    public CajaDAO() {
+        this.tabla = "ps_caja";
+    }
+
     @Override
     public int actualizar(Caja objeto) throws SQLException {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
@@ -46,11 +50,12 @@ public class CajaDAO extends TablaDAO<Caja> {
     @Override
     public ArrayList<Caja> getAll() throws SQLException {
         ArrayList<Caja> lista = new ArrayList<>();
-        String sentenciaSQL = "SELECT * FROM " + tabla + " ORDER BY codigo";
+        /*String sentenciaSQL = "SELECT * FROM " + tabla + " ORDER BY codigo_articulo";*/
+        String sentenciaSQL = "SELECT * FROM ps_caja JOIN ps_articulo ON ps_caja.codigo_articulo = ps_articulo.codigo ORDER BY ps_caja.codigo_articulo";
         PreparedStatement prepared = getPrepared(sentenciaSQL);
         ResultSet resultSet = prepared.executeQuery();
         while (resultSet.next()) {
-            int codigoArticulo = resultSet.getInt("codigo");
+            int codigoArticulo = resultSet.getInt("codigo_articulo");
             Usuario usuarioCrea = new UsuarioDAO().getByCodigo(resultSet.getInt("usuario_crea"));
             Usuario usuarioModifica = new UsuarioDAO().getByCodigo(resultSet.getInt("usuario_modifica"));
             String nombre = resultSet.getString("nombre");
@@ -72,13 +77,13 @@ public class CajaDAO extends TablaDAO<Caja> {
     }
 
     @Override
-    public Caja getByCodigo(int codigo) throws SQLException {
-        String sentenciaSQL = "SELECT * FROM " + tabla + " WHERE codigo=?";
+    public Caja getByCodigo(int codigoArticulo) throws SQLException {
+        String sentenciaSQL = "SELECT * FROM ps_caja JOIN ps_articulo ON ps_caja.codigo_articulo = ps_articulo.codigo WHERE codigo_articulo=? ORDER BY ps_caja.codigo_articulo";
         PreparedStatement prepared = getPrepared(sentenciaSQL);
-        prepared.setInt(1, codigo);
+        prepared.setInt(1, codigoArticulo);
         ResultSet resultSet = prepared.executeQuery();
         while (resultSet.next()) {
-            int codigoArticulo = resultSet.getInt("codigo");
+            int codigoArticulos = resultSet.getInt("codigo_articulo");
             Usuario usuarioCrea = new UsuarioDAO().getByCodigo(resultSet.getInt("usuario_crea"));
             Usuario usuarioModifica = new UsuarioDAO().getByCodigo(resultSet.getInt("usuario_modifica"));
             String nombre = resultSet.getString("nombre");
@@ -92,7 +97,7 @@ public class CajaDAO extends TablaDAO<Caja> {
             int stock = resultSet.getInt("stock");
             LocalDate fechaCreacion = resultSet.getDate("fecha_creacion").toLocalDate();
             LocalDate fechaModificacion = resultSet.getDate("fecha_modificacion").toLocalDate();
-            return new Caja(size, conexion, color, codigoArticulo, nombre, descripcion, pathFoto, iva, precio, stock, fechaCreacion, fechaModificacion, usuarioModifica, usuarioCrea) {
+            return new Caja(size, conexion, color, codigoArticulos, nombre, descripcion, pathFoto, iva, precio, stock, fechaCreacion, fechaModificacion, usuarioModifica, usuarioCrea) {
             };
         }
         return null;

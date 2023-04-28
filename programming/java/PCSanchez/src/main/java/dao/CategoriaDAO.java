@@ -55,10 +55,10 @@ public class CategoriaDAO extends TablaDAO<Categoria> {
         return lista;
     }
 
-    public Categoria getByNombre(String nombre) throws SQLException {
+    public Categoria getByNombre(String nombreCategoria) throws SQLException {
         String sentenciaSQL = "SELECT * FROM " + tabla + " WHERE nombre=?";
         PreparedStatement prepared = getPrepared(sentenciaSQL);
-        prepared.setString(1, nombre);
+        prepared.setString(1, nombreCategoria);
         ResultSet resultSet = prepared.executeQuery();
         while (resultSet.next()) {
             String nombres = resultSet.getString("nombre");

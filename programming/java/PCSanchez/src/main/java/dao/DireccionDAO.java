@@ -71,10 +71,10 @@ public class DireccionDAO extends TablaDAO<Direccion> {
     }
 
     @Override
-    public Direccion getByCodigo(int codigo) throws SQLException {
+    public Direccion getByCodigo(int codigoUsuario) throws SQLException {
         String sentenciaSQL = "SELECT * FROM " + tabla + " WHERE codigo_usuario_direccion=?";
         PreparedStatement prepared = getPrepared(sentenciaSQL);
-        prepared.setInt(1, codigo);
+        prepared.setInt(1, codigoUsuario);
         ResultSet resultSet = prepared.executeQuery();
         while (resultSet.next()) {
             int codigoDos = resultSet.getInt("numero");

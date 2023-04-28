@@ -4,11 +4,13 @@
  */
 package dao;
 
+import dto.Articulo;
 import dto.Tarjeta;
 import dto.Usuario;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.time.LocalDate;
 import java.util.ArrayList;
 
 /**
@@ -59,8 +61,8 @@ public class TarjetaDAO extends TablaDAO<Tarjeta> {
         ResultSet resultSet = prepared.executeQuery();
         while (resultSet.next()) {
             int codPago = resultSet.getInt("cod_pago");
-            int numTarjeta = resultSet.getInt("num_tarjeta");
-            Usuario codUsuario = new UsuarioDAO().getByCodigo(resultSet.getInt("codigo_usuario"));
+            long numTarjeta = resultSet.getLong("num_tarjeta");
+            Usuario codUsuario = new UsuarioDAO().getByCodigo(resultSet.getInt("cod_usuario"));
 
             lista.add(new Tarjeta(codPago, numTarjeta, codUsuario));
         }
@@ -68,8 +70,19 @@ public class TarjetaDAO extends TablaDAO<Tarjeta> {
     }
 
     @Override
-    public Tarjeta getByCodigo(int codigo) throws SQLException {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    public Tarjeta getByCodigo(int codigoUsuario) throws SQLException {
+        String sentenciaSQL = "SELECT * FROM " + tabla + " WHERE cod_usuario=?";
+        PreparedStatement prepared = getPrepared(sentenciaSQL);
+        prepared.setInt(1, codigoUsuario);
+        ResultSet resultSet = prepared.executeQuery();
+        while (resultSet.next()) {
+            int codPago = resultSet.getInt("cod_pago");
+            long numTarjeta = resultSet.getLong("num_tarjeta");
+            Usuario codUsuario = new UsuarioDAO().getByCodigo(resultSet.getInt("cod_usuario"));
+            return new Tarjeta(codPago, numTarjeta, codUsuario) {
+            };
+        }
+        return null;
     }
 
 }

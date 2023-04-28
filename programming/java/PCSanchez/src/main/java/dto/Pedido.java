@@ -11,7 +11,7 @@ public class Pedido {
     private LocalDateTime fechapedido;
     private Direccion direccion;
     private String cesta;
-    private final Usuario usuario;
+    private Usuario usuario;
     private List<Factura> facturas;
 
     public Pedido(int numero, boolean facturado, LocalDateTime fechapedido, Direccion direccion, String cesta, Usuario usuario, List<Factura> facturas) {
@@ -22,15 +22,6 @@ public class Pedido {
         this.cesta = cesta;
         this.usuario = usuario;
         this.facturas = facturas;
-    }
-
-    @Override
-    public String toString() {
-        return "Pedido{" + "numero=" + numero + ", facturado=" + facturado + ", fechapedido=" + fechapedido + ", direccion=" + direccion + ", cesta=" + cesta + ", usuario=" + usuario + ", facturas=" + facturas + '}';
-    }
-
-    public Usuario getUsuario() {
-        return usuario;
     }
 
     public int getNumero() {
@@ -73,6 +64,14 @@ public class Pedido {
         this.cesta = cesta;
     }
 
+    public Usuario getUsuario() {
+        return usuario;
+    }
+
+    public void setUsuario(Usuario usuario) {
+        this.usuario = usuario;
+    }
+
     public List<Factura> getFacturas() {
         return facturas;
     }
@@ -101,6 +100,11 @@ public class Pedido {
         }
         final Pedido other = (Pedido) obj;
         return this.numero == other.numero;
+    }
+
+    @Override
+    public String toString() {
+        return "Pedido{" + "numero=" + numero + ", facturado=" + facturado + ", fechapedido=" + fechapedido + ", direccion=" + direccion + ", cesta=" + cesta + ", usuario=" + usuario + ", facturas=" + facturas + '}';
     }
 
 }
