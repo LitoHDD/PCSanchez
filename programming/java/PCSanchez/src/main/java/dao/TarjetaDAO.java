@@ -4,13 +4,11 @@
  */
 package dao;
 
-import dto.Articulo;
 import dto.Tarjeta;
 import dto.Usuario;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.time.LocalDate;
 import java.util.ArrayList;
 
 /**

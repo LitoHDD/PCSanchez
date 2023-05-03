@@ -50,8 +50,7 @@ public class CajaDAO extends TablaDAO<Caja> {
     @Override
     public ArrayList<Caja> getAll() throws SQLException {
         ArrayList<Caja> lista = new ArrayList<>();
-        /*String sentenciaSQL = "SELECT * FROM " + tabla + " ORDER BY codigo_articulo";*/
-        String sentenciaSQL = "SELECT * FROM ps_caja JOIN ps_articulo ON ps_caja.codigo_articulo = ps_articulo.codigo ORDER BY ps_caja.codigo_articulo";
+        String sentenciaSQL = "SELECT * FROM " + tabla + " JOIN ps_articulo ON " + tabla + ".codigo_articulo = ps_articulo.codigo ORDER BY " + tabla + ".codigo_articulo";
         PreparedStatement prepared = getPrepared(sentenciaSQL);
         ResultSet resultSet = prepared.executeQuery();
         while (resultSet.next()) {
@@ -78,7 +77,7 @@ public class CajaDAO extends TablaDAO<Caja> {
 
     @Override
     public Caja getByCodigo(int codigoArticulo) throws SQLException {
-        String sentenciaSQL = "SELECT * FROM ps_caja JOIN ps_articulo ON ps_caja.codigo_articulo = ps_articulo.codigo WHERE codigo_articulo=? ORDER BY ps_caja.codigo_articulo";
+        String sentenciaSQL = "SELECT * FROM " + tabla + " JOIN ps_articulo ON " + tabla + ".codigo_articulo = ps_articulo.codigo WHERE codigo_articulo=? ORDER BY " + tabla + ".codigo_articulo";
         PreparedStatement prepared = getPrepared(sentenciaSQL);
         prepared.setInt(1, codigoArticulo);
         ResultSet resultSet = prepared.executeQuery();

@@ -1,15 +1,13 @@
 package dto;
 
 import java.time.LocalDate;
-import java.util.ArrayList;
 
 public class Psu extends Articulo{
     
     private int potenciaW;
-    private String certificado;
-    private boolean modular;
+    private String certificado, modular;
 
-    public Psu(int potenciaW, String certificado, boolean modular, int codigo, String nombre, String descripcion, String pathFoto, double iva, double precio, double stock, LocalDate fechaCreacion, LocalDate fechaModificacion, Usuario modificacion, Usuario creacion) {
+    public Psu(int potenciaW, String certificado, String modular, int codigo, String nombre, String descripcion, String pathFoto, double iva, double precio, double stock, LocalDate fechaCreacion, LocalDate fechaModificacion, Usuario modificacion, Usuario creacion) {
         super(codigo, nombre, descripcion, pathFoto, iva, precio, stock, fechaCreacion, fechaModificacion, modificacion, creacion);
         this.potenciaW = potenciaW;
         this.certificado = certificado;
@@ -32,17 +30,17 @@ public class Psu extends Articulo{
         this.certificado = certificado;
     }
 
-    public boolean isModular() {
+    public String getModular() {
         return modular;
     }
 
-    public void setModular(boolean modular) {
+    public void setModular(String modular) {
         this.modular = modular;
     }
 
     @Override
     public String toString() {
-        return super.toString() + "potenciaW=" + potenciaW + ", certificado=" + certificado + ", modular=" + modular;
+        return "Psu{" + "potenciaW=" + potenciaW + ", certificado=" + certificado + ", modular=" + modular + '}';
     }
     
 }

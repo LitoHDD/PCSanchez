@@ -1,7 +1,6 @@
 package dto;
 
 import java.time.LocalDate;
-import java.util.ArrayList;
 
 public class Portatil extends Articulo{
     
@@ -68,9 +67,7 @@ public class Portatil extends Articulo{
 
     @Override
     public String toString() {
-        return super.toString() + "pulgadasPantalla=" + pulgadasPantalla + ", pesoGr=" + pesoGr + ", capacidadRamGB=" + capacidadRamGB + ", almacenamientoGB=" + almacenamientoGB + ", familiaProcesador=" + familiaProcesador + ", sistemaOperativo=" + sistemaOperativo;
-    }
-    
-    
+        return "Portatil{" + "pulgadasPantalla=" + pulgadasPantalla + ", pesoGr=" + pesoGr + ", capacidadRamGB=" + capacidadRamGB + ", almacenamientoGB=" + almacenamientoGB + ", familiaProcesador=" + familiaProcesador + ", sistemaOperativo=" + sistemaOperativo + '}';
+    } 
     
 }

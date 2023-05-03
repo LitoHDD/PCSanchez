@@ -5,23 +5,20 @@ import java.util.List;
 
 public class Pedido {
 
-    /* Vamos a cambiar el entidad relacion para que solo se acepte un metodo de pago, es como tenemos nuestras tablas hechas */
     private int numero;
-    private boolean facturado;
+    private String facturado;
     private LocalDateTime fechapedido;
-    private Direccion direccion;
+    private List<Direccion> direcciones;
     private String cesta;
     private Usuario usuario;
-    private List<Factura> facturas;
 
-    public Pedido(int numero, boolean facturado, LocalDateTime fechapedido, Direccion direccion, String cesta, Usuario usuario, List<Factura> facturas) {
+    public Pedido(int numero, String facturado, LocalDateTime fechapedido, List<Direccion> direcciones, String cesta, Usuario usuario) {
         this.numero = numero;
         this.facturado = facturado;
         this.fechapedido = fechapedido;
-        this.direccion = direccion;
+        this.direcciones = direcciones;
         this.cesta = cesta;
         this.usuario = usuario;
-        this.facturas = facturas;
     }
 
     public int getNumero() {
@@ -32,11 +29,11 @@ public class Pedido {
         this.numero = numero;
     }
 
-    public boolean isFacturado() {
+    public String getFacturado() {
         return facturado;
     }
 
-    public void setFacturado(boolean facturado) {
+    public void setFacturado(String facturado) {
         this.facturado = facturado;
     }
 
@@ -48,12 +45,12 @@ public class Pedido {
         this.fechapedido = fechapedido;
     }
 
-    public Direccion getDireccion() {
-        return direccion;
+    public List<Direccion> getDirecciones() {
+        return direcciones;
     }
 
-    public void setDireccion(Direccion direccion) {
-        this.direccion = direccion;
+    public void setDirecciones(List<Direccion> direcciones) {
+        this.direcciones = direcciones;
     }
 
     public String getCesta() {
@@ -70,14 +67,6 @@ public class Pedido {
 
     public void setUsuario(Usuario usuario) {
         this.usuario = usuario;
-    }
-
-    public List<Factura> getFacturas() {
-        return facturas;
-    }
-
-    public void setFacturas(List<Factura> facturas) {
-        this.facturas = facturas;
     }
 
     @Override
@@ -104,7 +93,7 @@ public class Pedido {
 
     @Override
     public String toString() {
-        return "Pedido{" + "numero=" + numero + ", facturado=" + facturado + ", fechapedido=" + fechapedido + ", direccion=" + direccion + ", cesta=" + cesta + ", usuario=" + usuario + ", facturas=" + facturas + '}';
+        return "Pedido{" + "numero=" + numero + ", facturado=" + facturado + ", fechapedido=" + fechapedido + ", direcciones=" + direcciones + ", cesta=" + cesta + ", usuario=" + usuario + '}';
     }
 
 }

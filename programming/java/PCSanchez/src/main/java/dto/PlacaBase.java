@@ -1,7 +1,6 @@
 package dto;
 
 import java.time.LocalDate;
-import java.util.ArrayList;
 
 public class PlacaBase extends Articulo {
 
@@ -40,7 +39,7 @@ public class PlacaBase extends Articulo {
 
     @Override
     public String toString() {
-        return super.toString() + "type=" + type + ", socket=" + socket + ", chipset=" + chipset;
+        return "PlacaBase{" + "type=" + type + ", socket=" + socket + ", chipset=" + chipset + '}';
     }
 
 }

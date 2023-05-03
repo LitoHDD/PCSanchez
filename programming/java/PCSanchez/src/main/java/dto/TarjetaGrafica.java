@@ -1,7 +1,6 @@
 package dto;
 
 import java.time.LocalDate;
-import java.util.ArrayList;
 
 public class TarjetaGrafica extends Articulo {
 
@@ -32,7 +31,7 @@ public class TarjetaGrafica extends Articulo {
 
     @Override
     public String toString() {
-        return super.toString() + "arquitectura=" + arquitectura + ", vRamGb=" + vRamGb;
+        return "TarjetaGrafica{" + "arquitectura=" + arquitectura + ", vRamGb=" + vRamGb + '}';
     }
 
 }

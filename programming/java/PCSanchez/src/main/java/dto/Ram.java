@@ -1,7 +1,6 @@
 package dto;
 
 import java.time.LocalDate;
-import java.util.ArrayList;
 
 public class Ram extends Articulo{
     
@@ -50,7 +49,7 @@ public class Ram extends Articulo{
 
     @Override
     public String toString() {
-        return super.toString() + "capacidadGB=" + capacidadGB + ", frecuenciaMhz=" + frecuenciaMhz + ", tipo=" + tipo + ", perfilXmp=" + perfilXmp;
+        return "Ram{" + "capacidadGB=" + capacidadGB + ", frecuenciaMhz=" + frecuenciaMhz + ", tipo=" + tipo + ", perfilXmp=" + perfilXmp + '}';
     }
     
 }

@@ -129,6 +129,7 @@ public class CestaDAO extends TablaDAO<Cesta> {
         PreparedStatement prepared = getPrepared(sentenciaSQL);
         prepared.setString(1, nombreCesta);
         ResultSet resultSet = prepared.executeQuery();
+
         while (resultSet.next()) {
             Articulo articulo = new ArticuloDAO().getByCodigo(resultSet.getInt("articulo"));
             Usuario usuario = new UsuarioDAO().getByCodigo(resultSet.getInt("numero_usuario"));

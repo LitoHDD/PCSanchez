@@ -1,19 +1,21 @@
 package dto;
 
 import java.time.LocalDate;
-import java.util.ArrayList;
 
 public class Procesador extends Articulo{
     
-    private String socket, familia, generacion;
+    private String socket, familia;
     private double frecuenciaGhz;
+    private int generacion, nucleos, hilos;
 
-    public Procesador(String socket, String familia, String generacion, double frecuenciaGhz, int codigo, String nombre, String descripcion, String pathFoto, double iva, double precio, double stock, LocalDate fechaCreacion, LocalDate fechaModificacion, Usuario modificacion, Usuario creacion) {
+    public Procesador(String socket, String familia, double frecuenciaGhz, int generacion, int nucleos, int hilos, int codigo, String nombre, String descripcion, String pathFoto, double iva, double precio, double stock, LocalDate fechaCreacion, LocalDate fechaModificacion, Usuario modificacion, Usuario creacion) {
         super(codigo, nombre, descripcion, pathFoto, iva, precio, stock, fechaCreacion, fechaModificacion, modificacion, creacion);
         this.socket = socket;
         this.familia = familia;
-        this.generacion = generacion;
         this.frecuenciaGhz = frecuenciaGhz;
+        this.generacion = generacion;
+        this.nucleos = nucleos;
+        this.hilos = hilos;
     }
 
     public String getSocket() {
@@ -32,14 +34,6 @@ public class Procesador extends Articulo{
         this.familia = familia;
     }
 
-    public String getGeneracion() {
-        return generacion;
-    }
-
-    public void setGeneracion(String generacion) {
-        this.generacion = generacion;
-    }
-
     public double getFrecuenciaGhz() {
         return frecuenciaGhz;
     }
@@ -48,11 +42,33 @@ public class Procesador extends Articulo{
         this.frecuenciaGhz = frecuenciaGhz;
     }
 
+    public int getGeneracion() {
+        return generacion;
+    }
+
+    public void setGeneracion(int generacion) {
+        this.generacion = generacion;
+    }
+
+    public int getNucleos() {
+        return nucleos;
+    }
+
+    public void setNucleos(int nucleos) {
+        this.nucleos = nucleos;
+    }
+
+    public int getHilos() {
+        return hilos;
+    }
+
+    public void setHilos(int hilos) {
+        this.hilos = hilos;
+    }
+
     @Override
     public String toString() {
-        return super.toString() + "socket=" + socket + ", familia=" + familia + ", generacion=" + generacion + ", frecuenciaGhz=" + frecuenciaGhz;
+        return "Procesador{" + "socket=" + socket + ", familia=" + familia + ", frecuenciaGhz=" + frecuenciaGhz + ", generacion=" + generacion + ", nucleos=" + nucleos + ", hilos=" + hilos + '}';
     }
-    
-    
     
 }

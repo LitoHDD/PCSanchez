@@ -60,15 +60,15 @@ public class FacturaDAO extends TablaDAO<Factura> {
     }
 
     @Override
-    public Factura getByCodigo(int codigo) throws SQLException {
-        String sentenciaSQL = "SELECT * FROM " + tabla + " WHERE codigo=?";
+    public Factura getByCodigo(int codigoUsuario) throws SQLException {
+        String sentenciaSQL = "SELECT * FROM " + tabla + " WHERE cod_usuario=?";
         PreparedStatement prepared = getPrepared(sentenciaSQL);
-        prepared.setInt(1, codigo);
+        prepared.setInt(1, codigoUsuario);
         ResultSet resultSet = prepared.executeQuery();
         while (resultSet.next()) {
-            int direccion = resultSet.getInt("direccion");
+            int direccion = resultSet.getInt("numero_direccion");
             int codigos = resultSet.getInt("cod_factura");
-            Pedido pedidoAsociado = new PedidoDAO().getByCodigo(resultSet.getInt("pedido"));
+            Pedido pedidoAsociado = new PedidoDAO().getByCodigo(resultSet.getInt("numero_pedido"));
             LocalDateTime fecha = resultSet.getTimestamp("fecha").toLocalDateTime();
             return new Factura(codigos, direccion, fecha, pedidoAsociado);
         }

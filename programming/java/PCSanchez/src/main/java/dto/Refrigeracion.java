@@ -1,7 +1,6 @@
 package dto;
 
 import java.time.LocalDate;
-import java.util.ArrayList;
 
 public class Refrigeracion extends Articulo{
     
@@ -41,7 +40,7 @@ public class Refrigeracion extends Articulo{
 
     @Override
     public String toString() {
-        return super.toString() + "tipo=" + tipo + ", socket=" + socket + ", tama\u00f1o=" + tamaño;
+        return "Refrigeracion{" + "tipo=" + tipo + ", socket=" + socket + ", tama\u00f1o=" + tamaño + '}';
     }
     
 }

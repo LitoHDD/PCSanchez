@@ -16,8 +16,6 @@ public class LineaCesta {
         this.precio = precio;
     }
 
-
-
     public Articulo getArticulo() {
         return articulo;
     }

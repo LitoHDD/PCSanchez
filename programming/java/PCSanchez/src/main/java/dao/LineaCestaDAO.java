@@ -53,53 +53,19 @@ public class LineaCestaDAO extends TablaDAO<LineaCesta> {
 
     public ArrayList<LineaCesta> getLineas(String nombreCesta) throws SQLException {
         ArrayList<LineaCesta> lineas = new ArrayList<>();
-        String sentenciaSQL = "SELECT articulo, precio, cantidad FROM ps_cesta_articulo WHERE nombre_cesta = cesta";
+        String sentenciaSQL = "SELECT * FROM ps_cesta_articulo WHERE cesta=?";
         PreparedStatement prepared = getPrepared(sentenciaSQL);
         prepared.setString(1, nombreCesta);
         ResultSet resultSet = prepared.executeQuery();
 
         while (resultSet.next()) {
-            Articulo articulo = new ArticuloDAO().getByCodigo(resultSet.getInt("codigo_articulo"));
-            Usuario usuario = new UsuarioDAO().getByCodigo(resultSet.getInt("codigo"));
+            Articulo articulo = new ArticuloDAO().getByCodigo(resultSet.getInt("articulo"));
+            Usuario usuario = new UsuarioDAO().getByCodigo(resultSet.getInt("numero_usuario"));
             double precio = resultSet.getInt("precio");
             int cantidad = resultSet.getInt("cantidad");
             lineas.add(new LineaCesta(articulo, usuario, cantidad, precio));
         }
         return lineas;
-    }
-
-    // Necesitamos la clase DAO de articulo
-    public LinkedHashSet<LineaCesta> getLineas(int codPedido) throws SQLException {
-        ArticuloDAO productoDAO = new ArticuloDAO();
-        LinkedHashSet<LineaCesta> lineas = new LinkedHashSet<>();
-        String sentenciaSQL = "SELECT producto, precio, iva, cantidad FROM productospedido WHERE pedido = ?";
-        PreparedStatement prepared = getPrepared(sentenciaSQL);
-        prepared.setInt(1, codPedido);
-        ResultSet resultSet = prepared.executeQuery();
-        while (resultSet.next()) {
-            Articulo articulo = new ArticuloDAO().getByCodigo(resultSet.getInt("codigo_articulo"));
-            Usuario usuario = new UsuarioDAO().getByCodigo(resultSet.getInt("codigo"));
-            double precio = resultSet.getInt("precio");
-            int cantidad = resultSet.getInt("cantidad");
-            lineas.add(new LineaCesta(articulo, usuario, cantidad, precio));
-        }
-        return lineas;
-    }
-
-    public ArrayList<LineaCesta> getLineasCesta(int codigoArticulo) throws SQLException {
-        String sentenciaSQL = "SELECT * FROM ps_cesta_categoria WHERE codigo_articulo_categoria=?";
-        PreparedStatement prepared = getPrepared(sentenciaSQL);
-        prepared.setInt(1, codigoArticulo);
-        ResultSet resultSet = prepared.executeQuery();
-        ArrayList<LineaCesta> lineasCesta = new ArrayList<>();
-        while (resultSet.next()) {
-            Articulo articulo = new ArticuloDAO().getByCodigo(resultSet.getInt("codigo_articulo"));
-            Usuario usuario = new UsuarioDAO().getByCodigo(resultSet.getInt("codigo"));
-            double precio = resultSet.getInt("precio");
-            int cantidad = resultSet.getInt("cantidad");
-            lineasCesta.add(new LineaCesta(articulo, usuario, cantidad, precio));
-        }
-        return lineasCesta;
     }
 
 }

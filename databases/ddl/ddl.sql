@@ -207,9 +207,9 @@ CREATE TABLE ps_sobremesa (
     size_pc VARCHAR2(8) NOT NULL,
     familia_procesador VARCHAR2(15) NOT NULL, 
     type_pc VARCHAR2(6) NOT NULL,
-    capazidad_ram_gb NUMBER(2) NOT NULL,
+    capazidad_ram_gb NUMBER(3) NOT NULL,
     sistema_operativo VARCHAR2(10) NOT NULL, 
-    almacenamiento_gb VARCHAR2(4) NOT NULL, 
+    almacenamiento_gb NUMBER(5) NOT NULL, 
     CONSTRAINT torre_size CHECK (size_pc IN ('mini-ITX', 'M-ATX', 'ATX', 'E-ATX')),
     CONSTRAINT tipo_pc CHECK (type_pc IN ('office', 'gamer', 'pro')),
     FOREIGN KEY (codigo_articulo) REFERENCES ps_articulo
