@@ -1,204 +1,31 @@
-# PCSanchez
+# 💻 PCSanchez
+[![Discord](https://img.shields.io/discord/1056947417842454678?label=DISCORD%20SERVER&logo=discord&style=for-the-badge)](https://discord.gg/FVaPTTs7MY) ![Language count](https://img.shields.io/github/languages/count/LitoHDD/PCSanchez?label=%F0%9F%8C%8E%20LANGUAGES&style=for-the-badge)
 
-[![Discord](https://img.shields.io/discord/1056947417842454678?label=SERVER%20DISCORD&style=for-the-badge)](https://discord.gg/FVaPTTs7MY) [![Languages](https://img.shields.io/github/languages/count/LitoHDD/PCSanchez?style=for-the-badge)](https://github.com/LitoHDD/PCSanchez)
+## 📝 Description
+This intermodular project, called PCSanchez, is a virtual store created with Java, CSS, and HTML and a series of modules that focus on different functionalities to improve the user's shopping experience. The project uses Oracle DataBase as the database management system to store store information.
 
-👀 Intermodular Project (E-Commerce Store)
+## 🎯 Project Objectives
+The main objectives of the project are:
 
-## [Demo 💥](https://github.com/LitoHDD/PCSanchez)
+- To offer an intuitive and attractive online shopping experience for users.
+- To provide a secure and reliable online sales platform for customers.
+- To facilitate store management and sales processes for administrators.
 
-## Install
+## 🔧 Technologies Used
+[![Java](https://img.shields.io/badge/☕️-Java-orange.svg?style=for-the-badge&logo=java&logoColor=white)](https://github.com/LitoHDD/PCSanchez)
+[![CSS](https://img.shields.io/badge/CSS-%231572B6.svg?logo=css3&logoColor=white&style=for-the-badge)](https://github.com/LitoHDD/PCSanchez)
+[![HTML](https://img.shields.io/badge/HTML-%23E34F26.svg?logo=html5&logoColor=white&style=for-the-badge)](https://github.com/LitoHDD/PCSanchez)
+[![Oracle DataBase](https://img.shields.io/badge/Oracle-DB-%23F00000.svg?logo=oracle&logoColor=white&style=for-the-badge)](https://github.com/LitoHDD/PCSanchez)
 
-```bash
-npm install react-parallax-tilt
-```
+## 🤝 Contributors
+[![LitoHDD](https://img.shields.io/github/contributors/LitoHDD/PCSanchez?color=blueviolet&label=LitoHDD&logo=github&style=for-the-badge)](https://github.com/LitoHDD)
+[![longinoojeda](https://img.shields.io/github/contributors/longinoojeda/PCSanchez?color=blueviolet&label=longinoojeda&logo=github&style=for-the-badge)](https://github.com/longinoojeda)
 
-## Features
+## 📄 License
+This project is under the MIT License. Please refer to the LICENSE file for more information.
 
-- Lightweight (≈3kB), zero dependencies 📦
-- Works with React v15 onwards
-- Supports **mouse** and **touch** events
-- Support for device tilting (**gyroscope**)
-- **Glare** effect 🌟 with custom props (color, position,...) [🔗demo](https://mkosir.github.io/react-parallax-tilt/?path=/story/react-parallax-tilt--parallax-effect-glare-scale)
-- Events to keep track of component values 📐 (tilt, glare, mousemove,...) [🔗demo](https://mkosir.github.io/react-parallax-tilt/?path=/story/react-parallax-tilt--event-params)
-- Many effects that can be easily applied:
-  - **scale** on hover [🔗demo](https://mkosir.github.io/react-parallax-tilt/?path=/story/react-parallax-tilt--scale)
-  - **disable** x/y axis [🔗demo](https://mkosir.github.io/react-parallax-tilt/?path=/story/react-parallax-tilt--tilt-disable-axis)
-  - **flip** component vertically/horizontally [🔗demo](https://mkosir.github.io/react-parallax-tilt/?path=/story/react-parallax-tilt--flip-vh)
-  - tilt hover effect on the **whole window** [🔗demo](https://mkosir.github.io/react-parallax-tilt/?path=/story/react-parallax-tilt--track-on-window)
-  - tilt component with custom **manual input** 🕹 (joystick, slider etc.) [🔗demo](https://mkosir.github.io/react-parallax-tilt/?path=/story/react-parallax-tilt--tilt-manual-input)
-  - **parallax** effect on overlaid images [🔗demo](https://mkosir.github.io/react-parallax-tilt/?path=/story/react-parallax-tilt--parallax-effect-img)
+## 🚀 Let's Get Started!
+To begin, make sure you have Java, NetBeans IDE, and Oracle DataBase installed on your system. Then, clone this repository and open the project in NetBeans. From there, you can run the application and start working on it.
 
-## Example
-
-```jsx
-import React from 'react';
-import ReactDOM from 'react-dom';
-import Tilt from 'react-parallax-tilt';
-
-const App = () => {
-  return (
-    <Tilt>
-      <div style={{ height: '300px', backgroundColor: 'darkgreen' }}>
-        <h1>React Parallax Tilt 👀</h1>
-      </div>
-    </Tilt>
-  );
-};
-
-ReactDOM.render(<App />, document.getElementById('root'));
-```
-
-## Props
-
-All of the props are optional.  
-Below is the complete list of possible props and their options:
-
-> ▶︎ indicates the default value if there's one
-
-**tiltEnable**: _boolean_ ▶︎ `true`  
-Boolean to enable/disable tilt effect.
-
-**tiltReverse**: _boolean_ ▶︎ `false`  
-Reverse the tilt direction.
-
-**tiltAngleXInitial**: _number_ ▶︎ `0`  
-Initial tilt value (degrees) on x axis.
-
-**tiltAngleYInitial**: _number_ ▶︎ `0`  
-Initial tilt value (degrees) on y axis.
-
-**tiltMaxAngleX**: _number_ ▶︎ `20`  
-Max tilt rotation (degrees) on x axis (range: `0°-90°`).
-
-**tiltMaxAngleY**: _number_ ▶︎ `20`  
-Max tilt rotation (degrees) on y axis (range: `0°-90°`).
-
-**tiltAxis**: _'x' | 'y'_ ▶︎ `undefined`  
-Enable tilt on single axis.
-
-**tiltAngleXManual**: _number_ | null} ▶︎ `null`  
-Manual tilt rotation (degrees) on x axis.
-
-**tiltAngleYManual**: _number_ | null} ▶︎ `null`  
-Manual tilt rotation (degrees) on y axis.
-
-**glareEnable**: _boolean_ ▶︎ `false`  
-Boolean to enable/disable glare effect.
-
-**glareMaxOpacity**: _number_ ▶︎ `0.7`  
-The maximum glare opacity (range: `0-1`).
-
-**glareColor**: _string_ ▶︎ `#ffffff`  
-Set color of glare effect.
-
-**glareBorderRadius**: _string_ ▶︎ `0`  
-Accepts any standard CSS border radius. Useful if the glare color is different to the page color.
-
-**glarePosition**: _'top' | 'right' | 'bottom' | 'left' | 'all'_ ▶︎ `bottom`  
-Set position of glare effect.
-
-**glareReverse**: _boolean_ ▶︎ `false`  
-Reverse the glare direction.
-
-**scale**: _number_ ▶︎ `1`  
-Scale of the component (1.5 = 150%, 2 = 200%, etc.).
-
-**perspective**: _number_ ▶︎ `1000`  
-The perspective property defines how far the object (wrapped/child component) is away from the user. The lower the more extreme the tilt gets.
-
-**flipVertically**: _boolean_ ▶︎ `false`  
-Boolean to enable/disable vertical flip of component.
-
-**flipHorizontally**: _boolean_ ▶︎ `false`  
-Boolean to enable/disable horizontal flip of component.
-
-**reset**: _boolean_ ▶︎ `true`  
-If the effects has to be reset on `onLeave` event.
-
-**transitionEasing**: _string_ ▶︎ `cubic-bezier(.03,.98,.52,.99)`  
-Easing of the transition when manipulating the component.
-
-**transitionSpeed**: _number_ ▶︎ `400`  
-Speed of the transition when manipulating the component.
-
-**trackOnWindow**: _boolean_ ▶︎ `false`  
-Track mouse and touch events on the whole window.
-
-**gyroscope**: _boolean_ ▶︎ `false`  
-Boolean to enable/disable device orientation detection.
-
-**onMove**: _Function_ => ({ **tiltAngleX**: _number_, **tiltAngleY**: _number_, **tiltAngleXPercentage**: _number_, **tiltAngleYPercentage**: _number_, **glareAngle**: _number_, **glareOpacity**: _number_, **eventType**: _string_ }) => _void_  
-Gets triggered when user moves on the component.
-
-**onEnter**: _Function_ => (**eventType**: _string_) => _void_  
-Gets triggered when user enters the component.
-
-**onLeave**: _Function_ => (**eventType**: _string_) => _void_  
-Gets triggered when user leaves the component.
-
-## Gyroscope - Device Orientation
-
-Please keep in mind that detecting device orientation is currently [experimental technology](https://developer.mozilla.org/en-US/docs/MDN/Contribute/Guidelines/Conventions_definitions#Experimental).  
-Check the [browser compatibility](https://caniuse.com/#search=DeviceOrientation) before using this in production.  
-A few takeaways when using device orientation event:
-
-- always use secure origins (such as `https`)
-- it doesn't work in all browsers when using it in cross-origin `<iframe>` element
-
-<details>
-<summary>Using device orientation on iOS 13+</summary>
-
-Apple decided turning device motion and orientation off by default since iOS 12.2.  
-With iOS 13+ permission API can be used to gain access to device orientation event.
-
-When using gyroscope feature:
-
-```jsx
-<Tilt gyroscope={true}>
-  <h1>React Parallax Tilt 👀</h1>
-</Tilt>
-```
-
-it will present a permission dialog prompting the user to allow motion and orientation access at domain level:  
-![](misc/device_orientation.jpg)
-
-Note that user needs to take some action (like tapping a button) to be able to display the dialog (invoking dialog on page load is not possible).
-
-</details>
-
-## Development
-
-_Easily set up a local development environment!_
-
-Build project and start storybook on [localhost](http://localhost:9009):
-
-- clone
-- `npm install`
-- `npm start`
-
-**Start coding!** 🎉
-
-<details>
-<summary>Or setup with npm link</summary>
-Clone this repo on your machine, navigate to its location in the terminal and run:
-
-```bash
-npm install
-npm link # link your local repo to your global packages
-npm run build:watch # build the files and watch for changes
-```
-
-Clone project repo that you wish to test with react-parallax-tilt library and run:
-
-```bash
-npm install
-npm link react-parallax-tilt # link your local copy into this project's node_modules
-npm start
-```
-
-</details>
-
-## Contributing
-
-All contributions are welcome!  
-Please take a moment to review guidelines [PR](.github/pull_request_template.md) | [Issues](https://github.com/mkosir/react-parallax-tilt/issues/new/choose)
+## 📝 Additional Notes
+For more information on the project and its functionality, please refer to the README.md file located at the root of the repository. You can also visit our Discord server for help and to discuss the project with other developers.
