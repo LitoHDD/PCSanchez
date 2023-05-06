@@ -173,53 +173,65 @@ nav a {
     }
 }
 
-/* ------- MAIN - REGISTRO --------- */
-
-body {
-    background-color: #f8f9fa;
-}
-
 main {
-    margin: 0 10px;
+    margin: 20px 10px;
 }
 
-main h2 {
-    margin-top: 30px;
+h1 {
     text-align: center;
     color: var(--azul);
-    font-size: 2.5em;
+    margin-bottom: 20px;
 }
 
-main .registro {
-    background-color: white;
-    border: 1px solid #e9ecef;
-    border-radius: 10px;
-    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
-    margin: 30px auto;
-    max-width: 450px;
-    padding: 20px;
-    color: var(--azul);
-}
+/* .categorias {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+} */
 
-main form {
+.categorias {
     display: flex;
     flex-direction: column;
 }
 
-main input {
-    border: 1px solid #ced4da;
+.categoria {
+    border: 1px solid var(--azul);
     border-radius: 5px;
-    font-size: 16px;
-    margin-bottom: 20px;
-    padding: 10px;
+    padding: 15px;
+    margin: 5px 0;
 }
 
-main label {
-    font-weight: bold;
-    margin-bottom: 5px;
+.categoria h2 {
+    color: var(--azul);
+    text-align: center;
+    margin-bottom: 15px;
 }
 
-main button {
+.productos {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 10px;
+}
+
+.producto {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+.producto img {
+    width: 100px;
+    height: 100px;
+    object-fit: cover;
+    border-radius: 5px;
+}
+
+.producto h3 {
+    margin: 10px 0;
+}
+
+.producto button {
     background-color: var(--verde);
     border: none;
     border-radius: 5px;
@@ -227,59 +239,29 @@ main button {
     cursor: pointer;
     font-size: 16px;
     padding: 10px;
-    margin-bottom: 10px;
+    margin-top: 10px;
 }
 
-main button:hover {
+.producto button:hover {
     background-color: #69c76c;
 }
 
-main input:focus { 
-    border-color: #80bdff;
-    box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
-    outline: none;
-}
-
-/* Media Queries */
-
 @media screen and (max-width: 600px) {
-    main .registro {
-        margin: 10px auto;
-        padding: 10px;
+    .categorias {
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
     }
 
-    main input, main button {
+    .producto img {
+        width: 80px;
+        height: 80px;
+    }
+
+    .producto h3, .producto button {
         font-size: 14px;
-        margin-bottom: 10px;
+        margin: 5px 0;
+    }
+
+    .producto button {
         padding: 8px;
     }
-
-    main h2 {
-        font-size: 2em;
-        margin-top: 15px;
-    }
-
-    main input:focus { 
-        box-shadow: none;
-        outline: none;
-    }
-}
-
-.privacy {
-    display: flex;
-    align-items: center;
-    margin-bottom: 20px;
-}
-
-.privacy input[type="checkbox"] {
-    margin-right: 5px;
-}
-
-.privacy a {
-    color: var(--azul);
-    text-decoration: none;
-}
-
-.privacy a:hover {
-    text-decoration: underline;
 }

@@ -11,105 +11,66 @@
 </head>
 <body>
     <header>
-        <section class="headerSuperior">
-            <div class="contenidoHeaderSuperior">
-                <section class="logo">
-                    <figure>
-                        <a href="./index.html"><img src="./images/index/logo.png" alt="logotipo"></a>
-                    </figure>
-                </section>
-                <nav>
-                    <ul class="menu">
-                        <li><a href="./index.html">INICIO</a></li>
-                        <li><a href="#">ORDENADORES</a></li>
-                        <li><a href="#">COMPONENTES</a></li>
-                        <li><a href="./privacy.html">SOBRE NOSOTROS</a></li>
-
-                    </ul>
-                </nav>
-                <section>
-                    <form>
-                        <input class="buscar" type="search" name="search" placeholder="Buscar en tienda...">
-                        <button type="submit"><img src="./images/index/lupa.png" alt="lupa"></button>
-                    </form>
-                </section>
-                <section class="usuario">
-                    <section>
-                        <a href="./register.html" id="registrarse">REGISTRARSE</a>
-                    </section>
-                    <section>
-                        <a href="./login.html" id="entrar">ENTRAR</a>
-                    </section>
-                </section>
-                <figure class="carrito">
-                    <img src="./images/index/carro.png" alt="carrito">
-                </figure>
-            </div>
+        <figure class="logo">
+            <img src="./images/index/logo.png" alt="">
+        </figure>
+        <nav>
+          <ul>
+            <li><a href="#">Inicio</a></li>
+            <li><a href="#">Ordenadores</a></li>
+            <li><a href="#">Componentes</a></li>
+            <li><a href="./privacy.html">Nosotros</a></li>
+          </ul>
+        </nav>
+        <article class="search">
+            <form>
+              <label>
+                <input type="text" placeholder="Buscar">
+                <button type="submit"></button>
+              </label>
+            </form>
+        </article>
+        <section class="usuario">
+            <article >
+                <p>REGISTRASE</p>
+            </article>
+            <article>
+                <p>ENTRAR</p>
+            </article>
         </section>
+        <section class="titulo-query">
+            <h2>PC SANCHEZ</h2>
+        </section>
+        <figure class="burger">
+            <img src="./images/index/burger.png" alt="">
+        </figure>
+        <figure class="user-query">
+            <img src="./images/index/user.png" alt="">
+        </figure>
     </header>
-    <section id="all">
-        <section id="top-part">
-            <br id="espaciador-titulo">
-            <h1 id="text-log-in">CREAR CUENTA</h1>
-            <br>
-            </section>
-            <section id="google-section">
-                <br>
-                <p><a href="./mantenimiento.html"><img id="sign-google" src="./images/login/sign-google.png"></a></p>
-                <br>
-            </section>
-            <section id="mid-part">
-                <br>
-                <img id="espaciador" src="./images/login/espaciador.png">
-                <br>
-            </section>
-            <section id="down-part">
-                <ul>
-                    <br>
-                    <li>
-                        <input class="boxes" type="text" id="user-name" name="name" placeholder="Nombre">
-                    </li>
-                    <br>
-                    <li>
-                        <input class="boxes" type="text" id="user-email" name="email" placeholder="E-mail*">
-                    </li>
-                    <br>
-                    <li>
-                        <input class="boxes" type="password" id="user-name" name="name" placeholder="Contraseña">
-                    </li>
-                    <br>
-                    <li>
-                        <input class="boxes" type="password" id="user-name" name="name" placeholder="Repetir Contraseña">
-                    </li>
-                    <br>
-                    <label id="check-box-register"><input type="checkbox" id="cbox1" value="first_checkbox"> He leído y acepto la política de privacidad</label><br>
-                    <br>
-                    <a href="./mantenimiento.html"><input id="button-log-in" type="button" value="REGISTRATE"></a></p>
-                </ul>
-            </section>
-            <section id="down-part2">
-                <br>
-                <img id="espaciador2" src="./images/register/space-account.png">
-                <br>
-            </section>
-            <section id="down-part3">
-                <br>
-                <a href="./login.html"><img id="register" src="./images/register/log-in-register.png"></a>
-                <br>
-            </section>
-    </section>
-    <br id="espaciador-footer">
-    <section>
-        <footer>
-            <section>
-                <a id="img-footer" href="./index.html"><img id="logo-footer" src="./images/footer/logo-footer2.png"></a>
-                <a href="./index.html" class="text-footer">INICIO</a>
-                <a href="./mantenimiento.html" class="text-footer">ORDENADORES</a>
-                <a href="./mantenimiento.html" class="text-footer">COMPONENTES</a>
-                <a href="./mantenimiento.html" class="text-footer">SOBRE NOSOTROS</a>
-                <a href="https://iespacomolla.es/"><img id="logo-footer" src="./images/footer/logo-footer.png"></a>
-            </section>
-        </footer>
-    </section>
+    <main>
+        <h2>REGISTRO</h2>
+        <section class="registro">
+            <form>
+                <label for="nombre">Nombre:</label>
+                <input type="text" id="nombre" name="nombre" autocomplete="on" placeholder="Introduzca su nombre">
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email" autocomplete="on" placeholder="Introduzca su correo electrónico">
+                <label for="password">Contraseña:</label>
+                <input type="password" id="password" name="password" autocomplete="off" placeholder="Introduzca su contraseña">
+                <label for="password-confirm">Confirmar contraseña:</label>
+                <input type="password" id="password-confirm" name="password-confirm" autocomplete="off" placeholder="Confirme su contraseña">
+                <label for="telefono">Teléfono:</label>
+                <input type="tel" id="telefono" name="telefono" autocomplete="on" placeholder="Introduzca su teléfono">
+                <label for="fecha-nacimiento">Fecha de nacimiento:</label>
+                <input type="date" id="fecha-nacimiento" name="fecha-nacimiento" autocomplete="on" placeholder="Seleccione su fecha de nacimiento">
+                <section class="privacy">
+                    <input type="checkbox" id="privacy-policy" name="privacy-policy">
+                    <label for="privacy-policy">He leído y acepto la <a href="./privacy.html">política de privacidad</a>.</label>
+                </section>
+                <button type="submit">REGISTRARSE</button>
+            </form>
+        </section>
+    </main>
 </body>
 </html>

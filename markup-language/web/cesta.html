@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="normalize.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="./css/style-cesta.css">
+    <title>CESTA - PCSanchez</title>
+</head>
+<body>
+    <header>
+        <figure class="logo">
+            <img src="./images/index/logo.png" alt="">
+        </figure>
+        <nav>
+          <ul>
+            <li><a href="#">Inicio</a></li>
+            <li><a href="#">Ordenadores</a></li>
+            <li><a href="#">Componentes</a></li>
+            <li><a href="./privacy.html">Nosotros</a></li>
+          </ul>
+        </nav>
+        <article class="search">
+            <form>
+              <label>
+                <input type="text" placeholder="Buscar">
+                <button type="submit"></button>
+              </label>
+            </form>
+        </article>
+        <section class="usuario">
+            <article >
+                <p>REGISTRASE</p>
+            </article>
+            <article>
+                <p>ENTRAR</p>
+            </article>
+        </section>
+        <section class="titulo-query">
+            <h2>PC SANCHEZ</h2>
+        </section>
+        <figure class="burger">
+            <img src="./images/index/burger.png" alt="">
+        </figure>
+        <figure class="user-query">
+            <img src="./images/index/user.png" alt="">
+        </figure>
+    </header>
+    <main>
+        <h2>MI CESTA</h2>
+        <section class="cesta">
+            <article class="producto">
+                <figure class="producto-img">
+                    <img src="./images/index/hardware/laptopverde.png" alt="Producto">
+                </figure>
+                <div class="producto-info">
+                    <h3>Nombre del producto</h3>
+                    <p>Precio: 50,00€</p>
+                    <label for="cantidad">Cantidad:</label>
+                    <input type="number" id="cantidad" name="cantidad" value="1" min="1">
+                </div>
+                <button class="eliminar" type="button">Eliminar</button>
+            </article>
+            <article class="producto">
+                <figure class="producto-img">
+                    <img src="./images/index/components/procesador.png" alt="Producto">
+                </figure>
+                <div class="producto-info">
+                    <h3>Nombre del producto</h3>
+                    <p>Precio: 50,00€</p>
+                    <label for="cantidad">Cantidad:</label>
+                    <input type="number" id="cantidad" name="cantidad" value="1" min="1">
+                </div>
+                <button class="eliminar" type="button">Eliminar</button>
+            </article>
+            <article class="producto">
+                <figure class="producto-img">
+                    <img src="./images/index/hardware/pcverde.png" alt="Producto">
+                </figure>
+                <div class="producto-info">
+                    <h3>Nombre del producto</h3>
+                    <p>Precio: 50,00€</p>
+                    <label for="cantidad">Cantidad:</label>
+                    <input type="number" id="cantidad" name="cantidad" value="1" min="1">
+                </div>
+                <button class="eliminar" type="button">Eliminar</button>
+            </article>
+            <!-- aqui mas elementos de la cesta!!! -->
+        </section>
+        <div class="resumen">
+            <h3>Resumen de la compra</h3>
+            <p>Total: 150,00€</p>
+            <button type="button">Comprar</button>
+        </div>
+    </main>
+</body>
+</html>
