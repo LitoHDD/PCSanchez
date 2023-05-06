@@ -12,7 +12,7 @@ The main objectives of the project are:
 - To facilitate store management and sales processes for administrators.
 
 ## 🔧 Technologies Used
-[![Java](https://img.shields.io/badge/☕️-Java-orange.svg?style=for-the-badge&logo=java&logoColor=white)](https://github.com/LitoHDD/PCSanchez)
+[![Java](https://img.shields.io/badge/-JAVA-orange?style=for-the-badge&logo=java)](https://github.com/LitoHDD/PCSanchez)
 [![CSS](https://img.shields.io/badge/CSS-%231572B6.svg?logo=css3&logoColor=white&style=for-the-badge)](https://github.com/LitoHDD/PCSanchez)
 [![HTML](https://img.shields.io/badge/HTML-%23E34F26.svg?logo=html5&logoColor=white&style=for-the-badge)](https://github.com/LitoHDD/PCSanchez)
 [![Oracle DataBase](https://img.shields.io/badge/Oracle-DB-%23F00000.svg?logo=oracle&logoColor=white&style=for-the-badge)](https://github.com/LitoHDD/PCSanchez)
