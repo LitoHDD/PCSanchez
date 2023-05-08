@@ -1,0 +1,267 @@
+* {
+    margin: 0;
+    padding: 0;
+    font-family: 'Poppins', sans-serif
+}
+
+h2 {
+    font-size: 200%;
+    font-weight: 1000;
+    margin-bottom: 20px;
+}
+
+h2, h4 {
+    color: #30398A;
+}
+
+header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+}
+
+nav ul a:hover{
+    transform: scale(1.2);
+    transition-duration: 0.2s;
+    transition-timing-function: ease-in-out;
+}
+
+.headerSuperior {
+    height: 70px;
+    border-bottom: solid 2px #30398A;
+    background-color: #70E174;
+}
+
+.headerSuperior input{
+    height: 30px;
+    width: 500px;
+    border-radius: 6px;
+    border: none;
+}
+
+.headerSuperior form img{
+    height: 20px;
+    width: 20px;
+}
+
+.headerSuperior form button{
+    height: 30px;
+    width: 30px;
+    border-radius: 6px;
+    border: none;
+}
+
+.contenidoHeaderSuperior {
+    margin: 0px 2%;
+    padding-top: 2px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+header .usuario {
+    text-align: center;
+}
+
+header .usuario a{
+    text-decoration: none;
+}
+
+#registrarse {
+    display: block;
+    font-size: 20px;
+    color: white;
+    background-color: #30398A;
+    padding: 2px 6px;
+    border-radius: 6px;
+    border: none;
+}
+
+#entrar {
+    margin-top: -6px;
+    display: block;
+    font-size: 20px;
+    padding-top: 5px;
+}
+
+.headerSuperior .logo img {
+    height: 55px;
+}
+
+.headerSuperior .carrito img {
+    height: 65px;
+}
+
+.menu li{
+    list-style: none;
+    display: inline-block;
+    text-align: center;
+    padding: 0 20px;
+}
+
+.menu li a{
+    text-decoration: none;
+    display: block;
+}
+
+.general {
+    margin: 0px 8%;
+    color: #7F7F7F;
+}
+
+h3 {
+    margin: 30px 0 15px 0px;
+    background-color: #30398A;
+    border-radius: 6px;
+    color: white;
+    padding-left: 30px;
+}
+
+.producto {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 100px;
+}
+
+.producto .foto img{
+    width: 50%;
+}
+
+.producto .foto {
+    display: flex;
+    justify-content: center;
+}
+
+.comprar h2 {
+    color: black;
+    margin: 0px;
+}
+
+.comprar h3 {
+    color: #30398A;
+    background-color: white;
+    padding: 0px;
+    margin: 0px;
+    font-size: 40px;
+}
+
+.producto .comprar {
+    justify-content: left;
+}
+
+.pedido {
+    display: flex;
+}
+
+.buy section {
+    margin: 15px 0;
+    padding: 2px 0;
+    border-radius: 6px;
+    text-align: center;
+}
+
+.buy a {
+    text-decoration: none;
+    color: white;
+    font-weight: 600;
+}
+
+.buy .buy-comprar {
+    background-color: #70E174;
+}
+
+.buy .buy-carrito {
+    background-color: #7F7F7F;
+}
+
+.estrellitas {
+    display: flex;
+    align-items: center;
+}
+
+.pedido ul {
+    padding: 0 25px;
+    list-style: none;
+}
+
+.pedido li {
+    margin: 10px 0;
+}
+
+.pedido input {
+    width: 40%;
+}
+
+table {
+    border-spacing: 0px;
+    border-bottom: solid 1px #c5c5c5;
+}
+
+table td {
+    border-top: solid 1px #c5c5c5;
+    border-collapse: collapse ;
+    padding-left: 15px;
+    width: 400px;
+}
+
+table .especificacion {
+    background-color: #e4e4e4;
+}
+
+.opiniones-main {
+    display: flex;
+    align-items: top;
+    justify-content: space-between;
+}
+
+.estadistica {
+    width: 30%;
+}
+
+.estadistica .estrellas img{
+    width: 50%;
+}
+
+.opinion {
+    width: 70%;
+}
+
+.opinion .reseña{
+    margin: 20px 0;
+}
+
+.reseña img {
+    width: 100px;
+    margin-right: 10px;
+}
+
+.reseña .titulo {
+    display: flex;
+}
+
+.opiniones {
+    margin-bottom: 90px;
+}
+
+footer{
+    background: black;
+    position: absolute;
+    width: 100%;
+}
+
+#img-footer{
+    float: left;
+    width: 17%;
+    margin: 0.6% 0.6%;
+}
+
+.text-footer{
+    margin-top: 0.7%;
+    text-decoration: none;
+    color: white;
+    float: left;
+    line-height: 6;
+    width: 17%;
+}

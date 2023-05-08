@@ -12,7 +12,9 @@ import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Timestamp;
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -79,7 +81,7 @@ public class UsuarioDAO extends TablaDAO<Usuario> {
 
         return lista;
     }
-    
+
     @Override
     public Usuario getByCodigo(int codigoUsuario) throws SQLException {
         String sentenciaSQL = "SELECT * FROM " + tabla + " WHERE codigo=?";
@@ -132,6 +134,27 @@ public class UsuarioDAO extends TablaDAO<Usuario> {
             cestas.add(new Cesta(nombre, tipo, precio, cantidad, null));
         }
         return cestas;
+    }
+
+    public Usuario validar(String formEmail, String formPassword) throws SQLException {
+        String sentenciaSQL = "SELECT * FROM " + tabla + " WHERE email=? AND pass=?";
+        PreparedStatement prepared = getPrepared(sentenciaSQL);
+        prepared.setString(1, formEmail);
+        prepared.setString(2, formPassword);
+        ResultSet resultSet = prepared.executeQuery();
+        while (resultSet.next()) {
+            int codigo = resultSet.getInt("codigo");
+            String nombreCompleto = resultSet.getString("nombre_comp");
+            String contrasenya = resultSet.getString("pass");
+            String email = resultSet.getString("email");
+            String foto = resultSet.getString("foto");
+            LocalDate fechaNacimiento = resultSet.getDate("fecha_nacimiento").toLocalDate();
+            int telefono = resultSet.getInt("telefono");
+            TipoUsuario tipoUsuario = TipoUsuario.valueOf(resultSet.getString("tipousuario"));
+            return new Usuario(codigo, telefono, email, contrasenya, nombreCompleto, foto, fechaNacimiento, getDirecciones(codigo), getCestas(codigo), tipoUsuario);
+        }
+
+        return null;
     }
 
 }
