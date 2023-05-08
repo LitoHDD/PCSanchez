@@ -1,5 +1,5 @@
 # 💻 PCSanchez
-[![Discord](https://img.shields.io/discord/1056947417842454678?label=DISCORD%20SERVER&logo=discord&style=for-the-badge)](https://discord.gg/FVaPTTs7MY) ![Language count](https://img.shields.io/github/languages/count/LitoHDD/PCSanchez?label=%F0%9F%8C%8E%20LANGUAGES&style=for-the-badge) ![GitHub release (latest by date)](https://img.shields.io/github/v/release/LitoHDD/PCSanchez?color=orange&label=%F0%9F%93%A2%20last%20version&style=for-the-badge)
+[![Discord](https://img.shields.io/discord/1056947417842454678?label=DISCORD%20SERVER&logo=discord&style=for-the-badge)](https://discord.gg/FVaPTTs7MY) ![Language count](https://img.shields.io/github/languages/count/LitoHDD/PCSanchez?label=%F0%9F%8C%8E%20LANGUAGES&style=for-the-badge) ![GitHub release (latest by date)](https://img.shields.io/github/v/release/LitoHDD/PCSanchez?color=orange&label=%F0%9F%93%A2%20last%20version&style=for-the-badge) ![GitHub License](https://img.shields.io/github/license/LitoHDD/PCSanchez?style=for-the-badge)
 
 ## 📝 Description
 This intermodular project, called PCSanchez, is a virtual store created with Java, CSS, and HTML and a series of modules that focus on different functionalities to improve the user's shopping experience. The project uses Oracle DataBase as the database management system to store store information.
@@ -22,7 +22,6 @@ The main objectives of the project are:
 [![longinoojeda](https://img.shields.io/github/contributors/longinoojeda/PCSanchez?color=blueviolet&label=longinoojeda&logo=github&style=for-the-badge)](https://github.com/longinoojeda)
 
 ## 📄 License
-![GitHub](https://img.shields.io/github/license/LitoHDD/PCSanchez?style=for-the-badge)  
 This project is under the MIT License. Please refer to the LICENSE file for more information.
 
 ## 🚀 Let's Get Started!
