@@ -10,10 +10,6 @@
     --azul: #30398A;
 }
 
-body {
-    background-color: #f2f2f2;
-}
-
 /* ------------ HEADER ----------- */
 
 header {
@@ -236,7 +232,7 @@ a {
 }
 
 .general {
-    margin: 0px 8%;
+    padding: 20px 8%;
     color: #7F7F7F;
 }
 
@@ -252,7 +248,6 @@ h3 {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin-top: 100px;
 }
 
 .producto .foto img{
@@ -262,6 +257,12 @@ h3 {
 .producto .foto {
     display: flex;
     justify-content: center;
+}
+
+.producto {
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid var(--azul);
 }
 
 .comprar h2 {
@@ -312,7 +313,6 @@ h3 {
 }
 
 .pedido ul {
-    padding: 0 25px;
     list-style: none;
 }
 
@@ -322,6 +322,18 @@ h3 {
 
 .pedido input {
     width: 40%;
+}
+
+@media screen and (max-width: 600px) {
+
+    .general {
+        padding: 20px 3%;
+    }
+
+    .producto {
+        flex-direction: column;
+    }
+
 }
 
 table {
@@ -394,4 +406,55 @@ footer{
     float: left;
     line-height: 6;
     width: 17%;
+}
+
+
+/* ------- FOOTER -------- */
+
+footer {
+    background-color: black;
+    padding: 30px 0;
+    color: white;
+}
+
+.footer-container {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    flex-wrap: wrap;
+    margin: 0 auto;
+}
+
+.about-us, .about-us h4, .github-link, .footer-logo {
+    flex: 1;
+    text-align: center;
+    margin: 10px;
+}
+
+.about-us {
+    text-align: justify;
+}
+
+.about-us h4, .github-link h4 {
+    margin-bottom: 15px;
+}
+
+.footer-logo img {
+    max-width: 100%;
+    height: auto;
+}
+
+.copyright {
+    text-align: center;
+    margin-top: 30px;
+    font-size: 14px;
+}
+
+@media screen and (max-width: 700px) {
+
+    .about-us, .github-link, .footer-logo {
+        flex-basis: 100%;
+        margin: 10px;
+    }
+
 }

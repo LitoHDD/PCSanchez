@@ -10,10 +10,6 @@
     --azul: #30398A;
 }
 
-body {
-    background-color: #f2f2f2;
-}
-
 /* ------------ HEADER ----------- */
 
 header {
@@ -237,8 +233,12 @@ a {
 
 /* ------------- MAIN ---------------- */
 
+main {
+    background-color: white;
+}
+
 main h2 {
-    margin-top: 30px;
+    padding-top: 30px;
     text-align: center;
     color: var(--azul);
 }
@@ -297,11 +297,12 @@ main h2 {
 /* Media Queries */
 
 @media screen and (max-width: 600px) {
+    
     .pedido {
         flex-direction: column;
         align-items: center;
         gap: 10px;
-        margin: auto 3px;
+        margin: auto 5px;
     }
 
     .producto-info {

@@ -253,7 +253,7 @@ main h2 {
 }
 
 main .registro {
-    background-color: white;
+    background-color: #f2f2f2;
     border: 1px solid #e9ecef;
     border-radius: 10px;
     box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
@@ -269,7 +269,7 @@ main form {
 }
 
 main input {
-    border: 1px solid #ced4da;
+    border: none;
     border-radius: 5px;
     font-size: 16px;
     margin-bottom: 20px;
