@@ -341,3 +341,42 @@ hr {
         outline: none;
     }
 }
+
+/* ------- FOOTER -------- */
+
+footer {
+    background-color: black;
+    padding: 30px 0;
+    color: white;
+}
+
+.footer-container {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    flex-wrap: wrap;
+    margin: 0 auto;
+}
+
+.about-us, .about-us h4, .github-link, .footer-logo {
+    text-align: center;
+    margin: 10px;
+}
+
+.about-us h4, .github-link h4 {
+    margin-bottom: 15px;
+}
+
+.footer-logo img {
+    max-width: 100%;
+    height: auto;
+}
+
+@media screen and (max-width: 700px) {
+
+    .about-us, .github-link, .footer-logo {
+        flex-basis: 100%;
+        margin: 10px;
+    }
+
+}

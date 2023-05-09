@@ -284,6 +284,8 @@ h3 {
 
 .pedido {
     display: flex;
+    gap: 15px;
+    min-width: 90px;
 }
 
 .buy section {
@@ -301,15 +303,6 @@ h3 {
 
 .buy .buy-comprar {
     background-color: #70E174;
-}
-
-.buy .buy-carrito {
-    background-color: #7F7F7F;
-}
-
-.estrellitas {
-    display: flex;
-    align-items: center;
 }
 
 .pedido ul {
@@ -334,6 +327,10 @@ h3 {
         flex-direction: column;
     }
 
+}
+
+.descripcion p {
+    text-align: justify;
 }
 
 table {
@@ -426,13 +423,8 @@ footer {
 }
 
 .about-us, .about-us h4, .github-link, .footer-logo {
-    flex: 1;
     text-align: center;
     margin: 10px;
-}
-
-.about-us {
-    text-align: justify;
 }
 
 .about-us h4, .github-link h4 {
@@ -446,7 +438,7 @@ footer {
 
 .copyright {
     text-align: center;
-    margin-top: 30px;
+    margin-top: 10px;
     font-size: 14px;
 }
 
