@@ -7,6 +7,7 @@ dao/ProcesadorDAO$2.class
 dao/CestaDAO.class
 dao/SobremesaDAO$1.class
 dto/PlacaBase.class
+controlador/LogoutServlet.class
 dao/RamDAO$2.class
 dao/RefrigeracionDAO.class
 dao/TarjetaDAO$1.class
@@ -44,6 +45,7 @@ dao/PlacaBaseDAO$1.class
 dto/Test.class
 dto/Pedido.class
 dao/PortatilDAO.class
+controlador/RegisterServlet.class
 dao/PsuDAO.class
 dao/LineaCestaDAO.class
 dao/CajaDAO$1.class

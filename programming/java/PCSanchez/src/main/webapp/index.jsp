@@ -54,7 +54,7 @@
                     <% } else { %>
                     <section class="usuario">
                         <section>
-                            <a href="./register.html" id="registrarse">REGISTRARSE</a>
+                            <a href="./register.jsp" id="registrarse">REGISTRARSE</a>
                         </section>
                         <section>
                             <a href="./login.jsp" id="entrar">ENTRAR</a>

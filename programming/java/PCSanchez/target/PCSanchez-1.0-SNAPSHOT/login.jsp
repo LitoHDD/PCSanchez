@@ -5,6 +5,13 @@
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+
+<% if (request.getParameter("success") != null) { %>
+<div class="alert alert-success">
+    <center>El registro se ha completado correctamente.</center>
+</div>
+<% }%>
+
 <!DOCTYPE html>
 <html lang="en">
     <head>
