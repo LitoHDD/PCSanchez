@@ -6,14 +6,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="normalize.css">
     <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="./css/style-login.css">
-    <title>LOG IN - PCSanchez</title>
+    <link rel="stylesheet" href="./css/style-user.css">
+    <title>Usuario - PCSanchez</title>
 </head>
 <body>
     <header>
         <figure class="logo">
             <img src="./images/index/logo.png" alt="">
         </figure>
+
         <input type="checkbox" id="hamburger-toggle" class="hamburger-toggle">
         <label for="hamburger-toggle" class="burger-label">
             <figure class="burger">
@@ -53,48 +54,19 @@
         </a>
     </header>
     <main>
-        <h2>LOG IN</h2>
-        <section class="login">
-            <form>
-                <label for="usuario">Nombre de usuario:</label>
-                <input type="text" id="usuario" name="usuario" autocomplete="on" placeholder="Introduzca su nombre de usuario">
-                <label for="password">Contraseña:</label>
-                <input type="password" id="password" name="password" autocomplete="on" placeholder="Introduzca su contraseña">
-                <button type="submit">ENTRAR</button>
-                <article class="registro"></article>
-                <article class="separacion">
-                    <hr><p>O eres nuevo cliente</p><hr>
-                </article>
-                <button type="button">REGÍSTRATE</button>
-            </form>
+        <section class="perfil">
+            <div class="foto-perfil">
+                <img src="./images/usuario/1517454320650.jpeg" alt="Foto de perfil">
+            </div>
+            <div class="info">
+                <h2>Miguel Ángel Perez Aguilar</h2>
+                <p>Email: miguelangel.fol@iespacomolla.es</p>
+                <p>Fecha de nacimiento: 21/05/1974</p>
+                <button type="button" onclick="location.href='./pedidos.html'">Ver pedidos</button>
+                <button type="button" onclick="location.href='./cesta.html'">Ver cesta</button>
+            </div>
         </section>
     </main>
-    <footer>
-        <div class="footer-container">
-            <div class="footer-section">
-                <h3>Sobre nosotros</h3>
-                <p>PC Sánchez es una tienda en línea de componentes informáticos y ordenadores de calidad. Nuestro objetivo es ofrecer a nuestros clientes los mejores productos y un excelente servicio al cliente.</p>
-            </div>
-            <div class="footer-section">
-                <h3>Contacto</h3>
-                <p>
-                    Teléfono: +34 123 45 67 89
-                    Email: info@pcsanchez.com
-                </p>
-            </div>
-            <div class="footer-section">
-                <h3>Redes sociales</h3>
-                <p>
-                    <a href="#">Github</a>
-                    <a href="#">Twitter</a>
-                    <a href="#">Instagram</a>
-                </p>
-            </div>
-        </div>
-        <div class="footer-bottom">
-            <p>&copy; 2023 PC Sánchez. Todos los derechos reservados.</p>
-        </div>
-    </footer>
+    <!-- Aquí iría el código del footer -->
 </body>
-
-
+</html>

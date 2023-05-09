@@ -11,41 +11,46 @@
 </head>
 <body>
     <header>
-        <section class="headerSuperior">
-            <div class="contenidoHeaderSuperior">
-                <section class="logo">
-                    <figure>
-                        <a href="./index.html"><img src="./images/index/logo.png" alt="logotipo"></a>
-                    </figure>
-                </section>
-                <nav>
-                    <ul class="menu">
-                        <li><a href="./index.html">INICIO</a></li>
-                        <li><a href="#">ORDENADORES</a></li>
-                        <li><a href="#">COMPONENTES</a></li>
-                        <li><a href="./privacy.html">SOBRE NOSOTROS</a></li>
-
-                    </ul>
-                </nav>
-                <section>
-                    <form>
-                        <input class="buscar" type="search" name="search" placeholder="Buscar en tienda...">
-                        <button type="submit"><img src="./images/index/lupa.png" alt="lupa"></button>
-                    </form>
-                </section>
-                <section class="usuario">
-                    <section>
-                        <a href="./register.html" id="registrarse">REGISTRARSE</a>
-                    </section>
-                    <section>
-                        <a href="./login.html" id="entrar">ENTRAR</a>
-                    </section>
-                </section>
-                <figure class="carrito">
-                    <img src="./images/index/carro.png" alt="carrito">
-                </figure>
-            </div>
+        <figure class="logo">
+            <img src="./images/index/logo.png" alt="">
+        </figure>
+        <input type="checkbox" id="hamburger-toggle" class="hamburger-toggle">
+        <label for="hamburger-toggle" class="burger-label">
+            <figure class="burger">
+                <img src="./images/index/burger.png" alt="">
+            </figure>
+        </label>
+        <div class="menu">
+            <nav>
+                <ul>
+                    <li><a href="./index.html">Inicio</a></li>
+                    <li><a href="#">Ordenadores</a></li>
+                    <li><a href="./componentess.html">Componentes</a></li>
+                    <li><a href="./privacy.html">Privacidad</a></li>
+                </ul>
+            </nav>
+        </div>
+        
+        <article class="search">
+            <form>
+                <label>
+                    <input type="text" placeholder="Buscar">
+                    <button type="submit"></button>
+                </label>
+            </form>
+        </article>
+        <section class="usuario">
+            <button type="button" onclick="location.href='./register.html'">REGISTRARSE</button>
+            <article>
+                <a href="./login2.html">ENTRAR</a>
+            </article>
         </section>
+        <a href="./index.html" class="titulo-query">
+            <h2>PC SANCHEZ</h2>
+        </a>
+        <a href="./usuario.html" class="user-query">
+            <img src="./images/index/user.png" alt="">
+        </a>
     </header>
     <div class="general">
         <section class="producto">

@@ -10,6 +10,10 @@
     --azul: #30398A;
 }
 
+body {
+    background-color: #f2f2f2;
+}
+
 /* ------------ HEADER ----------- */
 
 header {
@@ -19,7 +23,6 @@ header {
     align-items: center;
     padding: 5px 4vw;
 }
-
 
 /* ----- LOGO ------- */
 
@@ -58,7 +61,6 @@ nav a {
     } 
 }
 
-
 /* ----- busqueda------- */
 
 .search {
@@ -80,10 +82,6 @@ nav a {
     width: 100%;
 }
 
-.search input:focus {
-    outline: none;
-}
-  
 .search button[type="submit"] {
     margin: 6px 0 9px 6px;
     border: none;
@@ -98,19 +96,41 @@ nav a {
     height: 100%;
 }
 
-
 /* ----- LOGIN ------- */
 
 .usuario {
     text-align: center;
 }
 
+a {
+    text-decoration: none;
+    color: var(--azul);
+}
+
+.usuario button {
+    background-color: var(--azul);
+    padding: 2px 4px;
+    font-size: 100%;
+    font-weight: 550;
+    color: white;
+    border: none;
+    border-radius: 5px;
+}
 
 /* -------- MEDIA QUERY ----------- */
 
 /* ------ NO SE MUESTRA SIN QUERY ------- */
 
-.titulo-query, .burger, .user-query {
+
+.titulo-query, .burger, .user-query{
+    display: none;
+}
+
+.hamburger-toggle {
+    display: none;
+}
+
+.burger-label {
     display: none;
 }
 
@@ -123,7 +143,7 @@ nav a {
                         1fr             9fr         1fr
     }
 
-/* ------ NO SE MUESTRA EN QUERY ------- */
+    /* ------ NO SE MUESTRA EN QUERY ------- */
 
     .logo {
         display: none;
@@ -145,6 +165,12 @@ nav a {
         grid-area: burger;
     }
 
+    .burger-label {
+        display: flex;
+        grid-area: burger;
+        cursor: pointer;
+    }
+
     /* ------ titulo ------- */
 
     .titulo-query {
@@ -153,9 +179,9 @@ nav a {
         justify-content: center;
         color: var(--azul);
     }
-    
-    /* ------ usuario ------- */  
 
+    /* ------ usuario ------- */  
+    
     .user-query {
         display: flex;
         justify-content: right;
@@ -171,97 +197,115 @@ nav a {
         margin-top: 5px;
         width: 100%;
     }
+
+   /*  --------Funcionalidad burguer----------- */
+
+    .hamburger-toggle:checked ~ .menu {
+        display: block;
+    }
+
+    .menu {
+        position: absolute;
+        top: 50px; 
+        left: 0;
+        right: 0;
+        background-color: var(--verde);
+        z-index: 1;
+        transform: translateY(-200%); 
+        transition: transform 0.3s ease-in-out; 
+    }
+
+    .hamburger-toggle:checked ~ .menu {
+        transform: translateY(0); 
+    }
+
+    .menu nav {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .menu nav ul {
+        display: flex;
+        flex-direction: column;
+        padding: 10px;
+    }
+
+    .menu nav ul li {
+        margin: 10px 0;
+    }
 }
+
+/* -----------MAIN USUARIO-------------- */
+
 
 main {
-    margin: 20px 10px;
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
 }
 
-h1 {
-    text-align: center;
-    color: var(--azul);
-    margin-bottom: 20px;
-}
-
-/* .categorias {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 20px;
-} */
-
-.categorias {
-    display: flex;
-    flex-direction: column;
-}
-
-.categoria {
-    border: 1px solid var(--azul);
-    border-radius: 5px;
-    padding: 15px;
-    margin: 5px 0;
-}
-
-.categoria h2 {
-    color: var(--azul);
-    text-align: center;
-    margin-bottom: 15px;
-}
-
-.productos {
-    display: grid;
-    grid-template-columns: repeat(5, 1fr);
-    gap: 10px;
-}
-
-.producto {
+.perfil {
     display: flex;
     flex-direction: column;
     align-items: center;
+    background-color: white;
+    border-radius: 10px;
+    padding: 20px;
+}
+
+.foto-perfil img {
+    border-radius: 50%;
+    width: 150px;
+    height: 150px;
+    object-fit: cover;
+}
+
+.info {
+    margin-top: 20px;
     text-align: center;
 }
 
-.producto img {
-    width: 100px;
-    height: 100px;
-    object-fit: cover;
-    border-radius: 5px;
+.info h2 {
+    margin-bottom: 10px;
+    color: var(--azul);
 }
 
-.producto h3 {
-    margin: 10px 0;
+.info p {
+    margin-bottom: 5px;
+    color: var(--azul);
 }
 
-.producto button {
+main button {
     background-color: var(--verde);
     border: none;
     border-radius: 5px;
     color: white;
     cursor: pointer;
     font-size: 16px;
-    padding: 10px;
     margin-top: 10px;
+    padding: 10px;
 }
 
-.producto button:hover {
+header button:hover {
+    background-color: #282f75;
+}
+
+main button:hover {
     background-color: #69c76c;
 }
 
 @media screen and (max-width: 600px) {
-    .categorias {
-        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    .foto-perfil img {
+        width: 100px;
+        height: 100px;
     }
 
-    .producto img {
-        width: 80px;
-        height: 80px;
-    }
-
-    .producto h3, .producto button {
+    .info h2, .info p {
         font-size: 14px;
-        margin: 5px 0;
     }
 
-    .producto button {
+    button {
+        font-size: 14px;
         padding: 8px;
     }
 }

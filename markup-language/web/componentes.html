@@ -1,363 +1,254 @@
-!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="normalize.css">
-    <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="./css/style-componentes.css">
-    <title>INICIO - PCSanchez</title>
-</head>
-<body>
-    <header>
-        <section class="headerSuperior">
-            <div class="contenidoHeaderSuperior">
-                <section class="logo">
-                    <figure>
-                        <a href="./index.html"><img src="./images/index/logo.png" alt="logotipo"></a>
-                    </figure>
-                </section>
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="normalize.css">
+        <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="./css/style-componentes.css">
+        <title>Productos - PCSanchez</title>
+    </head>
+    <body>
+        <header>
+            <figure class="logo">
+                <img src="./images/index/logo.png" alt="">
+            </figure>
+            <input type="checkbox" id="hamburger-toggle" class="hamburger-toggle">
+            <label for="hamburger-toggle" class="burger-label">
+                <figure class="burger">
+                    <img src="./images/index/burger.png" alt="">
+                </figure>
+            </label>
+            <div class="menu">
                 <nav>
-                    <ul class="menu">
-                        <li><a href="./index.html">INICIO</a></li>
-                        <li><a href="#">ORDENADORES</a></li>
-                        <li><a href="#">COMPONENTES</a></li>
-                        <li><a href="./privacy.html">SOBRE NOSOTROS</a></li>
-
+                    <ul>
+                        <li><a href="./index.html">Inicio</a></li>
+                        <li><a href="#">Ordenadores</a></li>
+                        <li><a href="./componentess.html">Componentes</a></li>
+                        <li><a href="./privacy.html">Privacidad</a></li>
                     </ul>
                 </nav>
-                <section>
-                    <form>
-                        <input class="buscar" type="search" name="search" placeholder="Buscar en tienda...">
-                        <button type="submit"><img src="./images/index/lupa.png" alt="lupa"></button>
-                    </form>
-                </section>
-                <section class="usuario">
-                    <section>
-                        <a href="./register.html" id="registrarse">REGISTRARSE</a>
-                    </section>
-                    <section>
-                        <a href="./login.html" id="entrar">ENTRAR</a>
-                    </section>
-                </section>
-                <figure class="carrito">
-                    <img src="./images/index/carro.png" alt="carrito">
-                </figure>
             </div>
-        </section>
-    </header> 
-    <main>
-        <aside>
-            <section class="filtro">
-                <h5>Precio</h5>
+            
+            <article class="search">
+                <form>
+                    <label>
+                        <input type="text" placeholder="Buscar">
+                        <button type="submit"></button>
+                    </label>
+                </form>
+            </article>
+            <section class="usuario">
+                <button type="button" onclick="location.href='./register.html'">REGISTRARSE</button>
+                <article>
+                    <a href="./login2.html">ENTRAR</a>
+                </article>
             </section>
-            <section class="filtro">
-                <h5>componentes</h5>
-                <ul>
-                    <li>Razer</li>
-                    <li>Acer</li>
-                    <li>Intel</li>
-                    <li>Amd</li>
-                </ul>
+            <a href="./index.html" class="titulo-query">
+                <h2>PC SANCHEZ</h2>
+            </a>
+            <a href="./usuario.html" class="user-query">
+                <img src="./images/index/user.png" alt="">
+            </a>
+        </header>
+        <main>
+            <h1>Productos</h1>
+            <section class="categorias">
+                <div class="categoria">
+                    <h2>Refrigeración</h2>
+                    <div class="productos">
+                        <article class="producto">
+                            <img src="./images/index/components/procesador.png" alt="Foto del producto">
+                            <h3>Nombre del producto</h3>
+                            <button>Comprar</button>
+                        </article>
+                        <article class="producto">
+                            <img src="./images/index/components/procesador.png" alt="Foto del producto">
+                            <h3>Nombre del producto</h3>
+                            <button>Comprar</button>
+                        </article>
+                        <article class="producto">
+                            <img src="./images/index/components/procesador.png" alt="Foto del producto">
+                            <h3>Nombre del producto</h3>
+                            <button>Comprar</button>
+                        </article>
+                        <article class="producto">
+                            <img src="./images/index/components/procesador.png" alt="Foto del producto">
+                            <h3>Nombre del producto</h3>
+                            <button>Comprar</button>
+                        </article>
+                        <article class="producto">
+                            <img src="./images/index/components/procesador.png" alt="Foto del producto">
+                            <h3>Nombre del producto</h3>
+                            <button>Comprar</button>
+                        </article>
+                        <article class="producto">
+                            <img src="./images/index/components/procesador.png" alt="Foto del producto">
+                            <h3>Nombre del producto</h3>
+                            <button>Comprar</button>
+                        </article>
+                        <article class="producto">
+                            <img src="./images/index/components/procesador.png" alt="Foto del producto">
+                            <h3>Nombre del producto</h3>
+                            <button>Comprar</button>
+                        </article>
+                                                <article class="producto">
+                            <img src="./images/index/components/procesador.png" alt="Foto del producto">
+                            <h3>Nombre del producto</h3>
+                            <button>Comprar</button>
+                        </article>
+                        <article class="producto">
+                            <img src="./images/index/components/procesador.png" alt="Foto del producto">
+                            <h3>Nombre del producto</h3>
+                            <button>Comprar</button>
+                        </article>
+                        <article class="producto">
+                            <img src="./images/index/components/procesador.png" alt="Foto del producto">
+                            <h3>Nombre del producto</h3>
+                            <button>Comprar</button>
+                        </article>
+                        <article class="producto">
+                            <img src="./images/index/components/procesador.png" alt="Foto del producto">
+                            <h3>Nombre del producto</h3>
+                            <button>Comprar</button>
+                        </article>
+                        
+                        <!-- Aquí van más productos de la categoría Refrigeración -->
+                    </div>
+                </div>
+                <div class="categoria">
+                    <h2>Caja</h2>
+                    <div class="productos">
+                        <article class="producto">
+                            <img src="./images/index/components/procesador.png" alt="Foto del producto">
+                            <h3>Nombre del producto</h3>
+                            <button>Comprar</button>
+                        </article>
+                        <article class="producto">
+                            <img src="./images/index/components/procesador.png" alt="Foto del producto">
+                            <h3>Nombre del producto</h3>
+                            <button>Comprar</button>
+                        </article>
+                        <article class="producto">
+                            <img src="./images/index/components/procesador.png" alt="Foto del producto">
+                            <h3>Nombre del producto</h3>
+                            <button>Comprar</button>
+                        </article>
+                        <article class="producto">
+                            <img src="./images/index/components/procesador.png" alt="Foto del producto">
+                            <h3>Nombre del producto</h3>
+                            <button>Comprar</button>
+                        </article>
+                        <article class="producto">
+                            <img src="./images/index/components/procesador.png" alt="Foto del producto">
+                            <h3>Nombre del producto</h3>
+                            <button>Comprar</button>
+                        </article>
+                        
+                        <!-- Aquí van más productos de la categoría Caja -->
+                    </div>
+                </div>
+                <div class="categoria">
+                    <h2>Caja</h2>
+                    <div class="productos">
+                        <article class="producto">
+                            <img src="./images/index/components/procesador.png" alt="Foto del producto">
+                            <h3>Nombre del producto</h3>
+                            <button>Comprar</button>
+                        </article>
+                        <article class="producto">
+                            <img src="./images/index/components/procesador.png" alt="Foto del producto">
+                            <h3>Nombre del producto</h3>
+                            <button>Comprar</button>
+                        </article>
+                        <article class="producto">
+                            <img src="./images/index/components/procesador.png" alt="Foto del producto">
+                            <h3>Nombre del producto</h3>
+                            <button>Comprar</button>
+                        </article>
+                        <article class="producto">
+                            <img src="./images/index/components/procesador.png" alt="Foto del producto">
+                            <h3>Nombre del producto</h3>
+                            <button>Comprar</button>
+                        </article>
+                        <article class="producto">
+                            <img src="./images/index/components/procesador.png" alt="Foto del producto">
+                            <h3>Nombre del producto</h3>
+                            <button>Comprar</button>
+                        </article>
+                        
+                        <!-- Aquí van más productos de la categoría Caja -->
+                    </div>
+                </div>
+                <div class="categoria">
+                    <h2>Caja</h2>
+                    <div class="productos">
+                        <article class="producto">
+                            <img src="./images/index/components/procesador.png" alt="Foto del producto">
+                            <h3>Nombre del producto</h3>
+                            <button>Comprar</button>
+                        </article>
+                        <article class="producto">
+                            <img src="./images/index/components/procesador.png" alt="Foto del producto">
+                            <h3>Nombre del producto</h3>
+                            <button>Comprar</button>
+                        </article>
+                        <article class="producto">
+                            <img src="./images/index/components/procesador.png" alt="Foto del producto">
+                            <h3>Nombre del producto</h3>
+                            <button>Comprar</button>
+                        </article>
+                        <article class="producto">
+                            <img src="./images/index/components/procesador.png" alt="Foto del producto">
+                            <h3>Nombre del producto</h3>
+                            <button>Comprar</button>
+                        </article>
+                        <article class="producto">
+                            <img src="./images/index/components/procesador.png" alt="Foto del producto">
+                            <h3>Nombre del producto</h3>
+                            <button>Comprar</button>
+                        </article>
+                        
+                        <!-- Aquí van más productos de la categoría Caja -->
+                    </div>
+                </div>
+                <div class="categoria">
+                    <h2>Caja</h2>
+                    <div class="productos">
+                        <article class="producto">
+                            <img src="./images/index/components/procesador.png" alt="Foto del producto">
+                            <h3>Nombre del producto</h3>
+                            <button>Comprar</button>
+                        </article>
+                        <article class="producto">
+                            <img src="./images/index/components/procesador.png" alt="Foto del producto">
+                            <h3>Nombre del producto</h3>
+                            <button>Comprar</button>
+                        </article>
+                        <article class="producto">
+                            <img src="./images/index/components/procesador.png" alt="Foto del producto">
+                            <h3>Nombre del producto</h3>
+                            <button>Comprar</button>
+                        </article>
+                        <article class="producto">
+                            <img src="./images/index/components/procesador.png" alt="Foto del producto">
+                            <h3>Nombre del producto</h3>
+                            <button>Comprar</button>
+                        </article>
+                        <article class="producto">
+                            <img src="./images/index/components/procesador.png" alt="Foto del producto">
+                            <h3>Nombre del producto</h3>
+                            <button>Comprar</button>
+                        </article>
+                        
+                        <!-- Aquí van más productos de la categoría Caja -->
+                    </div>
+                </div>
+                <!-- Repite el mismo patrón para las otras categorías -->
             </section>
-        </aside>
-        <div class="tienda">
-            <section class="Titulo">
-                <h2>COMPONENTES</h2>
-            </section>
-            <section class="componentes">
-                <section class="categoria">
-                    <h4>PLACA BASE</h4>
-                    <section class="articulos">
-                        <article>
-                            <figure>
-                                <img src="./images/index/components/procesador.png" alt="">
-                            </figure>
-                            <h5>Intel i5</h5>
-                        </article>
-                        <article>
-                            <figure>
-                                <img src="./images/index/components/procesador.png" alt="">
-                            </figure>
-                            <h5>Intel i5</h5>
-                        </article>
-                        <article>
-                            <figure>
-                                <img src="./images/index/components/procesador.png" alt="">
-                            </figure>
-                            <h5>Intel i5</h5>
-                        </article>
-                        <article>
-                            <figure>
-                                <img src="./images/index/components/procesador.png" alt="">
-                            </figure>
-                            <h5>Intel i5</h5>
-                        </article>
-                        <article>
-                            <figure>
-                                <img src="./images/index/components/procesador.png" alt="">
-                            </figure>
-                            <h5>Intel i5</h5>
-                        </article>
-                        <article>
-                            <figure>
-                                <img src="./images/index/components/procesador.png" alt="">
-                            </figure>
-                            <h5>Intel i5</h5>
-                        </article>
-                    </section>
-                </section>
-                <section class="categoria">
-                    <h4>PROCESADOR</h4>
-                    <section class="articulos">
-                        <article>
-                            <figure>
-                                <img src="./images/index/components/procesador.png" alt="">
-                            </figure>
-                            <h5>Intel i5</h5>
-                        </article>
-                        <article>
-                            <figure>
-                                <img src="./images/index/components/procesador.png" alt="">
-                            </figure>
-                            <h5>Intel i5</h5>
-                        </article>
-                        <article>
-                            <figure>
-                                <img src="./images/index/components/procesador.png" alt="">
-                            </figure>
-                            <h5>Intel i5</h5>
-                        </article>
-                        <article>
-                            <figure>
-                                <img src="./images/index/components/procesador.png" alt="">
-                            </figure>
-                            <h5>Intel i5</h5>
-                        </article>
-                        <article>
-                            <figure>
-                                <img src="./images/index/components/procesador.png" alt="">
-                            </figure>
-                            <h5>Intel i5</h5>
-                        </article>
-                        <article>
-                            <figure>
-                                <img src="./images/index/components/procesador.png" alt="">
-                            </figure>
-                            <h5>Intel i5</h5>
-                        </article>
-                    </section>
-                </section>
-                <section class="categoria">
-                    <h4>MEMORIA RAM</h4>
-                    <section class="articulos">
-                        <article>
-                            <figure>
-                                <img src="./images/index/components/procesador.png" alt="">
-                            </figure>
-                            <h5>Intel i5</h5>
-                        </article>
-                        <article>
-                            <figure>
-                                <img src="./images/index/components/procesador.png" alt="">
-                            </figure>
-                            <h5>Intel i5</h5>
-                        </article>
-                        <article>
-                            <figure>
-                                <img src="./images/index/components/procesador.png" alt="">
-                            </figure>
-                            <h5>Intel i5</h5>
-                        </article>
-                        <article>
-                            <figure>
-                                <img src="./images/index/components/procesador.png" alt="">
-                            </figure>
-                            <h5>Intel i5</h5>
-                        </article>
-                        <article>
-                            <figure>
-                                <img src="./images/index/components/procesador.png" alt="">
-                            </figure>
-                            <h5>Intel i5</h5>
-                        </article>
-                        <article>
-                            <figure>
-                                <img src="./images/index/components/procesador.png" alt="">
-                            </figure>
-                            <h5>Intel i5</h5>
-                        </article>
-                    </section>
-                <section class="categoria">
-                    <h4>ALMACENAMIENTO</h4>
-                    <section class="articulos">
-                        <article>
-                            <figure>
-                                <img src="./images/index/components/procesador.png" alt="">
-                            </figure>
-                            <h5>Intel i5</h5>
-                        </article>
-                        <article>
-                            <figure>
-                                <img src="./images/index/components/procesador.png" alt="">
-                            </figure>
-                            <h5>Intel i5</h5>
-                        </article>
-                        <article>
-                            <figure>
-                                <img src="./images/index/components/procesador.png" alt="">
-                            </figure>
-                            <h5>Intel i5</h5>
-                        </article>
-                        <article>
-                            <figure>
-                                <img src="./images/index/components/procesador.png" alt="">
-                            </figure>
-                            <h5>Intel i5</h5>
-                        </article>
-                        <article>
-                            <figure>
-                                <img src="./images/index/components/procesador.png" alt="">
-                            </figure>
-                            <h5>Intel i5</h5>
-                        </article>
-                        <article>
-                            <figure>
-                                <img src="./images/index/components/procesador.png" alt="">
-                            </figure>
-                            <h5>Intel i5</h5>
-                        </article>
-                    </section>
-                </section>
-                <section class="categoria">
-                    <h4>TARJETA GRÁFICA</h4>
-                    <section class="articulos">
-                        <article>
-                            <figure>
-                                <img src="./images/index/components/procesador.png" alt="">
-                            </figure>
-                            <h5>Intel i5</h5>
-                        </article>
-                        <article>
-                            <figure>
-                                <img src="./images/index/components/procesador.png" alt="">
-                            </figure>
-                            <h5>Intel i5</h5>
-                        </article>
-                        <article>
-                            <figure>
-                                <img src="./images/index/components/procesador.png" alt="">
-                            </figure>
-                            <h5>Intel i5</h5>
-                        </article>
-                        <article>
-                            <figure>
-                                <img src="./images/index/components/procesador.png" alt="">
-                            </figure>
-                            <h5>Intel i5</h5>
-                        </article>
-                        <article>
-                            <figure>
-                                <img src="./images/index/components/procesador.png" alt="">
-                            </figure>
-                            <h5>Intel i5</h5>
-                        </article>
-                        <article>
-                            <figure>
-                                <img src="./images/index/components/procesador.png" alt="">
-                            </figure>
-                            <h5>Intel i5</h5>
-                        </article>
-                    </section>
-                </section>
-                <section class="categoria">
-                    <h4>ALIMENTACION</h4>
-                    <section class="articulos">
-                        <article>
-                            <figure>
-                                <img src="./images/index/components/procesador.png" alt="">
-                            </figure>
-                            <h5>Intel i5</h5>
-                        </article>
-                        <article>
-                            <figure>
-                                <img src="./images/index/components/procesador.png" alt="">
-                            </figure>
-                            <h5>Intel i5</h5>
-                        </article>
-                        <article>
-                            <figure>
-                                <img src="./images/index/components/procesador.png" alt="">
-                            </figure>
-                            <h5>Intel i5</h5>
-                        </article>
-                        <article>
-                            <figure>
-                                <img src="./images/index/components/procesador.png" alt="">
-                            </figure>
-                            <h5>Intel i5</h5>
-                        </article>
-                        <article>
-                            <figure>
-                                <img src="./images/index/components/procesador.png" alt="">
-                            </figure>
-                            <h5>Intel i5</h5>
-                        </article>
-                        <article>
-                            <figure>
-                                <img src="./images/index/components/procesador.png" alt="">
-                            </figure>
-                            <h5>Intel i5</h5>
-                        </article>
-                    </section>
-                </section>
-                <section class="categoria">
-                    <h4>CAJA</h4>
-                    <section class="articulos">
-                        <article>
-                            <figure>
-                                <img src="./images/index/components/procesador.png" alt="">
-                            </figure>
-                            <h5>Intel i5</h5>
-                        </article>
-                        <article>
-                            <figure>
-                                <img src="./images/index/components/procesador.png" alt="">
-                            </figure>
-                            <h5>Intel i5</h5>
-                        </article>
-                        <article>
-                            <figure>
-                                <img src="./images/index/components/procesador.png" alt="">
-                            </figure>
-                            <h5>Intel i5</h5>
-                        </article>
-                        <article>
-                            <figure>
-                                <img src="./images/index/components/procesador.png" alt="">
-                            </figure>
-                            <h5>Intel i5</h5>
-                        </article>
-                        <article>
-                            <figure>
-                                <img src="./images/index/components/procesador.png" alt="">
-                            </figure>
-                            <h5>Intel i5</h5>
-                        </article>
-                        <article>
-                            <figure>
-                                <img src="./images/index/components/procesador.png" alt="">
-                            </figure>
-                            <h5>Intel i5</h5>
-                        </article>
-                    </section>
-                </section>
-            </section>
-        </div>
-    </main>
-    <footer>
-
-    </footer>
-</body>
+        </main>
+        
+        <!-- Aquí va el código del footer que ya tienes -->
+    </body>
 </html>

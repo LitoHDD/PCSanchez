@@ -14,39 +14,43 @@
         <figure class="logo">
             <img src="./images/index/logo.png" alt="">
         </figure>
-        <nav>
-          <ul>
-            <li><a href="#">Inicio</a></li>
-            <li><a href="#">Ordenadores</a></li>
-            <li><a href="#">Componentes</a></li>
-            <li><a href="./privacy.html">Nosotros</a></li>
-          </ul>
-        </nav>
+        <input type="checkbox" id="hamburger-toggle" class="hamburger-toggle">
+        <label for="hamburger-toggle" class="burger-label">
+            <figure class="burger">
+                <img src="./images/index/burger.png" alt="">
+            </figure>
+        </label>
+        <div class="menu">
+            <nav>
+                <ul>
+                    <li><a href="./index.html">Inicio</a></li>
+                    <li><a href="#">Ordenadores</a></li>
+                    <li><a href="./componentess.html">Componentes</a></li>
+                    <li><a href="./privacy.html">Privacidad</a></li>
+                </ul>
+            </nav>
+        </div>
+        
         <article class="search">
             <form>
-              <label>
-                <input type="text" placeholder="Buscar">
-                <button type="submit"></button>
-              </label>
+                <label>
+                    <input type="text" placeholder="Buscar">
+                    <button type="submit"></button>
+                </label>
             </form>
         </article>
         <section class="usuario">
-            <article >
-                <p>REGISTRASE</p>
-            </article>
+            <button type="button" onclick="location.href='./register.html'">REGISTRARSE</button>
             <article>
-                <p>ENTRAR</p>
+                <a href="./login2.html">ENTRAR</a>
             </article>
         </section>
-        <section class="titulo-query">
+        <a href="./index.html" class="titulo-query">
             <h2>PC SANCHEZ</h2>
-        </section>
-        <figure class="burger">
-            <img src="./images/index/burger.png" alt="">
-        </figure>
-        <figure class="user-query">
+        </a>
+        <a href="./usuario.html" class="user-query">
             <img src="./images/index/user.png" alt="">
-        </figure>
+        </a>
     </header>
     <main>
         <h2>MIS PEDIDOS</h2>
@@ -68,7 +72,7 @@
             </article>
             <article class="pedido">
                 <figure class="producto-img">
-                    <img src="./images/index/components/procesador.png" alt="Producto">
+                    <img src="./images/index/hardware/all-in-one.png" alt="Producto">
                 </figure>
                 <div class="producto-info">
                     <h3>Nombre del producto</h3>
@@ -83,7 +87,7 @@
             </article>
             <article class="pedido">
                 <figure class="producto-img">
-                    <img src="./images/index/components/procesador.png" alt="Producto">
+                    <img src="./images/index/hardware/pcverde.png" alt="Producto">
                 </figure>
                 <div class="producto-info">
                     <h3>Nombre del producto</h3>
