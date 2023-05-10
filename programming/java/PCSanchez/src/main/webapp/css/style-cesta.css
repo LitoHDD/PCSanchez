@@ -20,7 +20,6 @@ header {
     padding: 5px 4vw;
 }
 
-
 /* ----- LOGO ------- */
 
 .logo {
@@ -58,7 +57,6 @@ nav a {
     } 
 }
 
-
 /* ----- busqueda------- */
 
 .search {
@@ -79,7 +77,7 @@ nav a {
     border: none;
     width: 100%;
 }
-  
+
 .search button[type="submit"] {
     margin: 6px 0 9px 6px;
     border: none;
@@ -100,12 +98,35 @@ nav a {
     text-align: center;
 }
 
+a {
+    text-decoration: none;
+    color: var(--azul);
+}
+
+.usuario button {
+    background-color: var(--azul);
+    padding: 2px 4px;
+    font-size: 100%;
+    font-weight: 550;
+    color: white;
+    border: none;
+    border-radius: 5px;
+}
 
 /* -------- MEDIA QUERY ----------- */
 
 /* ------ NO SE MUESTRA SIN QUERY ------- */
 
-.titulo-query, .burger, .user-query {
+
+.titulo-query, .burger, .user-query{
+    display: none;
+}
+
+.hamburger-toggle {
+    display: none;
+}
+
+.burger-label {
     display: none;
 }
 
@@ -118,7 +139,7 @@ nav a {
                         1fr             9fr         1fr
     }
 
-/* ------ NO SE MUESTRA EN QUERY ------- */
+    /* ------ NO SE MUESTRA EN QUERY ------- */
 
     .logo {
         display: none;
@@ -140,6 +161,12 @@ nav a {
         grid-area: burger;
     }
 
+    .burger-label {
+        display: flex;
+        grid-area: burger;
+        cursor: pointer;
+    }
+
     /* ------ titulo ------- */
 
     .titulo-query {
@@ -148,9 +175,9 @@ nav a {
         justify-content: center;
         color: var(--azul);
     }
-    
-    /* ------ usuario ------- */  
 
+    /* ------ usuario ------- */  
+    
     .user-query {
         display: flex;
         justify-content: right;
@@ -166,8 +193,47 @@ nav a {
         margin-top: 5px;
         width: 100%;
     }
+
+   /*  --------Funcionalidad burguer----------- */
+
+    .hamburger-toggle:checked ~ .menu {
+        display: block;
+    }
+
+    .menu {
+        position: absolute;
+        top: 50px; 
+        left: 0;
+        right: 0;
+        background-color: var(--verde);
+        z-index: 1;
+        transform: translateY(-200%); 
+        transition: transform 0.3s ease-in-out; 
+    }
+
+    .hamburger-toggle:checked ~ .menu {
+        transform: translateY(0); 
+    }
+
+    .menu nav {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .menu nav ul {
+        display: flex;
+        flex-direction: column;
+        padding: 10px;
+    }
+
+    .menu nav ul li {
+        margin: 10px 0;
+    }
 }
 
+
+/* --------MAIN----------
+ */
 main h2 {
     margin-top: 30px;
     text-align: center;
@@ -188,6 +254,7 @@ main h2 {
     background-color: #f2f2f2;
     border-radius: 10px;
     padding: 20px;
+    align-items: center;
 }
 
 .producto-img {
@@ -198,7 +265,7 @@ main h2 {
 .producto-img img {
     width: 100%;
     height: 100%;
-    object-fit: cover;
+    object-fit: contain;
     border-radius: 5px;
 }
 
@@ -208,12 +275,13 @@ main h2 {
 
 .eliminar {
     background-color: var(--rojo);
+    height: fit-content;
     border: none;
-    border-radius: 5px;
+    border-radius: 100px;
     color: rgb(255, 0, 0);
     cursor: pointer;
     font-size: 16px;
-    padding: 10px;
+    padding: 3px 10px;
 }
 
 .eliminar:hover {
@@ -258,3 +326,4 @@ main h2 {
         text-align: center;
     }
 }
+

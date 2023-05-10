@@ -4,6 +4,7 @@
  */
 package controlador;
 
+import dao.CestaDAO;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.SQLException;
@@ -15,6 +16,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import dao.UsuarioDAO;
+import dto.Cesta;
 import dto.Usuario;
 
 /**
@@ -46,6 +48,7 @@ public class LoginServlet extends HttpServlet {
                 HttpSession session = request.getSession();
                 session.setAttribute("usuario", usuario);
                 session.setAttribute("username", usuario.getNombreCompleto()); // nombre es el atributo que contiene el nombre de usuario en tu objeto Usuario
+                session.setAttribute("cestas", usuario.getCestas());
                 session.setAttribute("loggedIn", true);
                 response.sendRedirect("index.jsp");
 
