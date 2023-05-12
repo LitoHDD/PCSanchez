@@ -46,16 +46,11 @@ CREATE TABLE ps_factura(
 );   
 
 CREATE TABLE ps_cesta (
-    nombre VARCHAR2(20),
+    codigo NUMBER(8),
     numero_usuario NUMBER(8),
-    precio NUMBER (9, 2) NOT NULL,
-    cantidad NUMBER(3) NOT NULL,
-    tipo VARCHAR2(4) NOT NULL,
-
-    CONSTRAINT ps_cesta_pk PRIMARY KEY (nombre, numero_usuario),
-    CONSTRAINT ps_cesta_cantidad CHECK (cantidad >= 0),
-    CONSTRAINT ps_cesta_fk FOREIGN KEY (numero_usuario) REFERENCES ps_usuario,
-    CONSTRAINT ps_cesta_tipo CHECK (tipo IN ('PRVT', 'PBLC'))
+    precio_cesta NUMBER (9, 2) NOT NULL,
+    CONSTRAINT ps_cesta_pk PRIMARY KEY (codigo),
+    CONSTRAINT ps_cesta_fk FOREIGN KEY (numero_usuario) REFERENCES ps_usuario
 );
 
 CREATE TABLE ps_pedido(
@@ -63,16 +58,12 @@ CREATE TABLE ps_pedido(
     facturado CHAR(1) NOT NULL,
     fecha_pedido DATE NOT NULL,
     numero_direccion NUMBER(4) NOT NULL,
-    nombre_cesta VARCHAR2(20) NOT NULL,
     codigo_usuario NUMBER(8) NOT NULL,
     PRIMARY KEY(numero),
-    CONSTRAINT pedido_fk_nombre FOREIGN KEY (nombre_cesta, codigo_usuario) REFERENCES ps_cesta (nombre, numero_usuario),
+    CONSTRAINT pedido_fk_nombre FOREIGN KEY (numero) REFERENCES ps_cesta (codigo),
     CONSTRAINT pedido_fk_codigo_usuario FOREIGN KEY (codigo_usuario) REFERENCES ps_usuario(codigo),
     CONSTRAINT pedido_fk_direccion FOREIGN KEY (numero_direccion, codigo_usuario) REFERENCES ps_direccion (numero, codigo_usuario_direccion)
 );
-
-/* -- PRVT = Private, cesta no visible a resto de usuarios.
-   -- PBLC = Public, cesta visible a resto de usuario. EJ: Lista_deseos. */
 
 CREATE TABLE ps_articulo (
     codigo NUMBER(8) PRIMARY KEY,
@@ -82,31 +73,22 @@ CREATE TABLE ps_articulo (
     iva NUMBER(2) NOT NULL, 
     descripcion VARCHAR2(500) NOT NULL,
     precio NUMBER(11,4) NOT NULL,
-    path_foto VARCHAR2(100) NOT NULL,
+    path_foto VARCHAR2(500) NOT NULL,
     stock NUMBER(5) NOT NULL,
     fecha_creacion DATE NOT NULL,
     fecha_modificacion DATE DEFAULT SYSDATE NOT NULL,
     CONSTRAINT check_iva CHECK (iva >= 0 AND precio >= 0 AND stock >= 0)
 );
 
-/*  -- 4 decimales porque el precio sin iva puede necesitarlo, 
-    -- aunque luego el PVP tenga solo 2.
-    -- Varchar2 porque alojamos la direccion de la imagen
-    -- stock_minimo NUMBER (3) NOT NULL (no entiendo esto) */
-
 CREATE TABLE ps_cesta_articulo (
+    id NUMBER(8),
     articulo NUMBER(8) NOT NULL,
-    numero_usuario NUMBER(8) NOT NULL,
-    cesta VARCHAR2(20) NOT NULL,
     cantidad NUMBER(5) NOT NULL,
     precio NUMBER(8, 2) NOT NULL,
-    PRIMARY KEY(articulo, cesta),
-    CONSTRAINT cesta_articulo_cesta_fk FOREIGN KEY (cesta, numero_usuario) REFERENCES ps_cesta (nombre, numero_usuario),
+    PRIMARY KEY(id),
+    CONSTRAINT cesta_articulo_cesta_fk FOREIGN KEY (id) REFERENCES ps_cesta (codigo),
     CONSTRAINT cesta_articulo_fk FOREIGN KEY (articulo) REFERENCES ps_articulo
 );
-
-/*  Estaria bien poder referenciar al nombre del articulo aunque
-    no sea clave primaria de articulo ¿Se puede hacer? */
 
 CREATE TABLE ps_categoria (
     nombre VARCHAR2(20) PRIMARY KEY

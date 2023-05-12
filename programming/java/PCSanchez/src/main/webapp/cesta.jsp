@@ -1,3 +1,4 @@
+<%@page import="dao.LineaCestaDAO"%>
 <%@page import="dao.CestaDAO"%>
 <%@page import="dto.LineaCesta"%>
 <%@page import="dto.Cesta"%>
@@ -18,6 +19,7 @@
         <link rel="stylesheet" href="./css/style-cesta.css">
         <title>CESTA - PCSanchez</title>
         <script src="js/calcular-precio-total.js"></script>
+        <script src="js/eliminar-articulo-cesta.js"></script>
     </head>
     <body>
         <header>
@@ -64,11 +66,12 @@
 
                 ArrayList<Cesta> cestas = (ArrayList<Cesta>) session.getAttribute("cestas");
 
-                for (Cesta cesta : cestas) {
-                    ArrayList<LineaCesta> lineas = prueba4.getLineas(cesta.getNombre());
+                LineaCestaDAO lineaCestaDAO = new LineaCestaDAO();
 
-                    out.println("<h2>" + cesta.getNombre() + "</h2>");
+                for (Cesta cesta : cestas) {
+                    ArrayList<LineaCesta> lineas = lineaCestaDAO.getLineas(cesta.getCodigo());
             %>
+            <h2>CESTA</h2>
             <section class="cesta">
                 <% for (LineaCesta linea : lineas) {%>
                 <article class="producto">
@@ -81,7 +84,7 @@
                         <label for="cantidad">Cantidad:</label>
                         <input type="number" id="cantidad" name="cantidad" value="<%=linea.getCantidad()%>" min="1" onchange="calcularPrecioTotal()">
                     </div>
-                    <button class="eliminar" type="button">Eliminar</button>
+                    <button class="eliminar" type="button" onclick="eliminarProducto(<%=linea.getId()%>)">Eliminar</button>
                 </article>
                 <% } %>
             </section>

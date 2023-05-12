@@ -4,6 +4,7 @@ import dto.Articulo;
 import dto.Cesta;
 import dto.LineaCesta;
 import dto.Usuario;
+import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -23,14 +24,7 @@ public class CestaDAO extends TablaDAO<Cesta> {
     public int anyadir(Cesta cesta) throws SQLException {
         String sentenciaSQL = "INSERT INTO " + tabla + " VALUES(?,?,?)";
         PreparedStatement prepared = getPrepared(sentenciaSQL);
-        prepared.setString(1, cesta.getNombre());
-
-        if (cesta.getTipo() == null) {
-            prepared.setNull(2, java.sql.Types.VARCHAR);
-        } else {
-            prepared.setString(3, cesta.getTipo());
-        }
-
+        prepared.setInt(1, cesta.getCodigo());
         int a = prepared.executeUpdate();
         anyadirLineaPedido(cesta);
         return a;
@@ -42,9 +36,9 @@ public class CestaDAO extends TablaDAO<Cesta> {
         if (cesta == null) {
             return null;
         } else {
-            String sentenciaSQL = "Delete from " + tabla + " where nombre=?";
+            String sentenciaSQL = "Delete from " + tabla + " where codigo=?";
             PreparedStatement prepared = getPrepared(sentenciaSQL);
-            prepared.setString(1, cesta.getNombre());
+            prepared.setInt(1, cesta.getCodigo());
             prepared.executeUpdate();
             return cesta;
         }
@@ -55,7 +49,7 @@ public class CestaDAO extends TablaDAO<Cesta> {
             String sentenciaSQL = "INSERT INTO ps_cestas_articulo(articulo, cesta, cantidad, precio) VALUES(?,?,?,?)";
             PreparedStatement prepared = getPrepared(sentenciaSQL);
             prepared.setInt(1, linea.getArticulo().getCodigo());
-            prepared.setString(2, cesta.getNombre());
+            prepared.setInt(2, cesta.getCodigo());
             prepared.setDouble(3, linea.getCantidad());
             prepared.setDouble(4, linea.getPrecio());
             prepared.executeUpdate();
@@ -63,18 +57,14 @@ public class CestaDAO extends TablaDAO<Cesta> {
     }
 
     private void eliminarLineas(Cesta cesta) throws SQLException {
-        String sentenciaSQL = "DELETE FROM ps_cestas_articulo WHERE cesta=?";
+        String sentenciaSQL = "DELETE FROM ps_cestas_articulo WHERE id=?";
         PreparedStatement prepared = getPrepared(sentenciaSQL);
-        prepared.setString(1, cesta.getNombre());
+        prepared.setInt(1, cesta.getCodigo());
         prepared.executeUpdate();
     }
 
-    public boolean existePorNombreCesta(Cesta c) throws SQLException {
-        return c.getNombre() != null;
-    }
-
-    public boolean existePorNombreCesta(String a) throws SQLException {
-        return getByNombreCesta(a) != null;
+    public boolean existePorCodigoCesta(Cesta c) throws SQLException {
+        return c.getCodigo() != 0;
     }
 
     @Override
@@ -86,33 +76,32 @@ public class CestaDAO extends TablaDAO<Cesta> {
         ResultSet resultSet = prepared.executeQuery();
 
         while (resultSet.next()) {
-            String nombre = resultSet.getString("nombre");
-            String tipo = resultSet.getString("tipo");
-            double cantidad = resultSet.getDouble("cantidad");
-            ArrayList<LineaCesta> lineasPedido = getLineas("nombre");
+            int codigo = resultSet.getInt("codigo");
             double precio = resultSet.getDouble("precio");
-            lista.add(new Cesta(nombre, tipo, precio, cantidad, lineasPedido));
+            // Crear una instancia de LineaCestaDAO
+            LineaCestaDAO lineaCestaDAO = new LineaCestaDAO();
+            // Utilizar el método getLineasPorIdCesta para obtener las líneas de la cesta
+            ArrayList<LineaCesta> lineasPedido = lineaCestaDAO.getLineas(codigo);
+            lista.add(new Cesta(codigo, precio, lineasPedido));
         }
         return lista;
     }
 
     public Cesta getByNombreCesta(String nombreCesta) throws SQLException {
-
         String sentenciaSQL = "SELECT * FROM " + tabla + " WHERE nombre=?";
         PreparedStatement prepared = getPrepared(sentenciaSQL);
         prepared.setString(1, nombreCesta);
         ResultSet resultSet = prepared.executeQuery();
 
         while (resultSet.next()) {
-
-            String nombre = resultSet.getString("nombre");
-            String tipo = resultSet.getString("tipo");
+            int codigo = resultSet.getInt("codigo");
             double precio = resultSet.getDouble("precio");
-            double cantidad = resultSet.getDouble("cantidad");
-            ArrayList<LineaCesta> lineasPedido = getLineas(nombre);
+            // Crear una instancia de LineaCestaDAO
+            LineaCestaDAO lineaCestaDAO = new LineaCestaDAO();
+            // Utilizar el método getLineasPorIdCesta para obtener las líneas de la cesta
+            ArrayList<LineaCesta> lineasPedido = lineaCestaDAO.getLineas(codigo);
 
-            return new Cesta(nombre, tipo, precio, cantidad, lineasPedido);
-
+            return new Cesta(codigo, precio, lineasPedido);
         }
 
         return null;
@@ -123,19 +112,19 @@ public class CestaDAO extends TablaDAO<Cesta> {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 
-    public ArrayList<LineaCesta> getLineas(String nombreCesta) throws SQLException {
+    public ArrayList<LineaCesta> getLineas(int idLineas) throws SQLException {
         ArrayList<LineaCesta> lineas = new ArrayList<>();
-        String sentenciaSQL = "SELECT * FROM ps_cesta_articulo WHERE cesta=?";
+        String sentenciaSQL = "SELECT * FROM ps_cesta_articulo WHERE id=?";
         PreparedStatement prepared = getPrepared(sentenciaSQL);
-        prepared.setString(1, nombreCesta);
+        prepared.setInt(1, idLineas);
         ResultSet resultSet = prepared.executeQuery();
 
         while (resultSet.next()) {
+            int id = resultSet.getInt("id");
             Articulo articulo = new ArticuloDAO().getByCodigo(resultSet.getInt("articulo"));
-            Usuario usuario = new UsuarioDAO().getByCodigo(resultSet.getInt("numero_usuario"));
             double precio = resultSet.getInt("precio");
             int cantidad = resultSet.getInt("cantidad");
-            lineas.add(new LineaCesta(articulo, usuario, cantidad, precio));
+            lineas.add(new LineaCesta(id, articulo, cantidad, precio));
         }
         return lineas;
     }
@@ -149,4 +138,72 @@ public class CestaDAO extends TablaDAO<Cesta> {
     public int actualizar(Cesta objeto) throws SQLException {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
+
+    public Cesta crearNuevaCesta(int codigoUsuario) {
+        Cesta nuevaCesta = null;
+        Connection conn = null;
+        PreparedStatement ps = null;
+        ResultSet rs = null;
+
+        try {
+            conn = Conexion.getConexion().getDatasource().getConnection();
+
+            // Obtener el último código de cesta
+            ps = conn.prepareStatement("SELECT codigo FROM ps_cesta WHERE codigo = (SELECT MAX(codigo) FROM ps_cesta)");
+            rs = ps.executeQuery();
+
+            int nuevoCodigo;
+            if (rs.next()) {
+                int ultimoCodigo = rs.getInt("codigo");
+                nuevoCodigo = ultimoCodigo + 1;
+            } else {
+                // La tabla está vacía, así que el primer código será 1001
+                nuevoCodigo = 1001;
+            }
+
+            System.out.println("Nuevo código de cesta: " + nuevoCodigo); // Mensaje de depuración
+            System.out.println("Insertando nueva cesta en la base de datos con código: " + nuevoCodigo);
+
+            // Insertar la nueva cesta en la base de datos
+            ps = conn.prepareStatement("INSERT INTO ps_cesta (codigo, numero_usuario, precio_cesta) VALUES (?, ?, ?)");
+            ps.setInt(1, nuevoCodigo);
+            ps.setInt(2, codigoUsuario); // Agrega el código de usuario aquí          
+            ps.setDouble(3, 0.0);
+            
+            int filasAfectadas = ps.executeUpdate();
+            System.out.println("Filas afectadas: " + filasAfectadas); // Mensaje de depuración
+
+            // Crear el objeto Cesta y establecer sus atributos
+            nuevaCesta = new Cesta();
+            nuevaCesta.setCodigo(nuevoCodigo);
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } finally {
+            if (rs != null) {
+                try {
+                    rs.close();
+                } catch (SQLException e) {
+                    e.printStackTrace();
+                }
+            }
+            if (ps != null) {
+                try {
+                    ps.close();
+                } catch (SQLException e) {
+                    e.printStackTrace();
+                }
+            }
+            if (conn != null) {
+                try {
+                    conn.close();
+                } catch (SQLException e) {
+                    e.printStackTrace();
+                }
+            }
+        }
+
+        return nuevaCesta;
+    }
+
 }

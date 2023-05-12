@@ -9,15 +9,13 @@ public class Pedido {
     private String facturado;
     private LocalDateTime fechapedido;
     private List<Direccion> direcciones;
-    private String cesta;
     private Usuario usuario;
 
-    public Pedido(int numero, String facturado, LocalDateTime fechapedido, List<Direccion> direcciones, String cesta, Usuario usuario) {
+    public Pedido(int numero, String facturado, LocalDateTime fechapedido, List<Direccion> direcciones, Usuario usuario) {
         this.numero = numero;
         this.facturado = facturado;
         this.fechapedido = fechapedido;
         this.direcciones = direcciones;
-        this.cesta = cesta;
         this.usuario = usuario;
     }
 
@@ -53,14 +51,6 @@ public class Pedido {
         this.direcciones = direcciones;
     }
 
-    public String getCesta() {
-        return cesta;
-    }
-
-    public void setCesta(String cesta) {
-        this.cesta = cesta;
-    }
-
     public Usuario getUsuario() {
         return usuario;
     }
@@ -93,7 +83,7 @@ public class Pedido {
 
     @Override
     public String toString() {
-        return "Pedido{" + "numero=" + numero + ", facturado=" + facturado + ", fechapedido=" + fechapedido + ", direcciones=" + direcciones + ", cesta=" + cesta + ", usuario=" + usuario + '}';
+        return "Pedido{" + "numero=" + numero + ", facturado=" + facturado + ", fechapedido=" + fechapedido + ", direcciones=" + direcciones + ", usuario=" + usuario + '}';
     }
 
 }

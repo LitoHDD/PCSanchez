@@ -4,16 +4,24 @@ import java.util.Objects;
 
 public class LineaCesta {
 
+    int id;
     private Articulo articulo;
-    private Usuario usuario;
     private double cantidad;
     private double precio;
 
-    public LineaCesta(Articulo articulo, Usuario usuario, double cantidad, double precio) {
+    public LineaCesta(int id, Articulo articulo, double cantidad, double precio) {
+        this.id = id;
         this.articulo = articulo;
-        this.usuario = usuario;
         this.cantidad = cantidad;
         this.precio = precio;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     public Articulo getArticulo() {
@@ -22,14 +30,6 @@ public class LineaCesta {
 
     public void setArticulo(Articulo articulo) {
         this.articulo = articulo;
-    }
-
-    public Usuario getUsuario() {
-        return usuario;
-    }
-
-    public void setUsuario(Usuario usuario) {
-        this.usuario = usuario;
     }
 
     public double getCantidad() {
@@ -72,7 +72,7 @@ public class LineaCesta {
 
     @Override
     public String toString() {
-        return "LineaCesta{" + "articulo=" + articulo + ", usuario=" + usuario + ", cantidad=" + cantidad + ", precio=" + precio + '}';
+        return "LineaCesta{" + "id=" + id + ", articulo=" + articulo + ", cantidad=" + cantidad + ", precio=" + precio + '}';
     }
 
 }

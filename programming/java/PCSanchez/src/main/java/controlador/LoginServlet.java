@@ -59,6 +59,7 @@ public class LoginServlet extends HttpServlet {
             }
         } catch (SQLException ex) {
             System.out.println("ERROR SQL");
+            ex.printStackTrace();
         }
     }
 

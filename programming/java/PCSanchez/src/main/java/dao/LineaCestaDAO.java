@@ -5,15 +5,13 @@
 package dao;
 
 import dto.Articulo;
-import dto.Categoria;
-import dto.Cesta;
 import dto.LineaCesta;
-import dto.Usuario;
+import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
-import java.util.LinkedHashSet;
+import org.apache.tomcat.jdbc.pool.DataSource;
 
 /**
  *
@@ -51,21 +49,58 @@ public class LineaCestaDAO extends TablaDAO<LineaCesta> {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 
-    public ArrayList<LineaCesta> getLineas(String nombreCesta) throws SQLException {
+    public ArrayList<LineaCesta> getLineas(int idLinea) throws SQLException {
         ArrayList<LineaCesta> lineas = new ArrayList<>();
-        String sentenciaSQL = "SELECT * FROM ps_cesta_articulo WHERE cesta=?";
+        String sentenciaSQL = "SELECT * FROM ps_cesta_articulo WHERE id=?";
         PreparedStatement prepared = getPrepared(sentenciaSQL);
-        prepared.setString(1, nombreCesta);
+        prepared.setInt(1, idLinea);
         ResultSet resultSet = prepared.executeQuery();
 
         while (resultSet.next()) {
+
+            int id = resultSet.getInt("id");
             Articulo articulo = new ArticuloDAO().getByCodigo(resultSet.getInt("articulo"));
-            Usuario usuario = new UsuarioDAO().getByCodigo(resultSet.getInt("numero_usuario"));
             double precio = resultSet.getInt("precio");
             int cantidad = resultSet.getInt("cantidad");
-            lineas.add(new LineaCesta(articulo, usuario, cantidad, precio));
+            lineas.add(new LineaCesta(id, articulo, cantidad, precio));
         }
         return lineas;
+    }
+
+    public boolean eliminarLineaProducto(int productoId) {
+        Connection con = null;
+        PreparedStatement pstmt = null;
+        boolean eliminado = false;
+        DataSource datasource = Conexion.getConexion().getDatasource();
+
+        try {
+            con = datasource.getConnection();
+            String query = "DELETE FROM ps_cesta_articulo WHERE id = ?";
+            pstmt = con.prepareStatement(query);
+            pstmt.setInt(1, productoId);
+            int filasAfectadas = pstmt.executeUpdate();
+
+            if (filasAfectadas > 0) {
+                eliminado = true;
+            }
+        } catch (SQLException e) {
+            System.out.println("Error SQL: " + e.getMessage()); // Imprimir el mensaje de error SQL en consola
+            e.printStackTrace();
+        } finally {
+            try {
+                if (pstmt != null) {
+                    pstmt.close();
+                }
+                if (con != null) {
+                    con.close();
+                }
+            } catch (SQLException e) {
+                System.out.println("Error SQL al cerrar conexiones: " + e.getMessage()); // Imprimir el mensaje de error SQL en consola
+                e.printStackTrace();
+            }
+        }
+
+        return eliminado;
     }
 
 }

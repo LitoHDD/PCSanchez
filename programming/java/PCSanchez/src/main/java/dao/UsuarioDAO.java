@@ -127,11 +127,9 @@ public class UsuarioDAO extends TablaDAO<Usuario> {
         ResultSet resultSet = prepared.executeQuery();
         ArrayList<Cesta> cestas = new ArrayList<>();
         while (resultSet.next()) {
-            String nombre = resultSet.getString("nombre");
-            String tipo = resultSet.getString("tipo");
-            double precio = resultSet.getDouble("precio");
-            double cantidad = resultSet.getDouble("cantidad");
-            cestas.add(new Cesta(nombre, tipo, precio, cantidad, null));
+            int codigo = resultSet.getInt("codigo");
+            double precio = resultSet.getDouble("precio_cesta");
+            cestas.add(new Cesta(codigo, precio, null));
         }
         return cestas;
     }

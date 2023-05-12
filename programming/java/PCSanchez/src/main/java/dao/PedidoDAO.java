@@ -35,7 +35,7 @@ public class PedidoDAO extends TablaDAO<Pedido> {
 
     @Override
     public int anyadir(Pedido pedido) throws SQLException {
-        String sentenciaSQL = "INSERT INTO " + tabla + " VALUES(?,?,?,?,?,?)";
+        String sentenciaSQL = "INSERT INTO " + tabla + " VALUES(?,?,?,?,?)";
         PreparedStatement prepared = getPrepared(sentenciaSQL);
         prepared.setInt(1, pedido.getNumero());
         prepared.setString(2, pedido.getFacturado());
@@ -52,7 +52,6 @@ public class PedidoDAO extends TablaDAO<Pedido> {
         } else {
             prepared.setInt(5, usuario.getCodigo());
         }
-        prepared.setString(6, pedido.getCesta());
         return prepared.executeUpdate();
     }
 
@@ -82,7 +81,7 @@ public class PedidoDAO extends TablaDAO<Pedido> {
             LocalDateTime fechapedido = resultSet.getTimestamp("fecha_pedido").toLocalDateTime();
             Usuario usuario = new UsuarioDAO().getByCodigo(resultSet.getInt("codigo_usuario"));
             String cesta = resultSet.getString("nombre_cesta");
-            lista.add(new Pedido(numero, facturado, fechapedido, getDireccion(), cesta, usuario));
+            lista.add(new Pedido(numero, facturado, fechapedido, getDireccion(), usuario));
         }
 
         return lista;
@@ -100,7 +99,7 @@ public class PedidoDAO extends TablaDAO<Pedido> {
             LocalDateTime fechapedido = resultSet.getTimestamp("fecha_pedido").toLocalDateTime();
             Usuario usuario = new UsuarioDAO().getByCodigo(resultSet.getInt("codigo_usuario"));
             String cesta = resultSet.getString("nombre_cesta");
-            return new Pedido(numeros, facturado, fechapedido, getDirecciones(numeroUsuario), cesta, usuario);
+            return new Pedido(numeros, facturado, fechapedido, getDirecciones(numeroUsuario), usuario);
         }
 
         return null;

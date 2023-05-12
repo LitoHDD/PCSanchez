@@ -5,48 +5,33 @@ import java.util.Objects;
 
 public class Cesta {
 
-    private String nombre, tipo;
-    private double precio, cantidad;
+    private int codigo;
+    private double precioCesta;
     private List<LineaCesta> lineaCestas;
 
-    public Cesta(String nombre, String tipo, double precio, double cantidad, List<LineaCesta> lineaCestas) {
-        this.nombre = nombre;
-        this.tipo = tipo;
-        this.precio = precio;
-        this.cantidad = cantidad;
+    public Cesta(int codigo, double precioCesta, List<LineaCesta> lineaCestas) {
+        this.codigo = codigo;
+        this.precioCesta = precioCesta;
         this.lineaCestas = lineaCestas;
     }
-
-    public String getNombre() {
-        return nombre;
+    
+    public Cesta() {
     }
 
-    public void setNombre(String nombre) {
-        this.nombre = nombre;
+    public int getCodigo() {
+        return codigo;
     }
 
-    public String getTipo() {
-        return tipo;
+    public void setCodigo(int codigo) {
+        this.codigo = codigo;
     }
 
-    public void setTipo(String tipo) {
-        this.tipo = tipo;
+    public double getPrecioCesta() {
+        return precioCesta;
     }
 
-    public double getPrecio() {
-        return precio;
-    }
-
-    public void setPrecio(double precio) {
-        this.precio = precio;
-    }
-
-    public double getCantidad() {
-        return cantidad;
-    }
-
-    public void setCantidad(double cantidad) {
-        this.cantidad = cantidad;
+    public void setPrecioCesta(double precioCesta) {
+        this.precioCesta = precioCesta;
     }
 
     public List<LineaCesta> getLineaCestas() {
@@ -59,8 +44,8 @@ public class Cesta {
 
     @Override
     public int hashCode() {
-        int hash = 5;
-        hash = 61 * hash + Objects.hashCode(this.nombre);
+        int hash = 3;
+        hash = 29 * hash + this.codigo;
         return hash;
     }
 
@@ -76,12 +61,12 @@ public class Cesta {
             return false;
         }
         final Cesta other = (Cesta) obj;
-        return Objects.equals(this.nombre, other.nombre);
+        return this.codigo == other.codigo;
     }
 
     @Override
     public String toString() {
-        return "Cesta{" + "nombre=" + nombre + ", tipo=" + tipo + ", precio=" + precio + ", cantidad=" + cantidad + ", lineaCestas=" + lineaCestas + '}';
+        return "Cesta{" + "codigo=" + codigo + ", precioCesta=" + precioCesta + ", lineaCestas=" + lineaCestas + '}';
     }
 
     public void agregarLineaCesta(LineaCesta lineaCesta) {

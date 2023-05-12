@@ -77,7 +77,7 @@ public class Test {
         System.out.println("\n");
 
         LineaCestaDAO prueba7 = new LineaCestaDAO();
-        ArrayList<LineaCesta> lineasCestas = prueba7.getLineas("Navidades");
+        ArrayList<LineaCesta> lineasCestas = prueba7.getLineas(6440);
         System.out.println(lineasCestas);
         System.out.println("\n");
 

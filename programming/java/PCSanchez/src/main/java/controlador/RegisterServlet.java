@@ -1,6 +1,8 @@
 package controlador;
 
+import dao.CestaDAO;
 import dao.Conexion;
+import dto.Cesta;
 import java.io.IOException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -104,8 +106,21 @@ public class RegisterServlet extends HttpServlet {
                 ps.executeUpdate();
                 ps.close();
 
+                System.out.println("Usuario registrado con éxito: " + email); // Mensaje de depuración
+
                 // Redirección a la página de inicio de sesión
                 response.sendRedirect("login.jsp?success=true");
+
+                // Crea una nueva cesta con el nombre "Cesta"
+                CestaDAO cestaDAO = new CestaDAO();
+                Cesta nuevaCesta = cestaDAO.crearNuevaCesta(nuevoCodigo);
+
+                if (nuevaCesta == null) {
+                    System.out.println("Error al crear la cesta para el usuario: " + email);
+                } else {
+                    System.out.println("Cesta creada con éxito para el usuario: " + email);
+                }
+
             } else {
                 // La tabla está vacía, así que el primer código será 5001
                 int nuevoCodigo = 5001;
@@ -125,8 +140,20 @@ public class RegisterServlet extends HttpServlet {
                 ps.executeUpdate();
                 ps.close();
 
+                System.out.println("Usuario registrado con éxito: " + email); // Mensaje de depuración
+
                 // Redirección a la página de inicio de sesión
                 response.sendRedirect("login.jsp?success=true");
+
+                // Crea una nueva cesta con el nombre "Cesta"
+                CestaDAO cestaDAO = new CestaDAO();
+                Cesta nuevaCesta = cestaDAO.crearNuevaCesta(nuevoCodigo);
+
+                if (nuevaCesta == null) {
+                    System.out.println("Error al crear la cesta para el usuario: " + email);
+                } else {
+                    System.out.println("Cesta creada con éxito para el usuario: " + email);
+                }
             }
         } catch (SQLException e) {
             // Si hay un error en la base de datos, redirigimos a la página de registro con un mensaje de error

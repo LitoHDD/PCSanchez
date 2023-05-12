@@ -245,36 +245,36 @@ VALUES (12347, 'Almacenamiento');
 
 -- TABLA CESTA --
 
-INSERT INTO ps_cesta(nombre, numero_usuario, precio, cantidad, tipo)
-VALUES ('Navidades', 5463, 50, 1, 'PRVT');
+INSERT INTO ps_cesta(codigo, numero_usuario, precio_cesta)
+VALUES (4640, 5463, 50);
 
-INSERT INTO ps_cesta(nombre, numero_usuario, precio, cantidad, tipo)
-VALUES ('Regalos Reyes', 5464, 50, 1, 'PRVT');
+INSERT INTO ps_cesta(codigo, numero_usuario, precio_cesta)
+VALUES (4641, 5464, 50);
 
-INSERT INTO ps_cesta(nombre, numero_usuario, precio, cantidad, tipo)
-VALUES ('San Valentin', 5465, 50, 1, 'PRVT');
+INSERT INTO ps_cesta(codigo, numero_usuario, precio_cesta)
+VALUES (4642, 5465, 50);
 
 -- TABLA CESTA_ARTICULO --
 
-INSERT INTO ps_cesta_articulo(articulo, numero_usuario, cesta, cantidad, precio)
-VALUES (12345, 5463, 'Navidades', 1, 50);
+INSERT INTO ps_cesta_articulo(id, articulo, cantidad, precio)
+VALUES (4640, 12356, 1, 50);
 
-INSERT INTO ps_cesta_articulo(articulo, numero_usuario, cesta, cantidad, precio)
-VALUES (12345, 5464, 'Regalos Reyes', 1, 50);
+INSERT INTO ps_cesta_articulo(id, articulo, cantidad, precio)
+VALUES (4641, 12356, 1, 50);
 
-INSERT INTO ps_cesta_articulo(articulo, numero_usuario, cesta, cantidad, precio)
-VALUES (12345, 5465, 'San Valentin', 1, 50);
+INSERT INTO ps_cesta_articulo(id, articulo, cantidad, precio)
+VALUES (4642, 12356, 1, 50);
 
 -- TABLA PEDIDO --
 
-INSERT INTO ps_pedido(numero, facturado, fecha_pedido, numero_direccion, nombre_cesta, codigo_usuario)
-VALUES (12345678, 'S', to_date('15/02/2023', 'DD/MM/YYYY'), 5, 'Navidades', 5463);
+INSERT INTO ps_pedido(numero, facturado, fecha_pedido, numero_direccion, codigo_usuario)
+VALUES (4640, 'S', to_date('15/02/2023', 'DD/MM/YYYY'), 5, 5463);
 
-INSERT INTO ps_pedido(numero, facturado, fecha_pedido, numero_direccion, nombre_cesta, codigo_usuario)
-VALUES (12345679, 'S', to_date('15/02/2023', 'DD/MM/YYYY'), 6, 'Regalos Reyes', 5464);
+INSERT INTO ps_pedido(numero, facturado, fecha_pedido, numero_direccion, codigo_usuario)
+VALUES (4641, 'S', to_date('15/02/2023', 'DD/MM/YYYY'), 6, 5464);
 
-INSERT INTO ps_pedido(numero, facturado, fecha_pedido, numero_direccion, nombre_cesta, codigo_usuario)
-VALUES (12345680, 'S', to_date('15/02/2023', 'DD/MM/YYYY'), 14, 'San Valentin', 5465);
+INSERT INTO ps_pedido(numero, facturado, fecha_pedido, numero_direccion, codigo_usuario)
+VALUES (4642, 'S', to_date('15/02/2023', 'DD/MM/YYYY'), 14, 5465);
 
 -- TABLA FACTURA --
 
