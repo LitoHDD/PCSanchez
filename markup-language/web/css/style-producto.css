@@ -18,6 +18,9 @@ header {
     background-color: var(--verde);
     align-items: center;
     padding: 5px 4vw;
+    width: 100%;
+    position: fixed;
+    top: 0;
 }
 
 /* ----- LOGO ------- */
@@ -51,7 +54,7 @@ nav a {
     text-decoration: none;
 }
 
-@media screen and (max-width: 1080px) {
+@media screen and (max-width: 1130px) {
     header ul li a[href="./privacy.html"] {
         display: none;
     } 
@@ -113,6 +116,22 @@ a {
     border-radius: 5px;
 }
 
+.usuario-logued {
+    display: flex;
+    justify-content: space-between;
+    height: 40px;
+    width: 10%;
+}
+
+.usuario-logued img {
+    height: 100%;
+    margin-left: 1vw;
+}
+
+.foto-perfil img{
+    border-radius: 100%;
+}
+
 /* -------- MEDIA QUERY ----------- */
 
 /* ------ NO SE MUESTRA SIN QUERY ------- */
@@ -150,6 +169,10 @@ a {
     }
 
     .usuario {
+        display: none;
+    }
+
+    .usuario-logued {
         display: none;
     }
 
@@ -234,6 +257,7 @@ a {
 .general {
     padding: 20px 8%;
     color: #7F7F7F;
+    margin-top: 75px;
 }
 
 h3 {
@@ -315,6 +339,14 @@ h3 {
 
 .pedido input {
     width: 40%;
+}
+
+@media screen and (max-width: 900px) {
+
+    .general {
+        margin-top: 100px;
+    }
+
 }
 
 @media screen and (max-width: 600px) {
@@ -431,15 +463,17 @@ footer {
     margin-bottom: 15px;
 }
 
+.github-link figure{
+    height: 70px;
+}
+
+.github-link img {
+    height: 100%;
+}
+
 .footer-logo img {
     max-width: 100%;
     height: auto;
-}
-
-.copyright {
-    text-align: center;
-    margin-top: 10px;
-    font-size: 14px;
 }
 
 @media screen and (max-width: 700px) {

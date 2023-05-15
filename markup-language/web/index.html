@@ -24,13 +24,12 @@
             <nav>
                 <ul>
                     <li><a href="./index.html">Inicio</a></li>
-                    <li><a href="#">Ordenadores</a></li>
-                    <li><a href="./componentess.html">Componentes</a></li>
+                    <li><a href="./ordenadores.html">Ordenadores</a></li>
+                    <li><a href="./componentes.html">Componentes</a></li>
                     <li><a href="./privacy.html">Privacidad</a></li>
                 </ul>
             </nav>
         </div>
-        
         <article class="search">
             <form>
                 <label>
@@ -39,20 +38,36 @@
                 </label>
             </form>
         </article>
+
+<!--         SIN ESTAR LOGEADO -->
+
         <section class="usuario">
             <button type="button" onclick="location.href='./register.html'">REGISTRARSE</button>
             <article>
                 <a href="./login.html">ENTRAR</a>
             </article>
         </section>
+
+<!--         EStANDO LOGUEADO -->
+
+        <section class="usuario-logued">
+            <figure class="foto-perfil">
+                <a href="./usuario.html"><img src="./images/header/user-default.png" alt=""></a>
+            </figure>
+            <figure>
+                <a href="./cesta.html"><img src="./images/index/carro.png" alt=""></a>
+            </figure>
+        </section>
+
         <a href="./index.html" class="titulo-query">
             <h2>PC SANCHEZ</h2>
         </a>
         <a href="./usuario.html" class="user-query">
             <img src="./images/index/user.png" alt="">
         </a>
+        
     </header>
-    <div class="general">
+    <main>
         <section class="slider">
             <ul>
                 <li><video src="./content/slider/slider.mp4" autoplay loop></li>
@@ -64,45 +79,51 @@
             <section>
                 <article class="componente">
                     <figure>
-                        <a href="./producto.html"><img src="./images/index/components/procesador.png" alt="IMG"></a>
+                        <a href="./componentes.html#psu"><img src="./images/index/components/procesador.png" alt="IMG"></a>
                     </figure>
                     <h4>Alimentación</h4>
                 </article>
                 <article class="componente">
                     <figure>
-                        <a href="./producto.html"><img src="./images/index/components/procesador.png" alt="IMG"></a>
+                        <a href="./componentes.html#motherboard"><img src="./images/index/components/procesador.png" alt="IMG"></a>
                     </figure>
                     <h4>Placa Base</h4>
                 </article>
                 <article class="componente">
                     <figure>
-                        <a href="./producto.html"><img src="./images/index/components/procesador.png" alt="IMG"></a>
+                        <a href="./componentes.html#ram"><img src="./images/index/components/procesador.png" alt="IMG"></a>
                     </figure>
                     <h4>Ram</h4>
                 </article>
                 <article class="componente">
                     <figure>
-                        <a href="./producto.html"><img src="./images/index/components/procesador.png" alt="IMG"></a>
+                        <a href="./componentes.html#almacenamiento"><img src="./images/index/components/procesador.png" alt="IMG"></a>
                     </figure>
-                    <h4>Disco Duro</h4>
+                    <h4>Almacenamiento</h4>
                 </article>
                 <article class="componente">
                     <figure>
-                        <a href="./producto.html"><img src="./images/index/components/procesador.png" alt="IMG"></a>
+                        <a href="./componentes.html#cpu"><img src="./images/index/components/procesador.png" alt="IMG"></a>
                     </figure>
                     <h4>Procesador</h4>
                 </article>
                 <article class="componente">
                     <figure>
-                        <a href="./producto.html"><img src="./images/index/components/procesador.png" alt="IMG"></a>
+                        <a href="./componentes.html#gpu"><img src="./images/index/components/procesador.png" alt="IMG"></a>
                     </figure>
                     <h4>Tarjeta Grafica</h4>
                 </article>
                 <article class="componente">
                     <figure>
-                        <a href="./producto.html"><img src="./images/index/components/procesador.png" alt="IMG"></a>
+                        <a href="./componentes.html#caja"><img src="./images/index/components/procesador.png" alt="IMG"></a>
                     </figure>
                     <h4>Caja</h4>
+                </article>
+                <article class="componente">
+                    <figure>
+                        <a href="./componentes.html#refrigeracion"><img src="./images/index/components/procesador.png" alt="IMG"></a>
+                    </figure>
+                    <h4>Refrigeración</h4>
                 </article>
             </section>
         </section>
@@ -111,31 +132,31 @@
             <section>
                 <article class="ordenador">
                     <figure>
-                        <a href="./producto.html"><img src="./images/index/hardware/pcverde.png" alt="IMG"></a>
+                        <a href="./ordenadores.html"><img src="./images/index/hardware/pcverde.png" alt="IMG"></a>
                     </figure>
                 </article>
                 <article class="ordenador">
                     <figure>
-                        <a href="./producto.html"><img src="./images/index/hardware/laptopverde.png" alt="IMG"></a>
-                    </figure>
-                </article>
-                <article class="ordenador">
-                    <figure>
-                        <a href=""><img src="./images/index/hardware/all-in-one.png" alt="IMG" id="all-in-one"></a>
+                        <a href="./ordenadores.html#sobremesa"><img src="./images/index/hardware/laptopverde.png" alt="IMG"></a>
                     </figure>
                 </article>
             </section>
         </section>
-    </div>
+    </main>
     <footer>
-        <section>
-            <a id="img-footer" href="./index.html"><img id="logo-footer" src="./images/footer/logo-footer2.png"></a>
-            <a href="./index.html" class="text-footer">INICIO</a>
-            <a href="./mantenimiento.html" class="text-footer">ORDENADORES</a>
-            <a href="./mantenimiento.html" class="text-footer">COMPONENTES</a>
-            <a href="./mantenimiento.html" class="text-footer">SOBRE NOSOTROS</a>
-            <a href="https://iespacomolla.es/"><img id="logo-footer" src="./images/footer/logo-footer.png"></a>
-        </section>
+        <div class="footer-container">
+            <figure>
+                <img src="./images/footer/logo-footer2.png" alt="">
+            </figure>
+            <div class="footer-logo">
+                <img src="./images/footer/logo-footer.png" alt="PC SANCHEZ Logo">
+            </div>
+            <div class="github-link">
+                <figure>
+                    <a href=""><img src="./images/footer/github.png" alt=""></a>
+                </figure>
+            </div>
+        </div>
     </footer>
 </body>
 </html>

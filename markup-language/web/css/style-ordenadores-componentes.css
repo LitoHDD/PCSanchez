@@ -18,6 +18,9 @@ header {
     background-color: var(--verde);
     align-items: center;
     padding: 5px 4vw;
+    width: 100%;
+    position: fixed;
+    top: 0;
 }
 
 /* ----- LOGO ------- */
@@ -113,6 +116,22 @@ a {
     border-radius: 5px;
 }
 
+.usuario-logued {
+    display: flex;
+    justify-content: space-between;
+    height: 40px;
+    width: 10%;
+}
+
+.usuario-logued img {
+    height: 100%;
+    margin-left: 1vw;
+}
+
+.foto-perfil img{
+    border-radius: 100%;
+}
+
 /* -------- MEDIA QUERY ----------- */
 
 /* ------ NO SE MUESTRA SIN QUERY ------- */
@@ -150,6 +169,10 @@ a {
     }
 
     .usuario {
+        display: none;
+    }
+
+    .usuario-logued {
         display: none;
     }
 
@@ -235,17 +258,22 @@ a {
     display: grid;
     grid-template:  "aside         main" 1fr    /
                     1fr             6fr;
-    margin: 10px;
+}
+
+main {
+    grid-area: main;
+    margin: 90px 10px 20px 10px;
+    justify-content: right;
 }
 
 aside {
     grid-area: aside;
-    margin-top: 93px;
-    margin-left: 5px;
+    margin-top: 163px;
+    margin-left: 10px;
+    margin-bottom: 25px;
     color: #30398A;
     border-radius: 5px;
     border: #30398A solid 2px;
-    position: fixed;
 }
 
 aside ul {
@@ -261,10 +289,11 @@ aside li {
 }
 
 aside li:hover {
-    background-color: #30398a56;
+    background-color: #30398a4b;
+    color: white;
 }
 
-@media screen and (max-width: 1919px) {
+@media screen and (max-width: 700px) {
 
     aside {
         display: none;
@@ -275,12 +304,6 @@ aside li:hover {
                          1fr;
     }
 
-}
-
-main {
-    grid-area: main;
-    margin: 20px 10px;
-    justify-content: right;
 }
 
 h1 {
@@ -316,6 +339,14 @@ h1 {
     gap: 10px;
 }
 
+@media screen and (max-width: 1000px) {
+
+    .productos {
+        grid-template-columns: repeat(4, 1fr);
+    }
+
+}
+
 .producto {
     display: flex;
     flex-direction: column;
@@ -349,6 +380,12 @@ h1 {
 
 .producto button:hover {
     background-color: #69c76c;
+}
+
+@media screen and (max-width: 900px) {
+    .principal {
+        margin-top: 20px;
+    }
 }
 
 @media screen and (max-width: 600px) {
@@ -405,6 +442,14 @@ footer {
 
 .about-us h4, .github-link h4 {
     margin-bottom: 15px;
+}
+
+.github-link figure{
+    height: 70px;
+}
+
+.github-link img {
+    height: 100%;
 }
 
 .footer-logo img {

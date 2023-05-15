@@ -18,6 +18,9 @@ header {
     background-color: var(--verde);
     align-items: center;
     padding: 5px 4vw;
+    width: 100%;
+    position: fixed;
+    top: 0;
 }
 
 /* ----- LOGO ------- */
@@ -51,7 +54,7 @@ nav a {
     text-decoration: none;
 }
 
-@media screen and (max-width: 1080px) {
+@media screen and (max-width: 1130px) {
     header ul li a[href="./privacy.html"] {
         display: none;
     } 
@@ -113,6 +116,22 @@ a {
     border-radius: 5px;
 }
 
+.usuario-logued {
+    display: flex;
+    justify-content: space-between;
+    height: 40px;
+    width: 10%;
+}
+
+.usuario-logued img {
+    height: 100%;
+    margin-left: 1vw;
+}
+
+.foto-perfil img{
+    border-radius: 100%;
+}
+
 /* -------- MEDIA QUERY ----------- */
 
 /* ------ NO SE MUESTRA SIN QUERY ------- */
@@ -150,6 +169,10 @@ a {
     }
 
     .usuario {
+        display: none;
+    }
+
+    .usuario-logued {
         display: none;
     }
 
@@ -235,7 +258,7 @@ a {
 /* --------MAIN----------
  */
 main h2 {
-    margin-top: 30px;
+    margin-top: 90px;
     text-align: center;
     color: var(--azul);
 }
@@ -315,6 +338,14 @@ main h2 {
 
 /* Media Queries */
 
+@media screen and (max-width: 900px) {
+
+    main h2 {
+        margin-top: 110px;
+    }
+
+}
+
 @media screen and (max-width: 600px) {
     .producto {
         flex-direction: column;
@@ -327,3 +358,49 @@ main h2 {
     }
 }
 
+/* ------- FOOTER -------- */
+
+footer {
+    background-color: black;
+    padding: 30px 0;
+    color: white;
+}
+
+.footer-container {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    flex-wrap: wrap;
+    margin: 0 auto;
+}
+
+.about-us, .about-us h4, .github-link, .footer-logo {
+    text-align: center;
+    margin: 10px;
+}
+
+.about-us h4, .github-link h4 {
+    margin-bottom: 15px;
+}
+
+.github-link figure{
+    height: 70px;
+}
+
+.github-link img {
+    height: 100%;
+}
+
+.footer-logo img {
+    max-width: 100%;
+    height: auto;
+}
+
+@media screen and (max-width: 700px) {
+
+    .about-us, .github-link, .footer-logo {
+        flex-basis: 100%;
+        margin: 10px;
+    }
+
+}
