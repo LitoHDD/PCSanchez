@@ -24,6 +24,7 @@ dto/Usuario.class
 dao/CajaDAO$2.class
 dao/DireccionDAO.class
 dao/RamDAO.class
+controlador/ComprarServlet.class
 dao/ProcesadorDAO$1.class
 dao/RamDAO$1.class
 dao/ArticuloCategoriaDAO$1.class
@@ -33,6 +34,7 @@ dao/SobremesaDAO$2.class
 dto/Psu.class
 dao/IDAO.class
 dto/Categoria.class
+dao/PedidoArticuloDAO.class
 dao/RefrigeracionDAO$2.class
 dto/Tarjeta.class
 dao/Conexion.class
@@ -42,6 +44,7 @@ dao/CategoriaDAO.class
 dao/FacturaDAO.class
 dao/ArticuloDAO.class
 dao/PlacaBaseDAO$1.class
+dto/PedidoArticulo.class
 dto/Test.class
 dto/Pedido.class
 dao/PortatilDAO.class
@@ -60,6 +63,7 @@ dto/Caja.class
 dao/ArticuloCategoriaDAO.class
 dao/ArticuloCategoriaDAO$2.class
 dao/PlacaBaseDAO$2.class
+controlador/EliminarProductoServlet.class
 dao/ArticuloDAO$1.class
 dto/ArticuloCategoria.class
 dto/TipoUsuario.class

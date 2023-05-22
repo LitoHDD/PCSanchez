@@ -50,8 +50,9 @@ public class LineaCesta {
 
     @Override
     public int hashCode() {
-        int hash = 7;
-        hash = 29 * hash + Objects.hashCode(this.articulo);
+        int hash = 5;
+        hash = 61 * hash + this.id;
+        hash = 61 * hash + Objects.hashCode(this.articulo);
         return hash;
     }
 
@@ -67,6 +68,9 @@ public class LineaCesta {
             return false;
         }
         final LineaCesta other = (LineaCesta) obj;
+        if (this.id != other.id) {
+            return false;
+        }
         return Objects.equals(this.articulo, other.articulo);
     }
 

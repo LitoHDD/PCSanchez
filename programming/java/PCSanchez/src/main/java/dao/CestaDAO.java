@@ -56,8 +56,8 @@ public class CestaDAO extends TablaDAO<Cesta> {
         }
     }
 
-    private void eliminarLineas(Cesta cesta) throws SQLException {
-        String sentenciaSQL = "DELETE FROM ps_cestas_articulo WHERE id=?";
+    public void eliminarLineas(Cesta cesta) throws SQLException {
+        String sentenciaSQL = "DELETE FROM ps_cesta_articulo WHERE id=?";
         PreparedStatement prepared = getPrepared(sentenciaSQL);
         prepared.setInt(1, cesta.getCodigo());
         prepared.executeUpdate();
@@ -109,7 +109,23 @@ public class CestaDAO extends TablaDAO<Cesta> {
 
     @Override
     public Cesta getByCodigo(int codigo) throws SQLException {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        String sentenciaSQL = "SELECT * FROM " + tabla + " WHERE codigo = ?";
+        PreparedStatement prepared = getPrepared(sentenciaSQL);
+        prepared.setInt(1, codigo);
+        ResultSet rs = prepared.executeQuery();
+
+        while (rs.next()) {
+            int codigos = rs.getInt("codigo");
+            double precios = rs.getDouble("precio");
+            // Crear una instancia de LineaCestaDAO
+            LineaCestaDAO lineaCestaDAO = new LineaCestaDAO();
+            // Utilizar el método getLineasPorIdCesta para obtener las líneas de la cesta
+            ArrayList<LineaCesta> lineasPedido = lineaCestaDAO.getLineas(codigo);
+
+            return new Cesta(codigos, precios, lineasPedido);
+        }
+
+        return null;
     }
 
     public ArrayList<LineaCesta> getLineas(int idLineas) throws SQLException {
@@ -169,7 +185,7 @@ public class CestaDAO extends TablaDAO<Cesta> {
             ps.setInt(1, nuevoCodigo);
             ps.setInt(2, codigoUsuario); // Agrega el código de usuario aquí          
             ps.setDouble(3, 0.0);
-            
+
             int filasAfectadas = ps.executeUpdate();
             System.out.println("Filas afectadas: " + filasAfectadas); // Mensaje de depuración
 
@@ -206,4 +222,25 @@ public class CestaDAO extends TablaDAO<Cesta> {
         return nuevaCesta;
     }
 
+    public Cesta getCestaPorUsuario(int codigoUsuario) throws SQLException {
+        Cesta cesta = null;
+
+        String sentenciaSQL = "SELECT * FROM " + tabla + " WHERE numero_usuario=?";
+        PreparedStatement prepared = getPrepared(sentenciaSQL);
+        prepared.setInt(1, codigoUsuario);
+        ResultSet resultSet = prepared.executeQuery();
+
+        while (resultSet.next()) {
+            int codigo = resultSet.getInt("codigo");
+            double precio = resultSet.getDouble("precio_cesta");
+            // Crear una instancia de LineaCestaDAO
+            LineaCestaDAO lineaCestaDAO = new LineaCestaDAO();
+            // Utilizar el método getLineasPorIdCesta para obtener las líneas de la cesta
+            ArrayList<LineaCesta> lineasPedido = lineaCestaDAO.getLineas(codigo);
+
+            cesta = new Cesta(codigo, precio, lineasPedido);
+        }
+
+        return cesta;
+    }
 }

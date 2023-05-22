@@ -89,7 +89,7 @@ public class DireccionDAO extends TablaDAO<Direccion> {
 
     public ArrayList<Direccion> getDireccionesDe(Usuario u) throws SQLException {
         ArrayList<Direccion> lista = new ArrayList<>();
-        String sentenciaSQL = "SELECT * FROM " + tabla + " WHERE usuario=? ORDER BY codigo";
+        String sentenciaSQL = "SELECT * FROM " + tabla + " WHERE codigo_usuario_direccion=? ORDER BY codigo_usuario_direccion";
         PreparedStatement prepared = getPrepared(sentenciaSQL);
         prepared.setInt(1, u.getCodigo());
         ResultSet resultSet = prepared.executeQuery();

@@ -92,7 +92,9 @@
             <div class="resumen">
                 <h3>Resumen de la compra</h3>
                 <p id="precio-total">Total: 0,00€</p>
-                <button type="button">Comprar</button>
+                <form method="POST" action="ComprarServlet">
+                    <button type="submit">Comprar</button>
+                </form>
             </div> 
         </main>
     </body>

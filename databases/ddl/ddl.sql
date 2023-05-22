@@ -80,6 +80,16 @@ CREATE TABLE ps_articulo (
     CONSTRAINT check_iva CHECK (iva >= 0 AND precio >= 0 AND stock >= 0)
 );
 
+CREATE TABLE ps_pedido_articulo(
+    id NUMBER(8),
+    articulo NUMBER(8),
+    cantidad NUMBER(6),
+    precio NUMBER(8),
+    PRIMARY KEY(id),
+    CONSTRAINT pedido_fk_pedido FOREIGN KEY (id) REFERENCES ps_pedido (numero),
+    CONSTRAINT cesta_articulos_fk FOREIGN KEY (articulo) REFERENCES ps_articulo
+);
+
 CREATE TABLE ps_cesta_articulo (
     id NUMBER(8),
     articulo NUMBER(8) NOT NULL,
@@ -199,6 +209,9 @@ CREATE TABLE ps_sobremesa (
 
 -- BORRADO DE TABLAS --
 
+DROP TABLE ps_pedido_articulo;
+DROP TABLE ps_cesta_articulo;
+DROP TABLE ps_articulo_categoria;
 DROP TABLE ps_sobremesa;
 DROP TABLE ps_portatil;
 DROP TABLE ps_procesador;
@@ -209,13 +222,11 @@ DROP TABLE ps_placa_base;
 DROP TABLE ps_psu;
 DROP TABLE ps_caja;
 DROP TABLE ps_refrigeracion;
-DROP TABLE ps_articulo_categoria;
-DROP TABLE ps_categoria;
-DROP TABLE ps_cesta_articulo;
 DROP TABLE ps_articulo;
 DROP TABLE ps_pedido;
 DROP TABLE ps_cesta;
 DROP TABLE ps_factura;
 DROP TABLE ps_direccion;
 DROP TABLE ps_tarjeta;
+DROP TABLE ps_categoria;
 DROP TABLE ps_usuario;

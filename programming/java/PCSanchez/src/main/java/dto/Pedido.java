@@ -18,6 +18,10 @@ public class Pedido {
         this.direcciones = direcciones;
         this.usuario = usuario;
     }
+    
+    public Pedido(){
+    
+    }
 
     public int getNumero() {
         return numero;

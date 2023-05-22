@@ -278,6 +278,17 @@ VALUES (4641, 'S', to_date('15/02/2023', 'DD/MM/YYYY'), 6, 5464);
 INSERT INTO ps_pedido(numero, facturado, fecha_pedido, numero_direccion, codigo_usuario)
 VALUES (4642, 'S', to_date('15/02/2023', 'DD/MM/YYYY'), 14, 5465);
 
+-- TABLA PEDIDO_ARTICULO --
+
+INSERT INTO ps_pedido_articulo(id, articulo, cantidad, precio)
+VALUES (4640, 12356, 1, 50);
+
+INSERT INTO ps_pedido_articulo(id, articulo, cantidad, precio)
+VALUES (4641, 12356, 1, 50);
+
+INSERT INTO ps_pedido_articulo(id, articulo, cantidad, precio)
+VALUES (4642, 12356, 1, 50);
+
 -- TABLA FACTURA --
 
 INSERT INTO ps_factura(cod_factura, fecha, numero_pedido, cod_usuario, cod_usuario_direccion, numero_direccion)
