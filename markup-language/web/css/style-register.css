@@ -288,12 +288,16 @@ main form {
     flex-direction: column;
 }
 
-main input {
+main input, select {
     border: none;
     border-radius: 5px;
     font-size: 16px;
     margin-bottom: 20px;
     padding: 10px;
+}
+
+select {
+    background-color: white;
 }
 
 main label {
