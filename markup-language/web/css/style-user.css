@@ -132,6 +132,29 @@ a {
     border-radius: 100%;
 }
 
+.usuario-logued .foto-perfil {
+    position: relative;
+}
+
+.usuario-logued .foto-perfil:hover .logout-button {
+    display: block;
+}
+
+.logout-button {
+    display: none;
+    position: absolute;
+    bottom: -63px;  /* Ajusta este valor según tus necesidades */
+    left: 0;
+    background-color: var(--verde);
+    color: var(--azul);
+    padding: 5px 10px;
+    cursor: pointer;
+    text-align: center;
+    width: 140%;
+    border-radius: 5px;
+    justify-content: left;
+}
+
 /* -------- MEDIA QUERY ----------- */
 
 /* ------ NO SE MUESTRA SIN QUERY ------- */
@@ -268,9 +291,22 @@ main {
     display: flex;
     flex-direction: column;
     align-items: center;
-    background-color: white;
     border-radius: 10px;
     padding: 20px;
+}
+
+.foto-foto-usuario {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+label.cambiar-foto {
+    text-align: center;
+    border: solid 1px var(--azul);
+    border-radius: 100px;
+    max-width: 150px;
+    color: var(--azul);
 }
 
 .foto-usuario img {
@@ -278,6 +314,38 @@ main {
     width: 150px;
     height: 150px;
     object-fit: cover;
+}
+
+.foto-foto-usuario button:hover {
+    background-color: #282e7542;
+}
+
+.cambiar-foto-toggle {
+    display: none;
+}
+
+.url-intro {
+    display: none;
+    margin-top: 20px;
+    text-align: center;
+}
+
+.url-intro form input,
+.url-intro form button {
+    padding: 10px;
+    margin: 5px;
+    border: none;
+    border-radius: 5px;
+}
+
+.url-intro form button {
+    background-color: var(--verde);
+    color: white;
+    cursor: pointer;
+}
+
+.cambiar-foto-toggle:checked ~ .url-intro {
+    display: block;
 }
 
 .info {
@@ -303,6 +371,7 @@ main button {
     cursor: pointer;
     font-size: 16px;
     margin-top: 10px;
+    width: 15vw;
     padding: 10px;
 }
 
@@ -310,24 +379,41 @@ header button:hover {
     background-color: #282f75;
 }
 
+.logout {
+    background-color: red;
+    width: 30vw;
+}
+
 main button:hover {
     background-color: #69c76c;
 }
 
+.logout:hover {
+    background-color: rgb(177, 0, 0);
+}
+
 @media screen and (max-width: 600px) {
-    .foto-perfil img {
-        width: 100px;
-        height: 100px;
-    }
 
     .info h2, .info p {
         font-size: 14px;
     }
 
-    button {
+    .pedido-cesta {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .pedido-cesta button{
+        width: 30vw;
+    }
+
+    main button {
         font-size: 14px;
         padding: 8px;
+        min-width: 130px;
     }
+    
 }
 
 /* ------- FOOTER -------- */

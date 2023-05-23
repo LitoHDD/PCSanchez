@@ -132,6 +132,29 @@ a {
     border-radius: 100%;
 }
 
+.usuario-logued .foto-perfil {
+    position: relative;
+}
+
+.usuario-logued .foto-perfil:hover .logout-button {
+    display: block;
+}
+
+.logout-button {
+    display: none;
+    position: absolute;
+    bottom: -63px;  /* Ajusta este valor según tus necesidades */
+    left: 0;
+    background-color: var(--verde);
+    color: var(--azul);
+    padding: 5px 10px;
+    cursor: pointer;
+    text-align: center;
+    width: 140%;
+    border-radius: 5px;
+    justify-content: left;
+}
+
 /* -------- MEDIA QUERY ----------- */
 
 /* ------ NO SE MUESTRA SIN QUERY ------- */
@@ -254,6 +277,9 @@ a {
     }
 }
 
+
+/* --------------- MAIN -----------------
+ */
 .principal {
     display: grid;
     grid-template:  "aside         main" 1fr    /

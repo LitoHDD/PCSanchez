@@ -53,6 +53,7 @@
             <section class="usuario-logued">
                 <figure class="foto-perfil">
                     <a href="./usuario.html"><img src="./images/header/user-default.png" alt=""></a>
+                    <div class="logout-button">Cerrar Sesión</div>
                 </figure>
                 <figure>
                     <a href="./cesta.html"><img src="./images/index/carro.png" alt=""></a>
@@ -69,15 +70,30 @@
         </header>
         <main>
             <section class="perfil">
-                <div class="foto-usuario">
-                    <img src="./images/header/user-default.png" alt="Foto de perfil">
-                </div>
+                <div class="foto-foto-usuario">
+                    <figure class="foto-usuario">
+                        <img src="./images/header/user-default.png" alt="Foto de perfil">
+                    </figure>
+                    <input type="checkbox" id="cambiar-foto-toggle" class="cambiar-foto-toggle">
+                    <label for="cambiar-foto-toggle" class="cambiar-foto">Cambiar foto</label>
+                    <div class="url-intro">
+                        <form>
+                            <input type="text" placeholder="Introduce la URL de la imagen">
+                            <button type="submit">Enviar</button>
+                        </form>
+                    </div>
+                </div>  
                 <div class="info">
                     <h2>Nombre completo</h2>
                     <p>Email: ejemplo.alu@iespacomolla.es</p>
                     <p>Fecha de nacimiento: 21/05/1974</p>
-                    <button type="button" onclick="location.href='./pedidos.html'">Ver pedidos</button>
-                    <button type="button" onclick="location.href='./cesta.html'">Ver cesta</button>
+                    <section>
+                        <section class="pedido-cesta">
+                            <button type="button" onclick="location.href='./pedidos.html'">Pedidos</button>
+                            <button type="button" onclick="location.href='./cesta.html'">Cesta</button>
+                        </section>
+                        <button type="button" class="logout">Cerrar sesion</button>
+                    </section>
                 </div>
             </section>
         </main>
