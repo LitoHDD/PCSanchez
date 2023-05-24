@@ -96,7 +96,7 @@
                 </ul>
             </section>
             <section class="componentes">
-                <h2>COMPONENTES</h2>
+                <h2>COMPONENTES DESTACADOS</h2>
                 <section>
                     <%-- Randomize the component order --%>
                     <% ArrayList<String> componentes = new ArrayList<String>();
@@ -203,9 +203,13 @@
                     <% } %>
                     <% }%>
                 </section>
+                <a href="./componentes.jsp">Ver mas</a>
             </section>
+            <div class="marquee">
+                <p class="marquee__content">Este es un texto que se desplaza de derecha a izquierda de manera infinita.</p>
+            </div>
             <section class="ordenadores">
-                <h2>ORDENADORES</h2>
+                <h2>ORDENADORES DESTACADOS</h2>
                 <section>
                     <%-- Generate random Portátil products --%>
                     <% PortatilDAO portatilDAO = new PortatilDAO();
@@ -213,33 +217,18 @@
                         Collections.shuffle(portatiles);
                     %>
                     <% for (Portatil producto : portatiles) {%>
-                    <article class="componente">
+                    <article class="ordenador">
                         <figure>
                             <a href="./producto.jsp?codigo=<%= producto.getCodigo()%>"><img src="<%= producto.getPathFoto()%>" alt="IMG"></a>
                         </figure>
-                        <h4><%= producto.getNombre()%></h4>
-                        <h5 class="precio"><%= producto.getPrecio()%>€</h5>
-                    </article>
-                    <% } %>
-
-                    <%-- Generate random Sobremesa products --%>
-                    <% SobremesaDAO sobremesaDAO = new SobremesaDAO();
-                        ArrayList<Sobremesa> sobremesas = sobremesaDAO.getAll();
-                        Collections.shuffle(sobremesas);
-                    %>
-                    <% for (Sobremesa producto : sobremesas) {%>
-                    <article class="componente">
-                        <figure>
-                            <a href="./producto.jsp?codigo=<%= producto.getCodigo()%>"><img src="<%= producto.getPathFoto()%>" alt="IMG"></a>
-                        </figure>
-                        <h4><%= producto.getNombre()%></h4>
-                        <h5 class="precio"><%= producto.getPrecio()%>€</h5>
+                        <p class="name-pc"><%= producto.getNombre()%></p>
+                        <p class="price"><%= producto.getPrecio()%>€</p>
                     </article>
                     <% }%>
                 </section>
+                <a href="./componentes.jsp">Ver mas</a>
             </section>
         </main>
-
         <footer>
             <div class="footer-container">
                 <figure>

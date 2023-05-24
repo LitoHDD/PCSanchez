@@ -66,7 +66,7 @@ public class RamDAO extends TablaDAO<Ram> {
             String pathFoto = resultSet.getString("path_foto");
             String tipo = resultSet.getString("tipo");
             String perfilXmp = resultSet.getString("perfil_xmp");
-            int capacidadGb = resultSet.getInt("capacidad_mb");
+            int capacidadGb = resultSet.getInt("capacidad_gb");
             int frecuenciaMhz = resultSet.getInt("frecuencia_mhz");
             int stock = resultSet.getInt("stock");
             LocalDate fechaCreacion = resultSet.getDate("fecha_creacion").toLocalDate();
@@ -95,7 +95,7 @@ public class RamDAO extends TablaDAO<Ram> {
             String pathFoto = resultSet.getString("path_foto");
             String tipo = resultSet.getString("tipo");
             String perfilXmp = resultSet.getString("perfil_xmp");
-            int capacidadGb = resultSet.getInt("capacidad_mb");
+            int capacidadGb = resultSet.getInt("capacidad_gb");
             int frecuenciaMhz = resultSet.getInt("frecuencia_mhz");
             int stock = resultSet.getInt("stock");
             LocalDate fechaCreacion = resultSet.getDate("fecha_creacion").toLocalDate();
