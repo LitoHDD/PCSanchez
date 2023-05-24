@@ -11,6 +11,7 @@
 /home/sergio/NetBeansProjects/PCSanchez/programming/java/PCSanchez/src/main/java/dto/Direccion.java
 /home/sergio/NetBeansProjects/PCSanchez/programming/java/PCSanchez/src/main/java/dao/DireccionDAO.java
 /home/sergio/NetBeansProjects/PCSanchez/programming/java/PCSanchez/src/main/java/dto/Categoria.java
+/home/sergio/NetBeansProjects/PCSanchez/programming/java/PCSanchez/src/main/java/dto/Almacenamiento.java
 /home/sergio/NetBeansProjects/PCSanchez/programming/java/PCSanchez/src/main/java/dao/PedidoDAO.java
 /home/sergio/NetBeansProjects/PCSanchez/programming/java/PCSanchez/src/main/java/controlador/ComprarServlet.java
 /home/sergio/NetBeansProjects/PCSanchez/programming/java/PCSanchez/src/main/java/dto/TarjetaGrafica.java
@@ -19,6 +20,7 @@
 /home/sergio/NetBeansProjects/PCSanchez/programming/java/PCSanchez/src/main/java/dto/Pedido.java
 /home/sergio/NetBeansProjects/PCSanchez/programming/java/PCSanchez/src/main/java/controlador/LoginServlet.java
 /home/sergio/NetBeansProjects/PCSanchez/programming/java/PCSanchez/src/main/java/dao/RefrigeracionDAO.java
+/home/sergio/NetBeansProjects/PCSanchez/programming/java/PCSanchez/src/main/java/dao/AlmacenamientoDAO.java
 /home/sergio/NetBeansProjects/PCSanchez/programming/java/PCSanchez/src/main/java/dao/LineaCestaDAO.java
 /home/sergio/NetBeansProjects/PCSanchez/programming/java/PCSanchez/src/main/java/dto/PlacaBase.java
 /home/sergio/NetBeansProjects/PCSanchez/programming/java/PCSanchez/src/main/java/dao/CajaDAO.java

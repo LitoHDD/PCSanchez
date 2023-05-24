@@ -1,7 +1,7 @@
 <%-- 
-    Document   : register
-    Created on : May 9, 2023, 1:51:35 AM
-    Author     : sergio
+Document   : register
+Created on : May 9, 2023, 1:51:35 AM
+Author     : sergio
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
@@ -39,7 +39,6 @@
         <% } %>
 </div>
 <% }%>
-
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -56,14 +55,22 @@
             <figure class="logo">
                 <img src="./images/index/logo.png" alt="">
             </figure>
-            <nav>
-                <ul>
-                    <li><a href="#">Inicio</a></li>
-                    <li><a href="#">Ordenadores</a></li>
-                    <li><a href="#">Componentes</a></li>
-                    <li><a href="./privacy.html">Nosotros</a></li>
-                </ul>
-            </nav>
+            <input type="checkbox" id="hamburger-toggle" class="hamburger-toggle">
+            <label for="hamburger-toggle" class="burger-label">
+                <figure class="burger">
+                    <img src="./images/index/burger.png" alt="">
+                </figure>
+            </label>
+            <div class="menu">
+                <nav>
+                    <ul>
+                        <li><a href="./index.jsp">Inicio</a></li>
+                        <li><a href="./OrdenadoresViejo.html">Ordenadores</a></li>
+                        <li><a href="./ComponentesViejo.html">Componentes</a></li>
+                        <li><a href="./PrivacyViejo.html">Privacidad</a></li>
+                    </ul>
+                </nav>
+            </div>
             <article class="search">
                 <form>
                     <label>
@@ -72,25 +79,45 @@
                     </label>
                 </form>
             </article>
+
+            <!-- SIN ESTAR LOGEADO -->
+            <% if (session.getAttribute("loggedIn") == null || !(boolean) session.getAttribute("loggedIn")) { %>
             <section class="usuario">
-                <article >
-                    <p>REGISTRASE</p>
-                </article>
+                <button type="button" onclick="location.href = './register.jsp'">REGISTRARSE</button>
                 <article>
-                    <p>ENTRAR</p>
+                    <a href="./login.jsp">ENTRAR</a>
                 </article>
             </section>
-            <section class="titulo-query">
-                <h2>PC SANCHEZ</h2>
+            <% } %>
+            <!-- EStANDO LOGUEADO -->
+            <% if (session.getAttribute("loggedIn") != null && (boolean) session.getAttribute("loggedIn")) { %>
+            <section class="usuario-logued">
+                <figure class="foto-perfil">
+                    <a href="./usuario.jsp"><img src="./images/header/user-default.png" alt=""></a>
+                    <form id="logoutForm" action="LogoutServlet" method="post">
+                        <div class="logout-button" onclick="document.getElementById('logoutForm').submit()">Cerrar Sesión</div>
+                    </form>
+                </figure>
+                <figure>
+                    <a href="./cesta.html"><img src="./images/index/carro.png" alt=""></a>
+                </figure>
             </section>
-            <figure class="burger">
-                <img src="./images/index/burger.png" alt="">
-            </figure>
-            <figure class="user-query">
+            <% }%>
+
+            <a href="./index.html" class="titulo-query">
+                <h2>PC SANCHEZ</h2>
+            </a>
+            <a href="./UsuarioViejo.html" class="user-query">
                 <img src="./images/index/user.png" alt="">
-            </figure>
+            </a>
+
         </header>
         <main>
+            <%-- Verificar si el usuario ha iniciado sesión --%>
+            <% if (session.getAttribute("loggedIn") != null && (boolean) session.getAttribute("loggedIn")) { %>
+                <%-- Redirigir a la página principal si el usuario ha iniciado sesión --%>
+                <% response.sendRedirect("index.jsp"); %>
+            <% } else { %>
             <h2>REGISTRO</h2>
             <section class="registro">
                 <form method="post" action="RegisterServlet">
@@ -106,16 +133,95 @@
                     <input type="tel" id="telefono" name="telefono" autocomplete="on" placeholder="Introduzca su teléfono">
                     <label for="fecha-nacimiento">Fecha de nacimiento:</label>
                     <input type="date" id="fecha-nacimiento" name="fecha-nacimiento" autocomplete="on" placeholder="Seleccione su fecha de nacimiento">
+                    <label for="tipo-via">Tipo de vía:</label>
+                    <select id="tipo-via" name="tipo-via">
+                        <option value="">--Por favor elija--</option>
+                        <option value="Calle">Calle</option>
+                        <option value="Avenida">Avenida</option>
+                        <option value="Plaza">Plaza</option>
+                        <option value="Carretera">Carretera</option>
+                    </select>
+                    <label for="direccion">Dirección:</label>
+                    <input type="text" id="direccion" name="direccion" autocomplete="on" placeholder="Linea de direccion única">
+                    <label for="provincia">Provincia:</label>
+                    <select id="provincia" name="provincia">
+                        <option value="">--Por favor elija--</option>
+                        <option value="A-coruna">A Coruña</option>
+                        <option value="Alava">Álava</option>
+                        <option value="Albacete">Albacete</option>
+                        <option value="Alicante">Alicante</option>
+                        <option value="Almeria">Almería</option>
+                        <option value="Asturias">Asturias</option>
+                        <option value="Avila">Ávila</option>
+                        <option value="Badajoz">Badajoz</option>
+                        <option value="Baleares">Baleares</option>
+                        <option value="Barcelona">Barcelona</option>
+                        <option value="Burgos">Burgos</option>
+                        <option value="Caceres">Cáceres</option>
+                        <option value="Cadiz">Cádiz</option>
+                        <option value="Cantabria">Cantabria</option>
+                        <option value="Castellon">Castellón</option>
+                        <option value="Ciudad-real">Ciudad Real</option>
+                        <option value="Cordoba">Córdoba</option>
+                        <option value="Cuenca">Cuenca</option>
+                        <option value="Girona">Girona</option>
+                        <option value="Granada">Granada</option>
+                        <option value="Guadalajara">Guadalajara</option>
+                        <option value="Gipuzkoa">Gipuzkoa</option>
+                        <option value="Huelva">Huelva</option>
+                        <option value="Huesca">Huesca</option>
+                        <option value="Jaen">Jaén</option>
+                        <option value="La-rioja">La Rioja</option>
+                        <option value="Las-palmas">Las Palmas</option>
+                        <option value="Leon">León</option>
+                        <option value="Lerida">Lérida</option>
+                        <option value="Lugo">Lugo</option>
+                        <option value="Madrid">Madrid</option>
+                        <option value="Malaga">Málaga</option>
+                        <option value="Murcia">Murcia</option>
+                        <option value="Navarra">Navarra</option>
+                        <option value="Ourense">Ourense</option>
+                        <option value="Palencia">Palencia</option>
+                        <option value="Pontevedra">Pontevedra</option>
+                        <option value="Salamanca">Salamanca</option>
+                        <option value="Segovia">Segovia</option>
+                        <option value="Sevilla">Sevilla</option>
+                        <option value="Soria">Soria</option>
+                        <option value="Tarragona">Tarragona</option>
+                        <option value="Santa-cruz-de-tenerife">Santa Cruz de Tenerife</option>
+                        <option value="Teruel">Teruel</option>
+                        <option value="Toledo">Toledo</option>
+                        <option value="Valencia">Valencia</option>
+                        <option value="Valladolid">Valladolid</option>
+                        <option value="Vizcaya">Vizcaya</option>
+                        <option value="Zamora">Zamora</option>
+                        <option value="Zaragoza">Zaragoza</option>
+                    </select>
+                    <label for="ciudad">Ciudad:</label>
+                    <input type="text" id="ciudad" name="ciudad" autocomplete="on" placeholder="Introduce tu ciudad">
                     <section class="privacy">
                         <input type="checkbox" id="privacy-policy" name="privacy-policy">
-                        <label for="privacy-policy">He leído y acepto la <a href="./privacy.html">política de privacidad</a>.</label>
+                        <label for="privacy-policy">He leído y acepto la <a href="./PrivacyViejo.html">política de privacidad</a>.</label>
                     </section>
                     <button type="submit">REGISTRARSE</button>
                 </form>
             </section>
+            <% } %>
         </main>
     </body>
+    <footer>
+        <div class="footer-container">
+            <figure>
+                <img src="./images/footer/logo-footer2.png" alt="">
+            </figure>
+            <div class="footer-logo">
+                <img src="./images/footer/logo-footer.png" alt="PC SANCHEZ Logo">
+            </div>
+            <div class="github-link">
+                <figure>
+                    <a href=""><img src="./images/footer/github.png" alt=""></a>
+                </figure>
+            </div>
+        </div>
+    </footer>
 </html>
-
-
-

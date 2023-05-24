@@ -1,0 +1,123 @@
+<%-- 
+    Document   : usuario
+    Created on : May 23, 2023, 9:43:17 PM
+    Author     : sergio
+--%>
+
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="normalize.css">
+        <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="./css/style-user.css">
+        <title>Usuario - PCSanchez</title>
+    </head>
+    <body>
+        <header>
+            <figure class="logo">
+                <img src="./images/index/logo.png" alt="">
+            </figure>
+            <input type="checkbox" id="hamburger-toggle" class="hamburger-toggle">
+            <label for="hamburger-toggle" class="burger-label">
+                <figure class="burger">
+                    <img src="./images/index/burger.png" alt="">
+                </figure>
+            </label>
+            <div class="menu">
+                <nav>
+                    <ul>
+                        <li><a href="./index.jsp">Inicio</a></li>
+                        <li><a href="./OrdenadoresViejo.html">Ordenadores</a></li>
+                        <li><a href="./ComponentesViejo.html">Componentes</a></li>
+                        <li><a href="./PrivacyViejo.html">Privacidad</a></li>
+                    </ul>
+                </nav>
+            </div>
+            <article class="search">
+                <form>
+                    <label>
+                        <input type="text" placeholder="Buscar">
+                        <button type="submit"></button>
+                    </label>
+                </form>
+            </article>
+
+    <!--         SIN ESTAR LOGEADO -->
+
+            <section class="usuario">
+                <button type="button" onclick="location.href='./register.html'">REGISTRARSE</button>
+                <article>
+                    <a href="./login.html">ENTRAR</a>
+                </article>
+            </section>
+
+    <!--         EStANDO LOGUEADO -->
+
+            <section class="usuario-logued">
+                <figure class="foto-perfil">
+                    <a href="./UsuarioViejo.html"><img src="./images/header/user-default.png" alt=""></a>
+                    <div class="logout-button">Cerrar Sesión</div>
+                </figure>
+                <figure>
+                    <a href="./cesta.html"><img src="./images/index/carro.png" alt=""></a>
+                </figure>
+            </section>
+
+            <a href="./index.html" class="titulo-query">
+                <h2>PC SANCHEZ</h2>
+            </a>
+            <a href="./UsuarioViejo.html" class="user-query">
+                <img src="./images/index/user.png" alt="">
+            </a>
+            
+        </header>
+        <main>
+            <section class="perfil">
+                <div class="foto-foto-usuario">
+                    <figure class="foto-usuario">
+                        <img src="./images/header/user-default.png" alt="Foto de perfil">
+                    </figure>
+                    <input type="checkbox" id="cambiar-foto-toggle" class="cambiar-foto-toggle">
+                    <label for="cambiar-foto-toggle" class="cambiar-foto">Cambiar foto</label>
+                    <div class="url-intro">
+                        <form>
+                            <input type="text" placeholder="Introduce la URL de la imagen">
+                            <button type="submit">Enviar</button>
+                        </form>
+                    </div>
+                </div>  
+                <div class="info">
+                    <h2>Nombre completo</h2>
+                    <p>Email: ejemplo.alu@iespacomolla.es</p>
+                    <p>Fecha de nacimiento: 21/05/1974</p>
+                    <section>
+                        <section class="pedido-cesta">
+                            <button type="button" onclick="location.href='./pedidos.html'">Pedidos</button>
+                            <button type="button" onclick="location.href='./cesta.jsp'">Cesta</button>
+                        </section>
+                        <button type="button" class="logout">Cerrar sesion</button>
+                    </section>
+                </div>
+            </section>
+        </main>
+        <footer>
+            <div class="footer-container">
+                <figure>
+                    <img src="./images/footer/logo-footer2.png" alt="">
+                </figure>
+                <div class="footer-logo">
+                    <img src="./images/footer/logo-footer.png" alt="PC SANCHEZ Logo">
+                </div>
+                <div class="github-link">
+                    <figure>
+                        <a href=""><img src="./images/footer/github.png" alt=""></a>
+                    </figure>
+                </div>
+            </div>
+        </footer>
+    </body>
+</html>

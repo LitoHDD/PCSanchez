@@ -4,6 +4,7 @@
  */
 package dto;
 
+import dao.AlmacenamientoDAO;
 import dao.ArticuloCategoriaDAO;
 import dao.ArticuloDAO;
 import dao.CajaDAO;
@@ -61,7 +62,6 @@ public class Test {
         CestaDAO prueba4 = new CestaDAO();
         ArrayList<Cesta> cestas = prueba4.getAll();
         System.out.println(cestas);
-        System.out.println(prueba4.getByNombreCesta("Navidades"));
         System.out.println("\n");
 
         DireccionDAO prueba5 = new DireccionDAO();
@@ -145,6 +145,12 @@ public class Test {
         ArrayList<Usuario> usuarios = prueba18.getAll();
         System.out.println(usuarios);
         System.out.println(prueba18.getByCodigo(5463));
+        System.out.println("\n");
+
+        AlmacenamientoDAO prueba19 = new AlmacenamientoDAO();
+        ArrayList<Almacenamiento> almacenamientos = prueba19.getAll();
+        System.out.println(almacenamientos);
+        System.out.println(prueba19.getByCodigo(12345));
         System.out.println("\n");
     }
 }

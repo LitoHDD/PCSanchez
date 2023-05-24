@@ -12,6 +12,7 @@ dao/RamDAO$2.class
 dao/RefrigeracionDAO.class
 dao/TarjetaDAO$1.class
 dao/PortatilDAO$2.class
+dao/AlmacenamientoDAO.class
 dao/TarjetaGraficaDAO.class
 dao/TarjetaGraficaDAO$2.class
 dao/PedidoDAO.class
@@ -23,6 +24,7 @@ dao/ProcesadorDAO.class
 dto/Usuario.class
 dao/CajaDAO$2.class
 dao/DireccionDAO.class
+dao/AlmacenamientoDAO$1.class
 dao/RamDAO.class
 controlador/ComprarServlet.class
 dao/ProcesadorDAO$1.class
@@ -33,10 +35,12 @@ dto/Refrigeracion.class
 dao/SobremesaDAO$2.class
 dto/Psu.class
 dao/IDAO.class
+dto/Almacenamiento.class
 dto/Categoria.class
 dao/PedidoArticuloDAO.class
 dao/RefrigeracionDAO$2.class
 dto/Tarjeta.class
+dao/AlmacenamientoDAO$2.class
 dao/Conexion.class
 dao/RefrigeracionDAO$1.class
 dto/TarjetaGrafica.class

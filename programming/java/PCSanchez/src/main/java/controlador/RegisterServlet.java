@@ -31,6 +31,10 @@ public class RegisterServlet extends HttpServlet {
         String telefono = request.getParameter("telefono");
         String fechaNacimiento = request.getParameter("fecha-nacimiento");
         boolean aceptaPolitica = request.getParameter("privacy-policy") != null;
+        String tipoVia = request.getParameter("tipo-via");
+        String direccion = request.getParameter("direccion");
+        String provincia = request.getParameter("provincia");
+        String ciudad = request.getParameter("ciudad");
         String rutaFoto = "Sin foto";
         String tipoUsuario = "CLIENTE";
 
@@ -88,73 +92,67 @@ public class RegisterServlet extends HttpServlet {
             ps = conn.prepareStatement("SELECT codigo FROM ps_usuario WHERE codigo = (SELECT MAX(codigo) FROM ps_usuario)");
             rs = ps.executeQuery();
 
+            int ultimoCodigo = 0;
             if (rs.next()) {
-                int ultimoCodigo = rs.getInt("codigo");
-                int nuevoCodigo = ultimoCodigo + 1;
-
-                // Inserción del usuario en la base de datos
-                ps = conn.prepareStatement("INSERT INTO ps_usuario (codigo, email, pass, nombre_comp, foto, telefono, fecha_nacimiento, tipousuario) VALUES (?, ?, ?, ?, ?, ?, ?, ?)");
-                ps.setInt(1, nuevoCodigo);
-                ps.setString(2, email);
-                ps.setString(3, password);
-                ps.setString(4, nombre);
-                ps.setString(5, rutaFoto);
-                ps.setString(6, telefono);
-                ps.setDate(7, new java.sql.Date(fechaNacimientoDate.getTime()));
-                ps.setString(8, tipoUsuario);
-
-                ps.executeUpdate();
-                ps.close();
-
-                System.out.println("Usuario registrado con éxito: " + email); // Mensaje de depuración
-
-                // Redirección a la página de inicio de sesión
-                response.sendRedirect("login.jsp?success=true");
-
-                // Crea una nueva cesta con el nombre "Cesta"
-                CestaDAO cestaDAO = new CestaDAO();
-                Cesta nuevaCesta = cestaDAO.crearNuevaCesta(nuevoCodigo);
-
-                if (nuevaCesta == null) {
-                    System.out.println("Error al crear la cesta para el usuario: " + email);
-                } else {
-                    System.out.println("Cesta creada con éxito para el usuario: " + email);
-                }
-
-            } else {
-                // La tabla está vacía, así que el primer código será 5001
-                int nuevoCodigo = 5001;
-
-                // Inserción del usuario en la base de datos
-                ps = conn.prepareStatement(
-                        "INSERT INTO ps_usuario (codigo, email, pass, nombre_comp, foto, telefono, fecha_nacimiento, tipousuario) VALUES (?, ?, ?, ?, ?, ?, ?, ?)");
-                ps.setInt(1, nuevoCodigo);
-                ps.setString(2, email);
-                ps.setString(3, password);
-                ps.setString(4, nombre);
-                ps.setString(5, rutaFoto);
-                ps.setString(6, telefono);
-                ps.setDate(7, new java.sql.Date(fechaNacimientoDate.getTime()));
-                ps.setString(8, tipoUsuario);
-
-                ps.executeUpdate();
-                ps.close();
-
-                System.out.println("Usuario registrado con éxito: " + email); // Mensaje de depuración
-
-                // Redirección a la página de inicio de sesión
-                response.sendRedirect("login.jsp?success=true");
-
-                // Crea una nueva cesta con el nombre "Cesta"
-                CestaDAO cestaDAO = new CestaDAO();
-                Cesta nuevaCesta = cestaDAO.crearNuevaCesta(nuevoCodigo);
-
-                if (nuevaCesta == null) {
-                    System.out.println("Error al crear la cesta para el usuario: " + email);
-                } else {
-                    System.out.println("Cesta creada con éxito para el usuario: " + email);
-                }
+                ultimoCodigo = rs.getInt("codigo");
             }
+
+            int nuevoCodigo = ultimoCodigo + 1;
+
+            // Inserción del usuario en la base de datos
+            ps = conn.prepareStatement("INSERT INTO ps_usuario (codigo, email, pass, nombre_comp, foto, telefono, fecha_nacimiento, tipousuario) VALUES (?, ?, ?, ?, ?, ?, ?, ?)");
+            ps.setInt(1, nuevoCodigo);
+            ps.setString(2, email);
+            ps.setString(3, password);
+            ps.setString(4, nombre);
+            ps.setString(5, rutaFoto);
+            ps.setString(6, telefono);
+            ps.setDate(7, new java.sql.Date(fechaNacimientoDate.getTime()));
+            ps.setString(8, tipoUsuario);
+
+            ps.executeUpdate();
+            ps.close();
+
+            System.out.println("Usuario registrado con éxito: " + email); // Mensaje de depuración
+
+            // Obtener el último número de dirección y sumar uno
+            int ultimoNumero = 0;
+            ps = conn.prepareStatement("SELECT numero FROM ps_direccion WHERE numero = (SELECT MAX(numero) FROM ps_direccion)");
+            rs = ps.executeQuery();
+
+            if (rs.next()) {
+                ultimoNumero = rs.getInt("numero");
+            }
+
+            int nuevoNumero = ultimoNumero + 1;
+
+            // Inserción de la dirección del usuario en la base de datos
+            ps = conn.prepareStatement("INSERT INTO ps_direccion (numero, tipo, direccion, poblacion, provincia, codigo_usuario_direccion) VALUES (?, ?, ?, ?, ?, ?)");
+            ps.setInt(1, nuevoNumero);
+            ps.setString(2, tipoVia);
+            ps.setString(3, direccion);
+            ps.setString(4, ciudad);
+            ps.setString(5, provincia);
+            ps.setInt(6, nuevoCodigo);
+
+            ps.executeUpdate();
+            ps.close();
+
+            System.out.println("Dirección registrada con éxito para el usuario: " + email); // Mensaje de depuración
+
+            // Redirección a la página de inicio de sesión
+            response.sendRedirect("login.jsp?success=true");
+
+            // Crea una nueva cesta con el nombre "Cesta"
+            CestaDAO cestaDAO = new CestaDAO();
+            Cesta nuevaCesta = cestaDAO.crearNuevaCesta(nuevoCodigo);
+
+            if (nuevaCesta == null) {
+                System.out.println("Error al crear la cesta para el usuario: " + email);
+            } else {
+                System.out.println("Cesta creada con éxito para el usuario: " + email);
+            }
+
         } catch (SQLException e) {
             // Si hay un error en la base de datos, redirigimos a la página de registro con un mensaje de error
             e.printStackTrace();

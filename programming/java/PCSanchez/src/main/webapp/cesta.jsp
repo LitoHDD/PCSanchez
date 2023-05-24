@@ -28,10 +28,10 @@
             </figure>
             <nav>
                 <ul>
-                    <li><a href="#">Inicio</a></li>
+                    <li><a href="./index.jsp">Inicio</a></li>
                     <li><a href="#">Ordenadores</a></li>
                     <li><a href="#">Componentes</a></li>
-                    <li><a href="./privacy.html">Nosotros</a></li>
+                    <li><a href="./PrivacyViejo.html">Nosotros</a></li>
                 </ul>
             </nav>
             <article class="search">

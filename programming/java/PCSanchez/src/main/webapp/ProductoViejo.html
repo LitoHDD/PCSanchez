@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="normalize.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="./css/style-producto.css">
+    <title>Producto</title>
+</head>
+<body>
+    <header>
+        <figure class="logo">
+            <img src="./images/index/logo.png" alt="">
+        </figure>
+        <input type="checkbox" id="hamburger-toggle" class="hamburger-toggle">
+        <label for="hamburger-toggle" class="burger-label">
+            <figure class="burger">
+                <img src="./images/index/burger.png" alt="">
+            </figure>
+        </label>
+        <div class="menu">
+            <nav>
+                <ul>
+                    <li><a href="./index.html">Inicio</a></li>
+                    <li><a href="./OrdenadoresViejo.html">Ordenadores</a></li>
+                    <li><a href="./ComponentesViejo.html">Componentes</a></li>
+                    <li><a href="./PrivacyViejo.html">Privacidad</a></li>
+                </ul>
+            </nav>
+        </div>
+        <article class="search">
+            <form>
+                <label>
+                    <input type="text" placeholder="Buscar">
+                    <button type="submit"></button>
+                </label>
+            </form>
+        </article>
+
+<!--         SIN ESTAR LOGEADO -->
+
+        <section class="usuario">
+            <button type="button" onclick="location.href='./register.html'">REGISTRARSE</button>
+            <article>
+                <a href="./login.html">ENTRAR</a>
+            </article>
+        </section>
+
+<!--         EStANDO LOGUEADO -->
+
+        <section class="usuario-logued">
+            <figure class="foto-perfil">
+                <a href="./UsuarioViejo.html"><img src="./images/header/user-default.png" alt=""></a>
+                <div class="logout-button">Cerrar Sesión</div>
+            </figure>
+            <figure>
+                <a href="./cesta.html"><img src="./images/index/carro.png" alt=""></a>
+            </figure>
+        </section>
+
+        <a href="./index.html" class="titulo-query">
+            <h2>PC SANCHEZ</h2>
+        </a>
+        <a href="./UsuarioViejo.html" class="user-query">
+            <img src="./images/index/user.png" alt="">
+        </a>
+        
+    </header>
+    <div class="general">
+        <section class="producto">
+            <figure class="foto">
+                <img src="./images/producto/producto.jpg" alt="ram">
+            </figure>
+            <section class="comprar">
+                <h2>RAM</h2>
+                <h3>100€</h3>
+                <section class="pedido">
+                    <ul class="negrita">
+                        <li><strong>MARCA:</strong></li>
+                        <li><strong>ENVÍO:</strong></li>
+                        <li><strong>DEVOLUCIÓN:</strong></li>
+                        <li><strong>CANTIDAD:</strong></li>
+                    </ul>
+                    <ul class="datos">
+                        <li>Samsung</li>
+                        <li>Gratis-24h</li>
+                        <li>Gratis</li>
+                        <li><input id="number" type="number" value="1" /></li>
+                    </ul>
+                </section>
+                <section class="buy">
+                    <section class="buy-comprar"> 
+                        <a href="#" id="buy">AÑADIR AL CARRITO</a>
+                    </section>
+                </section> 
+            </section>
+        </section>
+        <section class="descripcion">
+            <h3>DESCRIPCION</h3>
+            <p> 
+                Lorem ipsum dolor sit amet consectetur adipiscing elit hac laoreet 
+                tempus himenaeos, praesent ante elementum enim congue nibh proin magna 
+                iaculis tempor nisi, dictum semper ultrices dictumst justo libero lectus 
+                dis volutpat quis. Pretium aptent venenatis montes curae ridiculus nulla 
+                hac gravida, nam purus praesent arcu eros sapien aliquet, volutpat justo 
+                natoque torquent etiam netus augue. Phasellus suspendisse taciti nostra 
+                donec mus posuere libero sapien ad sed, risus fermentum bibendum hac urna 
+                fusce nascetur sollicitudin ridiculus nam, pellentesque pretium pharetra 
+                tempus aliquam lobortis velit ante est.
+            </p>
+        </section>
+        <section class="especificaciones">
+            <h3>ESPECIFICACIONES</h3>
+            <table>
+                <tr>
+                    <td class="especificacion"><strong>Marca</strong></td>
+                    <td>Corsair</td>
+                </tr>
+                <tr>
+                    <td class="especificacion"><strong>Fabricante</strong></td>
+                    <td>Corsair</td>
+                </tr>
+                <tr>
+                    <td class="especificacion"><strong>Series</strong></td>
+                    <td>Vengeance LPX</td>
+                </tr>
+                <tr>
+                    <td class="especificacion"><strong>Dimensiones del producto</strong></td>
+                    <td>15.49 x 8.99 x 0.99 cm; 90.72 gramos</td>
+                </tr>
+                <tr>
+                    <td class="especificacion"><strong>Número de modelo del producto</strong></td>
+                    <td>CMK16GX4M2B3200C16</td>
+                </tr>
+                <tr>
+                    <td class="especificacion"><strong>Color</strong></td>
+                    <td>Negro</td>
+                </tr>
+                <tr>
+                    <td class="especificacion"><strong>Capacidad de la memoria RAM</strong></td>
+                    <td>16 GB</td>
+                </tr>
+               
+            </table>
+        </section>
+    </div>
+    <footer>
+        <div class="footer-container">
+            <figure>
+                <img src="./images/footer/logo-footer2.png" alt="">
+            </figure>
+            <div class="footer-logo">
+                <img src="./images/footer/logo-footer.png" alt="PC SANCHEZ Logo">
+            </div>
+            <div class="github-link">
+                <figure>
+                    <a href=""><img src="./images/footer/github.png" alt=""></a>
+                </figure>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>

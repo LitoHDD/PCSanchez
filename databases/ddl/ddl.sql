@@ -147,7 +147,7 @@ CREATE TABLE ps_placa_base (
 
 CREATE TABLE ps_memoria_ram (
     codigo_articulo NUMBER(8) PRIMARY KEY,
-    capacidad_mb NUMBER(5) NOT NULL,
+    capacidad_gb NUMBER(5) NOT NULL,
     frecuencia_mhz NUMBER(4) NOT NULL,
     tipo VARCHAR2(4) NOT NULL,
     perfil_xmp VARCHAR2(2) NOT NULL,

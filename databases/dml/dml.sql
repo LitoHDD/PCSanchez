@@ -107,7 +107,7 @@ INSERT INTO ps_articulo (codigo, usuario_crea, usuario_modifica, nombre, iva, de
 VALUES (12368, 5463, 5463, 'Corsair 360mm', 21, 'El Corsair 360mm es un sistema de refrigeración líquida de alto rendimiento diseñado para mantener tu CPU fresca incluso en condiciones de alta carga. Con un radiador de 360mm y tres ventiladores de 120mm, este sistema de refrigeración líquida proporciona una excelente capacidad de disipación de calor y un rendimiento de enfriamiento eficiente. Con su diseño de alta calidad y duradero, el Corsair 360mm garantiza una larga vida útil y un funcionamiento confiable. Además, su instalación es sencilla y cuenta con características avanzadas, como iluminación RGB personalizable y software de control intuitivo para ajustar la velocidad del ventilador y los perfiles de enfriamiento. Si buscas una solución de refrigeración líquida potente y eficiente para tu sistema, el Corsair 360mm es una excelente opción.', 110, 'https://i.imgur.com/Vk1zm5n.png', 500, to_date('15/02/2023', 'DD/MM/YYYY'), to_date('15/02/2023', 'DD/MM/YYYY'));
 
 INSERT INTO ps_articulo (codigo, usuario_crea, usuario_modifica, nombre, iva, descripcion, precio, path_foto, stock, fecha_creacion, fecha_modificacion)
-VALUES (12369, 5463, 5463, 'AlurinPC + Windows 10', 21, 'Excelente relación calidad/precio para este PC con componentes de primeras marcas, la máxima garantía y gran rendimiento, ideal para usuarios que buscan hacer "de todo un poco".', 500, 'Sin foto', 500, to_date('15/02/2023', 'DD/MM/YYYY'), to_date('15/02/2023', 'DD/MM/YYYY'));
+VALUES (12369, 5463, 5463, 'AlurinPC + Windows 10', 21, 'Excelente relación calidad/precio para este PC con componentes de primeras marcas, la máxima garantía y gran rendimiento, ideal para usuarios que buscan hacer "de todo un poco".', 500, 'https://i.imgur.com/BOZENCF.png', 500, to_date('15/02/2023', 'DD/MM/YYYY'), to_date('15/02/2023', 'DD/MM/YYYY'));
 
 INSERT INTO ps_articulo (codigo, usuario_crea, usuario_modifica, nombre, iva, descripcion, precio, path_foto, stock, fecha_creacion, fecha_modificacion)
 VALUES (12370, 5463, 5463, 'Lenovo IdeaCentre + Windows 10', 21, 'El Lenovo IdeaCentre es un PC de sobremesa confiable y de alto rendimiento diseñado para satisfacer diversas necesidades informáticas. Con un diseño elegante y compacto, se integra fácilmente en cualquier entorno de trabajo o hogar. El IdeaCentre ofrece potentes procesadores, opciones de memoria ampliables y almacenamiento generoso para manejar tareas diarias, aplicaciones exigentes y juegos. Además, cuenta con una variedad de puertos y conectividad para facilitar la conexión de periféricos y dispositivos externos. Con una combinación de rendimiento confiable y funcionalidad versátil, el Lenovo IdeaCentre es una excelente opción para aquellos que buscan un PC de sobremesa potente y eficiente.', 700, 'https://i.imgur.com/xeoZnlq.png', 500, to_date('15/02/2023', 'DD/MM/YYYY'), to_date('15/02/2023', 'DD/MM/YYYY'));
@@ -148,14 +148,14 @@ VALUES (12350, 'ATX', 'Negra', '8 USB Frontales');
 
 -- TABLA MEMORIA RAM --
 
-INSERT INTO ps_memoria_ram (codigo_articulo, capacidad_mb, frecuencia_mhz, tipo, perfil_xmp)
-VALUES (12351, 16000, 3200, 'Mid', 'si');
+INSERT INTO ps_memoria_ram (codigo_articulo, capacidad_gb, frecuencia_mhz, tipo, perfil_xmp)
+VALUES (12351, 16, 3200, 'Mid', 'si');
 
-INSERT INTO ps_memoria_ram (codigo_articulo, capacidad_mb, frecuencia_mhz, tipo, perfil_xmp)
-VALUES (12352, 16000, 3200, 'Mid', 'si');
+INSERT INTO ps_memoria_ram (codigo_articulo, capacidad_gb, frecuencia_mhz, tipo, perfil_xmp)
+VALUES (12352, 16, 3200, 'Mid', 'si');
 
-INSERT INTO ps_memoria_ram (codigo_articulo, capacidad_mb, frecuencia_mhz, tipo, perfil_xmp)
-VALUES (12353, 16000, 2666, 'Mid', 'si');
+INSERT INTO ps_memoria_ram (codigo_articulo, capacidad_gb, frecuencia_mhz, tipo, perfil_xmp)
+VALUES (12353, 16, 2666, 'Mid', 'si');
 
 -- TABLA PLACA_BASE --
 

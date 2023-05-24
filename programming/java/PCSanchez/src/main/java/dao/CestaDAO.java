@@ -3,7 +3,6 @@ package dao;
 import dto.Articulo;
 import dto.Cesta;
 import dto.LineaCesta;
-import dto.Usuario;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -71,13 +70,13 @@ public class CestaDAO extends TablaDAO<Cesta> {
     public ArrayList<Cesta> getAll() throws SQLException {
         ArrayList<Cesta> lista = new ArrayList<>();
 
-        String sentenciaSQL = "SELECT * FROM " + tabla + " ORDER BY nombre";
+        String sentenciaSQL = "SELECT * FROM " + tabla + " ORDER BY codigo";
         PreparedStatement prepared = getPrepared(sentenciaSQL);
         ResultSet resultSet = prepared.executeQuery();
 
         while (resultSet.next()) {
             int codigo = resultSet.getInt("codigo");
-            double precio = resultSet.getDouble("precio");
+            double precio = resultSet.getDouble("precio_cesta");
             // Crear una instancia de LineaCestaDAO
             LineaCestaDAO lineaCestaDAO = new LineaCestaDAO();
             // Utilizar el método getLineasPorIdCesta para obtener las líneas de la cesta
@@ -85,26 +84,6 @@ public class CestaDAO extends TablaDAO<Cesta> {
             lista.add(new Cesta(codigo, precio, lineasPedido));
         }
         return lista;
-    }
-
-    public Cesta getByNombreCesta(String nombreCesta) throws SQLException {
-        String sentenciaSQL = "SELECT * FROM " + tabla + " WHERE nombre=?";
-        PreparedStatement prepared = getPrepared(sentenciaSQL);
-        prepared.setString(1, nombreCesta);
-        ResultSet resultSet = prepared.executeQuery();
-
-        while (resultSet.next()) {
-            int codigo = resultSet.getInt("codigo");
-            double precio = resultSet.getDouble("precio");
-            // Crear una instancia de LineaCestaDAO
-            LineaCestaDAO lineaCestaDAO = new LineaCestaDAO();
-            // Utilizar el método getLineasPorIdCesta para obtener las líneas de la cesta
-            ArrayList<LineaCesta> lineasPedido = lineaCestaDAO.getLineas(codigo);
-
-            return new Cesta(codigo, precio, lineasPedido);
-        }
-
-        return null;
     }
 
     @Override
