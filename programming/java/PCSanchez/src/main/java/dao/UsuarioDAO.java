@@ -8,6 +8,7 @@ import dto.Cesta;
 import dto.Direccion;
 import dto.TipoUsuario;
 import dto.Usuario;
+import java.sql.Connection;
 import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -153,6 +154,21 @@ public class UsuarioDAO extends TablaDAO<Usuario> {
         }
 
         return null;
+    }
+
+    public void actualizarFoto(String photoUrl, int codigoUsuario) {
+        String sql = "UPDATE " + tabla + " SET foto = ? WHERE codigo = ?";
+
+        try (Connection conn = Conexion.getConexion().getDatasource().getConnection(); PreparedStatement pstmt = conn.prepareStatement(sql)) {
+
+            pstmt.setString(1, photoUrl);
+            pstmt.setInt(2, codigoUsuario);
+
+            pstmt.executeUpdate();
+        } catch (Exception e) {
+            // Manejar la excepción, podría ser un log o rethrow dependiendo de tu diseño
+            e.printStackTrace();
+        }
     }
 
 }

@@ -60,7 +60,6 @@ CREATE TABLE ps_pedido(
     numero_direccion NUMBER(4) NOT NULL,
     codigo_usuario NUMBER(8) NOT NULL,
     PRIMARY KEY(numero),
-    CONSTRAINT pedido_fk_nombre FOREIGN KEY (numero) REFERENCES ps_cesta (codigo),
     CONSTRAINT pedido_fk_codigo_usuario FOREIGN KEY (codigo_usuario) REFERENCES ps_usuario(codigo),
     CONSTRAINT pedido_fk_direccion FOREIGN KEY (numero_direccion, codigo_usuario) REFERENCES ps_direccion (numero, codigo_usuario_direccion)
 );
@@ -85,7 +84,6 @@ CREATE TABLE ps_pedido_articulo(
     articulo NUMBER(8),
     cantidad NUMBER(6),
     precio NUMBER(8),
-    PRIMARY KEY(id),
     CONSTRAINT pedido_fk_pedido FOREIGN KEY (id) REFERENCES ps_pedido (numero),
     CONSTRAINT cesta_articulos_fk FOREIGN KEY (articulo) REFERENCES ps_articulo
 );

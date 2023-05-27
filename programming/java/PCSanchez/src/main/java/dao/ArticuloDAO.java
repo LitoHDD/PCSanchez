@@ -14,6 +14,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  *
@@ -109,6 +110,83 @@ public class ArticuloDAO extends TablaDAO<Articulo> {
             };
         }
         return null;
+    }
+
+    public List<Articulo> getByCategoria(String nombreCategoria) throws SQLException {
+        List<Articulo> articulos = new ArrayList<>();
+        String sentenciaSQL = "SELECT ps_articulo.codigo, ps_articulo.nombre, ps_articulo.descripcion, ps_articulo.path_foto, ps_articulo.iva, ps_articulo.precio, ps_articulo.stock, ps_articulo.fecha_creacion, ps_articulo.fecha_modificacion, ps_articulo.usuario_modifica, ps_articulo.usuario_crea "
+                + "FROM ps_articulo "
+                + "JOIN ps_articulo_categoria ON ps_articulo.codigo = ps_articulo_categoria.codigo_articulo_categoria "
+                + "JOIN ps_categoria ON ps_articulo_categoria.nombre_categoria = ps_categoria.nombre "
+                + "WHERE ps_categoria.nombre LIKE ?";
+        PreparedStatement prepared = getPrepared(sentenciaSQL);
+        prepared.setString(1, "%" + nombreCategoria + "%");
+        ResultSet resultSet = prepared.executeQuery();
+        while (resultSet.next()) {
+            int codigoArticulo = resultSet.getInt("codigo");
+            Usuario usuarioCrea = new UsuarioDAO().getByCodigo(resultSet.getInt("usuario_crea"));
+            Usuario usuarioModifica = new UsuarioDAO().getByCodigo(resultSet.getInt("usuario_modifica"));
+            String nombre = resultSet.getString("nombre");
+            int iva = resultSet.getInt("iva");
+            int precio = resultSet.getInt("precio");
+            String descripcion = resultSet.getString("descripcion");
+            String pathFoto = resultSet.getString("path_foto");
+            int stock = resultSet.getInt("stock");
+            LocalDate fechaCreacion = resultSet.getDate("fecha_creacion").toLocalDate();
+            LocalDate fechaModificacion = resultSet.getDate("fecha_modificacion").toLocalDate();
+            Articulo articulo = new Articulo(codigoArticulo, nombre, descripcion, pathFoto, iva, precio, stock, fechaCreacion, fechaModificacion, usuarioModifica, usuarioCrea) {};
+            articulos.add(articulo);
+        }
+        return articulos;
+    }
+
+    public Articulo getByNombre(String nombreArticulo) throws SQLException {
+        String sentenciaSQL = "SELECT * FROM " + tabla + " WHERE nombre=?";
+        PreparedStatement prepared = getPrepared(sentenciaSQL);
+        prepared.setString(1, nombreArticulo);
+        ResultSet resultSet = prepared.executeQuery();
+        while (resultSet.next()) {
+            int codigoArticulos = resultSet.getInt("codigo");
+            Usuario usuarioCrea = new UsuarioDAO().getByCodigo(resultSet.getInt("usuario_crea"));
+            Usuario usuarioModifica = new UsuarioDAO().getByCodigo(resultSet.getInt("usuario_modifica"));
+            String nombre = resultSet.getString("nombre");
+            int iva = resultSet.getInt("iva");
+            int precio = resultSet.getInt("precio");
+            String descripcion = resultSet.getString("descripcion");
+            String pathFoto = resultSet.getString("path_foto");
+            int stock = resultSet.getInt("stock");
+            LocalDate fechaCreacion = resultSet.getDate("fecha_creacion").toLocalDate();
+            LocalDate fechaModificacion = resultSet.getDate("fecha_modificacion").toLocalDate();
+            return new Articulo(codigoArticulos, nombre, descripcion, pathFoto, iva, precio, stock, fechaCreacion, fechaModificacion, usuarioModifica, usuarioCrea) {
+            };
+        }
+        return null;
+    }
+
+    public List<Articulo> getByNombreParcial(String nombreParcial) throws SQLException {
+        String sentenciaSQL = "SELECT * FROM " + tabla + " WHERE LOWER(nombre) LIKE LOWER(?)";
+        PreparedStatement prepared = getPrepared(sentenciaSQL);
+        prepared.setString(1, "%" + nombreParcial + "%");
+        ResultSet resultSet = prepared.executeQuery();
+
+        List<Articulo> articulos = new ArrayList<>();
+        while (resultSet.next()) {
+            int codigoArticulos = resultSet.getInt("codigo");
+            Usuario usuarioCrea = new UsuarioDAO().getByCodigo(resultSet.getInt("usuario_crea"));
+            Usuario usuarioModifica = new UsuarioDAO().getByCodigo(resultSet.getInt("usuario_modifica"));
+            String nombre = resultSet.getString("nombre");
+            int iva = resultSet.getInt("iva");
+            int precio = resultSet.getInt("precio");
+            String descripcion = resultSet.getString("descripcion");
+            String pathFoto = resultSet.getString("path_foto");
+            int stock = resultSet.getInt("stock");
+            LocalDate fechaCreacion = resultSet.getDate("fecha_creacion").toLocalDate();
+            LocalDate fechaModificacion = resultSet.getDate("fecha_modificacion").toLocalDate();
+
+            articulos.add(new Articulo(codigoArticulos, nombre, descripcion, pathFoto, iva, precio, stock, fechaCreacion, fechaModificacion, usuarioModifica, usuarioCrea) {
+            });
+        }
+        return articulos;
     }
 
     public ArrayList<ArticuloCategoria> getCategorias(int codigoArticulo) throws SQLException {

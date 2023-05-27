@@ -20,6 +20,22 @@
         <servlet-name>ComprarServlet</servlet-name>
         <servlet-class>controlador.ComprarServlet</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>BuscarServlet</servlet-name>
+        <servlet-class>controlador.BuscarServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>AutoCompletarServlet</servlet-name>
+        <servlet-class>controlador.AutoCompletarServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ActualizarFotoUsuarioServlet</servlet-name>
+        <servlet-class>controlador.ActualizarFotoUsuarioServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>AgregarTarjetaServlet</servlet-name>
+        <servlet-class>controlador.AgregarTarjetaServlet</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>LoginServlet</servlet-name>
         <url-pattern>/LoginServlet</url-pattern>
@@ -39,6 +55,22 @@
     <servlet-mapping>
         <servlet-name>ComprarServlet</servlet-name>
         <url-pattern>/ComprarServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>BuscarServlet</servlet-name>
+        <url-pattern>/BuscarServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>AutoCompletarServlet</servlet-name>
+        <url-pattern>/AutoCompletarServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ActualizarFotoUsuarioServlet</servlet-name>
+        <url-pattern>/ActualizarFotoUsuarioServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>AgregarTarjetaServlet</servlet-name>
+        <url-pattern>/AgregarTarjetaServlet</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

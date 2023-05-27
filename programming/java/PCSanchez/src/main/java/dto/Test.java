@@ -13,6 +13,7 @@ import dao.CestaDAO;
 import dao.DireccionDAO;
 import dao.FacturaDAO;
 import dao.LineaCestaDAO;
+import dao.PedidoArticuloDAO;
 import dao.PedidoDAO;
 import dao.PlacaBaseDAO;
 import dao.PortatilDAO;
@@ -42,9 +43,12 @@ public class Test {
         System.out.println("\n");
 
         ArticuloDAO prueba1 = new ArticuloDAO();
-        ArrayList<Articulo> articulos = prueba1.getAll();
+        /*ArrayList<Articulo> articulos = prueba1.getAll();
         System.out.println(articulos);
         System.out.println(prueba1.getByCodigo(12345));
+        System.out.println(prueba1.getByNombre("SSD Kingston 480GB"));
+        System.out.println(prueba1.getByNombreParcial("SSD"));*/
+        System.out.println(prueba1.getByCategoria("Alma"));
         System.out.println("\n");
 
         CajaDAO prueba2 = new CajaDAO();
@@ -77,14 +81,14 @@ public class Test {
         System.out.println("\n");
 
         LineaCestaDAO prueba7 = new LineaCestaDAO();
-        ArrayList<LineaCesta> lineasCestas = prueba7.getLineas(6440);
+        ArrayList<LineaCesta> lineasCestas = prueba7.getLineas(4640);
         System.out.println(lineasCestas);
         System.out.println("\n");
 
         PedidoDAO prueba8 = new PedidoDAO();
         ArrayList<Pedido> pedidos = prueba8.getAll();
         System.out.println(pedidos);
-        System.out.println(prueba8.getByCodigo(5463));
+        System.out.println(prueba8.getByCodigo(4640));
         System.out.println("\n");
 
         PlacaBaseDAO prueba9 = new PlacaBaseDAO();
@@ -152,5 +156,18 @@ public class Test {
         System.out.println(almacenamientos);
         System.out.println(prueba19.getByCodigo(12345));
         System.out.println("\n");
+
+        try {
+            PedidoArticuloDAO prueba20 = new PedidoArticuloDAO();
+
+            PedidoArticulo pedidoArticulo = new PedidoArticulo();
+            pedidoArticulo.setId(4640);
+
+            int numeroPedido = prueba20.obtenerNumeroPedido(pedidoArticulo);
+            System.out.println("Número de pedido: " + numeroPedido);
+        } catch (SQLException e) {
+            System.out.println("Error al obtener el número de pedido: " + e.getMessage());
+        }
+
     }
 }

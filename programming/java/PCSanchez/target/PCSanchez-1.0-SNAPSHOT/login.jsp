@@ -73,10 +73,10 @@ Author     : sergio
                 </figure>
             </section>
 
-            <a href="./index.html" class="titulo-query">
+            <a href="./index.jsp" class="titulo-query">
                 <h2>PC SANCHEZ</h2>
             </a>
-            <a href="./UsuarioViejo.html" class="user-query">
+            <a href="./usuario.jsp" class="user-query">
                 <img src="./images/index/user.png" alt="">
             </a>
 

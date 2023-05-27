@@ -36,13 +36,13 @@ header {
 
 /* ----- MENU ------- */
 
-header ul {
+header nav ul {
     display: flex;
     justify-content: space-between;
     width: 40vw;
 }
 
-header ul li {
+header nav ul li {
     margin: 0 20px;
 }
 
@@ -93,6 +93,34 @@ nav a {
     right: 0;
     width: 40px;
     height: 100%;
+}
+
+#suggestion-box {
+    margin-top: 4px;
+    background-color: white;
+    position: absolute;
+    width: 27.5%;
+    border: solid 1px lightgray;
+    border-radius: 6px;
+    overflow: hidden;
+}
+
+#suggestions {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    list-style: none;
+}
+
+#suggestions li {
+    padding: 5px 10px;
+}
+
+#suggestions li:hover{
+    background-color: #30398a1f;
+    color: var(--azul);
+    cursor: pointer;
+    font-weight: bold;
 }
 
 /* ----- LOGIN ------- */
@@ -240,6 +268,10 @@ a {
         width: 100%;
     }
 
+    #suggestion-box  {
+        width: 92%;
+    }
+
     /*  --------Funcionalidad burguer----------- */
 
     .hamburger-toggle:checked ~ .menu {
@@ -338,7 +370,7 @@ main {
     width: 50%;
 }
 
-h2 {
+main h2 {
     color: #30398A;
 }
 
@@ -381,28 +413,6 @@ h2 {
     justify-content: space-between;
 }
 
-.marquee {
-    margin-top: 30px;
-    width: 100%;
-    overflow: hidden;
-}
-
-.marquee__content {
-    display: inline-block;
-    white-space: nowrap;
-    padding-left: 100%;
-    animation: marquee 10s linear infinite;
-}
-
-@keyframes marquee {
-    0% {
-        transform: translateX(0);
-    }
-    100% {
-        transform: translateX(-100%);
-    }
-}
-
 .ordenadores .ordenador img:hover{
     transform: scale(1.2);
     transition-duration: 0.2s;
@@ -414,7 +424,6 @@ h2 {
 }
 
 .marquee {
-    font-weight: bold;
     margin-top: 30px;
     width: 100%;
     overflow: hidden;
@@ -461,13 +470,9 @@ h2 {
     object-fit: contain;
 }
 
-.name-pc {
-    color: var(--azul);
-    font-weight: bold;
-}
-
 .price {
     font-weight: 600;
+    color: var(--azul);
 }
 
 .ordenador figure{
@@ -483,6 +488,10 @@ h2 {
 
     .slider {
         margin-top: 140px;
+    }
+
+    .ordenadores section, .componentes section{
+        grid-template-columns: 1fr 1fr 1fr;
     }
 
 }
@@ -503,16 +512,8 @@ h2 {
         visibility: hidden;
     }
 
-    .componentes section{
-        grid-template-columns: 1fr 1fr 1fr;
-    }
-
-    .ordenadores section{
-        grid-template-columns: 1fr;
-    }
-
-    .ordenadores article{
-        max-height: 150px;
+    .ordenadores section, .componentes section{
+        grid-template-columns: 1fr 1fr;
     }
 
     .ordenadores article figure{

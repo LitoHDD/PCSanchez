@@ -1,7 +1,7 @@
 package dto;
 
 public class Direccion {
-    
+
     private int numero;
     private String tipo, direccion, poblacion, provincia;
 
@@ -77,7 +77,7 @@ public class Direccion {
 
     @Override
     public String toString() {
-        return "Direccion{" + "numero=" + numero + ", tipo=" + tipo + ", direccion=" + direccion + ", poblacion=" + poblacion + ", provincia=" + provincia + '}';
+        return tipo + " " + direccion + ", " + poblacion + ", " + provincia;
     }
-    
+
 }

@@ -10,6 +10,8 @@ import dto.PedidoArticulo;
 import dto.Pedido;
 import dto.Usuario;
 import dto.Direccion;
+import dao.TarjetaDAO; // Agrega la importación del TarjetaDAO
+import dto.Tarjeta;
 import javax.servlet.*;
 import javax.servlet.http.*;
 import java.io.IOException;
@@ -31,6 +33,7 @@ public class ComprarServlet extends HttpServlet {
         PedidoDAO pedidoDAO = new PedidoDAO();
         CestaDAO cestaDAO = new CestaDAO();
         UsuarioDAO usuarioDAO = new UsuarioDAO();
+        TarjetaDAO tarjetaDAO = new TarjetaDAO(); // Agrega la instancia del TarjetaDAO
 
         try {
             // Aquí asumimos que tienes un método en CestaDAO que obtiene la cesta de un usuario específico
@@ -44,6 +47,26 @@ public class ComprarServlet extends HttpServlet {
                 return;
             }
 
+            // Verificar si el usuario tiene una tarjeta asignada
+            boolean tieneTarjeta = false;
+            try {
+                Tarjeta tarjeta = tarjetaDAO.getByCodigoUsuario(usuario.getCodigo());
+                if (tarjeta != null) {
+                    tieneTarjeta = true;
+                }
+            } catch (SQLException e) {
+                // Gestionar la excepción, tal vez redirigiendo a una página de error.
+                e.printStackTrace();
+                response.sendRedirect("error.jsp");
+                return;
+            }
+
+            if (!tieneTarjeta) {
+                // Redirigir al usuario a la página para agregar una tarjeta
+                response.sendRedirect("agregar-tarjeta.jsp");
+                return;
+            }
+            
             // Crear un nuevo Pedido y guardarlo en la base de datos
             Pedido pedido = new Pedido();
             // Añade aquí todos los detalles necesarios para el pedido
@@ -52,9 +75,11 @@ public class ComprarServlet extends HttpServlet {
             List<Direccion> direcciones = usuarioDAO.getDirecciones(usuario.getCodigo());
             pedido.setDirecciones(direcciones); // Establecer la lista de direcciones en el pedido
             pedido.setUsuario(usuario);
-            // Agrega el pedido a la base de datos
-            pedidoDAO.anyadir(pedido);
+            // Agregar el pedido a la base de datos
+            int numeroPedido = pedidoDAO.anyadir(pedido);
+            System.out.println(numeroPedido);
 
+            // Obtener las líneas de la cesta
             List<LineaCesta> lineasCesta = null;
             try {
                 lineasCesta = cestaDAO.getLineas(cesta.getCodigo());
@@ -67,7 +92,7 @@ public class ComprarServlet extends HttpServlet {
 
             for (LineaCesta lineaCesta : lineasCesta) {
                 PedidoArticulo pedidoArticulo = new PedidoArticulo();
-                pedidoArticulo.setId(lineaCesta.getId());
+                pedidoArticulo.setId(numeroPedido); // Establecer el número de pedido como el id del pedido
                 pedidoArticulo.setArticulo(lineaCesta.getArticulo());
                 pedidoArticulo.setCantidad(lineaCesta.getCantidad());
                 pedidoArticulo.setPrecio(lineaCesta.getArticulo().getPrecio() * lineaCesta.getCantidad()); // Asumiendo que el precio está en el objeto Articulo
@@ -91,7 +116,7 @@ public class ComprarServlet extends HttpServlet {
                             Thread.sleep(500);
                         } catch (InterruptedException ex) {
                             // Ignorar la excepción
-                        } 
+                        }
                     }
                 } while (!pedidoArticuloAdded);
             }

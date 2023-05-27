@@ -98,6 +98,35 @@
                     </label>
                 </form>
             </article>
+            <!-- SIN ESTAR LOGEADO -->
+            <% if (session.getAttribute("loggedIn") == null || !(boolean) session.getAttribute("loggedIn")) { %>
+            <section class="usuario">
+                <button type="button" onclick="location.href = './register.jsp'">REGISTRARSE</button>
+                <article>
+                    <a href="./login.jsp">ENTRAR</a>
+                </article>
+            </section>
+            <% } %>
+            <!-- EStANDO LOGUEADO -->
+            <% if (session.getAttribute("loggedIn") != null && (boolean) session.getAttribute("loggedIn")) { %>
+            <section class="usuario-logued">
+                <figure class="foto-perfil">
+                    <a href="./usuario.jsp"><img src="./images/header/user-default.png" alt=""></a>
+                    <form id="logoutForm" action="LogoutServlet" method="post">
+                        <div class="logout-button" onclick="document.getElementById('logoutForm').submit()">Cerrar Sesión</div>
+                    </form>
+                </figure>
+                <figure>
+                    <a href="./cesta.html"><img src="./images/index/carro.png" alt=""></a>
+                </figure>
+            </section>
+            <% }%>
+            <a href="./index.html" class="titulo-query">
+                <h2>PC SANCHEZ</h2>
+            </a>
+            <a href="./UsuarioViejo.html" class="user-query">
+                <img src="./images/index/user.png" alt="">
+            </a>
         </header>
         <div class="general">
             <section class="producto">
@@ -106,7 +135,7 @@
                 </figure>
                 <section class="comprar">
                     <h2><%= (portatil != null) ? portatil.getNombre() : (sobremesa != null) ? sobremesa.getNombre() : (caja != null) ? caja.getNombre() : (placaBase != null) ? placaBase.getNombre() : (procesador != null) ? procesador.getNombre() : (psu != null) ? psu.getNombre() : (ram != null) ? ram.getNombre() : (refrigeracion != null) ? refrigeracion.getNombre() : (tarjetaGrafica != null) ? tarjetaGrafica.getNombre() : almacenamiento.getNombre()%></h2>
-                    <h3><%= (portatil != null) ? portatil.getPrecio() : (sobremesa != null) ? sobremesa.getPrecio() : (caja != null) ? caja.getPrecio() : (placaBase != null) ? placaBase.getPrecio() : (procesador != null) ? procesador.getPrecio() : (psu != null) ? psu.getPrecio() : (ram != null) ? ram.getPrecio() : (refrigeracion != null) ? refrigeracion.getPrecio() : (tarjetaGrafica != null) ? tarjetaGrafica.getPrecio() : almacenamiento.getPrecio()%></h3>
+                    <h3><%= (portatil != null) ? portatil.getPrecio() : (sobremesa != null) ? sobremesa.getPrecio() : (caja != null) ? caja.getPrecio() : (placaBase != null) ? placaBase.getPrecio() : (procesador != null) ? procesador.getPrecio() : (psu != null) ? psu.getPrecio() : (ram != null) ? ram.getPrecio() : (refrigeracion != null) ? refrigeracion.getPrecio() : (tarjetaGrafica != null) ? tarjetaGrafica.getPrecio() : almacenamiento.getPrecio()%> €</h3>
                     <section class="pedido">
                         <ul class="negrita">
                             <li><strong>MARCA:</strong></li>

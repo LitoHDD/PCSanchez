@@ -11,6 +11,10 @@ public class Tarjeta {
         this.numeroTarjeta = numeroTarjeta;
         this.usuario = usuario;
     }
+    
+    public Tarjeta(){
+        
+    }
 
     public int getCodPago() {
         return codPago;

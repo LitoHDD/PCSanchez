@@ -1,20 +1,13 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package dao;
 
 import dto.Tarjeta;
 import dto.Usuario;
+
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
-/**
- *
- * @author sergio
- */
 public class TarjetaDAO extends TablaDAO<Tarjeta> {
 
     public TarjetaDAO() {
@@ -23,17 +16,19 @@ public class TarjetaDAO extends TablaDAO<Tarjeta> {
 
     @Override
     public int actualizar(Tarjeta objeto) throws SQLException {
-        String sentenciaSQL = "UPDATE " + tabla + " SET nombre=? WHERE codigo=?";
+        String sentenciaSQL = "UPDATE " + tabla + " SET num_tarjeta=? WHERE cod_pago=?";
         PreparedStatement prepared = getPrepared(sentenciaSQL);
-        prepared.setInt(1, objeto.getCodPago());
+        prepared.setLong(1, objeto.getNumeroTarjeta());
+        prepared.setInt(2, objeto.getCodPago());
         return prepared.executeUpdate();
     }
 
     @Override
     public int anyadir(Tarjeta objeto) throws SQLException {
-        String sentenciaSQL = "INSERT INTO " + tabla + " VALUES(?)";
+        String sentenciaSQL = "INSERT INTO " + tabla + " VALUES((SELECT NVL(MAX(cod_pago), 0) + 1 FROM " + tabla + "), ?, ?)";
         PreparedStatement prepared = getPrepared(sentenciaSQL);
-        prepared.setInt(2, objeto.getCodPago());
+        prepared.setLong(1, objeto.getNumeroTarjeta());
+        prepared.setInt(2, objeto.getUsuario().getCodigo());
         return prepared.executeUpdate();
     }
 
@@ -54,31 +49,47 @@ public class TarjetaDAO extends TablaDAO<Tarjeta> {
     @Override
     public ArrayList<Tarjeta> getAll() throws SQLException {
         ArrayList<Tarjeta> lista = new ArrayList<>();
-        String sentenciaSQL = "SELECT * FROM " + tabla + " ORDER BY cod_usuario";
+        String sentenciaSQL = "SELECT * FROM " + tabla + " ORDER BY cod_pago";
         PreparedStatement prepared = getPrepared(sentenciaSQL);
         ResultSet resultSet = prepared.executeQuery();
         while (resultSet.next()) {
             int codPago = resultSet.getInt("cod_pago");
             long numTarjeta = resultSet.getLong("num_tarjeta");
-            Usuario codUsuario = new UsuarioDAO().getByCodigo(resultSet.getInt("cod_usuario"));
+            int codUsuario = resultSet.getInt("cod_usuario");
+            Usuario usuario = new UsuarioDAO().getByCodigo(codUsuario);
 
-            lista.add(new Tarjeta(codPago, numTarjeta, codUsuario));
+            lista.add(new Tarjeta(codPago, numTarjeta, usuario));
         }
         return lista;
     }
 
     @Override
-    public Tarjeta getByCodigo(int codigoUsuario) throws SQLException {
+    public Tarjeta getByCodigo(int codigoPago) throws SQLException {
+        String sentenciaSQL = "SELECT * FROM " + tabla + " WHERE cod_pago=?";
+        PreparedStatement prepared = getPrepared(sentenciaSQL);
+        prepared.setInt(1, codigoPago);
+        ResultSet resultSet = prepared.executeQuery();
+        if (resultSet.next()) {
+            int codPago = resultSet.getInt("cod_pago");
+            long numTarjeta = resultSet.getLong("num_tarjeta");
+            int codUsuario = resultSet.getInt("cod_usuario");
+            Usuario usuario = new UsuarioDAO().getByCodigo(codUsuario);
+            return new Tarjeta(codPago, numTarjeta, usuario);
+        }
+        return null;
+    }
+
+    public Tarjeta getByCodigoUsuario(int codigoUsuario) throws SQLException {
         String sentenciaSQL = "SELECT * FROM " + tabla + " WHERE cod_usuario=?";
         PreparedStatement prepared = getPrepared(sentenciaSQL);
         prepared.setInt(1, codigoUsuario);
         ResultSet resultSet = prepared.executeQuery();
-        while (resultSet.next()) {
+        if (resultSet.next()) {
             int codPago = resultSet.getInt("cod_pago");
             long numTarjeta = resultSet.getLong("num_tarjeta");
-            Usuario codUsuario = new UsuarioDAO().getByCodigo(resultSet.getInt("cod_usuario"));
-            return new Tarjeta(codPago, numTarjeta, codUsuario) {
-            };
+            int codUsuario = resultSet.getInt("cod_usuario");
+            Usuario usuario = new UsuarioDAO().getByCodigo(codUsuario);
+            return new Tarjeta(codPago, numTarjeta, usuario);
         }
         return null;
     }

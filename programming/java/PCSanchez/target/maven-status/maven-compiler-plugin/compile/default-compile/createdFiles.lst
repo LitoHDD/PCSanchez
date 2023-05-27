@@ -1,3 +1,4 @@
+dao/ArticuloDAO$4.class
 dao/TablaDAO.class
 dto/Procesador.class
 dao/UsuarioDAO.class
@@ -12,6 +13,7 @@ dao/RamDAO$2.class
 dao/RefrigeracionDAO.class
 dao/TarjetaDAO$1.class
 dao/PortatilDAO$2.class
+controlador/BuscarServlet.class
 dao/AlmacenamientoDAO.class
 dao/TarjetaGraficaDAO.class
 dao/TarjetaGraficaDAO$2.class
@@ -38,6 +40,7 @@ dao/IDAO.class
 dto/Almacenamiento.class
 dto/Categoria.class
 dao/PedidoArticuloDAO.class
+dao/ArticuloDAO$3.class
 dao/RefrigeracionDAO$2.class
 dto/Tarjeta.class
 dao/AlmacenamientoDAO$2.class
@@ -67,9 +70,11 @@ dto/Caja.class
 dao/ArticuloCategoriaDAO.class
 dao/ArticuloCategoriaDAO$2.class
 dao/PlacaBaseDAO$2.class
+controlador/AutoCompletarServlet.class
 controlador/EliminarProductoServlet.class
 dao/ArticuloDAO$1.class
 dto/ArticuloCategoria.class
 dto/TipoUsuario.class
 dao/TarjetaGraficaDAO$1.class
+controlador/ActualizarFotoUsuarioServlet.class
 dto/Portatil.class

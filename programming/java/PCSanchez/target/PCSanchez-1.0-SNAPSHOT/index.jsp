@@ -1,3 +1,4 @@
+<%@page import="dto.Usuario"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <%@ page import="dto.Psu"%>
 <%@ page import="dao.PsuDAO"%>
@@ -27,6 +28,7 @@
         <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
         <link rel="stylesheet" href="./css/style.css">
         <title>INICIO - PCSanchez</title>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     </head>
     <body>
         <header>
@@ -50,12 +52,19 @@
                 </nav>
             </div>
             <article class="search">
-                <form>
+                <form action="search" method="get" onsubmit="onSubmitForm()">
                     <label>
-                        <input type="text" placeholder="Buscar">
+                        <input type="text" id="search-bar" placeholder="Buscar por nombre o categoría">
                         <button type="submit"></button>
                     </label>
+                    <input type="hidden" id="categoria-input" name="categoria" value="">
+                    <input type="hidden" id="query-input" name="query" value="">
                 </form>
+                <div id="suggestion-box" style="display: none;">
+                    <ul id="suggestions">
+                        <!-- Las sugerencias irán aquí -->
+                    </ul>
+                </div>
             </article>
             <!-- SIN ESTAR LOGEADO -->
             <% if (session.getAttribute("loggedIn") == null || !(boolean) session.getAttribute("loggedIn")) { %>
@@ -67,27 +76,35 @@
             </section>
             <% } %>
             <!-- EStANDO LOGUEADO -->
-            <% if (session.getAttribute("loggedIn") != null && (boolean) session.getAttribute("loggedIn")) { %>
+            <% if (session.getAttribute("loggedIn") != null && (boolean) session.getAttribute("loggedIn")) {%>
             <section class="usuario-logued">
                 <figure class="foto-perfil">
-                    <a href="./usuario.jsp"><img src="./images/header/user-default.png" alt=""></a>
+                    <a href="./usuario.jsp"><img src="<%= ((Usuario) session.getAttribute("usuario")).getFoto()%>" alt=""></a>
                     <form id="logoutForm" action="LogoutServlet" method="post">
                         <div class="logout-button" onclick="document.getElementById('logoutForm').submit()">Cerrar Sesión</div>
                     </form>
                 </figure>
                 <figure>
-                    <a href="./cesta.html"><img src="./images/index/carro.png" alt=""></a>
+                    <a href="./cesta.jsp"><img src="./images/index/carro.png" alt=""></a>
                 </figure>
             </section>
             <% }%>
-            <a href="./index.html" class="titulo-query">
+            <a href="./index.jsp" class="titulo-query">
                 <h2>PC SANCHEZ</h2>
             </a>
-            <a href="./UsuarioViejo.html" class="user-query">
-                <img src="./images/index/user.png" alt="">
+            <!-- SIN ESTAR LOGEADO -->
+            <% if (session.getAttribute("loggedIn") == null || !(boolean) session.getAttribute("loggedIn")) { %>
+            <a href="./login.jsp" class="user-query">
+                <img src="./images/header/user-default.png" alt="">
             </a>
+            <% } %>
+            <!-- EStANDO LOGUEADO -->
+            <% if (session.getAttribute("loggedIn") != null && (boolean) session.getAttribute("loggedIn")) {%>
+            <a href="./usuario.jsp" class="user-query">
+                <img src="<%= ((Usuario) session.getAttribute("usuario")).getFoto()%>" alt="">
+            </a>
+            <% }%>
         </header>
-
         <main>
             <section class="slider">
                 <ul>
@@ -216,6 +233,19 @@
                         ArrayList<Portatil> portatiles = portatilDAO.getAll();
                         Collections.shuffle(portatiles);
                     %>
+                    <% SobremesaDAO sobremesaDAO = new SobremesaDAO();
+                        ArrayList<Sobremesa> sobremesas = sobremesaDAO.getAll();
+                        Collections.shuffle(sobremesas);
+                    %>
+                    <% for (Sobremesa producto : sobremesas) {%>
+                    <article class="ordenador">
+                        <figure>
+                            <a href="./producto.jsp?codigo=<%= producto.getCodigo()%>"><img src="<%= producto.getPathFoto()%>" alt="IMG"></a>
+                        </figure>
+                        <p class="name-pc"><%= producto.getNombre()%></p>
+                        <p class="price"><%= producto.getPrecio()%>€</p>
+                    </article>
+                    <% }%>
                     <% for (Portatil producto : portatiles) {%>
                     <article class="ordenador">
                         <figure>
@@ -244,5 +274,7 @@
                 </div>
             </div>
         </footer>
+        <script src="js/autocompletar.js"></script>
+        <script src="js/buscar-categorias.js"></script>
     </body>
 </html>

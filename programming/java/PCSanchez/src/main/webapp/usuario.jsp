@@ -4,7 +4,11 @@
     Author     : sergio
 --%>
 
+<%@page import="dto.Usuario"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%if (session.getAttribute("loggedIn") == null || !((boolean) session.getAttribute("loggedIn"))) {%>
+<%   response.sendRedirect("index.jsp");%>
+<%} else {%>
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -15,6 +19,7 @@
         <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
         <link rel="stylesheet" href="./css/style-user.css">
         <title>Usuario - PCSanchez</title>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     </head>
     <body>
         <header>
@@ -31,75 +36,97 @@
                 <nav>
                     <ul>
                         <li><a href="./index.jsp">Inicio</a></li>
-                        <li><a href="./OrdenadoresViejo.html">Ordenadores</a></li>
-                        <li><a href="./ComponentesViejo.html">Componentes</a></li>
-                        <li><a href="./PrivacyViejo.html">Privacidad</a></li>
+                        <li><a href="./ordenadores.jsp">Ordenadores</a></li>
+                        <li><a href="./componentes.jsp">Componentes</a></li>
+                        <li><a href="./privacy.jsp">Privacidad</a></li>
                     </ul>
                 </nav>
             </div>
             <article class="search">
-                <form>
+                <form action="search" method="get" onsubmit="onSubmitForm()">
                     <label>
-                        <input type="text" placeholder="Buscar">
+                        <input type="text" id="search-bar" placeholder="Buscar por nombre o categoría">
                         <button type="submit"></button>
                     </label>
+                    <input type="hidden" id="categoria-input" name="categoria" value="">
+                    <input type="hidden" id="query-input" name="query" value="">
                 </form>
+                <div id="suggestion-box" style="display: none;">
+                    <ul id="suggestions">
+                        <!-- Las sugerencias irán aquí -->
+                    </ul>
+                </div>
             </article>
-
-    <!--         SIN ESTAR LOGEADO -->
-
+            <!-- SIN ESTAR LOGEADO -->
+            <% if (session.getAttribute("loggedIn") == null || !(boolean) session.getAttribute("loggedIn")) { %>
             <section class="usuario">
-                <button type="button" onclick="location.href='./register.html'">REGISTRARSE</button>
+                <button type="button" onclick="location.href = './register.jsp'">REGISTRARSE</button>
                 <article>
-                    <a href="./login.html">ENTRAR</a>
+                    <a href="./login.jsp">ENTRAR</a>
                 </article>
             </section>
-
-    <!--         EStANDO LOGUEADO -->
-
+            <% } %>
+            <!-- EStANDO LOGUEADO -->
+            <% if (session.getAttribute("loggedIn") != null && (boolean) session.getAttribute("loggedIn")) {%>
             <section class="usuario-logued">
                 <figure class="foto-perfil">
-                    <a href="./UsuarioViejo.html"><img src="./images/header/user-default.png" alt=""></a>
-                    <div class="logout-button">Cerrar Sesión</div>
+                    <a href="./usuario.jsp"><img src="<%= ((Usuario) session.getAttribute("usuario")).getFoto()%>" alt=""></a>
+                    <form id="logoutForm" action="LogoutServlet" method="post">
+                        <div class="logout-button" onclick="document.getElementById('logoutForm').submit()">Cerrar Sesión</div>
+                    </form>
                 </figure>
                 <figure>
-                    <a href="./cesta.html"><img src="./images/index/carro.png" alt=""></a>
+                    <a href="./cesta.jsp"><img src="./images/index/carro.png" alt=""></a>
                 </figure>
             </section>
-
-            <a href="./index.html" class="titulo-query">
+            <% }%>
+            <a href="./index.jsp" class="titulo-query">
                 <h2>PC SANCHEZ</h2>
             </a>
-            <a href="./UsuarioViejo.html" class="user-query">
-                <img src="./images/index/user.png" alt="">
+            <!-- SIN ESTAR LOGEADO -->
+            <% if (session.getAttribute("loggedIn") == null || !(boolean) session.getAttribute("loggedIn")) { %>
+            <a href="./login.jsp" class="user-query">
+                <img src="./images/header/user-default.png" alt="">
             </a>
-            
+            <% } %>
+            <!-- EStANDO LOGUEADO -->
+            <% if (session.getAttribute("loggedIn") != null && (boolean) session.getAttribute("loggedIn")) {%>
+            <a href="./usuario.jsp" class="user-query">
+                <img src="<%= ((Usuario) session.getAttribute("usuario")).getFoto()%>" alt="">
+            </a>
+            <% }%>
         </header>
         <main>
             <section class="perfil">
                 <div class="foto-foto-usuario">
                     <figure class="foto-usuario">
-                        <img src="./images/header/user-default.png" alt="Foto de perfil">
+                        <!-- Asegúrate de que la imagen se carga desde la URL correcta. -->
+                        <!-- Si tienes la URL de la foto en la sesión, puedes cargarla desde allí. -->
+                        <img src="<%= ((Usuario) session.getAttribute("usuario")).getFoto()%>" alt="Foto de perfil">
                     </figure>
                     <input type="checkbox" id="cambiar-foto-toggle" class="cambiar-foto-toggle">
                     <label for="cambiar-foto-toggle" class="cambiar-foto">Cambiar foto</label>
                     <div class="url-intro">
-                        <form>
-                            <input type="text" placeholder="Introduce la URL de la imagen">
+                        <!-- Aquí es donde actualizamos el formulario para enviar una solicitud POST a nuestro servlet. -->
+                        <form action="ActualizarFotoUsuarioServlet" method="post">
+                            <input type="text" name="photoUrl" placeholder="Introduce la URL de la imagen">
                             <button type="submit">Enviar</button>
                         </form>
                     </div>
-                </div>  
+                </div> 
                 <div class="info">
-                    <h2>Nombre completo</h2>
-                    <p>Email: ejemplo.alu@iespacomolla.es</p>
-                    <p>Fecha de nacimiento: 21/05/1974</p>
+                    <br>
+                    <h3><%= ((Usuario) session.getAttribute("usuario")).getTipoUsuario()%></h3>
+                    <br>
+                    <h2><%= ((Usuario) session.getAttribute("usuario")).getNombreCompleto()%></h2>
+                    <p><%= ((Usuario) session.getAttribute("usuario")).getEmail()%></p>
+                    <p><%= ((Usuario) session.getAttribute("usuario")).getFechaNacimiento()%></p>
                     <section>
                         <section class="pedido-cesta">
-                            <button type="button" onclick="location.href='./pedidos.html'">Pedidos</button>
-                            <button type="button" onclick="location.href='./cesta.jsp'">Cesta</button>
+                            <button type="button" onclick="location.href = './pedidos.jsp'">Pedidos</button>
+                            <button type="button" onclick="location.href = './cesta.jsp'">Cesta</button>
                         </section>
-                        <button type="button" class="logout">Cerrar sesion</button>
+                        <button type="button" class="logout" onclick="document.getElementById('logoutForm').submit()">Cerrar sesion</button>
                     </section>
                 </div>
             </section>
@@ -119,5 +146,8 @@
                 </div>
             </div>
         </footer>
+        <script src="js/autocompletar.js"></script>
+        <script src="js/buscar-categorias.js"></script>
     </body>
 </html>
+<%}%>

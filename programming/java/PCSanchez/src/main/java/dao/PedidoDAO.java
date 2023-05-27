@@ -11,8 +11,11 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import dto.Pedido;
 import dto.Usuario;
+import java.sql.CallableStatement;
+import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.Timestamp;
+import java.sql.Types;
 import java.time.LocalDateTime;
 import java.util.List;
 
@@ -33,33 +36,40 @@ public class PedidoDAO extends TablaDAO<Pedido> {
 
     @Override
     public int anyadir(Pedido pedido) throws SQLException {
-        String sentenciaSQL = "INSERT INTO " + tabla + " VALUES(?,?,?,?,?)";
-        PreparedStatement prepared = getPrepared(sentenciaSQL);
+        String sentenciaSQL = "INSERT INTO " + tabla
+                + "(numero, facturado, fecha_pedido, numero_direccion, codigo_usuario) "
+                + "VALUES((SELECT NVL(MAX(numero), 0) + 1 FROM ps_pedido),?,?,?,?)";
 
-        int codigoCesta = obtenerCodigoCesta(pedido); // Obtener el código de la cesta
+        try (Connection connection = Conexion.getConexion().getDatasource().getConnection(); PreparedStatement prepared = connection.prepareStatement(sentenciaSQL, new String[]{"numero"})) {
 
-        prepared.setInt(1, codigoCesta); // Establecer el número de pedido como el código de la cesta
+            prepared.setString(1, pedido.getFacturado());
+            prepared.setTimestamp(2, Timestamp.valueOf(pedido.getFechapedido()));
 
-        prepared.setString(2, pedido.getFacturado());
-        prepared.setTimestamp(3, Timestamp.valueOf(pedido.getFechapedido()));
-
-        Usuario usuario = pedido.getUsuario();
-        if (usuario == null) {
-            prepared.setNull(4, java.sql.Types.INTEGER);
-        } else {
-            DireccionDAO direccionDAO = new DireccionDAO();
-            List<Direccion> direcciones = direccionDAO.getDireccionesDe(usuario);
-            if (!direcciones.isEmpty()) {
-                int numeroDireccion = direcciones.get(0).getNumero(); // Obtén el número de la primera dirección de la lista
-                prepared.setInt(4, numeroDireccion);
+            Usuario usuario = pedido.getUsuario();
+            if (usuario == null) {
+                prepared.setNull(3, java.sql.Types.INTEGER);
             } else {
-                prepared.setNull(4, java.sql.Types.INTEGER);
+                DireccionDAO direccionDAO = new DireccionDAO();
+                List<Direccion> direcciones = direccionDAO.getDireccionesDe(usuario);
+                if (!direcciones.isEmpty()) {
+                    int numeroDireccion = direcciones.get(0).getNumero();
+                    prepared.setInt(3, numeroDireccion);
+                } else {
+                    prepared.setNull(3, java.sql.Types.INTEGER);
+                }
+            }
+
+            prepared.setInt(4, (usuario != null) ? usuario.getCodigo() : 0);
+            prepared.executeUpdate();
+
+            try (ResultSet generatedKeys = prepared.getGeneratedKeys()) {
+                if (generatedKeys.next()) {
+                    return generatedKeys.getInt(1);
+                } else {
+                    throw new SQLException("Creating user failed, no ID obtained.");
+                }
             }
         }
-
-        prepared.setInt(5, (usuario != null) ? usuario.getCodigo() : 0);
-
-        return prepared.executeUpdate();
     }
 
     private int obtenerCodigoCesta(Pedido pedido) throws SQLException {
