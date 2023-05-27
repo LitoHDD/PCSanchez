@@ -1,9 +1,9 @@
 package dto;
 
+import java.io.Serializable;
 import java.util.List;
-import java.util.Objects;
 
-public class Cesta {
+public class Cesta implements Serializable{
 
     private int codigo;
     private double precioCesta;

@@ -151,7 +151,7 @@
                 %>
                 <article class="pedido">
                     <figure class="producto-img">
-                        <img src="./images/index/components/procesador.png" alt="Producto">
+                        <img src="<%= linea.getArticulo().getPathFoto()%>" alt="Producto">
                     </figure>
                     <div class="producto-info">
                         <h3><%= linea.getArticulo().getNombre()%></h3>

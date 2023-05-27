@@ -4,10 +4,12 @@
  */
 package dto;
 
+import java.io.Serializable;
+
 /**
  *
  * @author sergio
  */
-public enum TipoUsuario {
+public enum TipoUsuario implements Serializable{
     CLIENTE, ADMIN
 }

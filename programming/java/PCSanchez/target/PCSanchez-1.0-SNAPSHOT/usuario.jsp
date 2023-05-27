@@ -4,8 +4,10 @@
     Author     : sergio
 --%>
 
+<%@page import="dto.Tarjeta"%>
 <%@page import="dto.Usuario"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@ page import="dao.TarjetaDAO" %>
 <%if (session.getAttribute("loggedIn") == null || !((boolean) session.getAttribute("loggedIn"))) {%>
 <%   response.sendRedirect("index.jsp");%>
 <%} else {%>
@@ -121,6 +123,21 @@
                     <h2><%= ((Usuario) session.getAttribute("usuario")).getNombreCompleto()%></h2>
                     <p><%= ((Usuario) session.getAttribute("usuario")).getEmail()%></p>
                     <p><%= ((Usuario) session.getAttribute("usuario")).getFechaNacimiento()%></p>
+                    <%
+                        TarjetaDAO tarjetaDAO = new TarjetaDAO();
+                        int codigoUsuario = ((Usuario) session.getAttribute("usuario")).getCodigo();
+                        Tarjeta tarjeta = tarjetaDAO.getByCodigoUsuario(codigoUsuario);
+                    %>
+                    <section class="tarjeta">
+                        <% if (tarjeta != null) {%>
+                        <h4>Tarjeta asociada:</h4>
+                        <p>Número de tarjeta: <%= tarjeta.getNumeroTarjeta()%></p>
+                        <!-- Agrega aquí más información de la tarjeta si es necesario -->
+                        <% } else { %>
+                        <p>No dispones de un metodo de pago. Introduce un metodo de pago valido para poder realizar compras en la web</p>
+                        <button type="button" onclick="location.href = './agregar-tarjeta.jsp'" class="agregar-metodo-pago">Agregar Método de Pago</button>
+                        <% } %>
+                    </section>
                     <section>
                         <section class="pedido-cesta">
                             <button type="button" onclick="location.href = './pedidos.jsp'">Pedidos</button>

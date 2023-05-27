@@ -14,11 +14,6 @@
     <body>
         <h2>Tarjeta Agregada</h2>
         <p>La tarjeta ha sido agregada exitosamente.</p>
-        <script>
-            // Esperar 2 segundos (ajusta el valor según tus necesidades)
-            setTimeout(function () {
-                window.location.href = "cesta.jsp";
-            }, 2000);
-        </script>
+        <script src="js/confirmacion-tarjeta.js"></script>
     </body>
 </html>

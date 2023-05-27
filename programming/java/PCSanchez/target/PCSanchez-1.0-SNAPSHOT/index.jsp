@@ -76,10 +76,12 @@
             </section>
             <% } %>
             <!-- EStANDO LOGUEADO -->
-            <% if (session.getAttribute("loggedIn") != null && (boolean) session.getAttribute("loggedIn")) {%>
+            <% if (session.getAttribute("loggedIn") != null && (boolean) session.getAttribute("loggedIn")) { %>
             <section class="usuario-logued">
                 <figure class="foto-perfil">
+                    <% if (session.getAttribute("usuario") != null) {%>
                     <a href="./usuario.jsp"><img src="<%= ((Usuario) session.getAttribute("usuario")).getFoto()%>" alt=""></a>
+                        <% } %>
                     <form id="logoutForm" action="LogoutServlet" method="post">
                         <div class="logout-button" onclick="document.getElementById('logoutForm').submit()">Cerrar Sesión</div>
                     </form>
@@ -88,7 +90,7 @@
                     <a href="./cesta.jsp"><img src="./images/index/carro.png" alt=""></a>
                 </figure>
             </section>
-            <% }%>
+            <% } %>
             <a href="./index.jsp" class="titulo-query">
                 <h2>PC SANCHEZ</h2>
             </a>
@@ -99,11 +101,13 @@
             </a>
             <% } %>
             <!-- EStANDO LOGUEADO -->
-            <% if (session.getAttribute("loggedIn") != null && (boolean) session.getAttribute("loggedIn")) {%>
+            <% if (session.getAttribute("loggedIn") != null && (boolean) session.getAttribute("loggedIn")) { %>
+            <% if (session.getAttribute("usuario") != null) {%>
             <a href="./usuario.jsp" class="user-query">
                 <img src="<%= ((Usuario) session.getAttribute("usuario")).getFoto()%>" alt="">
             </a>
-            <% }%>
+            <% } %>
+            <% } %>
         </header>
         <main>
             <section class="slider">

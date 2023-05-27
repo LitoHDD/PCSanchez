@@ -1,6 +1,8 @@
 package dto;
 
-public class Direccion {
+import java.io.Serializable;
+
+public class Direccion implements Serializable{
 
     private int numero;
     private String tipo, direccion, poblacion, provincia;

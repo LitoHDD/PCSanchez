@@ -164,6 +164,11 @@ a {
     position: relative;
 }
 
+.agregar-metodo-pago {
+    background-color: #30398A;
+    color: white;
+}
+
 .usuario-logued .foto-perfil:hover .logout-button {
     display: block;
 }

@@ -36,6 +36,10 @@
         <servlet-name>AgregarTarjetaServlet</servlet-name>
         <servlet-class>controlador.AgregarTarjetaServlet</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>ContactoServlet</servlet-name>
+        <servlet-class>controlador.ContactoServlet</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>LoginServlet</servlet-name>
         <url-pattern>/LoginServlet</url-pattern>
@@ -71,6 +75,10 @@
     <servlet-mapping>
         <servlet-name>AgregarTarjetaServlet</servlet-name>
         <url-pattern>/AgregarTarjetaServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ContactoServlet</servlet-name>
+        <url-pattern>/ContactoServlet</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

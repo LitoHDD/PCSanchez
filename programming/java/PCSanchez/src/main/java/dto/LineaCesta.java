@@ -1,8 +1,9 @@
 package dto;
 
+import java.io.Serializable;
 import java.util.Objects;
 
-public class LineaCesta {
+public class LineaCesta implements Serializable{
 
     int id;
     private Articulo articulo;

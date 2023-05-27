@@ -1,9 +1,10 @@
 package dto;
 
+import java.io.Serializable;
 import java.time.LocalDate;
 import java.util.List;
 
-public class Usuario {
+public class Usuario implements Serializable{
 
     /* Nuestra base de datos esta hecha para que solo tenga un telefono. Vamos a cambiar el modelo E/R */
     /* codigo es un aatributo unico por usuario y foto es opcional, lo de la ultima conexión lo hemos eliminado de nuestro entidad relacion */

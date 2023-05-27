@@ -1,9 +1,9 @@
 package dto;
 
+import java.io.Serializable;
 import java.time.LocalDate;
-import java.util.ArrayList;
 
-public abstract class Articulo {
+public abstract class Articulo implements Serializable{
 
     private int codigo;
     private String nombre, descripcion, pathFoto;
