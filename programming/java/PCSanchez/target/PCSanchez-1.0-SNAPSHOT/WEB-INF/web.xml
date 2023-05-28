@@ -40,6 +40,22 @@
         <servlet-name>ContactoServlet</servlet-name>
         <servlet-class>controlador.ContactoServlet</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>ModificarTarjetaServlet</servlet-name>
+        <servlet-class>controlador.ModificarTarjetaServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>AgregarAlCarritoServlet</servlet-name>
+        <servlet-class>controlador.AgregarAlCarritoServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>VaciarCestaServlet</servlet-name>
+        <servlet-class>controlador.VaciarCestaServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>FacturaPDFServlet</servlet-name>
+        <servlet-class>controlador.FacturaPDFServlet</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>LoginServlet</servlet-name>
         <url-pattern>/LoginServlet</url-pattern>
@@ -79,6 +95,22 @@
     <servlet-mapping>
         <servlet-name>ContactoServlet</servlet-name>
         <url-pattern>/ContactoServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ModificarTarjetaServlet</servlet-name>
+        <url-pattern>/ModificarTarjetaServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>AgregarAlCarritoServlet</servlet-name>
+        <url-pattern>/AgregarAlCarritoServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>VaciarCestaServlet</servlet-name>
+        <url-pattern>/VaciarCestaServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>FacturaPDFServlet</servlet-name>
+        <url-pattern>/FacturaPDFServlet</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

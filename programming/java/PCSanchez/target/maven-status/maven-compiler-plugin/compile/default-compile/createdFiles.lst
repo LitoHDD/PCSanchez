@@ -21,9 +21,11 @@ dao/PlacaBaseDAO.class
 dto/Cesta.class
 dto/Factura.class
 dto/Sobremesa.class
+controlador/ContactoServlet.class
 dao/ProcesadorDAO.class
 dto/Usuario.class
 dao/CajaDAO$2.class
+controlador/ModificarTarjetaServlet.class
 dao/DireccionDAO.class
 dao/AlmacenamientoDAO$1.class
 dao/RamDAO.class
@@ -42,6 +44,7 @@ dao/PedidoArticuloDAO.class
 dao/ArticuloDAO$3.class
 dao/RefrigeracionDAO$2.class
 dto/Tarjeta.class
+controlador/AgregarAlCarritoServlet.class
 dao/AlmacenamientoDAO$2.class
 dao/Conexion.class
 dao/RefrigeracionDAO$1.class
@@ -64,14 +67,17 @@ dao/SobremesaDAO.class
 dao/TarjetaDAO.class
 controlador/LoginServlet.class
 dto/Articulo.class
+controlador/AgregarTarjetaServlet.class
 dto/Ram.class
 dto/Caja.class
 dao/ArticuloCategoriaDAO.class
 dao/ArticuloCategoriaDAO$2.class
 dao/PlacaBaseDAO$2.class
 controlador/AutoCompletarServlet.class
+dao/ArticuloDAO$5.class
 controlador/EliminarProductoServlet.class
 dao/ArticuloDAO$1.class
+controlador/ContactoServlet$1.class
 dto/ArticuloCategoria.class
 dto/TipoUsuario.class
 dao/TarjetaGraficaDAO$1.class

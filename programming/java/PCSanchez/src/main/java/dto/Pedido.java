@@ -1,9 +1,10 @@
 package dto;
 
+import java.io.Serializable;
 import java.time.LocalDateTime;
 import java.util.List;
 
-public class Pedido {
+public class Pedido implements Serializable{
 
     private int numero;
     private String facturado;

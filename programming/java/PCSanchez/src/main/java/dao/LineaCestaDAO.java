@@ -26,7 +26,39 @@ public class LineaCestaDAO extends TablaDAO<LineaCesta> {
 
     @Override
     public int anyadir(LineaCesta objeto) throws SQLException {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        Connection con = null;
+        PreparedStatement pstmt = null;
+        int filasAfectadas = 0;
+        DataSource datasource = Conexion.getConexion().getDatasource();
+
+        try {
+            con = datasource.getConnection();
+            String query = "INSERT INTO ps_cesta_articulo (id, articulo, cantidad, precio) VALUES (?, ?, ?, ?)";
+            pstmt = con.prepareStatement(query);
+            pstmt.setInt(1, objeto.getId());
+            pstmt.setInt(2, objeto.getArticulo().getCodigo());
+            pstmt.setDouble(3, objeto.getCantidad());
+            pstmt.setDouble(4, objeto.getPrecio());
+            filasAfectadas = pstmt.executeUpdate();
+            System.out.println("Se ha insertado la línea de cesta con éxito. Filas afectadas: " + filasAfectadas);
+        } catch (SQLException e) {
+            System.out.println("Error SQL al insertar la línea de cesta: " + e.getMessage());
+            e.printStackTrace();
+        } finally {
+            try {
+                if (pstmt != null) {
+                    pstmt.close();
+                }
+                if (con != null) {
+                    con.close();
+                }
+            } catch (SQLException e) {
+                System.out.println("Error SQL al cerrar conexiones: " + e.getMessage());
+                e.printStackTrace();
+            }
+        }
+
+        return filasAfectadas;
     }
 
     @Override
@@ -66,8 +98,8 @@ public class LineaCestaDAO extends TablaDAO<LineaCesta> {
         }
         return lineas;
     }
-
-    public boolean eliminarLineaProducto(int productoId) {
+    
+    public boolean vaciarCesta(int productoId) {
         Connection con = null;
         PreparedStatement pstmt = null;
         boolean eliminado = false;
@@ -78,6 +110,43 @@ public class LineaCestaDAO extends TablaDAO<LineaCesta> {
             String query = "DELETE FROM ps_cesta_articulo WHERE id = ?";
             pstmt = con.prepareStatement(query);
             pstmt.setInt(1, productoId);
+            int filasAfectadas = pstmt.executeUpdate();
+
+            if (filasAfectadas > 0) {
+                eliminado = true;
+            }
+        } catch (SQLException e) {
+            System.out.println("Error SQL: " + e.getMessage()); // Imprimir el mensaje de error SQL en consola
+            e.printStackTrace();
+        } finally {
+            try {
+                if (pstmt != null) {
+                    pstmt.close();
+                }
+                if (con != null) {
+                    con.close();
+                }
+            } catch (SQLException e) {
+                System.out.println("Error SQL al cerrar conexiones: " + e.getMessage()); // Imprimir el mensaje de error SQL en consola
+                e.printStackTrace();
+            }
+        }
+
+        return eliminado;
+    }
+
+    public boolean eliminarLineaProducto(int lineaId, int codigoArticulo) {
+        Connection con = null;
+        PreparedStatement pstmt = null;
+        boolean eliminado = false;
+        DataSource datasource = Conexion.getConexion().getDatasource();
+
+        try {
+            con = datasource.getConnection();
+            String query = "DELETE FROM ps_cesta_articulo WHERE id = ? AND articulo = ?";
+            pstmt = con.prepareStatement(query);
+            pstmt.setInt(1, lineaId);
+            pstmt.setInt(2, codigoArticulo);
             int filasAfectadas = pstmt.executeUpdate();
 
             if (filasAfectadas > 0) {

@@ -1,8 +1,9 @@
 package dto;
 
+import java.io.Serializable;
 import java.time.LocalDateTime;
 
-public class Factura {
+public class Factura implements Serializable{
 
     private int codFactura, direccion;
     private LocalDateTime fecha;
@@ -13,6 +14,10 @@ public class Factura {
         this.direccion = direccion;
         this.fecha = fecha;
         this.pedido = pedido;
+    }
+    
+    public Factura(){
+        
     }
 
     public int getCodFactura() {

@@ -1,8 +1,9 @@
 package dto;
 
+import java.io.Serializable;
 import java.time.LocalDate;
 
-public class Caja extends Articulo{
+public class Caja extends Articulo implements Serializable{
     
     String conexion, color, sizeLitros;
 

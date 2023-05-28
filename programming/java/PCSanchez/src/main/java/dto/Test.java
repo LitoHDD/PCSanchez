@@ -25,6 +25,7 @@ import dao.SobremesaDAO;
 import dao.TarjetaDAO;
 import dao.TarjetaGraficaDAO;
 import dao.UsuarioDAO;
+import java.io.Serializable;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
@@ -32,7 +33,7 @@ import java.util.ArrayList;
  *
  * @author sergio
  */
-public class Test {
+public class Test implements Serializable{
 
     public static void main(String[] args) throws SQLException {
 

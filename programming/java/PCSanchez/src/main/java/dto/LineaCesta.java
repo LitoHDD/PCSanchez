@@ -16,6 +16,10 @@ public class LineaCesta implements Serializable{
         this.cantidad = cantidad;
         this.precio = precio;
     }
+    
+    public LineaCesta(){
+        
+    }
 
     public int getId() {
         return id;

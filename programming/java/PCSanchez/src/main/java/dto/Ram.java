@@ -1,8 +1,9 @@
 package dto;
 
+import java.io.Serializable;
 import java.time.LocalDate;
 
-public class Ram extends Articulo{
+public class Ram extends Articulo implements Serializable{
     
     private int capacidadGB, frecuenciaMhz;
     private String tipo, perfilXmp;

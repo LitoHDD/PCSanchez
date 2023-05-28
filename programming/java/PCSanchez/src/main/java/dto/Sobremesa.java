@@ -1,8 +1,9 @@
 package dto;
 
+import java.io.Serializable;
 import java.time.LocalDate;
 
-public class Sobremesa extends Articulo{
+public class Sobremesa extends Articulo implements Serializable{
     
     private int capacidadRamGb, almacenamientoGb;
     private String tamaño, tipo, familiaProcesador, sistemaOperativo;

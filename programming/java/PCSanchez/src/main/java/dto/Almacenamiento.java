@@ -4,13 +4,14 @@
  */
 package dto;
 
+import java.io.Serializable;
 import java.time.LocalDate;
 
 /**
  *
  * @author sergio
  */
-public class Almacenamiento extends Articulo{
+public class Almacenamiento extends Articulo implements Serializable{
     
     String tipo;
     int capacidadGb;

@@ -1,6 +1,8 @@
 package dto;
 
-public class Tarjeta {
+import java.io.Serializable;
+
+public class Tarjeta implements Serializable{
     
     private int codPago;
     private long numeroTarjeta;

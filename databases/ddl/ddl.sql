@@ -3,7 +3,7 @@
 CREATE TABLE ps_usuario(
     codigo NUMBER(8),
     email VARCHAR2(40) NOT NULL,
-    pass VARCHAR2(20) NOT NULL,
+    pass VARCHAR2(100) NOT NULL,
     nombre_comp VARCHAR2(20) NOT NULL,
     foto VARCHAR2(250),
     telefono NUMBER(9),
@@ -93,7 +93,6 @@ CREATE TABLE ps_cesta_articulo (
     articulo NUMBER(8) NOT NULL,
     cantidad NUMBER(5) NOT NULL,
     precio NUMBER(8, 2) NOT NULL,
-    PRIMARY KEY(id),
     CONSTRAINT cesta_articulo_cesta_fk FOREIGN KEY (id) REFERENCES ps_cesta (codigo),
     CONSTRAINT cesta_articulo_fk FOREIGN KEY (articulo) REFERENCES ps_articulo
 );

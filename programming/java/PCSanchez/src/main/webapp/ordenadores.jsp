@@ -97,7 +97,6 @@
                                 </a>
                                 <h3><%= portatil.getNombre()%></h3>
                                 <h2><%= portatil.getPrecio()%>€</h2>
-                                <button>Comprar</button>
                             </article>
                             <% } %>
                         </div>
@@ -114,7 +113,6 @@
                                 </a>
                                 <h3><%= sobremesa.getNombre()%></h3>
                                 <h2><%= sobremesa.getPrecio()%>€</h2>
-                                <button>Comprar</button>
                             </article>
                             <% }%>
                         </div>

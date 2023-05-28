@@ -16,13 +16,19 @@ public class TarjetaDAO extends TablaDAO<Tarjeta> {
 
     @Override
     public int actualizar(Tarjeta objeto) throws SQLException {
-        String sentenciaSQL = "UPDATE " + tabla + " SET num_tarjeta=? WHERE cod_pago=?";
+        String sentenciaSQL = "UPDATE " + tabla + " SET num_tarjeta=? WHERE cod_usuario=?";
         PreparedStatement prepared = getPrepared(sentenciaSQL);
         prepared.setLong(1, objeto.getNumeroTarjeta());
-        prepared.setInt(2, objeto.getCodPago());
-        return prepared.executeUpdate();
-    }
+        prepared.setLong(2, objeto.getUsuario().getCodigo()); // Utiliza setLong para el código de usuario
 
+        try {
+            return prepared.executeUpdate();
+        } catch (SQLException e) {
+            e.printStackTrace();
+            throw e; // Vuelve a lanzar la excepción para que se pueda manejar en el servlet
+        }
+    }
+    
     @Override
     public int anyadir(Tarjeta objeto) throws SQLException {
         String sentenciaSQL = "INSERT INTO " + tabla + " VALUES((SELECT NVL(MAX(cod_pago), 0) + 1 FROM " + tabla + "), ?, ?)";

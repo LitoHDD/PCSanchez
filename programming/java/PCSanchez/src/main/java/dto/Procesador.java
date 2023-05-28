@@ -1,8 +1,9 @@
 package dto;
 
+import java.io.Serializable;
 import java.time.LocalDate;
 
-public class Procesador extends Articulo{
+public class Procesador extends Articulo implements Serializable{
     
     private String socket, familia;
     private double frecuenciaGhz;

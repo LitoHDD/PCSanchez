@@ -3,6 +3,8 @@ package controlador;
 import dao.CestaDAO;
 import dao.Conexion;
 import dto.Cesta;
+import org.mindrot.jbcrypt.BCrypt;
+
 import java.io.IOException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -35,7 +37,7 @@ public class RegisterServlet extends HttpServlet {
         String direccion = request.getParameter("direccion");
         String provincia = request.getParameter("provincia");
         String ciudad = request.getParameter("ciudad");
-        String rutaFoto = "Sin foto";
+        String rutaFoto = "https://i.imgur.com/drrIJO8.png";
         String tipoUsuario = "CLIENTE";
 
         // Validación de datos
@@ -43,6 +45,13 @@ public class RegisterServlet extends HttpServlet {
                 || password.isEmpty() || passwordConfirm == null || passwordConfirm.isEmpty()
                 || fechaNacimiento == null || fechaNacimiento.isEmpty()) {
             response.sendRedirect("register.jsp?error=invalidData");
+            return;
+        }
+
+        if (tipoVia == null || tipoVia.isEmpty()
+                || direccion == null || direccion.isEmpty() || provincia == null || provincia.isEmpty()
+                || ciudad == null || ciudad.isEmpty()) {
+            response.sendRedirect("register.jsp?error=address");
             return;
         }
 
@@ -88,6 +97,10 @@ public class RegisterServlet extends HttpServlet {
                 return;
             }
 
+            // Cifra la contraseña utilizando BCrypt con un salt fijo
+            String salt = "$2a$10$ABCDEFGHIJKLMNOPQRSTUV"; // Especifica tu salt fijo aquí
+            String hashedPassword = BCrypt.hashpw(password, salt);
+
             // Obtener el último código de usuario
             ps = conn.prepareStatement("SELECT codigo FROM ps_usuario WHERE codigo = (SELECT MAX(codigo) FROM ps_usuario)");
             rs = ps.executeQuery();
@@ -103,7 +116,7 @@ public class RegisterServlet extends HttpServlet {
             ps = conn.prepareStatement("INSERT INTO ps_usuario (codigo, email, pass, nombre_comp, foto, telefono, fecha_nacimiento, tipousuario) VALUES (?, ?, ?, ?, ?, ?, ?, ?)");
             ps.setInt(1, nuevoCodigo);
             ps.setString(2, email);
-            ps.setString(3, password);
+            ps.setString(3, hashedPassword);
             ps.setString(4, nombre);
             ps.setString(5, rutaFoto);
             ps.setString(6, telefono);

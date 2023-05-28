@@ -1,8 +1,9 @@
 package dto;
 
+import java.io.Serializable;
 import java.time.LocalDate;
 
-public class Refrigeracion extends Articulo{
+public class Refrigeracion extends Articulo implements Serializable{
     
     private String tipo, socket;
     private int tamaño;

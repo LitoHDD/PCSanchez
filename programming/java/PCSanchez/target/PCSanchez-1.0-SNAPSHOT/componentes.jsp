@@ -121,7 +121,6 @@
                                 </a>
                                 <h3><%= componente.getNombre()%></h3>
                                 <h2><%= componente.getPrecio()%>€</h2>
-                                <button>Comprar</button>
                             </article>
                             <% } %>
                         </div>
@@ -138,7 +137,6 @@
                                 </a>
                                 <h3><%= componente.getNombre()%></h3>
                                 <h2><%= componente.getPrecio()%>€</h2>
-                                <button>Comprar</button>
                             </article>
                             <% } %>
                         </div>
@@ -155,7 +153,6 @@
                                 </a>
                                 <h3><%= componente.getNombre()%></h3>
                                 <h2><%= componente.getPrecio()%>€</h2>
-                                <button>Comprar</button>
                             </article>
                             <% } %>
                         </div>
@@ -172,7 +169,6 @@
                                 </a>
                                 <h3><%= componente.getNombre()%></h3>
                                 <h2><%= componente.getPrecio()%>€</h2>
-                                <button>Comprar</button>
                             </article>
                             <% } %>
                         </div>
@@ -189,7 +185,6 @@
                                 </a>
                                 <h3><%= componente.getNombre()%></h3>
                                 <h2><%= componente.getPrecio()%>€</h2>
-                                <button>Comprar</button>
                             </article>
                             <% } %>
                         </div>
@@ -206,7 +201,6 @@
                                 </a>
                                 <h3><%= componente.getNombre()%></h3>
                                 <h2><%= componente.getPrecio()%>€</h2>
-                                <button>Comprar</button>
                             </article>
                             <% } %>
                         </div>
@@ -223,7 +217,6 @@
                                 </a>
                                 <h3><%= componente.getNombre()%></h3>
                                 <h2><%= componente.getPrecio()%>€</h2>
-                                <button>Comprar</button>
                             </article>
                             <% } %>
                         </div>
@@ -240,7 +233,6 @@
                                 </a>
                                 <h3><%= componente.getNombre()%></h3>
                                 <h2><%= componente.getPrecio()%>€</h2>
-                                <button>Comprar</button>
                             </article>
                             <% }%>
                         </div>

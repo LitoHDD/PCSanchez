@@ -2,7 +2,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/JavaScript.js to edit this template
  */
-function eliminarProducto(id) {
+function eliminarProducto(lineaId, codigoArticulo) {
     if (confirm("¿Estás seguro de que deseas eliminar este artículo?")) {
         var xhr = new XMLHttpRequest();
         xhr.onreadystatechange = function () {
@@ -14,8 +14,7 @@ function eliminarProducto(id) {
                 }
             }
         };
-        xhr.open("GET", "eliminar?id=" + encodeURIComponent(id), true);
+        xhr.open("GET", "EliminarProductoServlet?lineaId=" + encodeURIComponent(lineaId) + "&codigoArticulo=" + encodeURIComponent(codigoArticulo), true);
         xhr.send();
     }
 }
-

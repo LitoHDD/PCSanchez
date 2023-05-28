@@ -20,7 +20,7 @@
         <title>Resultados de búsqueda</title>
         <link rel="stylesheet" href="normalize.css">
         <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
-        <link rel="stylesheet" href="./css/style-producto.css">
+        <link rel="stylesheet" href="./css/style-resultados.css">
     </head>
     <body>
         <header>
@@ -79,42 +79,28 @@
                 <img src="./images/index/user.png" alt="">
             </a>
         </header>
-        <div class="general">
-            <section class="producto">
-                <h1>Resultados de búsqueda</h1>
+        <main>
+            <h1>Resultados de búsqueda</h1>
+            <section class="componentes">
                 <% List<Articulo> results = (List<Articulo>) request.getAttribute("results"); %>
-                <% for (Articulo articulo : results) {%>
-                <a href="producto.jsp?codigo=<%= articulo.getCodigo()%>">
-                    <figure class="foto">
-                        <img src="<%= articulo.getPathFoto()%>" alt="Foto del producto">
-                    </figure>
-                </a>
-                <section class="comprar">
-                    <h2><%= articulo.getNombre()%></h2>
-                    <h3><%= articulo.getPrecio()%> €</h3>
-                    <section class="pedido">
-                        <ul class="negrita">
-                            <li><strong>MARCA:</strong></li>
-                            <li><strong>ENVÍO:</strong></li>
-                            <li><strong>DEVOLUCIÓN:</strong></li>
-                            <li><strong>CANTIDAD:</strong></li>
-                        </ul>
-                        <ul class="datos">
-                            <li><%= articulo.getNombre()%></li>
-                            <li>Gratis-24h</li>
-                            <li>Gratis</li>
-                            <li><input id="number" type="number" value="1" /></li>
-                        </ul>
-                    </section>
-                    <section class="buy">
-                        <section class="buy-comprar"> 
-                            <a href="#" id="buy">AÑADIR AL CARRITO</a>
-                        </section>
-                    </section> 
+                <% for (Articulo articulo : results) {%> 
+                <section>
+                    <article class="componente">
+                        <figure>
+                            <a href="producto.jsp?codigo=<%= articulo.getCodigo()%>"><img src="<%= articulo.getPathFoto()%>"
+                                    alt="IMG"></a>
+                        </figure>
+                        <h4>
+                            <%= articulo.getNombre()%>
+                        </h4>
+                        <h5 class="precio">
+                            <%= articulo.getPrecio()%> €
+                        </h5>
+                    </article>
                 </section>
                 <% }%>
             </section>
-        </div>
+        </main>
         <footer>
             <div class="footer-container">
                 <figure>

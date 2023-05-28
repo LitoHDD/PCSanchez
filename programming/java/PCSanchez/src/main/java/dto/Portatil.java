@@ -1,8 +1,9 @@
 package dto;
 
+import java.io.Serializable;
 import java.time.LocalDate;
 
-public class Portatil extends Articulo{
+public class Portatil extends Articulo implements Serializable{
     
     private int pulgadasPantalla, pesoGr, capacidadRamGB, almacenamientoGB;
     private String familiaProcesador, sistemaOperativo;

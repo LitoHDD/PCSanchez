@@ -1,8 +1,9 @@
 package dto;
 
+import java.io.Serializable;
 import java.time.LocalDate;
 
-public class Psu extends Articulo{
+public class Psu extends Articulo implements Serializable{
     
     private int potenciaW;
     private String certificado, modular;

@@ -17,7 +17,7 @@
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link rel="stylesheet" href="normalize.css">
+        <link rel="stylesheet" href="./css/normalize.css">
         <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
         <link rel="stylesheet" href="./css/style-user.css">
         <title>Usuario - PCSanchez</title>
@@ -128,16 +128,19 @@
                         int codigoUsuario = ((Usuario) session.getAttribute("usuario")).getCodigo();
                         Tarjeta tarjeta = tarjetaDAO.getByCodigoUsuario(codigoUsuario);
                     %>
+                    <br>
                     <section class="tarjeta">
                         <% if (tarjeta != null) {%>
                         <h4>Tarjeta asociada:</h4>
-                        <p>Número de tarjeta: <%= tarjeta.getNumeroTarjeta()%></p>
+                        <p>Número de tarjeta: <%= "**** **** **** " + String.valueOf(tarjeta.getNumeroTarjeta()).substring(String.valueOf(tarjeta.getNumeroTarjeta()).length() - 4)%></p>
+                        <button type="button" onclick="location.href = './modificar-tarjeta.jsp'" class="agregar-metodo-pago">Modificar Método de Pago</button>
                         <!-- Agrega aquí más información de la tarjeta si es necesario -->
                         <% } else { %>
-                        <p>No dispones de un metodo de pago. Introduce un metodo de pago valido para poder realizar compras en la web</p>
+                        <p>No dispones de un método de pago. Introduce un método de pago válido para poder realizar compras en la web</p>
                         <button type="button" onclick="location.href = './agregar-tarjeta.jsp'" class="agregar-metodo-pago">Agregar Método de Pago</button>
                         <% } %>
                     </section>
+                    <br>
                     <section>
                         <section class="pedido-cesta">
                             <button type="button" onclick="location.href = './pedidos.jsp'">Pedidos</button>

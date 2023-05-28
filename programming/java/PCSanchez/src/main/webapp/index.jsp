@@ -24,7 +24,7 @@
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link rel="stylesheet" href="normalize.css">
+        <link rel="stylesheet" href="./css/normalize.css">
         <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
         <link rel="stylesheet" href="./css/style.css">
         <title>INICIO - PCSanchez</title>
@@ -47,7 +47,8 @@
                         <li><a href="./index.jsp">Inicio</a></li>
                         <li><a href="./ordenadores.jsp">Ordenadores</a></li>
                         <li><a href="./componentes.jsp">Componentes</a></li>
-                        <li><a href="./privacy.jsp">Privacidad</a></li>
+                        <li id="primary-li"><a href="./contacto.jsp">Contactanos</a></li>
+                        <li id="secondary-li"><a href="./privacy.jsp">Privacidad</a></li>
                     </ul>
                 </nav>
             </div>

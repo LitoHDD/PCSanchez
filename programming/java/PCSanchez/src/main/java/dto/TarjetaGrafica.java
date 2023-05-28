@@ -1,8 +1,9 @@
 package dto;
 
+import java.io.Serializable;
 import java.time.LocalDate;
 
-public class TarjetaGrafica extends Articulo {
+public class TarjetaGrafica extends Articulo implements Serializable{
 
     String arquitectura;
     int vRamGb;

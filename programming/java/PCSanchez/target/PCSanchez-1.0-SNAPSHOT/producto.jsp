@@ -4,6 +4,9 @@
     Author     : sergio
 --%>
 
+<%@page import="dto.Usuario"%>
+<%@page import="dto.Cesta"%>
+<%@page import="dao.CestaDAO"%>
 <%@page import="dto.Almacenamiento"%>
 <%@page import="dao.AlmacenamientoDAO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
@@ -57,6 +60,17 @@
 
     AlmacenamientoDAO almacenamientoDAO = new AlmacenamientoDAO();
     Almacenamiento almacenamiento = almacenamientoDAO.getByCodigo(codigoArticulo);
+
+    CestaDAO cestaDAO = new CestaDAO();
+    int idCesta = 0;
+
+    if (session.getAttribute("loggedIn") != null && (boolean) session.getAttribute("loggedIn")) {
+        int idUsuario = ((Usuario) session.getAttribute("usuario")).getCodigo();
+        Cesta cesta = cestaDAO.getCestaPorUsuario(idUsuario);
+        if (cesta != null) {
+            idCesta = cesta.getCodigo();
+        }
+    }
 %>
 <!DOCTYPE html>
 <html lang="en">
@@ -136,6 +150,7 @@
                 <section class="comprar">
                     <h2><%= (portatil != null) ? portatil.getNombre() : (sobremesa != null) ? sobremesa.getNombre() : (caja != null) ? caja.getNombre() : (placaBase != null) ? placaBase.getNombre() : (procesador != null) ? procesador.getNombre() : (psu != null) ? psu.getNombre() : (ram != null) ? ram.getNombre() : (refrigeracion != null) ? refrigeracion.getNombre() : (tarjetaGrafica != null) ? tarjetaGrafica.getNombre() : almacenamiento.getNombre()%></h2>
                     <h3><%= (portatil != null) ? portatil.getPrecio() : (sobremesa != null) ? sobremesa.getPrecio() : (caja != null) ? caja.getPrecio() : (placaBase != null) ? placaBase.getPrecio() : (procesador != null) ? procesador.getPrecio() : (psu != null) ? psu.getPrecio() : (ram != null) ? ram.getPrecio() : (refrigeracion != null) ? refrigeracion.getPrecio() : (tarjetaGrafica != null) ? tarjetaGrafica.getPrecio() : almacenamiento.getPrecio()%> €</h3>
+                    <form action="AgregarAlCarritoServlet" method="post">
                     <section class="pedido">
                         <ul class="negrita">
                             <li><strong>MARCA:</strong></li>
@@ -147,14 +162,18 @@
                             <li><%= (portatil != null) ? portatil.getNombre() : (sobremesa != null) ? sobremesa.getNombre() : (caja != null) ? caja.getNombre() : (placaBase != null) ? placaBase.getNombre() : (procesador != null) ? procesador.getNombre() : (psu != null) ? psu.getNombre() : (ram != null) ? ram.getNombre() : (refrigeracion != null) ? refrigeracion.getNombre() : (tarjetaGrafica != null) ? tarjetaGrafica.getNombre() : almacenamiento.getNombre()%></li>
                             <li>Gratis-24h</li>
                             <li>Gratis</li>
-                            <li><input id="number" type="number" value="1" /></li>
+                            <li><input id="number" type="number" name="cantidad" value="1" /></li>
                         </ul>
                     </section>
-                    <section class="buy">
-                        <section class="buy-comprar"> 
-                            <a href="#" id="buy">AÑADIR AL CARRITO</a>
-                        </section>
-                    </section> 
+                        <section class="buy">
+                            <section class="buy-comprar"> 
+                                <input type="hidden" name="codigoArticulo" value="<%= codigoArticulo%>">
+                                <input type="hidden" name="idCesta" value="<%= idCesta%>">
+                                <input type="hidden" name="precio" value="<%= (portatil != null) ? portatil.getPrecio() : (sobremesa != null) ? sobremesa.getPrecio() : (caja != null) ? caja.getPrecio() : (placaBase != null) ? placaBase.getPrecio() : (procesador != null) ? procesador.getPrecio() : (psu != null) ? psu.getPrecio() : (ram != null) ? ram.getPrecio() : (refrigeracion != null) ? refrigeracion.getPrecio() : (tarjetaGrafica != null) ? tarjetaGrafica.getPrecio() : almacenamiento.getPrecio()%>">
+                                <button id="buy" type="submit">AÑADIR AL CARRITO</button>                               
+                            </section>
+                        </section> 
+                    </form>
                 </section>
             </section>
             <section class="descripcion">

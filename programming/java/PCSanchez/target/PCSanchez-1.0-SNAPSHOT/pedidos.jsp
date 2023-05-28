@@ -139,9 +139,10 @@
                 %>
                 <h3>Número de Pedido: <%= numeroPedido%></h3>
                 <p>Fecha Pedido: <%= fechaPedido%></p>
-               <p>Dirección de envío: <%= usuario.getDirecciones().toString().replace("[", "").replace("]", "") %></p>
+                <p>Dirección de envío: <%= usuario.getDirecciones().toString().replace("[", "").replace("]", "")%></p>
                 <div class="factura-buttons">
-                    <button type="button">Factura PDF</button>
+                    <button type="button" class="pdf-button" data-numero-pedido="<%= numeroPedido%>">Factura PDF</button>
+
                     <button type="button">Factura XML</button>
                 </div>
                 <%
@@ -192,6 +193,15 @@
                 </figure>
             </div>
         </div>
+        <script>
+            var pdfButtons = document.getElementsByClassName('pdf-button');
+            for (var i = 0; i < pdfButtons.length; i++) {
+                pdfButtons[i].addEventListener('click', function () {
+                    var numeroPedido = this.getAttribute('data-numero-pedido');
+                    window.open('FacturaPDFServlet?numeroPedido=' + numeroPedido, '_blank');
+                });
+            }
+        </script>
     </footer>
     <script src="js/autocompletar.js"></script>
     <script src="js/buscar-categorias.js"></script>

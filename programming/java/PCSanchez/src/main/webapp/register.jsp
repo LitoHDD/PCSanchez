@@ -7,38 +7,7 @@ Author     : sergio
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%-- Importamos la librería JSTL --%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-
 <%-- Código HTML de la página --%>
-<% if (request.getParameter("error") != null) { %>
-<div class="alert alert-danger">
-    <% if ("invalidData".equals(request.getParameter("error"))) { %>
-    <style>
-        .fondo-rojo {
-            background-color: orange; /* Código de color para el rojo ferrari */
-            color: white; /* Texto en color blanco para resaltar */
-            padding: 10px; /* Espacio alrededor del contenido */
-            border-radius: 5px; /* Borde redondeado para un aspecto más atractivo */
-        }
-    </style>
-
-    <div class="fondo-rojo">
-        <center>Los datos proporcionados son inválidos.</center>
-    </div>
-    <% } else if ("passwordsDoNotMatch".equals(request.getParameter("error"))) { %>
-    <center>Las contraseñas no coinciden.</center>
-        <% } else if ("invalidDate".equals(request.getParameter("error"))) { %>
-    <center>La fecha de nacimiento es inválida.</center>
-        <% } else if ("userAlreadyExists".equals(request.getParameter("error"))) { %>
-    <center>Ya existe un usuario con este correo electrónico.</center>
-        <% } else if ("databaseError".equals(request.getParameter("error"))) { %>
-    <center>Ha ocurrido un error al conectar con la base de datos.</center>
-        <% } else if ("policy".equals(request.getParameter("error"))) { %>
-    <center>Acepta la política de privacidad antes de completar el registro.</center>
-        <% } else if ("phone".equals(request.getParameter("error"))) { %>
-    <center>Introduce un número de teléfono correcto.</center>
-        <% } %>
-</div>
-<% }%>
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -115,9 +84,46 @@ Author     : sergio
         <main>
             <%-- Verificar si el usuario ha iniciado sesión --%>
             <% if (session.getAttribute("loggedIn") != null && (boolean) session.getAttribute("loggedIn")) { %>
-                <%-- Redirigir a la página principal si el usuario ha iniciado sesión --%>
-                <% response.sendRedirect("index.jsp"); %>
+            <%-- Redirigir a la página principal si el usuario ha iniciado sesión --%>
+            <% response.sendRedirect("index.jsp"); %>
             <% } else { %>
+            <% if (request.getParameter("error") != null) { %>
+            <div class="alert alert-danger">
+                <% if ("invalidData".equals(request.getParameter("error"))) { %>
+                <div class="fondo-rojo">
+                    <center>Los datos proporcionados son inválidos.</center>
+                </div>
+                <% } else if ("passwordsDoNotMatch".equals(request.getParameter("error"))) { %>
+                <div class="fondo-rojo">
+                    <center>Las contraseñas no coinciden.</center>
+                </div>
+                <% } else if ("invalidDate".equals(request.getParameter("error"))) { %>
+                <div class="fondo-rojo">
+                    <center>La fecha de nacimiento es inválida.</center>
+                </div>
+                <% } else if ("userAlreadyExists".equals(request.getParameter("error"))) { %>
+                <div class="fondo-rojo">
+                    <center>Ya existe un usuario con este correo electrónico.</center>
+                </div>
+                <% } else if ("databaseError".equals(request.getParameter("error"))) { %>
+                <div class="fondo-rojo">
+                    <center>Ha ocurrido un error al conectar con la base de datos.</center>
+                </div>
+                <% } else if ("policy".equals(request.getParameter("error"))) { %>
+                <div class="fondo-rojo">
+                    <center>Acepta la política de privacidad antes de completar el registro.</center>
+                </div>
+                <% } else if ("phone".equals(request.getParameter("error"))) { %>
+                <div class="fondo-rojo">
+                    <center>Introduce un número de teléfono correcto.</center>
+                </div>
+                <% } else if ("address".equals(request.getParameter("error"))) { %>
+                <div class="fondo-rojo">
+                    <center>Introduce una dirección correcta.</center>
+                </div>
+                <% } %>
+            </div>
+            <% }%>
             <h2>REGISTRO</h2>
             <section class="registro">
                 <form method="post" action="RegisterServlet">
@@ -206,7 +212,7 @@ Author     : sergio
                     <button type="submit">REGISTRARSE</button>
                 </form>
             </section>
-            <% } %>
+            <% }%>
         </main>
     </body>
     <footer>

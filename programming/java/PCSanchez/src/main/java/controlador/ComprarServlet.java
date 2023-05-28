@@ -4,14 +4,16 @@ import dao.CestaDAO;
 import dao.PedidoArticuloDAO;
 import dao.PedidoDAO;
 import dao.UsuarioDAO;
+import dao.TarjetaDAO;
+import dao.FacturaDAO; // Agrega la importación del FacturaDAO
 import dto.Cesta;
 import dto.LineaCesta;
 import dto.PedidoArticulo;
 import dto.Pedido;
 import dto.Usuario;
 import dto.Direccion;
-import dao.TarjetaDAO; // Agrega la importación del TarjetaDAO
 import dto.Tarjeta;
+import dto.Factura; // Agrega la importación de la clase Factura
 import javax.servlet.*;
 import javax.servlet.http.*;
 import java.io.IOException;
@@ -33,7 +35,8 @@ public class ComprarServlet extends HttpServlet {
         PedidoDAO pedidoDAO = new PedidoDAO();
         CestaDAO cestaDAO = new CestaDAO();
         UsuarioDAO usuarioDAO = new UsuarioDAO();
-        TarjetaDAO tarjetaDAO = new TarjetaDAO(); // Agrega la instancia del TarjetaDAO
+        TarjetaDAO tarjetaDAO = new TarjetaDAO();
+        FacturaDAO facturaDAO = new FacturaDAO(); // Agrega la instancia del FacturaDAO
 
         try {
             // Aquí asumimos que tienes un método en CestaDAO que obtiene la cesta de un usuario específico
@@ -66,11 +69,11 @@ public class ComprarServlet extends HttpServlet {
                 response.sendRedirect("agregar-tarjeta.jsp");
                 return;
             }
-            
+
             // Crear un nuevo Pedido y guardarlo en la base de datos
             Pedido pedido = new Pedido();
             // Añade aquí todos los detalles necesarios para el pedido
-            pedido.setFacturado("N");
+            pedido.setFacturado("S");
             pedido.setFechapedido(LocalDateTime.now());
             List<Direccion> direcciones = usuarioDAO.getDirecciones(usuario.getCodigo());
             pedido.setDirecciones(direcciones); // Establecer la lista de direcciones en el pedido
@@ -78,6 +81,16 @@ public class ComprarServlet extends HttpServlet {
             // Agregar el pedido a la base de datos
             int numeroPedido = pedidoDAO.anyadir(pedido);
             System.out.println(numeroPedido);
+
+            // Crear una nueva factura y guardarla en la base de datos
+            Factura factura = new Factura();
+            int numeroDireccion = pedido.getNumero();
+            factura.setCodFactura(numeroPedido);
+            factura.setDireccion(numeroDireccion); // Establecer la dirección de facturación correcta
+            factura.setFecha(LocalDateTime.now());
+            factura.setPedido(pedido);
+            int numeroFactura = facturaDAO.anyadir(factura);
+            System.out.println(numeroFactura);
 
             // Obtener las líneas de la cesta
             List<LineaCesta> lineasCesta = null;
@@ -127,7 +140,7 @@ public class ComprarServlet extends HttpServlet {
             return;
         }
 
-        // Después de crear el pedido, deberías limpiar la cesta.
+        // Después de crear el pedido y la factura, deberías limpiar la cesta.
         try {
             Cesta cesta = cestaDAO.getCestaPorUsuario(usuario.getCodigo());
             cestaDAO.eliminarLineas(cesta);
@@ -139,6 +152,6 @@ public class ComprarServlet extends HttpServlet {
         }
 
         // Redirigir al usuario a una página de confirmación.
-        response.sendRedirect("confirmacion.jsp");
+        response.sendRedirect("pedidos.jsp");
     }
 }

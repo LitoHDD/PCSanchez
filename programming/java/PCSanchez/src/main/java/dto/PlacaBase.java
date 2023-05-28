@@ -1,8 +1,9 @@
 package dto;
 
+import java.io.Serializable;
 import java.time.LocalDate;
 
-public class PlacaBase extends Articulo {
+public class PlacaBase extends Articulo implements Serializable{
 
     private String type, socket, chipset;
 

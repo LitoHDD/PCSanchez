@@ -20,7 +20,7 @@ public class AgregarTarjetaServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         // Obtener los datos del formulario
-        long numeroTarjeta = Long.parseLong(request.getParameter("numero"));
+        long numeroTarjeta = Long.parseLong(request.getParameter("tarjeta"));
         // Obtener el usuario de la sesión
         HttpSession session = request.getSession();
         Usuario usuario = (Usuario) session.getAttribute("usuario");

@@ -3,9 +3,11 @@ package dao;
 import dto.Direccion;
 import dto.Factura;
 import dto.Pedido;
+import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Timestamp;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
@@ -23,9 +25,36 @@ public class FacturaDAO extends TablaDAO<Factura> {
     }
 
     @Override
-    public int anyadir(Factura objeto) throws SQLException {
-        // TODO: Implementar la inserción de una factura en la base de datos
-        throw new UnsupportedOperationException("Añadir factura no implementado todavía.");
+    public int anyadir(Factura factura) throws SQLException {
+        String query = "INSERT INTO " + tabla + " (cod_factura, fecha, numero_pedido, cod_usuario, cod_usuario_direccion, numero_direccion) VALUES (?, ?, ?, ?, ?, ?)";
+        try (Connection con = Conexion.getConexion().getDatasource().getConnection(); PreparedStatement stmt = con.prepareStatement(query, PreparedStatement.RETURN_GENERATED_KEYS)) {
+            stmt.setInt(1, factura.getCodFactura() + 50000);
+            stmt.setTimestamp(2, Timestamp.valueOf(factura.getFecha()));
+            stmt.setInt(3, factura.getCodFactura());
+            stmt.setInt(4, factura.getPedido().getUsuario().getCodigo());
+            stmt.setInt(5, factura.getPedido().getUsuario().getCodigo());
+            // Obtener la dirección del usuario
+            int numeroDireccion = obtenerNumeroDireccionUsuario(factura.getPedido().getUsuario().getCodigo());
+            stmt.setInt(6, numeroDireccion);
+            System.out.println("Valores insertados: " + factura.getCodFactura() + ", " + factura.getFecha().toLocalDate() + ", " + factura.getCodFactura() + ", " + factura.getPedido().getUsuario().getCodigo() + ", " + factura.getPedido().getUsuario().getCodigo() + ", " + numeroDireccion);
+
+            stmt.executeUpdate();
+
+        }
+        return -1;
+    }
+
+// Obtener el número de dirección del usuario
+    private int obtenerNumeroDireccionUsuario(int codigoUsuario) throws SQLException {
+        String query = "SELECT numero FROM ps_direccion WHERE codigo_usuario_direccion = ?";
+        try (Connection con = Conexion.getConexion().getDatasource().getConnection(); PreparedStatement stmt = con.prepareStatement(query)) {
+            stmt.setInt(1, codigoUsuario);
+            ResultSet rs = stmt.executeQuery();
+            if (rs.next()) {
+                return rs.getInt("numero");
+            }
+        }
+        return -1; // Valor predeterminado o manejo de error según tus necesidades
     }
 
     @Override

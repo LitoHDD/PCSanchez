@@ -348,7 +348,13 @@ h3 {
     font-weight: 600;
 }
 
-.buy .buy-comprar {
+.buy-comprar button {
+    cursor: pointer;
+    padding: 8px 0;
+    width: 100%;
+    border: none;
+    border-radius: 6px;
+    color: white;
     background-color: #70E174;
 }
 

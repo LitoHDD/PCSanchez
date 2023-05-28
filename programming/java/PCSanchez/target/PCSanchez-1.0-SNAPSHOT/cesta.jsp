@@ -4,10 +4,15 @@
 <%@page import="dto.Cesta"%>
 <%@page import="java.util.ArrayList"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
-<%// Verificar si el usuario está logueado%>
-<%if (session.getAttribute("loggedIn") == null || !((boolean) session.getAttribute("loggedIn"))) {%>
-<%   response.sendRedirect("index.jsp");%>
-<%} else {%>
+<%
+    // Verificar si el usuario está logueado
+    if (session.getAttribute("loggedIn") == null || !((boolean) session.getAttribute("loggedIn"))) {
+        response.sendRedirect("index.jsp");
+    } else {
+        ArrayList<Cesta> cestas = (ArrayList<Cesta>) session.getAttribute("cestas");
+
+        LineaCestaDAO lineaCestaDAO = new LineaCestaDAO();
+%>
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -20,6 +25,7 @@
         <title>CESTA - PCSanchez</title>
         <script src="js/calcular-precio-total.js"></script>
         <script src="js/eliminar-articulo-cesta.js"></script>
+        <script src="js/vaciar-cesta.js"></script>
     </head>
     <body>
         <header>
@@ -61,42 +67,47 @@
             </figure>
         </header>
         <main>
-            <%
-                CestaDAO prueba4 = new CestaDAO();
-
-                ArrayList<Cesta> cestas = (ArrayList<Cesta>) session.getAttribute("cestas");
-
-                LineaCestaDAO lineaCestaDAO = new LineaCestaDAO();
-
-                for (Cesta cesta : cestas) {
-                    ArrayList<LineaCesta> lineas = lineaCestaDAO.getLineas(cesta.getCodigo());
-            %>
-            <h2>CESTA</h2>
-            <section class="cesta">
-                <% for (LineaCesta linea : lineas) {%>
+    <h2>CESTA</h2>
+    <section class="cesta">
+        <% if (cestas != null && !cestas.isEmpty()) {
+            ArrayList<LineaCesta> lineas = lineaCestaDAO.getLineas(cestas.get(0).getCodigo());
+            if (lineas != null && !lineas.isEmpty()) { %>
+                <button class="eliminar" type="button" onclick="vaciarCesta(<%= cestas.get(0).getCodigo()%>)">Vaciar Cesta</button>
+            <% } else { %>
+                <center><p>No hay artículos en la cesta.</p></center>
+            <% }
+            for (LineaCesta linea : lineas) { %>
                 <article class="producto">
                     <figure class="producto-img">
-                        <img src="<%=linea.getArticulo().getPathFoto()%>" alt="Producto">
+                        <img src="<%= linea.getArticulo().getPathFoto() %>" alt="Producto">
                     </figure>
                     <div class="producto-info">
-                        <h3><%=linea.getArticulo().getNombre()%></h3>
-                        <p>Precio: <%=linea.getArticulo().getPrecio()%>€</p>
+                        <h3><%= linea.getArticulo().getNombre() %></h3>
+                        <p>Precio: <%= linea.getArticulo().getPrecio() %>€</p>
                         <label for="cantidad">Cantidad:</label>
-                        <input type="number" id="cantidad" name="cantidad" value="<%=linea.getCantidad()%>" min="1" onchange="calcularPrecioTotal()">
+                        <input type="number" id="cantidad" name="cantidad" value="<%= linea.getCantidad() %>" min="1" onchange="calcularPrecioTotal()">
                     </div>
-                    <button class="eliminar" type="button" onclick="eliminarProducto(<%=linea.getId()%>)">Eliminar</button>
+                    <% // Asignar los valores a variables JavaScript
+                        int lineaId = linea.getId();
+                        int codigoArticulo = linea.getArticulo().getCodigo();
+                    %>
+                    <button class="eliminar" type="button" onclick="eliminarProducto('<%= lineaId %>', '<%= codigoArticulo %>')">Eliminar</button>                   
                 </article>
-                <% } %>
-            </section>
-            <%}%>     
-            <div class="resumen">
-                <h3>Resumen de la compra</h3>
-                <p id="precio-total">Total: 0,00€</p>
-                <form method="POST" action="ComprarServlet">
-                    <button type="submit">Comprar</button>
-                </form>
-            </div> 
-        </main>
+            <% }
+        } else { %>
+            <p>No hay artículos en la cesta.</p>
+        <% } %>
+    </section>
+    <div class="resumen">
+        <h3>Resumen de la compra</h3>
+        <p id="precio-total">Total: 0,00€</p>
+        <form method="POST" action="ComprarServlet">
+            <button type="submit">Comprar</button>
+        </form>
+    </div>
+</main>
     </body>
 </html>
-<%}%>
+<%
+    }
+%>

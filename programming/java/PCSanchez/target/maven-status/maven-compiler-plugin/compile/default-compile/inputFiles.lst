@@ -16,12 +16,14 @@
 /home/sergio/NetBeansProjects/PCSanchez/programming/java/PCSanchez/src/main/java/dao/PedidoDAO.java
 /home/sergio/NetBeansProjects/PCSanchez/programming/java/PCSanchez/src/main/java/controlador/ComprarServlet.java
 /home/sergio/NetBeansProjects/PCSanchez/programming/java/PCSanchez/src/main/java/dto/TarjetaGrafica.java
+/home/sergio/NetBeansProjects/PCSanchez/programming/java/PCSanchez/src/main/java/controlador/AgregarAlCarritoServlet.java
 /home/sergio/NetBeansProjects/PCSanchez/programming/java/PCSanchez/src/main/java/dto/Usuario.java
 /home/sergio/NetBeansProjects/PCSanchez/programming/java/PCSanchez/src/main/java/controlador/AgregarTarjetaServlet.java
 /home/sergio/NetBeansProjects/PCSanchez/programming/java/PCSanchez/src/main/java/dto/LineaCesta.java
 /home/sergio/NetBeansProjects/PCSanchez/programming/java/PCSanchez/src/main/java/dto/Pedido.java
 /home/sergio/NetBeansProjects/PCSanchez/programming/java/PCSanchez/src/main/java/controlador/AutoCompletarServlet.java
 /home/sergio/NetBeansProjects/PCSanchez/programming/java/PCSanchez/src/main/java/controlador/LoginServlet.java
+/home/sergio/NetBeansProjects/PCSanchez/programming/java/PCSanchez/src/main/java/controlador/ModificarTarjetaServlet.java
 /home/sergio/NetBeansProjects/PCSanchez/programming/java/PCSanchez/src/main/java/dao/RefrigeracionDAO.java
 /home/sergio/NetBeansProjects/PCSanchez/programming/java/PCSanchez/src/main/java/controlador/ContactoServlet.java
 /home/sergio/NetBeansProjects/PCSanchez/programming/java/PCSanchez/src/main/java/dao/AlmacenamientoDAO.java

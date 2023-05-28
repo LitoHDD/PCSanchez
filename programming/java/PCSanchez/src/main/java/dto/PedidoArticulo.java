@@ -4,13 +4,14 @@
  */
 package dto;
 
+import java.io.Serializable;
 import java.util.Objects;
 
 /**
  *
  * @author sergio
  */
-public class PedidoArticulo {
+public class PedidoArticulo implements Serializable{
 
     int id;
     private Articulo articulo;

@@ -1,8 +1,9 @@
 package dto;
 
+import java.io.Serializable;
 import java.util.Objects;
 
-public class ArticuloCategoria {
+public class ArticuloCategoria implements Serializable{
     
     private Articulo articulo;
     private Categoria categoria;

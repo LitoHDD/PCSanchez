@@ -1,22 +1,22 @@
 -- TABLA PS_USUARIO --
 
 INSERT INTO ps_usuario (codigo, email, pass, nombre_comp, foto, telefono, fecha_nacimiento, tipoUsuario)
-VALUES (5463, 'sergiosanchez.alu@iespacomolla.es', '1234Pass', 'Sergio Sanchez', 'https://i.imgur.com/drrIJO8.png', '688410654', to_date('27/01/1998', 'DD/MM/YYYY'), 'ADMIN');
+VALUES (5463, 'sergiosanchez.alu@iespacomolla.es', '$2a$10$ABCDEFGHIJKLMNOPQRSTUOlaFx19206T5IdZAbVROsTEAtfCM.eri', 'Sergio Sanchez', 'https://i.imgur.com/drrIJO8.png', '688410654', to_date('27/01/1998', 'DD/MM/YYYY'), 'ADMIN');
 
 INSERT INTO ps_usuario (codigo, email, pass, nombre_comp, foto, telefono, fecha_nacimiento, tipoUsuario)
-VALUES (5464, 'longinoojeda.alu@iespacomolla.es', '1234Pass', 'Longino Ojeda', 'https://i.imgur.com/drrIJO8.png', '688456765', to_date('15/04/2000', 'DD/MM/YYYY'), 'ADMIN');
+VALUES (5464, 'longinoojeda.alu@iespacomolla.es', '$2a$10$ABCDEFGHIJKLMNOPQRSTUOlaFx19206T5IdZAbVROsTEAtfCM.eri', 'Longino Ojeda', 'https://i.imgur.com/drrIJO8.png', '688456765', to_date('15/04/2000', 'DD/MM/YYYY'), 'ADMIN');
 
 INSERT INTO ps_usuario (codigo, email, pass, nombre_comp, foto, telefono, fecha_nacimiento, tipoUsuario)
-VALUES (5465, 'silviaamoros.informatica@iespacomolla.es', '1234Pass', 'Silvia Amoros', 'https://i.imgur.com/drrIJO8.png', '688456234', to_date('15/04/1984', 'DD/MM/YYYY'), 'ADMIN');
+VALUES (5465, 'silviaamoros.informatica@iespacomolla.es', '$2a$10$ABCDEFGHIJKLMNOPQRSTUOlaFx19206T5IdZAbVROsTEAtfCM.eri', 'Silvia Amoros', 'https://i.imgur.com/drrIJO8.png', '688456234', to_date('15/04/1984', 'DD/MM/YYYY'), 'ADMIN');
 
 INSERT INTO ps_usuario (codigo, email, pass, nombre_comp, foto, telefono, fecha_nacimiento, tipoUsuario)
-VALUES (5466, 'marcosramon.alu@iespacomolla.es', 'Pass1234', 'Marcos Ramon', 'https://i.imgur.com/drrIJO8.png', '688340987', to_date('13/09/2004', 'DD/MM/YYYY'), 'CLIENTE');
+VALUES (5466, 'marcosramon.alu@iespacomolla.es', '$2a$10$ABCDEFGHIJKLMNOPQRSTUOlaFx19206T5IdZAbVROsTEAtfCM.eri', 'Marcos Ramon', 'https://i.imgur.com/drrIJO8.png', '688340987', to_date('13/09/2004', 'DD/MM/YYYY'), 'CLIENTE');
 
 INSERT INTO ps_usuario (codigo, email, pass, nombre_comp, foto, telefono, fecha_nacimiento, tipoUsuario)
-VALUES (5467, 'adrianpareja.alu@iespacomolla.es', 'Pass1234', 'Adrian Pareja', 'https://i.imgur.com/drrIJO8.png', '657483947', to_date('23/05/2004', 'DD/MM/YYYY'), 'CLIENTE');
+VALUES (5467, 'adrianpareja.alu@iespacomolla.es', '$2a$10$ABCDEFGHIJKLMNOPQRSTUOlaFx19206T5IdZAbVROsTEAtfCM.eri', 'Adrian Pareja', 'https://i.imgur.com/drrIJO8.png', '657483947', to_date('23/05/2004', 'DD/MM/YYYY'), 'CLIENTE');
 
 INSERT INTO ps_usuario (codigo, email, pass, nombre_comp, foto, telefono, fecha_nacimiento, tipoUsuario)
-VALUES (5468, 'carlosfresneda.alu@iespacomolla.es', 'Pass1234', 'Carlos Freneda', 'https://i.imgur.com/drrIJO8.png', '657456765', to_date('04/08/2003', 'DD/MM/YYYY'), 'CLIENTE');
+VALUES (5468, 'carlosfresneda.alu@iespacomolla.es', '$2a$10$ABCDEFGHIJKLMNOPQRSTUOlaFx19206T5IdZAbVROsTEAtfCM.eri', 'Carlos Freneda', 'https://i.imgur.com/drrIJO8.png', '657456765', to_date('04/08/2003', 'DD/MM/YYYY'), 'CLIENTE');
 
 --TABLA PS_DIRECCION --
 
