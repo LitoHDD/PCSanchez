@@ -10,6 +10,17 @@
     --azul: #30398A;
 }
 
+html {
+    height: 100%;
+}
+
+body {
+    min-height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
 /* ------------ HEADER ----------- */
 
 header {
@@ -169,6 +180,12 @@ a {
     color: white;
 }
 
+.agregar-metodo-pago:hover {
+    border: 1px var(--azul) solid;
+    background-color: white;
+    color: var(--azul);
+}
+
 .usuario-logued .foto-perfil:hover .logout-button {
     display: block;
 }
@@ -176,7 +193,7 @@ a {
 .logout-button {
     display: none;
     position: absolute;
-    bottom: -63px;  /* Ajusta este valor según tus necesidades */
+    bottom: -49px;  /* Ajusta este valor según tus necesidades */
     left: 0;
     background-color: var(--verde);
     color: var(--azul);
@@ -436,12 +453,6 @@ header button:hover {
         font-size: 14px;
     }
 
-    .pedido-cesta {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-    }
-
     .pedido-cesta button, .logout{
         width: 30vw;
     }
@@ -460,9 +471,6 @@ footer {
     background-color: black;
     padding: 30px 0;
     color: white;
-    position: fixed;
-    width: 100%;
-    bottom: 0;
 }
 
 .footer-container {

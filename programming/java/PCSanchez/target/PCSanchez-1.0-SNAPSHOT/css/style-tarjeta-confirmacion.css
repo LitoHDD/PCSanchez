@@ -180,7 +180,7 @@ a {
 .logout-button {
     display: none;
     position: absolute;
-    bottom: -63px;  /* Ajusta este valor según tus necesidades */
+    bottom: -49px;  /* Ajusta este valor según tus necesidades */
     left: 0;
     background-color: var(--verde);
     color: var(--azul);

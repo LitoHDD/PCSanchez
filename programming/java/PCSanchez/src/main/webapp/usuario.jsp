@@ -4,6 +4,7 @@
     Author     : sergio
 --%>
 
+<%@page import="dto.TipoUsuario"%>
 <%@page import="dto.Tarjeta"%>
 <%@page import="dto.Usuario"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
@@ -40,7 +41,8 @@
                         <li><a href="./index.jsp">Inicio</a></li>
                         <li><a href="./ordenadores.jsp">Ordenadores</a></li>
                         <li><a href="./componentes.jsp">Componentes</a></li>
-                        <li><a href="./privacy.jsp">Privacidad</a></li>
+                        <li id="primary-li"><a href="./contacto.jsp">Contactanos</a></li>
+                        <li id="secondary-li"><a href="./privacy.jsp">Privacidad</a></li>
                     </ul>
                 </nav>
             </div>
@@ -69,10 +71,12 @@
             </section>
             <% } %>
             <!-- EStANDO LOGUEADO -->
-            <% if (session.getAttribute("loggedIn") != null && (boolean) session.getAttribute("loggedIn")) {%>
+            <% if (session.getAttribute("loggedIn") != null && (boolean) session.getAttribute("loggedIn")) { %>
             <section class="usuario-logued">
                 <figure class="foto-perfil">
+                    <% if (session.getAttribute("usuario") != null) {%>
                     <a href="./usuario.jsp"><img src="<%= ((Usuario) session.getAttribute("usuario")).getFoto()%>" alt=""></a>
+                        <% } %>
                     <form id="logoutForm" action="LogoutServlet" method="post">
                         <div class="logout-button" onclick="document.getElementById('logoutForm').submit()">Cerrar Sesión</div>
                     </form>
@@ -81,7 +85,7 @@
                     <a href="./cesta.jsp"><img src="./images/index/carro.png" alt=""></a>
                 </figure>
             </section>
-            <% }%>
+            <% } %>
             <a href="./index.jsp" class="titulo-query">
                 <h2>PC SANCHEZ</h2>
             </a>
@@ -92,10 +96,12 @@
             </a>
             <% } %>
             <!-- EStANDO LOGUEADO -->
-            <% if (session.getAttribute("loggedIn") != null && (boolean) session.getAttribute("loggedIn")) {%>
+            <% if (session.getAttribute("loggedIn") != null && (boolean) session.getAttribute("loggedIn")) { %>
+            <% if (session.getAttribute("usuario") != null) {%>
             <a href="./usuario.jsp" class="user-query">
                 <img src="<%= ((Usuario) session.getAttribute("usuario")).getFoto()%>" alt="">
             </a>
+            <% } %>
             <% }%>
         </header>
         <main>
@@ -145,6 +151,14 @@
                         <section class="pedido-cesta">
                             <button type="button" onclick="location.href = './pedidos.jsp'">Pedidos</button>
                             <button type="button" onclick="location.href = './cesta.jsp'">Cesta</button>
+                            <%
+                                TipoUsuario tipoUsuario = ((Usuario) session.getAttribute("usuario")).getTipoUsuario();
+                            %>
+
+                            <% if (tipoUsuario == TipoUsuario.ADMIN) { %>
+                            <button type="button" onclick="location.href = './admin-panel.jsp'">Ir al panel de administración</button>
+                            <% } %>
+
                         </section>
                         <button type="button" class="logout" onclick="document.getElementById('logoutForm').submit()">Cerrar sesion</button>
                     </section>
@@ -157,11 +171,11 @@
                     <img src="./images/footer/logo-footer2.png" alt="">
                 </figure>
                 <div class="footer-logo">
-                    <img src="./images/footer/logo-footer.png" alt="PC SANCHEZ Logo">
+                    <a href="https://iespacomolla.es/"><img src="./images/footer/logo-footer.png" alt="PC SANCHEZ Logo"></a>
                 </div>
                 <div class="github-link">
                     <figure>
-                        <a href=""><img src="./images/footer/github.png" alt=""></a>
+                        <a href="https://github.com/LitoHDD/PCSanchez"><img src="./images/footer/github.png" alt=""></a>
                     </figure>
                 </div>
             </div>

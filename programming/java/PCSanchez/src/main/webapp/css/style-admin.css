@@ -81,7 +81,7 @@ nav a {
 .search label {
     position: relative;
 }
-
+  
 .search input[type="text"] {
     padding: 8px;
     border-radius: 4px;
@@ -99,36 +99,8 @@ nav a {
     cursor: pointer;
     position: absolute;
     right: 0;
-    width: 40px;
-    height: 100%;
-}
-
-#suggestion-box {
-    margin-top: 4px;
-    background-color: white;
-    position: absolute;
-    width: 27.5%;
-    border: solid 1px lightgray;
-    border-radius: 6px;
-    overflow: hidden;
-}
-
-#suggestions {
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    list-style: none;
-}
-
-#suggestions li {
-    padding: 5px 10px;
-}
-
-#suggestions li:hover{
-    background-color: #30398a1f;
-    color: var(--azul);
-    cursor: pointer;
-    font-weight: bold;
+    width: 30px;
+    height: 20%;
 }
 
 /* ----- LOGIN ------- */
@@ -179,7 +151,7 @@ a {
 .logout-button {
     display: none;
     position: absolute;
-    bottom: -63px;  /* Ajusta este valor según tus necesidades */
+    bottom: -49px;  /* Ajusta este valor según tus necesidades */
     left: 0;
     background-color: var(--verde);
     color: var(--azul);
@@ -206,6 +178,19 @@ a {
 
 .burger-label {
     display: none;
+}
+
+
+@media screen and (max-width: 1191px) {
+    #primary-li {
+        display: none;
+    }
+}
+
+@media screen and (max-width: 1471px) {
+    #secondary-li {
+        display: none;
+    }
 }
 
 @media screen and (max-width: 900px) {

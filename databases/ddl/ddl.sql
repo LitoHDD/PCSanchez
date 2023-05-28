@@ -98,12 +98,12 @@ CREATE TABLE ps_cesta_articulo (
 );
 
 CREATE TABLE ps_categoria (
-    nombre VARCHAR2(20) PRIMARY KEY
+    nombre VARCHAR2(30) PRIMARY KEY
 );
 
 CREATE TABLE ps_articulo_categoria (
     codigo_articulo_categoria NUMBER(8) REFERENCES ps_articulo,
-    nombre_categoria VARCHAR2(20) REFERENCES ps_categoria,
+    nombre_categoria VARCHAR2(30) REFERENCES ps_categoria,
     PRIMARY KEY(codigo_articulo_categoria, nombre_categoria)
 );
 

@@ -143,7 +143,7 @@ a {
 .logout-button {
     display: none;
     position: absolute;
-    bottom: -63px;  /* Ajusta este valor según tus necesidades */
+    bottom: -49px;  /* Ajusta este valor según tus necesidades */
     left: 0;
     background-color: var(--verde);
     color: var(--azul);
@@ -473,6 +473,9 @@ footer {
     background-color: black;
     padding: 30px 0;
     color: white;
+    position: absolute;
+    bottom: 0;
+    width: 100%;
 }
 
 .footer-container {
@@ -510,6 +513,10 @@ footer {
     .about-us, .github-link, .footer-logo {
         flex-basis: 100%;
         margin: 10px;
+    }
+    
+    footer {
+        position: relative;
     }
 
 }

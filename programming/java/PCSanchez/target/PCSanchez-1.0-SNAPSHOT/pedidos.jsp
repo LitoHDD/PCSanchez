@@ -20,7 +20,7 @@
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link rel="stylesheet" href="normalize.css">
+        <link rel="stylesheet" href="./css/normalize.css">
         <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
         <link rel="stylesheet" href="./css/style-pedidos.css">
         <title>PEDIDOS - PCSanchez</title>
@@ -43,7 +43,8 @@
                         <li><a href="./index.jsp">Inicio</a></li>
                         <li><a href="./ordenadores.jsp">Ordenadores</a></li>
                         <li><a href="./componentes.jsp">Componentes</a></li>
-                        <li><a href="./privacy.jsp">Privacidad</a></li>
+                        <li id="primary-li"><a href="./contacto.jsp">Contactanos</a></li>
+                        <li id="secondary-li"><a href="./privacy.jsp">Privacidad</a></li>
                     </ul>
                 </nav>
             </div>
@@ -72,10 +73,12 @@
             </section>
             <% } %>
             <!-- EStANDO LOGUEADO -->
-            <% if (session.getAttribute("loggedIn") != null && (boolean) session.getAttribute("loggedIn")) {%>
+            <% if (session.getAttribute("loggedIn") != null && (boolean) session.getAttribute("loggedIn")) { %>
             <section class="usuario-logued">
                 <figure class="foto-perfil">
+                    <% if (session.getAttribute("usuario") != null) {%>
                     <a href="./usuario.jsp"><img src="<%= ((Usuario) session.getAttribute("usuario")).getFoto()%>" alt=""></a>
+                        <% } %>
                     <form id="logoutForm" action="LogoutServlet" method="post">
                         <div class="logout-button" onclick="document.getElementById('logoutForm').submit()">Cerrar Sesión</div>
                     </form>
@@ -84,7 +87,7 @@
                     <a href="./cesta.jsp"><img src="./images/index/carro.png" alt=""></a>
                 </figure>
             </section>
-            <% }%>
+            <% } %>
             <a href="./index.jsp" class="titulo-query">
                 <h2>PC SANCHEZ</h2>
             </a>
@@ -95,11 +98,13 @@
             </a>
             <% } %>
             <!-- EStANDO LOGUEADO -->
-            <% if (session.getAttribute("loggedIn") != null && (boolean) session.getAttribute("loggedIn")) {%>
+            <% if (session.getAttribute("loggedIn") != null && (boolean) session.getAttribute("loggedIn")) { %>
+            <% if (session.getAttribute("usuario") != null) {%>
             <a href="./usuario.jsp" class="user-query">
                 <img src="<%= ((Usuario) session.getAttribute("usuario")).getFoto()%>" alt="">
             </a>
-            <% }%>
+            <% } %>
+            <% } %>
         </header>
         <main>
             <h2>MIS PEDIDOS</h2>
@@ -143,7 +148,7 @@
                 <div class="factura-buttons">
                     <button type="button" class="pdf-button" data-numero-pedido="<%= numeroPedido%>">Factura PDF</button>
 
-                    <button type="button">Factura XML</button>
+                    <button type="button" class="xml-button" data-numero-pedido="<%= numeroPedido%>">Factura XML</button>
                 </div>
                 <%
                     // Mostrar los pedidos correspondientes al número de pedido actual
@@ -185,24 +190,16 @@
                 <img src="./images/footer/logo-footer2.png" alt="">
             </figure>
             <div class="footer-logo">
-                <img src="./images/footer/logo-footer.png" alt="PC SANCHEZ Logo">
+                <a href="https://iespacomolla.es/"><img src="./images/footer/logo-footer.png" alt="PC SANCHEZ Logo"></a>
             </div>
             <div class="github-link">
                 <figure>
-                    <a href=""><img src="./images/footer/github.png" alt=""></a>
+                    <a href="https://github.com/LitoHDD/PCSanchez"><img src="./images/footer/github.png" alt=""></a>
                 </figure>
             </div>
         </div>
-        <script>
-            var pdfButtons = document.getElementsByClassName('pdf-button');
-            for (var i = 0; i < pdfButtons.length; i++) {
-                pdfButtons[i].addEventListener('click', function () {
-                    var numeroPedido = this.getAttribute('data-numero-pedido');
-                    window.open('FacturaPDFServlet?numeroPedido=' + numeroPedido, '_blank');
-                });
-            }
-        </script>
     </footer>
+    <script src="js/facturar.js"></script>
     <script src="js/autocompletar.js"></script>
     <script src="js/buscar-categorias.js"></script>
 </html>

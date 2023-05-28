@@ -233,6 +233,27 @@ VALUES ('Procesadores');
 INSERT INTO ps_categoria (nombre)
 VALUES ('Tarjetas Gráficas');
 
+INSERT INTO ps_categoria (nombre)
+VALUES ('Refrigeración');
+
+INSERT INTO ps_categoria (nombre)
+VALUES ('Caja');
+
+INSERT INTO ps_categoria (nombre)
+VALUES ('Fuente de Alimentación');
+
+INSERT INTO ps_categoria (nombre)
+VALUES ('Placa Base');
+
+INSERT INTO ps_categoria (nombre)
+VALUES ('Memoria Ram');
+
+INSERT INTO ps_categoria (nombre)
+VALUES ('Portatil');
+
+INSERT INTO ps_categoria (nombre)
+VALUES ('Sobremesa');
+
 -- TABLA ARTICULO CATEGORIA --
 
 INSERT INTO ps_articulo_categoria (codigo_articulo_categoria, nombre_categoria)
@@ -243,6 +264,87 @@ VALUES (12346, 'Almacenamiento');
 
 INSERT INTO ps_articulo_categoria (codigo_articulo_categoria, nombre_categoria)
 VALUES (12347, 'Almacenamiento');
+
+INSERT INTO ps_articulo_categoria (codigo_articulo_categoria, nombre_categoria)
+VALUES (12348, 'Caja');
+
+INSERT INTO ps_articulo_categoria (codigo_articulo_categoria, nombre_categoria)
+VALUES (12349, 'Caja');
+
+INSERT INTO ps_articulo_categoria (codigo_articulo_categoria, nombre_categoria)
+VALUES (12350, 'Caja');
+
+INSERT INTO ps_articulo_categoria (codigo_articulo_categoria, nombre_categoria)
+VALUES (12351, 'Memoria Ram');
+
+INSERT INTO ps_articulo_categoria (codigo_articulo_categoria, nombre_categoria)
+VALUES (12352, 'Memoria Ram');
+
+INSERT INTO ps_articulo_categoria (codigo_articulo_categoria, nombre_categoria)
+VALUES (12353, 'Memoria Ram');
+
+INSERT INTO ps_articulo_categoria (codigo_articulo_categoria, nombre_categoria)
+VALUES (12354, 'Placa Base');
+
+INSERT INTO ps_articulo_categoria (codigo_articulo_categoria, nombre_categoria)
+VALUES (12355, 'Placa Base');
+
+INSERT INTO ps_articulo_categoria (codigo_articulo_categoria, nombre_categoria)
+VALUES (12356, 'Placa Base');
+
+INSERT INTO ps_articulo_categoria (codigo_articulo_categoria, nombre_categoria)
+VALUES (12357, 'Portatil');
+
+INSERT INTO ps_articulo_categoria (codigo_articulo_categoria, nombre_categoria)
+VALUES (12358, 'Portatil');
+
+INSERT INTO ps_articulo_categoria (codigo_articulo_categoria, nombre_categoria)
+VALUES (12359, 'Portatil');
+
+INSERT INTO ps_articulo_categoria (codigo_articulo_categoria, nombre_categoria)
+VALUES (12360, 'Procesadores');
+
+INSERT INTO ps_articulo_categoria (codigo_articulo_categoria, nombre_categoria)
+VALUES (12361, 'Procesadores');
+
+INSERT INTO ps_articulo_categoria (codigo_articulo_categoria, nombre_categoria)
+VALUES (12362, 'Procesadores');
+
+INSERT INTO ps_articulo_categoria (codigo_articulo_categoria, nombre_categoria)
+VALUES (12363, 'Fuente de Alimentación');
+
+INSERT INTO ps_articulo_categoria (codigo_articulo_categoria, nombre_categoria)
+VALUES (12364, 'Fuente de Alimentación');
+
+INSERT INTO ps_articulo_categoria (codigo_articulo_categoria, nombre_categoria)
+VALUES (12365, 'Fuente de Alimentación');
+
+INSERT INTO ps_articulo_categoria (codigo_articulo_categoria, nombre_categoria)
+VALUES (12366, 'Refrigeración');
+
+INSERT INTO ps_articulo_categoria (codigo_articulo_categoria, nombre_categoria)
+VALUES (12367, 'Refrigeración');
+
+INSERT INTO ps_articulo_categoria (codigo_articulo_categoria, nombre_categoria)
+VALUES (12368, 'Refrigeración');
+
+INSERT INTO ps_articulo_categoria (codigo_articulo_categoria, nombre_categoria)
+VALUES (12369, 'Sobremesa');
+
+INSERT INTO ps_articulo_categoria (codigo_articulo_categoria, nombre_categoria)
+VALUES (12370, 'Sobremesa');
+
+INSERT INTO ps_articulo_categoria (codigo_articulo_categoria, nombre_categoria)
+VALUES (12371, 'Sobremesa');
+
+INSERT INTO ps_articulo_categoria (codigo_articulo_categoria, nombre_categoria)
+VALUES (12372, 'Tarjetas Gráficas');
+
+INSERT INTO ps_articulo_categoria (codigo_articulo_categoria, nombre_categoria)
+VALUES (12373, 'Tarjetas Gráficas');
+
+INSERT INTO ps_articulo_categoria (codigo_articulo_categoria, nombre_categoria)
+VALUES (12374, 'Tarjetas Gráficas');
 
 -- TABLA CESTA --
 
@@ -334,3 +436,4 @@ UPDATE ps_articulo SET nombre='Mars Gaming Solar' WHERE codigo=12348;
 DELETE FROM ps_refrigeracion WHERE codigo_articulo = 12367;
 
 DELETE FROM ps_refrigeracion WHERE codigo_articulo = 12366 and tipo = 'Liquida';
+

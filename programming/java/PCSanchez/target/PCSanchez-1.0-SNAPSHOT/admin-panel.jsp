@@ -4,6 +4,15 @@
     Author     : sergio
 --%>
 
+<%@page import="dto.TipoUsuario"%>
+<%@page import="dao.FacturaDAO"%>
+<%@page import="dto.Factura"%>
+<%@page import="dto.Pedido"%>
+<%@page import="dao.PedidoDAO"%>
+<%@page import="dto.Articulo"%>
+<%@page import="dao.ArticuloDAO"%>
+<%@page import="dto.Usuario"%>
+<%@page import="dao.UsuarioDAO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <%@ page import="dto.Psu"%>
 <%@ page import="dao.PsuDAO"%>
@@ -23,6 +32,13 @@
 <%@ page import="dto.Portatil" %>
 <%@ page import="dao.SobremesaDAO" %>
 <%@ page import="dto.Sobremesa" %>
+<%
+    TipoUsuario tipoUsuario = ((Usuario) session.getAttribute("usuario")).getTipoUsuario();
+%>
+
+<% if (tipoUsuario == TipoUsuario.CLIENTE) { %>
+<%response.sendRedirect("index.jsp");%>
+<% } else { %>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -30,7 +46,7 @@
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link rel="stylesheet" href="normalize.css">
+        <link rel="stylesheet" href="./css/normalize.css">
         <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
         <link rel="stylesheet" href="./css/style-admin.css">
         <title>INICIO - PCSanchez</title>
@@ -54,16 +70,19 @@
                         <li><a href="./index.jsp">Inicio</a></li>
                         <li><a href="./ordenadores.jsp">Ordenadores</a></li>
                         <li><a href="./componentes.jsp">Componentes</a></li>
-                        <li><a href="./privacy.jsp">Privacidad</a></li>
+                        <li id="primary-li"><a href="./contacto.jsp">Contactanos</a></li>
+                        <li id="secondary-li"><a href="./privacy.jsp">Privacidad</a></li>
                     </ul>
                 </nav>
             </div>
             <article class="search">
-                <form action="search" method="get">
+                <form action="search" method="get" onsubmit="onSubmitForm()">
                     <label>
-                        <input type="text" id="search-bar" placeholder="Buscar" name="query">
+                        <input type="text" id="search-bar" placeholder="Buscar por nombre o categoría">
                         <button type="submit"></button>
                     </label>
+                    <input type="hidden" id="categoria-input" name="categoria" value="">
+                    <input type="hidden" id="query-input" name="query" value="">
                 </form>
                 <div id="suggestion-box" style="display: none;">
                     <ul id="suggestions">
@@ -84,84 +103,69 @@
             <% if (session.getAttribute("loggedIn") != null && (boolean) session.getAttribute("loggedIn")) { %>
             <section class="usuario-logued">
                 <figure class="foto-perfil">
-                    <a href="./usuario.jsp"><img src="./images/header/user-default.png" alt=""></a>
+                    <% if (session.getAttribute("usuario") != null) {%>
+                    <a href="./usuario.jsp"><img src="<%= ((Usuario) session.getAttribute("usuario")).getFoto()%>" alt=""></a>
+                        <% } %>
                     <form id="logoutForm" action="LogoutServlet" method="post">
-                        <div class="logout-button" onclick="document.getElementById('logoutForm').submit()">
-                            Cerrar Sesión</div>
+                        <div class="logout-button" onclick="document.getElementById('logoutForm').submit()">Cerrar Sesión</div>
                     </form>
                 </figure>
                 <figure>
                     <a href="./cesta.jsp"><img src="./images/index/carro.png" alt=""></a>
                 </figure>
             </section>
-            <% }%>
+            <% } %>
             <a href="./index.jsp" class="titulo-query">
                 <h2>PC SANCHEZ</h2>
             </a>
-            <a href="./usuario.jsp" class="user-query">
-                <img src="./images/index/user.png" alt="">
+            <!-- SIN ESTAR LOGEADO -->
+            <% if (session.getAttribute("loggedIn") == null || !(boolean) session.getAttribute("loggedIn")) { %>
+            <a href="./login.jsp" class="user-query">
+                <img src="./images/header/user-default.png" alt="">
             </a>
+            <% } %>
+            <!-- EStANDO LOGUEADO -->
+            <% if (session.getAttribute("loggedIn") != null && (boolean) session.getAttribute("loggedIn")) { %>
+            <% if (session.getAttribute("usuario") != null) {%>
+            <a href="./usuario.jsp" class="user-query">
+                <img src="<%= ((Usuario) session.getAttribute("usuario")).getFoto()%>" alt="">
+            </a>
+            <% } %>
+            <% } %>
         </header>
         <main>
-
+            <%
+                UsuarioDAO usuarioDAO = new UsuarioDAO();
+                ArrayList<Usuario> usuarios = usuarioDAO.getAll();
+                int totalUsuarios = usuarios.size();
+                ArticuloDAO articuloDAO = new ArticuloDAO();
+                ArrayList<Articulo> articulos = articuloDAO.getAll();
+                int totalArticulos = articulos.size();
+                PedidoDAO pedidoDAO = new PedidoDAO();
+                ArrayList<Pedido> pedidos = pedidoDAO.getAll();
+                int totalPedidos = pedidos.size();
+                FacturaDAO facturaDAO = new FacturaDAO();
+                ArrayList<Factura> listaFacturas = facturaDAO.getAll();
+                int totalFacturas = listaFacturas.size();
+            %>
             <section class="statistics">
                 <div class="statistic-card">
                     <p class="statistic-title">Total de Usuarios</p>
-                    <p class="statistic-number">123</p>
+                    <p class="statistic-number"><%= totalUsuarios%></p>
                 </div>
                 <div class="statistic-card">
                     <p class="statistic-title">Total de Productos</p>
-                    <p class="statistic-number">456</p>
+                    <p class="statistic-number"><%= totalArticulos%></p>
                 </div>
                 <div class="statistic-card">
                     <p class="statistic-title">Total de Pedidos</p>
-                    <p class="statistic-number">789</p>
+                    <p class="statistic-number"><%= totalPedidos%></p>
+                </div>
+                <div class="statistic-card">
+                    <p class="statistic-title">Total de Facturas</p>
+                    <p class="statistic-number"><%= totalFacturas%></p>
                 </div>
             </section>
-
-            <section class="product-management">
-                <h2>Gestión de productos</h2>
-                <div class="add-product">
-                    <h3>Añadir producto</h3>
-                    <form id="add-product-form">
-                        <!-- El menú desplegable para seleccionar el tipo de producto -->
-                        <select id="product-type-selector" onchange="changeForm()">
-                            <option value="">Selecciona un tipo de producto</option>
-                            <option value="ps_refrigeracion">Refrigeración</option>
-                            <option value="ps_caja">Caja</option>
-                            <!-- Añade aquí las otras opciones... -->
-                        </select>
-
-                        <div>
-                            <input type="text" id="nombre" placeholder="Nombre" required>
-                            <input type="text" id="descripcion" placeholder="Descripción" required>
-                            <input type="number" id="precio" placeholder="Precio" required>
-                            <input type="text" id="path_foto" placeholder="Ruta de la foto" required>
-                            <input type="number" id="stock" placeholder="Stock" required>
-                        </div>
-                        <!-- Los campos del formulario irían aquí. Por defecto, están ocultos -->
-                        <div id="ps_refrigeracion-fields" class="product-fields" style="display: none;">
-                            <!-- Los campos para el tipo 'ps_refrigeracion' -->
-                            <input type="number" id="codigo" placeholder="Código" required>
-                            <input type="text" id="tipo" placeholder="Tipo" required>
-                            <input type="text" id="socket" placeholder="Socket" required>
-                            <input type="number" id="size_mm" placeholder="Tamaño en mm" required>
-                            <input type="number" id="sizee_mm" placeholder="Tamaño en mm" required>
-                        </div>
-                        <div id="ps_caja-fields" class="product-fields" style="display: none;">
-                            <!-- Los campos para el tipo 'ps_caja' -->
-                            <input type="number" id="codigo" placeholder="Código" required>
-                            <input type="text" id="size_case" placeholder="Tamaño de la caja" required>
-                            <input type="text" id="color" placeholder="Color" required>
-                            <input type="text" id="conexion" placeholder="Conexión" required>
-                        </div>
-                        <!-- Añade aquí los otros divs para los otros tipos de productos... -->
-
-                        <button type="submit">Añadir</button>
-                    </form>
-                </div>
-            </section>
-
             <section class="products">
                 <h2>Productos</h2>
                 <table>
@@ -169,21 +173,20 @@
                     <tr>
                         <th>Nombre</th>
                         <th>ID</th>
-                        <th>Categoría</th>
                         <th>Stock</th>
-                        <th></th>
                     </tr>
 
-                    <!-- Filas de ejemplo -->
+                    <!-- Filas de productos -->
+                    <% for (Articulo articulo : articulos) {%>
                     <tr>
-                        <td>Producto 1</td>
-                        <td>1</td>
-                        <td>Categoría 1</td>
-                        <td>100</td>
-                        <td><button class="edit-button">Editar</button></td>
+                        <td><%= articulo.getNombre()%></td>
+                        <td><%= articulo.getCodigo()%></td>
+                        <td><%= articulo.getStock()%></td>
                     </tr>
+                    <% }%>
                 </table>
             </section>
+
 
             <section class="orders">
                 <h2>Pedidos</h2>
@@ -192,22 +195,51 @@
                     <tr>
                         <th>ID Pedido</th>
                         <th>ID Usuario</th>
-                        <th>Precio</th>
+                        <th>Facturado</th>
                         <th>Fecha</th>
-                        <th></th>
                     </tr>
 
-                    <!-- Filas de ejemplo -->
+                    <!-- Filas de pedidos -->
+                    <% for (Pedido pedido : pedidos) {%>
                     <tr>
-                        <td>1</td>
-                        <td>1</td>
-                        <td>$99.99</td>
-                        <td>2023-01-01</td>
-                        <td><button class="edit-button">Editar</button></td>
+                        <td><%= pedido.getNumero()%></td>
+                        <td><%= pedido.getUsuario().getCodigo()%></td>
+                        <td><%= pedido.getFacturado()%></td>
+                        <td><%= pedido.getFechapedido()%></td>
                     </tr>
+                    <% }%>
                 </table>
             </section>
 
+            <section class="invoices">
+                <h2>Facturas</h2>
+                <table>
+                    <!-- Cabeza de la tabla -->
+                    <tr>
+                        <th>ID Factura</th>
+                        <th>Direccion</th>
+                        <th>Fecha</th>
+                        <th>Pedido</th>
+                    </tr>
+
+                    <!-- Filas de facturas -->
+                    <% for (Factura factura : listaFacturas) {%>
+                    <tr>
+                        <td><%= factura.getCodFactura()%></td>
+                        <td><%= factura.getDireccion()%></td>
+                        <td><%= factura.getFecha()%></td>
+                        <td>
+                            <% if (factura.getPedido() != null) {%>
+                            <%= factura.getPedido().getNumero()%>
+                            <% } else { %>
+                            Sin pedido asociado
+                            <% } %>
+                        </td>
+                    </tr>
+                    <% }%>
+                </table>
+            </section>
+            <br>
             <section class="users">
                 <h2>Usuarios</h2>
                 <table>
@@ -216,18 +248,19 @@
                         <th>Nombre</th>
                         <th>ID</th>
                         <th>Tipo</th>
-                        <th></th>
                     </tr>
 
-                    <!-- Filas de ejemplo -->
+                    <!-- Filas de usuarios -->
+                    <% for (Usuario usuario : usuarios) {%>
                     <tr>
-                        <td>Usuario 1</td>
-                        <td>1</td>
-                        <td>Cliente</td>
-                        <td><button class="edit-button">Editar</button></td>
+                        <td><%= usuario.getNombreCompleto()%></td>
+                        <td><%= usuario.getCodigo()%></td>
+                        <td><%= usuario.getTipoUsuario()%></td>
                     </tr>
+                    <% }%>
                 </table>
             </section>
+
         </main>
         <footer>
             <div class="footer-container">
@@ -235,16 +268,19 @@
                     <img src="./images/footer/logo-footer2.png" alt="">
                 </figure>
                 <div class="footer-logo">
-                    <img src="./images/footer/logo-footer.png" alt="PC SANCHEZ Logo">
+                    <a href="https://iespacomolla.es/"><img src="./images/footer/logo-footer.png" alt="PC SANCHEZ Logo"></a>
                 </div>
                 <div class="github-link">
                     <figure>
-                        <a href=""><img src="./images/footer/github.png" alt=""></a>
+                        <a href="https://github.com/LitoHDD/PCSanchez"><img src="./images/footer/github.png" alt=""></a>
                     </figure>
                 </div>
             </div>
         </footer>
         <script src="js/autocompletar.js"></script>
-        <script src="js/admin-manage.js"></script>
+        <script src="js/buscar-categorias.js"></script>
     </body>
 </html>
+<%
+    }
+%>

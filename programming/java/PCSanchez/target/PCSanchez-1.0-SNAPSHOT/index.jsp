@@ -228,7 +228,7 @@
                 <a href="./componentes.jsp">Ver mas</a>
             </section>
             <div class="marquee">
-                <p class="marquee__content">Este es un texto que se desplaza de derecha a izquierda de manera infinita.</p>
+                <p class="marquee__content">Todos nuestros productos a la mitad de precio. Echale un vistazo a nuestras super ofertas.</p>
             </div>
             <section class="ordenadores">
                 <h2>ORDENADORES DESTACADOS</h2>
@@ -270,11 +270,11 @@
                     <img src="./images/footer/logo-footer2.png" alt="">
                 </figure>
                 <div class="footer-logo">
-                    <img src="./images/footer/logo-footer.png" alt="PC SANCHEZ Logo">
+                    <a href="https://iespacomolla.es/"><img src="./images/footer/logo-footer.png" alt="PC SANCHEZ Logo"></a>
                 </div>
                 <div class="github-link">
                     <figure>
-                        <a href=""><img src="./images/footer/github.png" alt=""></a>
+                        <a href="https://github.com/LitoHDD/PCSanchez"><img src="./images/footer/github.png" alt=""></a>
                     </figure>
                 </div>
             </div>

@@ -26,10 +26,12 @@
 /home/sergio/NetBeansProjects/PCSanchez/programming/java/PCSanchez/src/main/java/controlador/ModificarTarjetaServlet.java
 /home/sergio/NetBeansProjects/PCSanchez/programming/java/PCSanchez/src/main/java/dao/RefrigeracionDAO.java
 /home/sergio/NetBeansProjects/PCSanchez/programming/java/PCSanchez/src/main/java/controlador/ContactoServlet.java
+/home/sergio/NetBeansProjects/PCSanchez/programming/java/PCSanchez/src/main/java/controlador/FacturaXMLServlet.java
 /home/sergio/NetBeansProjects/PCSanchez/programming/java/PCSanchez/src/main/java/dao/AlmacenamientoDAO.java
 /home/sergio/NetBeansProjects/PCSanchez/programming/java/PCSanchez/src/main/java/dao/LineaCestaDAO.java
 /home/sergio/NetBeansProjects/PCSanchez/programming/java/PCSanchez/src/main/java/dto/PlacaBase.java
 /home/sergio/NetBeansProjects/PCSanchez/programming/java/PCSanchez/src/main/java/dao/CajaDAO.java
+/home/sergio/NetBeansProjects/PCSanchez/programming/java/PCSanchez/src/main/java/controlador/FacturaPDFServlet.java
 /home/sergio/NetBeansProjects/PCSanchez/programming/java/PCSanchez/src/main/java/dto/Test.java
 /home/sergio/NetBeansProjects/PCSanchez/programming/java/PCSanchez/src/main/java/dao/PsuDAO.java
 /home/sergio/NetBeansProjects/PCSanchez/programming/java/PCSanchez/src/main/java/dao/FacturaDAO.java
@@ -48,6 +50,7 @@
 /home/sergio/NetBeansProjects/PCSanchez/programming/java/PCSanchez/src/main/java/dto/PedidoArticulo.java
 /home/sergio/NetBeansProjects/PCSanchez/programming/java/PCSanchez/src/main/java/dao/CategoriaDAO.java
 /home/sergio/NetBeansProjects/PCSanchez/programming/java/PCSanchez/src/main/java/dao/PlacaBaseDAO.java
+/home/sergio/NetBeansProjects/PCSanchez/programming/java/PCSanchez/src/main/java/controlador/VaciarCestaServlet.java
 /home/sergio/NetBeansProjects/PCSanchez/programming/java/PCSanchez/src/main/java/dto/Cesta.java
 /home/sergio/NetBeansProjects/PCSanchez/programming/java/PCSanchez/src/main/java/dao/ProcesadorDAO.java
 /home/sergio/NetBeansProjects/PCSanchez/programming/java/PCSanchez/src/main/java/dto/ArticuloCategoria.java

@@ -24,7 +24,7 @@
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link rel="stylesheet" href="normalize.css">
+        <link rel="stylesheet" href="./css/normalize.css">
         <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
         <link rel="stylesheet" href="./css/style-tarjeta.css">
         <title>INICIO - PCSanchez</title>
@@ -47,7 +47,8 @@
                         <li><a href="./index.jsp">Inicio</a></li>
                         <li><a href="./ordenadores.jsp">Ordenadores</a></li>
                         <li><a href="./componentes.jsp">Componentes</a></li>
-                        <li><a href="./privacy.jsp">Privacidad</a></li>
+                        <li id="primary-li"><a href="./contacto.jsp">Contactanos</a></li>
+                        <li id="secondary-li"><a href="./privacy.jsp">Privacidad</a></li>
                     </ul>
                 </nav>
             </div>
@@ -107,7 +108,7 @@
                 <img src="<%= ((Usuario) session.getAttribute("usuario")).getFoto()%>" alt="">
             </a>
             <% } %>
-            <% } %>
+            <% }%>
         </header>
         <main>
             <section class="payment-section">
@@ -129,11 +130,11 @@
                     <img src="./images/footer/logo-footer2.png" alt="">
                 </figure>
                 <div class="footer-logo">
-                    <img src="./images/footer/logo-footer.png" alt="PC SANCHEZ Logo">
+                    <a href="https://iespacomolla.es/"><img src="./images/footer/logo-footer.png" alt="PC SANCHEZ Logo"></a>
                 </div>
                 <div class="github-link">
                     <figure>
-                        <a href=""><img src="./images/footer/github.png" alt=""></a>
+                        <a href="https://github.com/LitoHDD/PCSanchez"><img src="./images/footer/github.png" alt=""></a>
                     </figure>
                 </div>
             </div>

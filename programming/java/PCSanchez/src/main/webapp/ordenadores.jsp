@@ -1,3 +1,4 @@
+<%@page import="dto.Usuario"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <%@ page import="dao.PortatilDAO" %>
 <%@ page import="dto.Portatil" %>
@@ -10,10 +11,11 @@
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link rel="stylesheet" href="normalize.css">
+        <link rel="stylesheet" href="./css/normalize.css">
         <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
         <link rel="stylesheet" href="./css/style-ordenadores-componentes.css">
         <title>Ordenadores - PCSanchez</title>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     </head>
     <body>
         <header>
@@ -32,19 +34,27 @@
                         <li><a href="./index.jsp">Inicio</a></li>
                         <li><a href="./ordenadores.jsp">Ordenadores</a></li>
                         <li><a href="./componentes.jsp">Componentes</a></li>
-                        <li><a href="./privacy.jsp">Privacidad</a></li>
+                        <li id="primary-li"><a href="./contacto.jsp">Contactanos</a></li>
+                        <li id="secondary-li"><a href="./privacy.jsp">Privacidad</a></li>
                     </ul>
                 </nav>
             </div>
             <article class="search">
-                <form>
+                <form action="search" method="get" onsubmit="onSubmitForm()">
                     <label>
-                        <input type="text" placeholder="Buscar">
+                        <input type="text" id="search-bar" placeholder="Buscar por nombre o categoría">
                         <button type="submit"></button>
                     </label>
+                    <input type="hidden" id="categoria-input" name="categoria" value="">
+                    <input type="hidden" id="query-input" name="query" value="">
                 </form>
+                <div id="suggestion-box" style="display: none;">
+                    <ul id="suggestions">
+                        <!-- Las sugerencias irán aquí -->
+                    </ul>
+                </div>
             </article>
-            <!--         SIN ESTAR LOGEADO -->
+            <!-- SIN ESTAR LOGEADO -->
             <% if (session.getAttribute("loggedIn") == null || !(boolean) session.getAttribute("loggedIn")) { %>
             <section class="usuario">
                 <button type="button" onclick="location.href = './register.jsp'">REGISTRARSE</button>
@@ -53,27 +63,39 @@
                 </article>
             </section>
             <% } %>
-            <!--         EStANDO LOGUEADO -->
+            <!-- EStANDO LOGUEADO -->
             <% if (session.getAttribute("loggedIn") != null && (boolean) session.getAttribute("loggedIn")) { %>
             <section class="usuario-logued">
                 <figure class="foto-perfil">
-                    <a href="./usuario.jsp"><img src="./images/header/user-default.png" alt=""></a>
+                    <% if (session.getAttribute("usuario") != null) {%>
+                    <a href="./usuario.jsp"><img src="<%= ((Usuario) session.getAttribute("usuario")).getFoto()%>" alt=""></a>
+                        <% } %>
                     <form id="logoutForm" action="LogoutServlet" method="post">
                         <div class="logout-button" onclick="document.getElementById('logoutForm').submit()">Cerrar Sesión</div>
                     </form>
                 </figure>
                 <figure>
-                    <a href="./cesta.html"><img src="./images/index/carro.png" alt=""></a>
+                    <a href="./cesta.jsp"><img src="./images/index/carro.png" alt=""></a>
                 </figure>
             </section>
-            <% }%>
-            <a href="./index.html" class="titulo-query">
+            <% } %>
+            <a href="./index.jsp" class="titulo-query">
                 <h2>PC SANCHEZ</h2>
             </a>
-            <a href="./UsuarioViejo.html" class="user-query">
-                <img src="./images/index/user.png" alt="">
+            <!-- SIN ESTAR LOGEADO -->
+            <% if (session.getAttribute("loggedIn") == null || !(boolean) session.getAttribute("loggedIn")) { %>
+            <a href="./login.jsp" class="user-query">
+                <img src="./images/header/user-default.png" alt="">
             </a>
-
+            <% } %>
+            <!-- EStANDO LOGUEADO -->
+            <% if (session.getAttribute("loggedIn") != null && (boolean) session.getAttribute("loggedIn")) { %>
+            <% if (session.getAttribute("usuario") != null) {%>
+            <a href="./usuario.jsp" class="user-query">
+                <img src="<%= ((Usuario) session.getAttribute("usuario")).getFoto()%>" alt="">
+            </a>
+            <% } %>
+            <% } %>
         </header>
         <div class="principal">
             <aside>
@@ -126,14 +148,16 @@
                     <img src="./images/footer/logo-footer2.png" alt="">
                 </figure>
                 <div class="footer-logo">
-                    <img src="./images/footer/logo-footer.png" alt="PC SANCHEZ Logo">
+                    <a href="https://iespacomolla.es/"><img src="./images/footer/logo-footer.png" alt="PC SANCHEZ Logo"></a>
                 </div>
                 <div class="github-link">
                     <figure>
-                        <a href=""><img src="./images/footer/github.png" alt=""></a>
+                        <a href="https://github.com/LitoHDD/PCSanchez"><img src="./images/footer/github.png" alt=""></a>
                     </figure>
                 </div>
             </div>
         </footer>
+        <script src="js/autocompletar.js"></script>
+        <script src="js/buscar-categorias.js"></script>
     </body>
 </html>

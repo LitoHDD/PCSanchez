@@ -33,19 +33,21 @@ public class ArticuloDAO extends TablaDAO<Articulo> {
 
     @Override
     public int anyadir(Articulo objeto) throws SQLException {
-        String sentenciaSQL = "INSERT INTO " + tabla + " VALUES(?,?,?,?,?,?,?,?,?,?,?)";
+        String sentenciaSQL = "INSERT INTO " + tabla
+                + " (codigo, usuario_crea, usuario_modifica, nombre, iva, descripcion, precio, path_foto, stock, fecha_creacion, fecha_modificacion) "
+                + "VALUES(?,?,?,?,?,?,?,?,?,?,?)";
         PreparedStatement prepared = getPrepared(sentenciaSQL);
         prepared.setInt(1, objeto.getCodigo());
-        prepared.setString(2, objeto.getNombre());
-        prepared.setString(3, objeto.getDescripcion());
-        prepared.setString(4, objeto.getPathFoto());
+        prepared.setInt(2, objeto.getCreacion().getCodigo()); // Asumiendo que Usuario tiene un método getId()
+        prepared.setInt(3, objeto.getModificacion().getCodigo()); // Asumiendo que Usuario tiene un método getId()
+        prepared.setString(4, objeto.getNombre());
         prepared.setDouble(5, objeto.getIva());
-        prepared.setDouble(6, objeto.getPrecio());
-        prepared.setDouble(7, objeto.getStock());
-        prepared.setDate(8, Date.valueOf(objeto.getFechaCreacion()));
-        prepared.setDate(9, Date.valueOf(objeto.getFechaModificacion()));
-        prepared.setString(10, String.valueOf(objeto.getModificacion()));
-        prepared.setString(11, String.valueOf(objeto.getCreacion()));
+        prepared.setString(6, objeto.getDescripcion());
+        prepared.setDouble(7, objeto.getPrecio());
+        prepared.setString(8, objeto.getPathFoto());
+        prepared.setDouble(9, objeto.getStock());
+        prepared.setDate(10, Date.valueOf(objeto.getFechaCreacion()));
+        prepared.setDate(11, Date.valueOf(objeto.getFechaModificacion()));
         return prepared.executeUpdate();
     }
 
@@ -134,7 +136,8 @@ public class ArticuloDAO extends TablaDAO<Articulo> {
             int stock = resultSet.getInt("stock");
             LocalDate fechaCreacion = resultSet.getDate("fecha_creacion").toLocalDate();
             LocalDate fechaModificacion = resultSet.getDate("fecha_modificacion").toLocalDate();
-            Articulo articulo = new Articulo(codigoArticulo, nombre, descripcion, pathFoto, iva, precio, stock, fechaCreacion, fechaModificacion, usuarioModifica, usuarioCrea) {};
+            Articulo articulo = new Articulo(codigoArticulo, nombre, descripcion, pathFoto, iva, precio, stock, fechaCreacion, fechaModificacion, usuarioModifica, usuarioCrea) {
+            };
             articulos.add(articulo);
         }
         return articulos;

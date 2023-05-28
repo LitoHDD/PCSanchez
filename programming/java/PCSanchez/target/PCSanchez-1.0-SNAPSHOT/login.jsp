@@ -4,6 +4,8 @@ Created on : May 8, 2023, 7:38:42 PM
 Author     : sergio
 --%>
 
+<%@page import="dto.Usuario"%>
+<%@page import="dto.Usuario"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 
 <% if (request.getParameter("success") != null) { %>
@@ -17,10 +19,11 @@ Author     : sergio
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link rel="stylesheet" href="normalize.css">
+        <link rel="stylesheet" href="./css/normalize.css">
         <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
         <link rel="stylesheet" href="./css/style-login.css">
         <title>LOG IN - PCSanchez</title>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     </head>
     <body>
         <header>
@@ -37,49 +40,70 @@ Author     : sergio
                 <nav>
                     <ul>
                         <li><a href="./index.jsp">Inicio</a></li>
-                        <li><a href="./OrdenadoresViejo.html">Ordenadores</a></li>
-                        <li><a href="./ComponentesViejo.html">Componentes</a></li>
-                        <li><a href="./PrivacyViejo.html">Privacidad</a></li>
+                        <li><a href="./ordenadores.jsp">Ordenadores</a></li>
+                        <li><a href="./componentes.jsp">Componentes</a></li>
+                        <li id="primary-li"><a href="./contacto.jsp">Contactanos</a></li>
+                        <li id="secondary-li"><a href="./privacy.jsp">Privacidad</a></li>
                     </ul>
                 </nav>
             </div>
             <article class="search">
-                <form>
+                <form action="search" method="get" onsubmit="onSubmitForm()">
                     <label>
-                        <input type="text" placeholder="Buscar">
+                        <input type="text" id="search-bar" placeholder="Buscar por nombre o categoría">
                         <button type="submit"></button>
                     </label>
+                    <input type="hidden" id="categoria-input" name="categoria" value="">
+                    <input type="hidden" id="query-input" name="query" value="">
                 </form>
+                <div id="suggestion-box" style="display: none;">
+                    <ul id="suggestions">
+                        <!-- Las sugerencias irán aquí -->
+                    </ul>
+                </div>
             </article>
-
-            <!--         SIN ESTAR LOGEADO -->
-
+            <!-- SIN ESTAR LOGEADO -->
+            <% if (session.getAttribute("loggedIn") == null || !(boolean) session.getAttribute("loggedIn")) { %>
             <section class="usuario">
                 <button type="button" onclick="location.href = './register.jsp'">REGISTRARSE</button>
                 <article>
-                    <a href="./login.html">ENTRAR</a>
+                    <a href="./login.jsp">ENTRAR</a>
                 </article>
             </section>
-
-            <!--         EStANDO LOGUEADO -->
-
+            <% } %>
+            <!-- EStANDO LOGUEADO -->
+            <% if (session.getAttribute("loggedIn") != null && (boolean) session.getAttribute("loggedIn")) { %>
             <section class="usuario-logued">
                 <figure class="foto-perfil">
-                    <a href="./UsuarioViejo.html"><img src="./images/header/user-default.png" alt=""></a>
-                    <div class="logout-button">Cerrar Sesión</div>
+                    <% if (session.getAttribute("usuario") != null) {%>
+                    <a href="./usuario.jsp"><img src="<%= ((Usuario) session.getAttribute("usuario")).getFoto()%>" alt=""></a>
+                        <% } %>
+                    <form id="logoutForm" action="LogoutServlet" method="post">
+                        <div class="logout-button" onclick="document.getElementById('logoutForm').submit()">Cerrar Sesión</div>
+                    </form>
                 </figure>
                 <figure>
-                    <a href="./cesta.html"><img src="./images/index/carro.png" alt=""></a>
+                    <a href="./cesta.jsp"><img src="./images/index/carro.png" alt=""></a>
                 </figure>
             </section>
-
+            <% } %>
             <a href="./index.jsp" class="titulo-query">
                 <h2>PC SANCHEZ</h2>
             </a>
-            <a href="./usuario.jsp" class="user-query">
-                <img src="./images/index/user.png" alt="">
+            <!-- SIN ESTAR LOGEADO -->
+            <% if (session.getAttribute("loggedIn") == null || !(boolean) session.getAttribute("loggedIn")) { %>
+            <a href="./login.jsp" class="user-query">
+                <img src="./images/header/user-default.png" alt="">
             </a>
-
+            <% } %>
+            <!-- EStANDO LOGUEADO -->
+            <% if (session.getAttribute("loggedIn") != null && (boolean) session.getAttribute("loggedIn")) { %>
+            <% if (session.getAttribute("usuario") != null) {%>
+            <a href="./usuario.jsp" class="user-query">
+                <img src="<%= ((Usuario) session.getAttribute("usuario")).getFoto()%>" alt="">
+            </a>
+            <% } %>
+            <% } %>
         </header>
         <main>
             <h2>LOG IN</h2>
@@ -99,7 +123,7 @@ Author     : sergio
                     <article class="separacion">
                         <hr><p>O eres nuevo cliente</p><hr>
                     </article>
-                    <button type="button" onclick="window.location.href='./register.jsp'">REGÍSTRATE</button>
+                    <button type="button" onclick="window.location.href = './register.jsp'">REGÍSTRATE</button>
                 </form>
             </section>
         </main>
@@ -109,13 +133,15 @@ Author     : sergio
                     <img src="./images/footer/logo-footer2.png" alt="">
                 </figure>
                 <div class="footer-logo">
-                    <img src="./images/footer/logo-footer.png" alt="PC SANCHEZ Logo">
+                    <a href="https://iespacomolla.es/"><img src="./images/footer/logo-footer.png" alt="PC SANCHEZ Logo"></a>
                 </div>
                 <div class="github-link">
                     <figure>
-                        <a href=""><img src="./images/footer/github.png" alt=""></a>
+                        <a href="https://github.com/LitoHDD/PCSanchez"><img src="./images/footer/github.png" alt=""></a>
                     </figure>
                 </div>
             </div>
         </footer>
+        <script src="js/autocompletar.js"></script>
+        <script src="js/buscar-categorias.js"></script>
     </body>
