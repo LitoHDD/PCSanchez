@@ -238,7 +238,7 @@
                                 <img src="<%= producto.getPathFoto()%>" alt="IMG">
                             </figure>
                             <p class="name-pc"><%= producto.getNombre()%></p>
-                            <p class="price"><%= producto.getPrecio()%>€</p>
+                            <p class="precio"><%= producto.getPrecio()%>€</p>
                         </article></a>
                         <% }%>
                         <% for (Portatil producto : portatiles) {%>
@@ -247,7 +247,7 @@
                                 <img src="<%= producto.getPathFoto()%>" alt="IMG">
                             </figure>
                             <p class="name-pc"><%= producto.getNombre()%></p>
-                            <p class="price"><%= producto.getPrecio()%>€</p>
+                            <p class="precio"><%= producto.getPrecio()%>€</p>
                         </article></a>
                         <% }%>
                 </section>

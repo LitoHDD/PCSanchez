@@ -278,8 +278,12 @@ a {
         display: flex;
         justify-content: right;
         padding-right: 5px;
-        height: 20px;
+        height: 28px;
         grid-area: usuario;
+    }
+
+    .user-query img{
+        border-radius: 100px;
     }
 
     /* ------ busqueda ------- */
@@ -492,6 +496,16 @@ main h2 {
     height: 100%;
     transition: all 0.2s ease-out;
     object-fit: contain;
+}
+
+.componente h4, .name-pc{
+    font-weight: bold;
+    color: black;
+}
+
+.precio {
+    font-weight: bold;
+    font-size: 20px;
 }
 
 .price {

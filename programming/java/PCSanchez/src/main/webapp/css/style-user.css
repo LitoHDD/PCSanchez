@@ -298,8 +298,12 @@ a {
         display: flex;
         justify-content: right;
         padding-right: 5px;
-        height: 20px;
+        height: 28px;
         grid-area: usuario;
+    }
+
+    .user-query img{
+        border-radius: 100px;
     }
 
     /* ------ busqueda ------- */
