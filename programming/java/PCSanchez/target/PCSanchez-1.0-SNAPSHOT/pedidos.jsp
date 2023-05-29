@@ -59,7 +59,6 @@
                 </form>
                 <div id="suggestion-box" style="display: none;">
                     <ul id="suggestions">
-                        <!-- Las sugerencias irán aquí -->
                     </ul>
                 </div>
             </article>
@@ -147,11 +146,9 @@
                 <p>Dirección de envío: <%= usuario.getDirecciones().toString().replace("[", "").replace("]", "")%></p>
                 <div class="factura-buttons">
                     <button type="button" class="pdf-button" data-numero-pedido="<%= numeroPedido%>">Factura PDF</button>
-
                     <button type="button" class="xml-button" data-numero-pedido="<%= numeroPedido%>">Factura XML</button>
                 </div>
                 <%
-                    // Mostrar los pedidos correspondientes al número de pedido actual
                     for (PedidoArticulo linea : lineas) {
                         if (linea.getId() == numeroPedido) {
                 %>
@@ -175,7 +172,6 @@
                         e.printStackTrace();
                     }
                 } else {
-                    // El usuario no está logueado, mostrar un mensaje de error o redirigir a la página de inicio de sesión
                 %>
                 <p>Debes iniciar sesión para ver tus pedidos.</p>
                 <%

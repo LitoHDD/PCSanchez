@@ -55,7 +55,6 @@ Author     : sergio
                 </form>
                 <div id="suggestion-box" style="display: none;">
                     <ul id="suggestions">
-                        <!-- Las sugerencias irán aquí -->
                     </ul>
                 </div>
             </article>
@@ -103,9 +102,7 @@ Author     : sergio
             <% } %>
         </header>
         <main>
-            <%-- Verificar si el usuario ha iniciado sesión --%>
             <% if (session.getAttribute("loggedIn") != null && (boolean) session.getAttribute("loggedIn")) { %>
-            <%-- Redirigir a la página principal si el usuario ha iniciado sesión --%>
             <% response.sendRedirect("index.jsp"); %>
             <% } else { %>
             <% if (request.getParameter("error") != null) { %>

@@ -5,11 +5,7 @@
 function onSubmitForm() {
     var input = document.getElementById("search-bar").value;
     var categoria = "";
-
-    // Lista de categorías predefinidas
     var categorias = ["Refrigeracion", "Caja", "Fuente de Alimentacion", "Placa Base", "Memoria Ram", "Almacenamiento", "Tarjeta Grafica", "Procesador"];
-
-    // Verificar si el valor ingresado coincide con alguna categoría (incluso parcialmente)
     for (var i = 0; i < categorias.length; i++) {
         if (categorias[i].toLowerCase().includes(input.toLowerCase())) {
             categoria = categorias[i];

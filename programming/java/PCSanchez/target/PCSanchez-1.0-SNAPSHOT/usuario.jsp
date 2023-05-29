@@ -108,14 +108,11 @@
             <section class="perfil">
                 <div class="foto-foto-usuario">
                     <figure class="foto-usuario">
-                        <!-- Asegúrate de que la imagen se carga desde la URL correcta. -->
-                        <!-- Si tienes la URL de la foto en la sesión, puedes cargarla desde allí. -->
                         <img src="<%= ((Usuario) session.getAttribute("usuario")).getFoto()%>" alt="Foto de perfil">
                     </figure>
                     <input type="checkbox" id="cambiar-foto-toggle" class="cambiar-foto-toggle">
                     <label for="cambiar-foto-toggle" class="cambiar-foto">Cambiar foto</label>
                     <div class="url-intro">
-                        <!-- Aquí es donde actualizamos el formulario para enviar una solicitud POST a nuestro servlet. -->
                         <form action="ActualizarFotoUsuarioServlet" method="post">
                             <input type="text" name="photoUrl" placeholder="Introduce la URL de la imagen">
                             <button type="submit">Enviar</button>
@@ -140,7 +137,6 @@
                         <h4>Tarjeta asociada:</h4>
                         <p>Número de tarjeta: <%= "**** **** **** " + String.valueOf(tarjeta.getNumeroTarjeta()).substring(String.valueOf(tarjeta.getNumeroTarjeta()).length() - 4)%></p>
                         <button type="button" onclick="location.href = './modificar-tarjeta.jsp'" class="agregar-metodo-pago">Modificar Método de Pago</button>
-                        <!-- Agrega aquí más información de la tarjeta si es necesario -->
                         <% } else { %>
                         <p>No dispones de un método de pago. Introduce un método de pago válido para poder realizar compras en la web</p>
                         <button type="button" onclick="location.href = './agregar-tarjeta.jsp'" class="agregar-metodo-pago">Agregar Método de Pago</button>

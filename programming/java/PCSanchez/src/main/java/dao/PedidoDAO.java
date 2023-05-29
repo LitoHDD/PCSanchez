@@ -72,6 +72,15 @@ public class PedidoDAO extends TablaDAO<Pedido> {
         }
     }
 
+    public void actualizarPrecioTotal(int numeroPedido, double precioTotal) throws SQLException {
+        String query = "UPDATE ps_pedido SET precio_total = ? WHERE numero = ?";
+        try (Connection con = Conexion.getConexion().getDatasource().getConnection(); PreparedStatement stmt = con.prepareStatement(query)) {
+            stmt.setDouble(1, precioTotal);
+            stmt.setInt(2, numeroPedido);
+            stmt.executeUpdate();
+        }
+    }
+
     private int obtenerCodigoCesta(Pedido pedido) throws SQLException {
         String sentenciaSQL = "SELECT codigo FROM ps_cesta WHERE numero_usuario = ?";
         PreparedStatement prepared = getPrepared(sentenciaSQL);
@@ -107,10 +116,11 @@ public class PedidoDAO extends TablaDAO<Pedido> {
         ResultSet resultSet = prepared.executeQuery();
         while (resultSet.next()) {
             int numero = resultSet.getInt("numero");
+            double precioTotal = resultSet.getDouble("precio_total");
             String facturado = resultSet.getString("facturado");
             LocalDateTime fechapedido = resultSet.getTimestamp("fecha_pedido").toLocalDateTime();
             Usuario usuario = new UsuarioDAO().getByCodigo(resultSet.getInt("codigo_usuario"));
-            lista.add(new Pedido(numero, facturado, fechapedido, getDireccion(), usuario));
+            lista.add(new Pedido(numero, precioTotal, facturado, fechapedido, getDireccion(), usuario));
         }
 
         return lista;
@@ -124,10 +134,11 @@ public class PedidoDAO extends TablaDAO<Pedido> {
         ResultSet resultSet = prepared.executeQuery();
         while (resultSet.next()) {
             int numeros = resultSet.getInt("numero");
+            double precioTotal = resultSet.getDouble("precio_total");
             String facturado = resultSet.getString("facturado");
             LocalDateTime fechapedido = resultSet.getTimestamp("fecha_pedido").toLocalDateTime();
             Usuario usuario = new UsuarioDAO().getByCodigo(resultSet.getInt("codigo_usuario"));
-            return new Pedido(numeros, facturado, fechapedido, getDirecciones(numeroUsuario), usuario);
+            return new Pedido(numeros, precioTotal, facturado, fechapedido, getDirecciones(numeroUsuario), usuario);
         }
 
         return null;
@@ -191,6 +202,7 @@ public class PedidoDAO extends TablaDAO<Pedido> {
         ResultSet resultSet = prepared.executeQuery();
         if (resultSet.next()) {
             int numero = resultSet.getInt("numero");
+            double precioTotal = resultSet.getDouble("precio_total");
             String facturado = resultSet.getString("facturado");
             LocalDateTime fechaPedido = resultSet.getTimestamp("fecha_pedido").toLocalDateTime();
 
@@ -206,7 +218,7 @@ public class PedidoDAO extends TablaDAO<Pedido> {
             UsuarioDAO usuarioDAO = new UsuarioDAO();
             Usuario usuario = usuarioDAO.getByCodigo(codigoUsuario);
 
-            Pedido pedido = new Pedido(numero, facturado, fechaPedido, direcciones, usuario);
+            Pedido pedido = new Pedido(numero, precioTotal, facturado, fechaPedido, direcciones, usuario);
             return pedido;
         }
 

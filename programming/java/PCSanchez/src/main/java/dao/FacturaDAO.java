@@ -44,6 +44,19 @@ public class FacturaDAO extends TablaDAO<Factura> {
         return -1;
     }
 
+    public boolean existeFactura(int numeroPedido) throws SQLException {
+        String query = "SELECT COUNT(*) FROM " + tabla + " WHERE numero_pedido = ?";
+        try (Connection con = Conexion.getConexion().getDatasource().getConnection(); PreparedStatement stmt = con.prepareStatement(query)) {
+            stmt.setInt(1, numeroPedido);
+            ResultSet rs = stmt.executeQuery();
+            if (rs.next()) {
+                int count = rs.getInt(1);
+                return count > 0;
+            }
+        }
+        return false;
+    }
+
 // Obtener el número de dirección del usuario
     private int obtenerNumeroDireccionUsuario(int codigoUsuario) throws SQLException {
         String query = "SELECT numero FROM ps_direccion WHERE codigo_usuario_direccion = ?";

@@ -209,8 +209,28 @@ a {
     display: none;
 }
 
+@media screen and (max-width: 1191px) {
+    #primary-li {
+        display: none;
+    }
+}
+
+@media screen and (max-width: 1471px) {
+    #secondary-li {
+        display: none;
+    }
+}
+
 @media screen and (max-width: 900px) {
 
+    #primary-li {
+        display: block;
+    }
+
+    #secondary-li {
+        display: block;
+    }
+    
     header {
         display: grid;
         grid-template:  "burger         titulo      usuario" 1fr

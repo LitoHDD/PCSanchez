@@ -34,7 +34,6 @@ public class AutoCompletarServlet extends HttpServlet {
         List<Categoria> categoriaMatches;
 
         try {
-            // Obtener las coincidencias de artículos y categorías desde la base de datos
             articuloMatches = articuloDAO.getByNombreParcial(query);
             categoriaMatches = categoriaDAO.getAll().stream()
                     .filter(categoria -> categoria.getNombre().toLowerCase().contains(query.toLowerCase()))
@@ -44,7 +43,6 @@ public class AutoCompletarServlet extends HttpServlet {
             throw new ServletException(ex);
         }
 
-        // Crear una lista de objetos JSON con el nombre y el tipo (artículo o categoría)
         List<JSONObject> jsonList = new ArrayList<>();
         for (Articulo articulo : articuloMatches) {
             JSONObject json = new JSONObject();
@@ -59,11 +57,9 @@ public class AutoCompletarServlet extends HttpServlet {
             jsonList.add(json);
         }
 
-        // Convertir la lista de objetos JSON a una cadena JSON
         String json = jsonList.toString();
         System.out.println(json);
 
-        // Devolver el JSON
         response.setContentType("application/json");
         response.setCharacterEncoding("UTF-8");
         response.getWriter().write(json);

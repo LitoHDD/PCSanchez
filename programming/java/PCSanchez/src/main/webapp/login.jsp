@@ -58,7 +58,6 @@ Author     : sergio
                 </form>
                 <div id="suggestion-box" style="display: none;">
                     <ul id="suggestions">
-                        <!-- Las sugerencias irán aquí -->
                     </ul>
                 </div>
             </article>
@@ -109,7 +108,7 @@ Author     : sergio
             <h2>LOG IN</h2>
             <section class="login">
                 <form action="LoginServlet" method="post"> 
-                    <label for="email">Nombre de usuario:</label>
+                    <label for="email">Correo electrónico:</label>
                     <input type="email" id="usuario" name="email" autocomplete="on" placeholder="Introduzca su correo electrónico">
                     <label for="password">Contraseña:</label>
                     <input type="password" id="password" name="password" autocomplete="on" placeholder="Introduzca su contraseña">

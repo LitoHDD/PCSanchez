@@ -63,7 +63,6 @@
                 </form>
                 <div id="suggestion-box" style="display: none;">
                     <ul id="suggestions">
-                        <!-- Las sugerencias irán aquí -->
                     </ul>
                 </div>
             </article>

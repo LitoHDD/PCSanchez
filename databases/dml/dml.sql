@@ -370,14 +370,14 @@ VALUES (4642, 12356, 1, 50);
 
 -- TABLA PEDIDO --
 
-INSERT INTO ps_pedido(numero, facturado, fecha_pedido, numero_direccion, codigo_usuario)
-VALUES (4640, 'S', to_date('15/02/2023', 'DD/MM/YYYY'), 5, 5463);
+INSERT INTO ps_pedido(numero, precio_total, facturado, fecha_pedido, numero_direccion, codigo_usuario)
+VALUES (4640, 500, 'S', to_date('15/02/2023', 'DD/MM/YYYY'), 5, 5463);
 
-INSERT INTO ps_pedido(numero, facturado, fecha_pedido, numero_direccion, codigo_usuario)
-VALUES (4641, 'S', to_date('15/02/2023', 'DD/MM/YYYY'), 6, 5464);
+INSERT INTO ps_pedido(numero, precio_total, facturado, fecha_pedido, numero_direccion, codigo_usuario)
+VALUES (4641, 500, 'S', to_date('15/02/2023', 'DD/MM/YYYY'), 6, 5464);
 
-INSERT INTO ps_pedido(numero, facturado, fecha_pedido, numero_direccion, codigo_usuario)
-VALUES (4642, 'S', to_date('15/02/2023', 'DD/MM/YYYY'), 14, 5465);
+INSERT INTO ps_pedido(numero, precio_total, facturado, fecha_pedido, numero_direccion, codigo_usuario)
+VALUES (4642, 500, 'S', to_date('15/02/2023', 'DD/MM/YYYY'), 14, 5465);
 
 -- TABLA PEDIDO_ARTICULO --
 
@@ -393,13 +393,13 @@ VALUES (4642, 12356, 1, 50);
 -- TABLA FACTURA --
 
 INSERT INTO ps_factura(cod_factura, fecha, numero_pedido, cod_usuario, cod_usuario_direccion, numero_direccion)
-VALUES (12345678, to_date('15/02/2023', 'DD/MM/YYYY'), 12345678, 5463, 5463, 5);
+VALUES (54640, to_date('15/02/2023', 'DD/MM/YYYY'), 4640, 5463, 5463, 5);
 
 INSERT INTO ps_factura(cod_factura, fecha, numero_pedido, cod_usuario, cod_usuario_direccion, numero_direccion)
-VALUES (12345679, to_date('15/02/2023', 'DD/MM/YYYY'), 12345679, 5464, 5464, 6);
+VALUES (54641, to_date('15/02/2023', 'DD/MM/YYYY'), 4641, 5464, 5464, 6);
 
 INSERT INTO ps_factura(cod_factura, fecha, numero_pedido, cod_usuario, cod_usuario_direccion, numero_direccion)
-VALUES (12345680, to_date('15/02/2023', 'DD/MM/YYYY'), 12345680, 5465, 5465, 14);
+VALUES (54642, to_date('15/02/2023', 'DD/MM/YYYY'), 4642, 5465, 5465, 14);
 
 -- TABLA TARJETA -- 
 

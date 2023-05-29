@@ -51,7 +51,6 @@
                 </form>
                 <div id="suggestion-box" style="display: none;">
                     <ul id="suggestions">
-                        <!-- Las sugerencias irán aquí -->
                     </ul>
                 </div>
             </article>
@@ -99,7 +98,7 @@
             <% } %>
         </header>
         <main>
-            <h2>CONTÁCTANOS</h2>
+            <h2 id="title">CONTÁCTANOS</h2>
             <form class="contacto-form" action="ContactoServlet" method="post" accept-charset="UTF-8">
                 <label for="nombre">Nombre:</label>
                 <input type="text" id="nombre" name="nombre" required>

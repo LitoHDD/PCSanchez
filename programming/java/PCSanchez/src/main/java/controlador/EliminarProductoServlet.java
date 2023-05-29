@@ -15,19 +15,17 @@ public class EliminarProductoServlet extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        // Obtener el ID de la línea y el código de artículo a eliminar
+
         String lineaIdParam = request.getParameter("lineaId");
         String codigoArticuloParam = request.getParameter("codigoArticulo");
-        // Verificar si los parámetros son válidos
+
         if (lineaIdParam != null && codigoArticuloParam != null) {
             int lineaId = Integer.parseInt(lineaIdParam);
             int codigoArticulo = Integer.parseInt(codigoArticuloParam);
 
-            // Lógica para eliminar el producto utilizando el ID de línea y código de artículo
             LineaCestaDAO lineaCestaDAO = new LineaCestaDAO();
             lineaCestaDAO.eliminarLineaProducto(lineaId, codigoArticulo);
 
-            // Establecer el estado de la respuesta como "OK" (200)
             response.setStatus(HttpServletResponse.SC_OK);
         }
     }

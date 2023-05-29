@@ -55,6 +55,7 @@ CREATE TABLE ps_cesta (
 
 CREATE TABLE ps_pedido(
     numero NUMBER(8),
+    precio_total NUMBER(9,2),
     facturado CHAR(1) NOT NULL,
     fecha_pedido DATE NOT NULL,
     numero_direccion NUMBER(4) NOT NULL,

@@ -60,6 +60,10 @@
         <servlet-name>FacturaXMLServlet</servlet-name>
         <servlet-class>controlador.FacturaXMLServlet</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>GenerarFacturaServlet</servlet-name>
+        <servlet-class>controlador.GenerarFacturaServlet</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>LoginServlet</servlet-name>
         <url-pattern>/LoginServlet</url-pattern>
@@ -119,6 +123,10 @@
     <servlet-mapping>
         <servlet-name>FacturaXMLServlet</servlet-name>
         <url-pattern>/FacturaXMLServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>GenerarFacturaServlet</servlet-name>
+        <url-pattern>/GenerarFacturaServlet</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

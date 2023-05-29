@@ -79,7 +79,6 @@ public class RegisterServlet extends HttpServlet {
             return;
         }
 
-        // Conexión a la base de datos
         Connection conn = null;
         PreparedStatement ps = null;
         ResultSet rs = null;
@@ -87,7 +86,6 @@ public class RegisterServlet extends HttpServlet {
         try {
             conn = Conexion.getConexion().getDatasource().getConnection();
 
-            // Verificar si el usuario ya está registrado
             String query = "SELECT email FROM ps_usuario WHERE email = ?";
             ps = conn.prepareStatement(query);
             ps.setString(1, email);
@@ -97,11 +95,9 @@ public class RegisterServlet extends HttpServlet {
                 return;
             }
 
-            // Cifra la contraseña utilizando BCrypt con un salt fijo
-            String salt = "$2a$10$ABCDEFGHIJKLMNOPQRSTUV"; // Especifica tu salt fijo aquí
+            String salt = "$2a$10$ABCDEFGHIJKLMNOPQRSTUV";
             String hashedPassword = BCrypt.hashpw(password, salt);
 
-            // Obtener el último código de usuario
             ps = conn.prepareStatement("SELECT codigo FROM ps_usuario WHERE codigo = (SELECT MAX(codigo) FROM ps_usuario)");
             rs = ps.executeQuery();
 
@@ -112,7 +108,6 @@ public class RegisterServlet extends HttpServlet {
 
             int nuevoCodigo = ultimoCodigo + 1;
 
-            // Inserción del usuario en la base de datos
             ps = conn.prepareStatement("INSERT INTO ps_usuario (codigo, email, pass, nombre_comp, foto, telefono, fecha_nacimiento, tipousuario) VALUES (?, ?, ?, ?, ?, ?, ?, ?)");
             ps.setInt(1, nuevoCodigo);
             ps.setString(2, email);
@@ -126,9 +121,8 @@ public class RegisterServlet extends HttpServlet {
             ps.executeUpdate();
             ps.close();
 
-            System.out.println("Usuario registrado con éxito: " + email); // Mensaje de depuración
+            System.out.println("Usuario registrado con éxito: " + email);
 
-            // Obtener el último número de dirección y sumar uno
             int ultimoNumero = 0;
             ps = conn.prepareStatement("SELECT numero FROM ps_direccion WHERE numero = (SELECT MAX(numero) FROM ps_direccion)");
             rs = ps.executeQuery();
@@ -139,7 +133,6 @@ public class RegisterServlet extends HttpServlet {
 
             int nuevoNumero = ultimoNumero + 1;
 
-            // Inserción de la dirección del usuario en la base de datos
             ps = conn.prepareStatement("INSERT INTO ps_direccion (numero, tipo, direccion, poblacion, provincia, codigo_usuario_direccion) VALUES (?, ?, ?, ?, ?, ?)");
             ps.setInt(1, nuevoNumero);
             ps.setString(2, tipoVia);
@@ -151,12 +144,10 @@ public class RegisterServlet extends HttpServlet {
             ps.executeUpdate();
             ps.close();
 
-            System.out.println("Dirección registrada con éxito para el usuario: " + email); // Mensaje de depuración
+            System.out.println("Dirección registrada con éxito para el usuario: " + email);
 
-            // Redirección a la página de inicio de sesión
             response.sendRedirect("login.jsp?success=true");
 
-            // Crea una nueva cesta con el nombre "Cesta"
             CestaDAO cestaDAO = new CestaDAO();
             Cesta nuevaCesta = cestaDAO.crearNuevaCesta(nuevoCodigo);
 
@@ -167,7 +158,6 @@ public class RegisterServlet extends HttpServlet {
             }
 
         } catch (SQLException e) {
-            // Si hay un error en la base de datos, redirigimos a la página de registro con un mensaje de error
             e.printStackTrace();
             response.sendRedirect("register.jsp?error=databaseError");
         } finally {

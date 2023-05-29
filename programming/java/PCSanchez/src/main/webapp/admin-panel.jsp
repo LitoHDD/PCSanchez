@@ -36,7 +36,7 @@
     TipoUsuario tipoUsuario = ((Usuario) session.getAttribute("usuario")).getTipoUsuario();
 %>
 
-<% if (tipoUsuario == TipoUsuario.CLIENTE) { %>
+<% if (tipoUsuario == TipoUsuario.CLIENTE || session.getAttribute("loggedIn") != null && !(boolean) session.getAttribute("loggedIn")) { %>
 <%response.sendRedirect("index.jsp");%>
 <% } else { %>
 <!DOCTYPE html>
@@ -169,19 +169,20 @@
             <section class="products">
                 <h2>Productos</h2>
                 <table>
-                    <!-- Cabeza de la tabla -->
                     <tr>
+                        <th>Imagen</th>
                         <th>Nombre</th>
                         <th>ID</th>
                         <th>Stock</th>
+                        <th>Precio</th>
                     </tr>
-
-                    <!-- Filas de productos -->
                     <% for (Articulo articulo : articulos) {%>
                     <tr>
+                        <td style="text-align: center;"><img src="<%= articulo.getPathFoto()%>" alt="alt" class="small-image" /></td>
                         <td><%= articulo.getNombre()%></td>
                         <td><%= articulo.getCodigo()%></td>
                         <td><%= articulo.getStock()%></td>
+                        <td><%= articulo.getPrecio()%> €</td>
                     </tr>
                     <% }%>
                 </table>
@@ -191,42 +192,43 @@
             <section class="orders">
                 <h2>Pedidos</h2>
                 <table>
-                    <!-- Cabeza de la tabla -->
                     <tr>
                         <th>ID Pedido</th>
                         <th>ID Usuario</th>
                         <th>Facturado</th>
                         <th>Fecha</th>
+                        <th>Precio</th>
+                        <th>Generar</th>
                     </tr>
-
-                    <!-- Filas de pedidos -->
                     <% for (Pedido pedido : pedidos) {%>
                     <tr>
                         <td><%= pedido.getNumero()%></td>
                         <td><%= pedido.getUsuario().getCodigo()%></td>
-                        <td><%= pedido.getFacturado()%></td>
+                        <td><%= pedido.getFacturado().equals("S") ? "Si" : "No" %></td>
                         <td><%= pedido.getFechapedido()%></td>
+                        <td><%= pedido.getPrecioTotal()%> €</td>
+                        <td>
+                            <button type="button" class="pdf-button" data-numero-pedido="<%= pedido.getNumero()%>">Factura PDF</button>
+                            <button type="button" class="xml-button" data-numero-pedido="<%= pedido.getNumero()%>">Factura XML</button>
+                        </td>
                     </tr>
                     <% }%>
                 </table>
             </section>
 
-            <section class="invoices">
+            <section class="orders">
                 <h2>Facturas</h2>
                 <table>
-                    <!-- Cabeza de la tabla -->
                     <tr>
                         <th>ID Factura</th>
                         <th>Direccion</th>
                         <th>Fecha</th>
                         <th>Pedido</th>
                     </tr>
-
-                    <!-- Filas de facturas -->
                     <% for (Factura factura : listaFacturas) {%>
                     <tr>
                         <td><%= factura.getCodFactura()%></td>
-                        <td><%= factura.getDireccion()%></td>
+                        <td><%= factura.getPedido().getUsuario().getDirecciones().toString().replace("[", "").replace("]", "")%></td>
                         <td><%= factura.getFecha()%></td>
                         <td>
                             <% if (factura.getPedido() != null) {%>
@@ -243,14 +245,11 @@
             <section class="users">
                 <h2>Usuarios</h2>
                 <table>
-                    <!-- Cabeza de la tabla -->
                     <tr>
                         <th>Nombre</th>
                         <th>ID</th>
                         <th>Tipo</th>
                     </tr>
-
-                    <!-- Filas de usuarios -->
                     <% for (Usuario usuario : usuarios) {%>
                     <tr>
                         <td><%= usuario.getNombreCompleto()%></td>
@@ -277,6 +276,7 @@
                 </div>
             </div>
         </footer>
+        <script src="js/facturar.js"></script>
         <script src="js/autocompletar.js"></script>
         <script src="js/buscar-categorias.js"></script>
     </body>

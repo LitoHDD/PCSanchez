@@ -6,7 +6,20 @@ var xmlButtons = document.getElementsByClassName('xml-button');
 for (var i = 0; i < xmlButtons.length; i++) {
     xmlButtons[i].addEventListener('click', function () {
         var numeroPedido = this.getAttribute('data-numero-pedido');
-        window.open('FacturaXMLServlet?numeroPedido=' + numeroPedido, '_blank');
+        $.ajax({
+            type: "POST",
+            url: "GenerarFacturaServlet",
+            data: { numeroPedido: numeroPedido },
+            success: function(response){
+                var link = 'FacturaXMLServlet?numeroPedido=' + numeroPedido;
+                setTimeout(function(){
+                    window.open(link, '_blank');
+                }, 3000);
+            },
+            error: function(jqXHR, textStatus, errorThrown){
+                console.log("Error: " + textStatus + ": " + errorThrown);
+            }
+        });
     });
 }
 
@@ -14,6 +27,19 @@ var pdfButtons = document.getElementsByClassName('pdf-button');
 for (var i = 0; i < pdfButtons.length; i++) {
     pdfButtons[i].addEventListener('click', function () {
         var numeroPedido = this.getAttribute('data-numero-pedido');
-        window.open('FacturaPDFServlet?numeroPedido=' + numeroPedido, '_blank');
+        $.ajax({
+            type: "POST",
+            url: "GenerarFacturaServlet",
+            data: { numeroPedido: numeroPedido },
+            success: function(response){
+                var link = 'FacturaPDFServlet?numeroPedido=' + numeroPedido;
+                setTimeout(function(){
+                    window.open(link, '_blank');
+                }, 3000);
+            },
+            error: function(jqXHR, textStatus, errorThrown){
+                console.log("Error: " + textStatus + ": " + errorThrown);
+            }
+        });
     });
 }

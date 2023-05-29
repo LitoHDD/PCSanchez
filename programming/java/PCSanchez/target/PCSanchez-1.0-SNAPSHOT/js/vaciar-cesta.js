@@ -8,7 +8,7 @@ function vaciarCesta(id) {
         xhr.onreadystatechange = function () {
             if (xhr.readyState === 4) {
                 if (xhr.status === 200) {
-                    window.location.reload(); // Actualiza la página después de la eliminación
+                    window.location.reload();
                 } else {
                     alert("Error al eliminar al vaciar la cesta");
                 }

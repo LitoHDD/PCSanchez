@@ -18,19 +18,17 @@ public class ContactoServlet extends HttpServlet {
 
         request.setCharacterEncoding("UTF-8");
 
-        // Obtener los parámetros del formulario
         String nombre = request.getParameter("nombre");
         String correo = request.getParameter("email");
         String mensaje = request.getParameter("mensaje");
 
-        // Configurar las propiedades de JavaMail
         Properties props = new Properties();
-        props.put("mail.smtp.host", "smtp-mail.outlook.com"); // Reemplaza con la dirección del servidor SMTP
-        props.put("mail.smtp.port", "587"); // Reemplaza con el puerto del servidor SMTP
-        props.put("mail.smtp.auth", "true"); // Habilitar autenticación
-        props.put("mail.smtp.starttls.enable", "true"); // Habilitar STARTTLS
-        props.put("mail.smtp.ssl.protocols", "TLSv1.2"); // Establecer protocolo TLS específico
-        props.put("mail.smtp.ssl.ciphers", "TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256"); // Establecer suites de cifrado específicas
+        props.put("mail.smtp.host", "smtp-mail.outlook.com"); 
+        props.put("mail.smtp.port", "587"); 
+        props.put("mail.smtp.auth", "true"); 
+        props.put("mail.smtp.starttls.enable", "true"); 
+        props.put("mail.smtp.ssl.protocols", "TLSv1.2"); 
+        props.put("mail.smtp.ssl.ciphers", "TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256"); 
 
         // Crear una sesión de JavaMail
         Session session = Session.getInstance(props, new Authenticator() {
@@ -41,18 +39,14 @@ public class ContactoServlet extends HttpServlet {
         });
 
         try {
-            // Crear un objeto Message y configurarlo
             Message message = new MimeMessage(session);
-            message.setFrom(new InternetAddress("pcsanchez.incidents@hotmail.com")); // Reemplaza con tu dirección de correo electrónico
-            String destinatario = request.getParameter("email"); // Obtener el correo electrónico del destinatario del formulario
+            message.setFrom(new InternetAddress("pcsanchez.incidents@hotmail.com")); 
+            String destinatario = request.getParameter("email"); 
             message.setRecipient(Message.RecipientType.TO, new InternetAddress(destinatario));
-            // Obtén la URL base del servidor (ajústala según corresponda)
             String logoUrl = "https://i.imgur.com/3G3Tx2L.png";
 
-            // Asunto del mensaje
             String asunto = "Confirmación de recepción: Mensaje desde el formulario de contacto";
 
-            // Crea el contenido HTML del mensaje con estilos CSS
             String mensajeHtml = "<html><head>"
                     + "<style>"
                     + "body {"
@@ -104,27 +98,20 @@ public class ContactoServlet extends HttpServlet {
                     + "</div>"
                     + "</body></html>";
 
-            // Establece el contenido del mensaje como HTML
             message.setContent(mensajeHtml, "text/html; charset=UTF-8");
             message.setSubject(asunto);
 
-            // Establecer la dirección de correo electrónico para la copia oculta (BCC)
             message.setRecipient(Message.RecipientType.BCC, new InternetAddress("pcsanchez.tickets@hotmail.com"));
 
-            // Enviar el correo electrónico
             Transport.send(message);
 
-            // Establecer el resultado de éxito en el atributo del request
             request.setAttribute("resultado", "Formulario enviado con éxito");
         } catch (MessagingException e) {
-            // Manejar cualquier error durante el envío del correo electrónico
             e.printStackTrace();
 
-            // Establecer el resultado de error en el atributo del request
             request.setAttribute("resultado", "Error al enviar el formulario");
         }
 
-        // Redirigir de vuelta a la página contacto.jsp
         request.getRequestDispatcher("contacto.jsp").forward(request, response);
     }
 }

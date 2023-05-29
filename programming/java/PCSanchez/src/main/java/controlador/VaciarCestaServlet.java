@@ -10,15 +10,13 @@ import java.io.IOException;
 public class VaciarCestaServlet extends HttpServlet {
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        // Obtener el ID del producto a eliminar
+
         String idParam = request.getParameter("id");
         int id = Integer.parseInt(idParam);
 
-        // Lógica para eliminar el producto de la base de datos
         LineaCestaDAO lineaCestaDAO = new LineaCestaDAO();
         lineaCestaDAO.vaciarCesta(id);
 
-        // Establecer el estado de la respuesta como "OK" (200)
         response.setStatus(HttpServletResponse.SC_OK);
     }
 }

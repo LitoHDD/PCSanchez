@@ -108,10 +108,11 @@ public class PedidoArticuloDAO extends TablaDAO<PedidoArticulo> {
         ResultSet resultSet = prepared.executeQuery();
         while (resultSet.next()) {
             int numeros = resultSet.getInt("numero");
+            double precioTotal = resultSet.getDouble("precio_total");
             String facturado = resultSet.getString("facturado");
             LocalDateTime fechapedido = resultSet.getTimestamp("fecha_pedido").toLocalDateTime();
             Usuario usuario = new UsuarioDAO().getByCodigo(resultSet.getInt("codigo_usuario"));
-            return new Pedido(numeros, facturado, fechapedido, getDirecciones(numeroUsuario), usuario);
+            return new Pedido(numeros, precioTotal, facturado, fechapedido, getDirecciones(numeroUsuario), usuario);
         }
 
         return null;

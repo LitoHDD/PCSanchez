@@ -19,6 +19,17 @@ Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/CascadeStyleSheet.css
     --azul: #30398A;
 }
 
+html {
+    height: 100%;
+}
+
+body {
+    min-height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
 /* ------------ HEADER ----------- */
 
 header {
@@ -30,6 +41,7 @@ header {
     width: 100%;
     position: fixed;
     top: 0;
+    z-index: 10;
 }
 
 /* ----- LOGO ------- */
@@ -45,13 +57,13 @@ header {
 
 /* ----- MENU ------- */
 
-header ul {
+header nav ul {
     display: flex;
     justify-content: space-between;
     width: 40vw;
 }
 
-header ul li {
+header nav ul li {
     margin: 0 20px;
 }
 
@@ -102,6 +114,34 @@ nav a {
     right: 0;
     width: 40px;
     height: 100%;
+}
+
+#suggestion-box {
+    margin-top: 4px;
+    background-color: white;
+    position: absolute;
+    width: 27.5%;
+    border: solid 1px lightgray;
+    border-radius: 6px;
+    overflow: hidden;
+}
+
+#suggestions {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    list-style: none;
+}
+
+#suggestions li {
+    padding: 5px 10px;
+}
+
+#suggestions li:hover{
+    background-color: #30398a1f;
+    color: var(--azul);
+    cursor: pointer;
+    font-weight: bold;
 }
 
 /* ----- LOGIN ------- */
@@ -181,7 +221,28 @@ a {
     display: none;
 }
 
+
+@media screen and (max-width: 1191px) {
+    #primary-li {
+        display: none;
+    }
+}
+
+@media screen and (max-width: 1471px) {
+    #secondary-li {
+        display: none;
+    }
+}
+
 @media screen and (max-width: 900px) {
+
+    #primary-li {
+        display: block;
+    }
+
+    #secondary-li {
+        display: block;
+    }
 
     header {
         display: grid;
@@ -249,6 +310,10 @@ a {
         width: 100%;
     }
 
+    #suggestion-box  {
+        width: 92%;
+    }
+
     /*  --------Funcionalidad burguer----------- */
 
     .hamburger-toggle:checked ~ .menu {
@@ -308,7 +373,7 @@ main h2 {
     transition-timing-function: ease-in-out;
 }
 
-h2 {
+main h2 {
     padding-bottom: 20px;
 }
 
@@ -416,9 +481,16 @@ h2 {
     .ordenadores section, .componentes section{
         grid-template-columns: 1fr 1fr 1fr;
     }
-    
+
     main {
         margin-top: 125px;
+    }
+
+    .componentes {
+        grid-template-columns: 1fr 1fr;
+        gap: 5px;
+        text-align: center;
+        margin-bottom: 20px;
     }
 
 }
@@ -459,9 +531,6 @@ footer {
     background-color: black;
     padding: 30px 0;
     color: white;
-    position: absolute;
-    bottom: 0;
-    width: 100%;
 }
 
 .footer-container {

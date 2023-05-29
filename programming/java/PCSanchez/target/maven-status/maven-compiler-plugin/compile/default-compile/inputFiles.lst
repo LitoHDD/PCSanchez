@@ -1,6 +1,7 @@
 /home/sergio/NetBeansProjects/PCSanchez/programming/java/PCSanchez/src/main/java/dto/Procesador.java
 /home/sergio/NetBeansProjects/PCSanchez/programming/java/PCSanchez/src/main/java/dto/Refrigeracion.java
 /home/sergio/NetBeansProjects/PCSanchez/programming/java/PCSanchez/src/main/java/dao/UsuarioDAO.java
+/home/sergio/NetBeansProjects/PCSanchez/programming/java/PCSanchez/src/main/java/controlador/GenerarFacturaServlet.java
 /home/sergio/NetBeansProjects/PCSanchez/programming/java/PCSanchez/src/main/java/dao/RamDAO.java
 /home/sergio/NetBeansProjects/PCSanchez/programming/java/PCSanchez/src/main/java/dao/CestaDAO.java
 /home/sergio/NetBeansProjects/PCSanchez/programming/java/PCSanchez/src/main/java/dao/TablaDAO.java

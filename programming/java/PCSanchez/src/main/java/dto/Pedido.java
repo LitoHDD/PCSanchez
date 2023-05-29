@@ -7,13 +7,15 @@ import java.util.List;
 public class Pedido implements Serializable{
 
     private int numero;
+    private double precioTotal;
     private String facturado;
     private LocalDateTime fechapedido;
     private List<Direccion> direcciones;
     private Usuario usuario;
 
-    public Pedido(int numero, String facturado, LocalDateTime fechapedido, List<Direccion> direcciones, Usuario usuario) {
+    public Pedido(int numero, double precioTotal, String facturado, LocalDateTime fechapedido, List<Direccion> direcciones, Usuario usuario) {
         this.numero = numero;
+        this.precioTotal = precioTotal;
         this.facturado = facturado;
         this.fechapedido = fechapedido;
         this.direcciones = direcciones;
@@ -30,6 +32,14 @@ public class Pedido implements Serializable{
 
     public void setNumero(int numero) {
         this.numero = numero;
+    }
+
+    public double getPrecioTotal() {
+        return precioTotal;
+    }
+
+    public void setPrecioTotal(double precioTotal) {
+        this.precioTotal = precioTotal;
     }
 
     public String getFacturado() {
@@ -88,7 +98,7 @@ public class Pedido implements Serializable{
 
     @Override
     public String toString() {
-        return "Pedido{" + "numero=" + numero + ", facturado=" + facturado + ", fechapedido=" + fechapedido + ", direcciones=" + direcciones + ", usuario=" + usuario + '}';
+        return "Pedido{" + "numero=" + numero + ", precioTotal=" + precioTotal + ", facturado=" + facturado + ", fechapedido=" + fechapedido + ", direcciones=" + direcciones + ", usuario=" + usuario + '}';
     }
 
 }

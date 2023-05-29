@@ -46,14 +46,11 @@ public class FacturaXMLServlet extends HttpServlet {
             DocumentBuilder builder = factory.newDocumentBuilder();
             Document document = builder.newDocument();
 
-            // Crear el elemento raíz del documento XML
             Element facturaElement = document.createElement("factura");
             document.appendChild(facturaElement);
 
-            // Añadir atributo de versión
             document.setXmlVersion("1.0");
 
-            // Agregar información de la factura
             createElementWithText(document, facturaElement, "numeroPedido", String.valueOf(numeroPedido));
             createElementWithText(document, facturaElement, "fechaPedido", pedidoArticuloDAO.getFechaPedido(numeroPedido).toString());
             createElementWithText(document, facturaElement, "nombreCompleto", usuario.getNombreCompleto());
@@ -78,7 +75,6 @@ public class FacturaXMLServlet extends HttpServlet {
                 createElementWithText(document, lineaElement, "subtotal", decimalFormat.format(subtotal));
             }
 
-            // Agregar el elemento total
             Element totalElement = document.createElement("total");
             Text totalText = document.createTextNode(decimalFormat.format(total));
             totalElement.appendChild(totalText);

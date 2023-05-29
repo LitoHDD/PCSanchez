@@ -29,16 +29,12 @@ public class BuscarServlet extends HttpServlet {
 
     try {
         if (categoria != null && !categoria.isEmpty()) {
-            // Realizar la búsqueda por categoría
             results = articuloDAO.getByCategoria(categoria);
         } else if (query != null && !query.isEmpty()) {
-            // Realizar la búsqueda por nombre parcial
             results = articuloDAO.getByNombreParcial(query);
         }
     } catch (SQLException e) {
-        // Manejo de la excepción SQLException
-        e.printStackTrace(); // Opcional: imprime la traza de la excepción
-        // Puedes agregar aquí la lógica de manejo de errores, redireccionar a una página de error, etc.
+        e.printStackTrace();
     }
 
     request.setAttribute("results", results);

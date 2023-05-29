@@ -38,6 +38,7 @@ dto/Refrigeracion.class
 dao/SobremesaDAO$2.class
 dto/Psu.class
 dao/IDAO.class
+controlador/GenerarFacturaServlet.class
 dto/Almacenamiento.class
 dto/Categoria.class
 dao/PedidoArticuloDAO.class

@@ -31,7 +31,6 @@ public class AgregarAlCarritoServlet extends HttpServlet {
         System.out.println(cantidadParam);
 
         if (codigoArticuloParam == null || idCestaParam == null || precioParam == null || cantidadParam == null) {
-            // Manejar el caso de parámetros faltantes
             response.sendRedirect("productos.jsp");
             return;
         }
@@ -49,14 +48,12 @@ public class AgregarAlCarritoServlet extends HttpServlet {
             Logger.getLogger(AgregarAlCarritoServlet.class.getName()).log(Level.SEVERE, null, ex);
         }
 
-        // Crear una instancia de LineaCesta con los datos recibidos
         LineaCesta lineaCesta = new LineaCesta();
         lineaCesta.setArticulo(articulo);
         lineaCesta.setId(idCesta);
         lineaCesta.setPrecio(precio);
         lineaCesta.setCantidad(cantidad);
 
-        // Agregar la línea de cesta utilizando el LineaCestaDAO
         LineaCestaDAO lineaCestaDAO = new LineaCestaDAO();
         try {
             lineaCestaDAO.anyadir(lineaCesta);
@@ -65,7 +62,6 @@ public class AgregarAlCarritoServlet extends HttpServlet {
             System.out.println("Error al agregar la línea de cesta: " + ex.getMessage());
         }
 
-        // Redireccionar a la página de productos o al carrito de compras
         HttpSession session = request.getSession();
         System.out.println("Valor de loggedIn: " + session.getAttribute("loggedIn"));
         if (session.getAttribute("loggedIn") != null && (boolean) session.getAttribute("loggedIn")) {

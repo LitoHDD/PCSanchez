@@ -28,26 +28,17 @@ public class ArticuloDAO extends TablaDAO<Articulo> {
 
     @Override
     public int actualizar(Articulo objeto) throws SQLException {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
-    }
-
-    @Override
-    public int anyadir(Articulo objeto) throws SQLException {
-        String sentenciaSQL = "INSERT INTO " + tabla
-                + " (codigo, usuario_crea, usuario_modifica, nombre, iva, descripcion, precio, path_foto, stock, fecha_creacion, fecha_modificacion) "
-                + "VALUES(?,?,?,?,?,?,?,?,?,?,?)";
+        String sentenciaSQL = "UPDATE " + tabla + " SET usuario_modifica=?, nombre=?, iva=?, descripcion=?, precio=?, path_foto=?, stock=?, fecha_modificacion=? WHERE codigo=?";
         PreparedStatement prepared = getPrepared(sentenciaSQL);
-        prepared.setInt(1, objeto.getCodigo());
-        prepared.setInt(2, objeto.getCreacion().getCodigo()); // Asumiendo que Usuario tiene un método getId()
-        prepared.setInt(3, objeto.getModificacion().getCodigo()); // Asumiendo que Usuario tiene un método getId()
-        prepared.setString(4, objeto.getNombre());
-        prepared.setDouble(5, objeto.getIva());
-        prepared.setString(6, objeto.getDescripcion());
-        prepared.setDouble(7, objeto.getPrecio());
-        prepared.setString(8, objeto.getPathFoto());
-        prepared.setDouble(9, objeto.getStock());
-        prepared.setDate(10, Date.valueOf(objeto.getFechaCreacion()));
-        prepared.setDate(11, Date.valueOf(objeto.getFechaModificacion()));
+        prepared.setInt(1, objeto.getModificacion().getCodigo());
+        prepared.setString(2, objeto.getNombre());
+        prepared.setDouble(3, objeto.getIva());
+        prepared.setString(4, objeto.getDescripcion());
+        prepared.setDouble(5, objeto.getPrecio());
+        prepared.setString(6, objeto.getPathFoto());
+        prepared.setDouble(7, objeto.getStock());
+        prepared.setDate(8, Date.valueOf(objeto.getFechaModificacion()));
+        prepared.setInt(9, objeto.getCodigo());
         return prepared.executeUpdate();
     }
 
@@ -204,6 +195,11 @@ public class ArticuloDAO extends TablaDAO<Articulo> {
             categoria.add(new ArticuloCategoria(codigoArticulos, nombreCategorias));
         }
         return categoria;
+    }
+
+    @Override
+    public int anyadir(Articulo objeto) throws SQLException {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 
 }

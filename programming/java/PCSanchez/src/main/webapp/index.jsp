@@ -63,7 +63,6 @@
                 </form>
                 <div id="suggestion-box" style="display: none;">
                     <ul id="suggestions">
-                        <!-- Las sugerencias irán aquí -->
                     </ul>
                 </div>
             </article>
@@ -120,7 +119,6 @@
             <section class="componentes">
                 <h2>COMPONENTES DESTACADOS</h2>
                 <section>
-                    <%-- Randomize the component order --%>
                     <% ArrayList<String> componentes = new ArrayList<String>();
                         componentes.add("Alimentación");
                         componentes.add("Placa Base");
@@ -131,99 +129,92 @@
                         Collections.shuffle(componentes);
                     %>
                     <% for (String componente : componentes) { %>
-                    <%-- Randomize the products within each component --%>
                     <% if (componente.equals("Alimentación")) { %>
-                    <%-- Generate random Alimentación products --%>
                     <% PsuDAO alimentacionDAO = new PsuDAO();
                         ArrayList<Psu> alimentacion = alimentacionDAO.getAll();
                         Collections.shuffle(alimentacion);
                     %>
                     <% for (Psu producto : alimentacion) {%>
+                    <a href="./producto.jsp?codigo=<%= producto.getCodigo()%>"><article class="componente">
+                            <figure>
+                                <img src="<%= producto.getPathFoto()%>" alt="IMG">
+                            </figure>
+                            <h4><%= producto.getNombre()%></h4>
+                            <h5 class="precio"><%= producto.getPrecio()%>€</h5>
+                        </article></a>
+                        <% } %>
+                        <% } else if (componente.equals("Placa Base")) { %>
+                        <% PlacaBaseDAO placaBaseDAO = new PlacaBaseDAO();
+                            ArrayList<PlacaBase> placaBase = placaBaseDAO.getAll();
+                            Collections.shuffle(placaBase);
+                        %>
+                        <% for (PlacaBase producto : placaBase) {%>
+                    <a href="./producto.jsp?codigo=<%= producto.getCodigo()%>"><article class="componente">
+                            <figure>
+                                <img src="<%= producto.getPathFoto()%>" alt="IMG">
+                            </figure>
+                            <h4><%= producto.getNombre()%></h4>
+                            <h5 class="precio"><%= producto.getPrecio()%>€</h5>
+                        </article></a>
+                        <% } %>
+                        <% } else if (componente.equals("Ram")) { %>
+                        <% RamDAO ramDAO = new RamDAO();
+                            ArrayList<Ram> ram = ramDAO.getAll();
+                            Collections.shuffle(ram);
+                        %>
+                        <% for (Ram producto : ram) {%>
+                    <a href="./producto.jsp?codigo=<%= producto.getCodigo()%>"><article class="componente">
+                            <figure>
+                                <img src="<%= producto.getPathFoto()%>" alt="IMG">
+                            </figure>
+                            <h4><%= producto.getNombre()%></h4>
+                            <h5 class="precio"><%= producto.getPrecio()%>€</h5>
+                        </article></a>
+                        <% } %>
+                        <% } else if (componente.equals("Almacenamiento")) { %>
+                        <% AlmacenamientoDAO almacenamientoDAO = new AlmacenamientoDAO();
+                            ArrayList<Almacenamiento> almacenamiento = almacenamientoDAO.getAll();
+                            Collections.shuffle(almacenamiento);
+                        %>
+                        <% for (Almacenamiento producto : almacenamiento) {%>
                     <article class="componente">
-                        <figure>
-                            <a href="./producto.jsp?codigo=<%= producto.getCodigo()%>"><img src="<%= producto.getPathFoto()%>" alt="IMG"></a>
-                        </figure>
-                        <h4><%= producto.getNombre()%></h4>
-                        <h5 class="precio"><%= producto.getPrecio()%>€</h5>
-                    </article>
-                    <% } %>
-                    <% } else if (componente.equals("Placa Base")) { %>
-                    <%-- Generate random Placa Base products --%>
-                    <% PlacaBaseDAO placaBaseDAO = new PlacaBaseDAO();
-                        ArrayList<PlacaBase> placaBase = placaBaseDAO.getAll();
-                        Collections.shuffle(placaBase);
-                    %>
-                    <% for (PlacaBase producto : placaBase) {%>
-                    <article class="componente">
-                        <figure>
-                            <a href="./producto.jsp?codigo=<%= producto.getCodigo()%>"><img src="<%= producto.getPathFoto()%>" alt="IMG"></a>
-                        </figure>
-                        <h4><%= producto.getNombre()%></h4>
-                        <h5 class="precio"><%= producto.getPrecio()%>€</h5>
-                    </article>
-                    <% } %>
-                    <% } else if (componente.equals("Ram")) { %>
-                    <%-- Generate random Ram products --%>
-                    <% RamDAO ramDAO = new RamDAO();
-                        ArrayList<Ram> ram = ramDAO.getAll();
-                        Collections.shuffle(ram);
-                    %>
-                    <% for (Ram producto : ram) {%>
-                    <article class="componente">
-                        <figure>
-                            <a href="./producto.jsp?codigo=<%= producto.getCodigo()%>"><img src="<%= producto.getPathFoto()%>" alt="IMG"></a>
-                        </figure>
-                        <h4><%= producto.getNombre()%></h4>
-                        <h5 class="precio"><%= producto.getPrecio()%>€</h5>
-                    </article>
-                    <% } %>
-                    <% } else if (componente.equals("Almacenamiento")) { %>
-                    <%-- Generate random Almacenamiento products --%>
-                    <% AlmacenamientoDAO almacenamientoDAO = new AlmacenamientoDAO();
-                        ArrayList<Almacenamiento> almacenamiento = almacenamientoDAO.getAll();
-                        Collections.shuffle(almacenamiento);
-                    %>
-                    <% for (Almacenamiento producto : almacenamiento) {%>
-                    <article class="componente">
-                        <figure>
-                            <a href="./producto.jsp?codigo=<%= producto.getCodigo()%>"><img src="<%= producto.getPathFoto()%>" alt="IMG"></a>
-                        </figure>
-                        <h4><%= producto.getNombre()%></h4>
-                        <h5 class="precio"><%= producto.getPrecio()%>€</h5>
-                    </article>
+                        <a href="./producto.jsp?codigo=<%= producto.getCodigo()%>"><figure>
+                                <img src="<%= producto.getPathFoto()%>" alt="IMG">
+                            </figure>
+                            <h4><%= producto.getNombre()%></h4>
+                            <h5 class="precio"><%= producto.getPrecio()%>€</h5>
+                    </article></a>
                     <% } %>
                     <% } else if (componente.equals("Procesador")) { %>
-                    <%-- Generate random Procesador products --%>
                     <% ProcesadorDAO procesadorDAO = new ProcesadorDAO();
                         ArrayList<Procesador> procesador = procesadorDAO.getAll();
                         Collections.shuffle(procesador);
                     %>
                     <% for (Procesador producto : procesador) {%>
-                    <article class="componente">
-                        <figure>
-                            <a href="./producto.jsp?codigo=<%= producto.getCodigo()%>"><img src="<%= producto.getPathFoto()%>" alt="IMG"></a>
-                        </figure>
-                        <h4><%= producto.getNombre()%></h4>
-                        <h5 class="precio"><%= producto.getPrecio()%>€</h5>
-                    </article>
-                    <% } %>
-                    <% } else if (componente.equals("Tarjeta Gráfica")) { %>
-                    <%-- Generate random Tarjeta Gráfica products --%>
-                    <% TarjetaGraficaDAO tarjetaGraficaDAO = new TarjetaGraficaDAO();
-                        ArrayList<TarjetaGrafica> tarjetaGrafica = tarjetaGraficaDAO.getAll();
-                        Collections.shuffle(tarjetaGrafica);
-                    %>
-                    <% for (TarjetaGrafica producto : tarjetaGrafica) {%>
-                    <article class="componente">
-                        <figure>
-                            <a href="./producto.jsp?codigo=<%= producto.getCodigo()%>"><img src="<%= producto.getPathFoto()%>" alt="IMG"></a>
-                        </figure>
-                        <h4><%= producto.getNombre()%></h4>
-                        <h5 class="precio"><%= producto.getPrecio()%>€</h5>
-                    </article>
-                    <% } %>
-                    <% } %>
-                    <% }%>
+                    <a href="./producto.jsp?codigo=<%= producto.getCodigo()%>"><article class="componente">
+                            <figure>
+                                <img src="<%= producto.getPathFoto()%>" alt="IMG">
+                            </figure>
+                            <h4><%= producto.getNombre()%></h4>
+                            <h5 class="precio"><%= producto.getPrecio()%>€</h5>
+                        </article></a>
+                        <% } %>
+                        <% } else if (componente.equals("Tarjeta Gráfica")) { %>
+                        <% TarjetaGraficaDAO tarjetaGraficaDAO = new TarjetaGraficaDAO();
+                            ArrayList<TarjetaGrafica> tarjetaGrafica = tarjetaGraficaDAO.getAll();
+                            Collections.shuffle(tarjetaGrafica);
+                        %>
+                        <% for (TarjetaGrafica producto : tarjetaGrafica) {%>
+                    <a href="./producto.jsp?codigo=<%= producto.getCodigo()%>"><article class="componente">
+                            <figure>
+                                <img src="<%= producto.getPathFoto()%>" alt="IMG">
+                            </figure>
+                            <h4><%= producto.getNombre()%></h4>
+                            <h5 class="precio"><%= producto.getPrecio()%>€</h5>
+                        </article></a>
+                        <% } %>
+                        <% } %>
+                        <% }%>
                 </section>
                 <a href="./componentes.jsp">Ver mas</a>
             </section>
@@ -233,7 +224,6 @@
             <section class="ordenadores">
                 <h2>ORDENADORES DESTACADOS</h2>
                 <section>
-                    <%-- Generate random Portátil products --%>
                     <% PortatilDAO portatilDAO = new PortatilDAO();
                         ArrayList<Portatil> portatiles = portatilDAO.getAll();
                         Collections.shuffle(portatiles);
@@ -243,23 +233,23 @@
                         Collections.shuffle(sobremesas);
                     %>
                     <% for (Sobremesa producto : sobremesas) {%>
-                    <article class="ordenador">
-                        <figure>
-                            <a href="./producto.jsp?codigo=<%= producto.getCodigo()%>"><img src="<%= producto.getPathFoto()%>" alt="IMG"></a>
-                        </figure>
-                        <p class="name-pc"><%= producto.getNombre()%></p>
-                        <p class="price"><%= producto.getPrecio()%>€</p>
-                    </article>
-                    <% }%>
-                    <% for (Portatil producto : portatiles) {%>
-                    <article class="ordenador">
-                        <figure>
-                            <a href="./producto.jsp?codigo=<%= producto.getCodigo()%>"><img src="<%= producto.getPathFoto()%>" alt="IMG"></a>
-                        </figure>
-                        <p class="name-pc"><%= producto.getNombre()%></p>
-                        <p class="price"><%= producto.getPrecio()%>€</p>
-                    </article>
-                    <% }%>
+                    <a href="./producto.jsp?codigo=<%= producto.getCodigo()%>"><article class="ordenador">
+                            <figure>
+                                <img src="<%= producto.getPathFoto()%>" alt="IMG">
+                            </figure>
+                            <p class="name-pc"><%= producto.getNombre()%></p>
+                            <p class="price"><%= producto.getPrecio()%>€</p>
+                        </article></a>
+                        <% }%>
+                        <% for (Portatil producto : portatiles) {%>
+                    <a href="./producto.jsp?codigo=<%= producto.getCodigo()%>"><article class="ordenador">
+                            <figure>
+                                <img src="<%= producto.getPathFoto()%>" alt="IMG">
+                            </figure>
+                            <p class="name-pc"><%= producto.getNombre()%></p>
+                            <p class="price"><%= producto.getPrecio()%>€</p>
+                        </article></a>
+                        <% }%>
                 </section>
                 <a href="./componentes.jsp">Ver mas</a>
             </section>

@@ -5,12 +5,6 @@
 --%>
 
 <%@page import="dto.Usuario"%>
-<%-- 
-    Document   : resultados
-    Created on : May 25, 2023, 1:45:57 AM
-    Author     : sergio
---%>
-
 <%@page import="java.util.List"%>
 <%@page import="dto.Articulo"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
@@ -18,10 +12,12 @@
 <html>
     <head>
         <meta charset="UTF-8">
-        <title>Resultados de búsqueda</title>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="stylesheet" href="./css/normalize.css">
         <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
         <link rel="stylesheet" href="./css/style-resultados.css">
+        <title>Resultados de búsqueda</title>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     </head>
     <body>
@@ -57,7 +53,6 @@
                 </form>
                 <div id="suggestion-box" style="display: none;">
                     <ul id="suggestions">
-                        <!-- Las sugerencias irán aquí -->
                     </ul>
                 </div>
             </article>

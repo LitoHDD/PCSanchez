@@ -1,3 +1,5 @@
+<%@page import="dao.ArticuloDAO"%>
+<%@page import="dto.Articulo"%>
 <%@page import="dto.Usuario"%>
 <%@page import="dto.Usuario"%>
 <%@page import="dao.LineaCestaDAO"%>
@@ -7,13 +9,13 @@
 <%@page import="java.util.ArrayList"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%
-    // Verificar si el usuario está logueado
     if (session.getAttribute("loggedIn") == null || !((boolean) session.getAttribute("loggedIn"))) {
         response.sendRedirect("index.jsp");
     } else {
         ArrayList<Cesta> cestas = (ArrayList<Cesta>) session.getAttribute("cestas");
 
         LineaCestaDAO lineaCestaDAO = new LineaCestaDAO();
+        ArticuloDAO articuloDAO = new ArticuloDAO();
 %>
 <!DOCTYPE html>
 <html lang="en">
@@ -63,7 +65,6 @@
                 </form>
                 <div id="suggestion-box" style="display: none;">
                     <ul id="suggestions">
-                        <!-- Las sugerencias irán aquí -->
                     </ul>
                 </div>
             </article>
@@ -114,13 +115,13 @@
             <h2>CESTA</h2>
             <section class="cesta">
                 <% if (cestas != null && !cestas.isEmpty()) {
-                ArrayList<LineaCesta> lineas = lineaCestaDAO.getLineas(cestas.get(0).getCodigo());
-                if (lineas != null && !lineas.isEmpty()) {%>
+                        ArrayList<LineaCesta> lineas = lineaCestaDAO.getLineas(cestas.get(0).getCodigo());
+                        if (lineas != null && !lineas.isEmpty()) {%>
                 <button class="eliminar" type="button" onclick="vaciarCesta(<%= cestas.get(0).getCodigo()%>)">Vaciar Cesta</button>
                 <% } else { %>
                 <center><p>No hay artículos en la cesta.</p></center>
                     <% }
-                for (LineaCesta linea : lineas) {%>
+                        for (LineaCesta linea : lineas) {%>
                 <article class="producto">
                     <figure class="producto-img">
                         <img src="<%= linea.getArticulo().getPathFoto()%>" alt="Producto">
@@ -131,14 +132,20 @@
                         <label for="cantidad">Cantidad:</label>
                         <input type="number" id="cantidad" name="cantidad" value="<%= linea.getCantidad()%>" min="1" onchange="calcularPrecioTotal()">
                     </div>
-                    <% // Asignar los valores a variables JavaScript
+                    <%
                         int lineaId = linea.getId();
                         int codigoArticulo = linea.getArticulo().getCodigo();
+                        Articulo articulo = articuloDAO.getByCodigo(codigoArticulo); // Obtener el artículo correspondiente
+%>
+                    <button class="eliminar" type="button" onclick="eliminarProducto('<%= lineaId%>', '<%= codigoArticulo%>')">Eliminar</button>
+                    <%
+                        // Actualizar el stock del artículo
+                        articulo.setStock(articulo.getStock() - linea.getCantidad());
+                        articuloDAO.actualizar(articulo);
                     %>
-                    <button class="eliminar" type="button" onclick="eliminarProducto('<%= lineaId%>', '<%= codigoArticulo%>')">Eliminar</button>                   
                 </article>
                 <% }
-            } else { %>
+                } else { %>
                 <p>No hay artículos en la cesta.</p>
                 <% } %>
             </section>

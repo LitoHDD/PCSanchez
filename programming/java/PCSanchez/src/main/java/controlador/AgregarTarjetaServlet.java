@@ -19,29 +19,27 @@ public class AgregarTarjetaServlet extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        // Obtener los datos del formulario
+
         long numeroTarjeta = Long.parseLong(request.getParameter("tarjeta"));
-        // Obtener el usuario de la sesión
+
         HttpSession session = request.getSession();
         Usuario usuario = (Usuario) session.getAttribute("usuario");
 
-        // Crear un objeto Tarjeta
+
         Tarjeta tarjeta = new Tarjeta();
         tarjeta.setNumeroTarjeta(numeroTarjeta);
         tarjeta.setUsuario(usuario);
 
-        // Guardar la tarjeta en la base de datos
+
         TarjetaDAO tarjetaDAO = new TarjetaDAO();
         try {
             tarjetaDAO.anyadir(tarjeta);
         } catch (SQLException e) {
-            // Gestionar la excepción, tal vez redirigiendo a una página de error.
             e.printStackTrace();
             response.sendRedirect("error.jsp");
             return;
         }
 
-        // Redirigir al usuario a la página de confirmación
         response.sendRedirect("confirmacion-tarjeta.jsp");
     }
 
