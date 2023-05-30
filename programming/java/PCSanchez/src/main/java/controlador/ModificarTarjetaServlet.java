@@ -32,7 +32,7 @@ public class ModificarTarjetaServlet extends HttpServlet {
             tarjetaDAO.actualizar(tarjeta);
         } catch (SQLException e) {
             e.printStackTrace();
-            response.sendRedirect("error.jsp");
+            response.sendRedirect("./error.jsp");
             return;
         }
 

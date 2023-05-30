@@ -36,7 +36,7 @@ public class AgregarTarjetaServlet extends HttpServlet {
             tarjetaDAO.anyadir(tarjeta);
         } catch (SQLException e) {
             e.printStackTrace();
-            response.sendRedirect("error.jsp");
+            response.sendRedirect("./error.jsp");
             return;
         }
 

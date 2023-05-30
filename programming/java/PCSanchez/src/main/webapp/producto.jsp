@@ -87,7 +87,9 @@
     <body>
         <header>
             <figure class="logo">
-                <img src="./images/index/logo.png" alt="">
+                <a href="./index.jsp">
+                    <img src="./images/index/logo.png" alt="">
+                </a>
             </figure>
             <input type="checkbox" id="hamburger-toggle" class="hamburger-toggle">
             <label for="hamburger-toggle" class="burger-label">
@@ -178,13 +180,17 @@
                                     <li><strong>MARCA:</strong></li>
                                     <li><strong>ENVÍO:</strong></li>
                                     <li><strong>DEVOLUCIÓN:</strong></li>
+                                        <% if (session.getAttribute("loggedIn") != null && (boolean) session.getAttribute("loggedIn")) { %>
                                     <li><strong>CANTIDAD:</strong></li>
+                                        <% }%>
                                 </ul>
                                 <ul class="datos">
                                     <li><%= (portatil != null) ? portatil.getNombre() : (sobremesa != null) ? sobremesa.getNombre() : (caja != null) ? caja.getNombre() : (placaBase != null) ? placaBase.getNombre() : (procesador != null) ? procesador.getNombre() : (psu != null) ? psu.getNombre() : (ram != null) ? ram.getNombre() : (refrigeracion != null) ? refrigeracion.getNombre() : (tarjetaGrafica != null) ? tarjetaGrafica.getNombre() : almacenamiento.getNombre()%></li>
                                     <li>Gratis-24h</li>
                                     <li>Gratis</li>
+                                        <% if (session.getAttribute("loggedIn") != null && (boolean) session.getAttribute("loggedIn")) { %>
                                     <li><input id="number" type="number" name="cantidad" value="1" /></li>
+                                        <% }%>
                                 </ul>
                             </section>
                             <section class="buy">
@@ -192,7 +198,9 @@
                                     <input type="hidden" name="codigoArticulo" value="<%= codigoArticulo%>">
                                     <input type="hidden" name="idCesta" value="<%= idCesta%>">
                                     <input type="hidden" name="precio" value="<%= (portatil != null) ? portatil.getPrecio() : (sobremesa != null) ? sobremesa.getPrecio() : (caja != null) ? caja.getPrecio() : (placaBase != null) ? placaBase.getPrecio() : (procesador != null) ? procesador.getPrecio() : (psu != null) ? psu.getPrecio() : (ram != null) ? ram.getPrecio() : (refrigeracion != null) ? refrigeracion.getPrecio() : (tarjetaGrafica != null) ? tarjetaGrafica.getPrecio() : almacenamiento.getPrecio()%>">
-                                    <button id="buy" type="submit">AÑADIR AL CARRITO</button>                               
+                                    <% if (session.getAttribute("loggedIn") != null && (boolean) session.getAttribute("loggedIn")) { %>
+                                    <button id="buy" type="submit">AÑADIR AL CARRITO</button> 
+                                    <% } %>
                                 </section>
                             </section> 
                         </form>

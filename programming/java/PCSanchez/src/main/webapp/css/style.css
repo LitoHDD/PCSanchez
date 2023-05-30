@@ -10,6 +10,17 @@
     --azul: #30398A;
 }
 
+html {
+    height: 100%;
+}
+
+body {
+    min-height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
 /* ------------ HEADER ----------- */
 
 header {

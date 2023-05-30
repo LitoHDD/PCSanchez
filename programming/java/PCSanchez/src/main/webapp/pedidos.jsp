@@ -29,7 +29,9 @@
     <body>
         <header>
             <figure class="logo">
-                <img src="./images/index/logo.png" alt="">
+                <a href="./index.jsp">
+                    <img src="./images/index/logo.png" alt="">
+                </a>
             </figure>
             <input type="checkbox" id="hamburger-toggle" class="hamburger-toggle">
             <label for="hamburger-toggle" class="burger-label">
@@ -109,34 +111,26 @@
             <h2>MIS PEDIDOS</h2>
             <section class="pedidos">
                 <%
-                    // Verificar si el usuario está logueado
                     if (session.getAttribute("loggedIn") != null && (boolean) session.getAttribute("loggedIn")) {
-                        // Obtener el usuario logueado
                         Usuario usuario = (Usuario) session.getAttribute("usuario");
-                        int codigoUsuario = usuario.getCodigo(); // Código del usuario logueado
+                        int codigoUsuario = usuario.getCodigo();
 
-                        // Crear una instancia del DAO de PedidoArticulo
                         PedidoArticuloDAO pedidoArticuloDAO = new PedidoArticuloDAO();
 
                         try {
-                            // Obtener los pedidos del usuario
                             ArrayList<PedidoArticulo> lineas = pedidoArticuloDAO.getLineasPorUsuario(codigoUsuario);
 
-                            // Verificar si hay pedidos
                             if (lineas.isEmpty()) {
                 %>
                 <p>No tienes pedidos.</p>
                 <%
                 } else {
-                    // Crear un conjunto para almacenar los números de pedido únicos
                     Set<Integer> numerosPedidos = new HashSet<>();
 
-                    // Agregar los números de pedido al conjunto
                     for (PedidoArticulo linea : lineas) {
                         numerosPedidos.add(linea.getId());
                     }
 
-                    // Iterar sobre los números de pedido y mostrar los pedidos correspondientes
                     for (int numeroPedido : numerosPedidos) {
                         Date fechaPedido = pedidoArticuloDAO.getFechaPedido(numeroPedido);
 

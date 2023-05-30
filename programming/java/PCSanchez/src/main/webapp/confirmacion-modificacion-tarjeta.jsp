@@ -34,7 +34,9 @@
     <body>
         <header>
             <figure class="logo">
-                <img src="./images/index/logo.png" alt="">
+                <a href="./index.jsp">
+                    <img src="./images/index/logo.png" alt="">
+                </a>
             </figure>
             <input type="checkbox" id="hamburger-toggle" class="hamburger-toggle">
             <label for="hamburger-toggle" class="burger-label">

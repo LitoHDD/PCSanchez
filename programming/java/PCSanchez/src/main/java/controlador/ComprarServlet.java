@@ -42,7 +42,7 @@ public class ComprarServlet extends HttpServlet {
                 cesta = cestaDAO.getCestaPorUsuario(usuario.getCodigo());
             } catch (SQLException e) {
                 e.printStackTrace();
-                response.sendRedirect("error.jsp");
+                response.sendRedirect("./error.jsp");
                 return;
             }
 
@@ -54,7 +54,7 @@ public class ComprarServlet extends HttpServlet {
                 }
             } catch (SQLException e) {
                 e.printStackTrace();
-                response.sendRedirect("error.jsp");
+                response.sendRedirect("./error.jsp");
                 return;
             }
 
@@ -79,7 +79,7 @@ public class ComprarServlet extends HttpServlet {
             } catch (SQLException e) {
 
                 e.printStackTrace();
-                response.sendRedirect("error.jsp");
+                response.sendRedirect("./error.jsp");
                 return;
             }
 
@@ -96,7 +96,7 @@ public class ComprarServlet extends HttpServlet {
                 pedidoDAO.actualizarPrecioTotal(numeroPedido, precioTotal);
             } catch (SQLException e) {
                 e.printStackTrace();
-                response.sendRedirect("error.jsp");
+                response.sendRedirect("./error.jsp");
                 return;
             }
 
@@ -117,7 +117,7 @@ public class ComprarServlet extends HttpServlet {
                         numRetries--;
                         if (numRetries == 0) {
                             e.printStackTrace();
-                            response.sendRedirect("error2.jsp");
+                            response.sendRedirect("./error.jsp");
                             return;
                         }
                         try {
@@ -129,7 +129,7 @@ public class ComprarServlet extends HttpServlet {
             }
         } catch (SQLException e) {
             e.printStackTrace();
-            response.sendRedirect("error2.jsp");
+            response.sendRedirect("./error.jsp");
             return;
         }
 
@@ -138,7 +138,7 @@ public class ComprarServlet extends HttpServlet {
             cestaDAO.eliminarLineas(cesta);
         } catch (SQLException e) {
             e.printStackTrace();
-            response.sendRedirect("error.jsp");
+            response.sendRedirect("./error.jsp");
             return;
         }
 
