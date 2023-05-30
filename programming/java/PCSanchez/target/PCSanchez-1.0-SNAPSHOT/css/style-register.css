@@ -21,6 +21,7 @@ header {
     width: 100%;
     position: fixed;
     top: 0;
+    z-index: 10;
 }
 
 /* ----- LOGO ------- */
@@ -196,6 +197,10 @@ a {
     display: none;
 }
 
+.burger-label {
+    display: none;
+}
+
 
 @media screen and (max-width: 1191px) {
     #primary-li {
@@ -289,6 +294,10 @@ a {
         width: 100%;
     }
 
+    #suggestion-box  {
+        width: 92%;
+    }
+
     /*  --------Funcionalidad burguer----------- */
 
     .hamburger-toggle:checked ~ .menu {
@@ -325,7 +334,6 @@ a {
         margin: 10px 0;
     }
 }
-
 
 /* ------- MAIN - REGISTRO --------- */
 

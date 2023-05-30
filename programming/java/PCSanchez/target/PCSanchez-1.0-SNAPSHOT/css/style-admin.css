@@ -346,22 +346,22 @@ a {
 
 main {
     margin: 0 8%;
-}
-
-main {
     margin-top: 90px;
+    min-width: 400px;
 }
 
 .statistics {
     display: flex;
     justify-content: space-between;
     margin: 20px 0;
+
 }
 
 .statistic-card {
     border: 1px solid #ccc;
     border-radius: 5px;
-    padding: 20px;
+    margin: 5px;
+    padding: 15px;
     width: 30%;
     text-align: center;
 }
@@ -417,10 +417,11 @@ button {
     border-radius: 5px;
 }
 
-button {
+.orders button {
     background-color: #007BFF;
     color: white;
     cursor: pointer;
+    width: 100%;
 }
 
 button:hover {
@@ -471,6 +472,52 @@ th, td {
     background-color: #0069d9;
 }
 
+@media screen and (max-width: 900px) {
+
+    .eliminar-media {
+        display: none;
+    }
+
+    .orders button, th, td {
+        font-size: 15px;
+    }
+
+    .statistic-number {
+        font-size: 25px;
+    }
+
+    main {
+        margin-top: 120px;
+    }
+
+    .orders button {
+        width: 100%;
+    }
+
+    main {
+        margin: 0 2%;
+        margin-top: 120px;
+    }
+
+}
+
+@media screen and (max-width: 700px) {
+    .statistics {
+        display: grid;
+        gap: 5px;
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .statistic-card {
+        width: 100%;
+        margin: 0px;
+    }
+
+    .statistic-title p{
+        font-size: 10px;
+    }
+}
+
 
 /* ------- FOOTER -------- */
 
@@ -478,6 +525,7 @@ footer {
     background-color: black;
     padding: 30px 0;
     color: white;
+    min-width: 400px;
 }
 
 .footer-container {

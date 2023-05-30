@@ -43,11 +43,10 @@ public class GenerarFacturaServlet extends HttpServlet {
                 
                 int numeroFactura = facturaDAO.anyadir(factura);
                 System.out.println("Factura generada");
-                System.out.println(numeroFactura);
                 
                 // Actualizar el estado del pedido a "facturado"
                 pedido.setFacturado("facturado");
-                pedidoDAO.actualizar(pedido);
+                pedidoDAO.actualizarEstado(pedido, "S");
                 System.out.println("Estado del pedido actualizado: facturado");
             }
         } catch (SQLException e) {

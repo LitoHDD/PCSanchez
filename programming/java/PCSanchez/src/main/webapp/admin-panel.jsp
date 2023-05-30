@@ -33,10 +33,13 @@
 <%@ page import="dao.SobremesaDAO" %>
 <%@ page import="dto.Sobremesa" %>
 <%
-    TipoUsuario tipoUsuario = ((Usuario) session.getAttribute("usuario")).getTipoUsuario();
+    TipoUsuario tipoUsuario = null;
+    Usuario usuario = (Usuario) session.getAttribute("usuario");
+    if (usuario != null) {
+        tipoUsuario = usuario.getTipoUsuario();
+    }
 %>
-
-<% if (tipoUsuario == TipoUsuario.CLIENTE || session.getAttribute("loggedIn") != null && !(boolean) session.getAttribute("loggedIn")) { %>
+<% if (tipoUsuario == TipoUsuario.CLIENTE || session.getAttribute("loggedIn") == null || !(boolean) session.getAttribute("loggedIn")) { %>
 <%response.sendRedirect("index.jsp");%>
 <% } else { %>
 <!DOCTYPE html>
@@ -170,7 +173,8 @@
                 <h2>Productos</h2>
                 <table>
                     <tr>
-                        <th>Imagen</th>
+                        <th>Código</th>
+                        <th class="eliminar-media">Imagen</th>
                         <th>Nombre</th>
                         <th>ID</th>
                         <th>Stock</th>
@@ -178,7 +182,8 @@
                     </tr>
                     <% for (Articulo articulo : articulos) {%>
                     <tr>
-                        <td style="text-align: center;"><img src="<%= articulo.getPathFoto()%>" alt="alt" class="small-image" /></td>
+                        <td><%= articulo.getCodigo()%></td>
+                        <td style="text-align: center;" class="eliminar-media"><img src="<%= articulo.getPathFoto()%>" alt="alt" class="small-image" /></td>
                         <td><%= articulo.getNombre()%></td>
                         <td><%= articulo.getCodigo()%></td>
                         <td><%= articulo.getStock()%></td>
@@ -195,7 +200,7 @@
                     <tr>
                         <th>ID Pedido</th>
                         <th>ID Usuario</th>
-                        <th>Facturado</th>
+                        <th class="eliminar-media">Facturado</th>
                         <th>Fecha</th>
                         <th>Precio</th>
                         <th>Generar</th>
@@ -204,7 +209,7 @@
                     <tr>
                         <td><%= pedido.getNumero()%></td>
                         <td><%= pedido.getUsuario().getCodigo()%></td>
-                        <td><%= pedido.getFacturado().equals("S") ? "Si" : "No" %></td>
+                        <td class="eliminar-media"><%= pedido.getFacturado().equals("S") ? "Si" : "No"%></td>
                         <td><%= pedido.getFechapedido()%></td>
                         <td><%= pedido.getPrecioTotal()%> €</td>
                         <td>
@@ -224,10 +229,11 @@
                         <th>Direccion</th>
                         <th>Fecha</th>
                         <th>Pedido</th>
+                        <th>Precio</th>
                     </tr>
                     <% for (Factura factura : listaFacturas) {%>
                     <tr>
-                        <td><%= factura.getCodFactura()%></td>
+                        <td><a href="FacturaPDFServlet?numeroPedido=<%= factura.getPedido().getNumero()%>" target="_blank"><%= factura.getCodFactura()%></a></td>
                         <td><%= factura.getPedido().getUsuario().getDirecciones().toString().replace("[", "").replace("]", "")%></td>
                         <td><%= factura.getFecha()%></td>
                         <td>
@@ -235,13 +241,13 @@
                             <%= factura.getPedido().getNumero()%>
                             <% } else { %>
                             Sin pedido asociado
-                            <% } %>
+                            <% }%>
                         </td>
+                        <td><%= factura.getPedido().getPrecioTotal()%> €</td>
                     </tr>
                     <% }%>
                 </table>
             </section>
-            <br>
             <section class="users">
                 <h2>Usuarios</h2>
                 <table>
@@ -250,11 +256,11 @@
                         <th>ID</th>
                         <th>Tipo</th>
                     </tr>
-                    <% for (Usuario usuario : usuarios) {%>
+                    <% for (Usuario usuarioItem : usuarios) {%>
                     <tr>
-                        <td><%= usuario.getNombreCompleto()%></td>
-                        <td><%= usuario.getCodigo()%></td>
-                        <td><%= usuario.getTipoUsuario()%></td>
+                        <td><%= usuarioItem.getNombreCompleto()%></td>
+                        <td><%= usuarioItem.getCodigo()%></td>
+                        <td><%= usuarioItem.getTipoUsuario()%></td>
                     </tr>
                     <% }%>
                 </table>

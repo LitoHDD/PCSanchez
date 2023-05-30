@@ -14,7 +14,7 @@ for (var i = 0; i < xmlButtons.length; i++) {
                 var link = 'FacturaXMLServlet?numeroPedido=' + numeroPedido;
                 setTimeout(function(){
                     window.open(link, '_blank');
-                }, 3000);
+                }, 100);
             },
             error: function(jqXHR, textStatus, errorThrown){
                 console.log("Error: " + textStatus + ": " + errorThrown);
@@ -35,7 +35,7 @@ for (var i = 0; i < pdfButtons.length; i++) {
                 var link = 'FacturaPDFServlet?numeroPedido=' + numeroPedido;
                 setTimeout(function(){
                     window.open(link, '_blank');
-                }, 3000);
+                }, 100);
             },
             error: function(jqXHR, textStatus, errorThrown){
                 console.log("Error: " + textStatus + ": " + errorThrown);

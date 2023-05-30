@@ -34,6 +34,17 @@ public class PedidoDAO extends TablaDAO<Pedido> {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 
+    public void actualizarEstado(Pedido pedido, String estado) throws SQLException {
+        String sentenciaSQL = "UPDATE " + tabla + " SET facturado = ? WHERE numero = ?";
+
+        try (Connection connection = Conexion.getConexion().getDatasource().getConnection(); PreparedStatement prepared = connection.prepareStatement(sentenciaSQL)) {
+
+            prepared.setString(1, estado);
+            prepared.setInt(2, pedido.getNumero());
+            prepared.executeUpdate();
+        }
+    }
+
     @Override
     public int anyadir(Pedido pedido) throws SQLException {
         String sentenciaSQL = "INSERT INTO " + tabla
