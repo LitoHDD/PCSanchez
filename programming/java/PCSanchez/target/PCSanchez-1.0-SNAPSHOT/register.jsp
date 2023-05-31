@@ -108,7 +108,7 @@ Author     : sergio
             <% response.sendRedirect("index.jsp"); %>
             <% } else { %>
             <% if (request.getParameter("error") != null) { %>
-            <div class="alert alert-danger">
+            <div class="fondo-rojo">
                 <% if ("invalidData".equals(request.getParameter("error"))) { %>
                 <div class="fondo-rojo">
                     <center>Los datos proporcionados son inválidos.</center>

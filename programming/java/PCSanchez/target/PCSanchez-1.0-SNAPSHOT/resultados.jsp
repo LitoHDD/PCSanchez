@@ -8,6 +8,15 @@
 <%@page import="java.util.List"%>
 <%@page import="dto.Articulo"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
+<%
+    String codigoArticuloParam = request.getParameter("codigo");
+    String queryParam = request.getParameter("query");
+
+    if ((codigoArticuloParam == null || codigoArticuloParam.isEmpty()) && (queryParam == null || queryParam.isEmpty())) {
+        response.sendRedirect("error.jsp");
+        return;
+    }
+%>
 <!DOCTYPE html>
 <html>
     <head>

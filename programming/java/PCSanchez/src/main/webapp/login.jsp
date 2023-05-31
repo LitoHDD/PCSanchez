@@ -7,12 +7,6 @@ Author     : sergio
 <%@page import="dto.Usuario"%>
 <%@page import="dto.Usuario"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
-
-<% if (request.getParameter("success") != null) { %>
-<div class="alert alert-success">
-    <center>El registro se ha completado correctamente.</center>
-</div>
-<% }%>
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -107,6 +101,11 @@ Author     : sergio
             <% } %>
         </header>
         <main>
+            <% if (request.getParameter("success") != null) { %>
+            <div class="alert alert-success">
+                <center>El registro se ha completado correctamente.</center>
+            </div>
+            <% }%>
             <h2>LOG IN</h2>
             <section class="login">
                 <form action="LoginServlet" method="post"> 

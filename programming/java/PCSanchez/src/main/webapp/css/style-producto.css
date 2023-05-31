@@ -337,6 +337,15 @@ a {
 
 /* --------------MAIN ------------ */
 
+.fondo-rojo {
+    margin-top: -20px;
+    margin-bottom: 20px;
+    background-color: #f8d7da;
+    color: #721c24;
+    padding: 10px;
+    border-radius: 5px;
+}
+
 .general {
     padding: 20px 8%;
     color: #7F7F7F;

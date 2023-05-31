@@ -236,8 +236,8 @@ a {
     header {
         display: grid;
         grid-template:  "burger         titulo      usuario" 1fr
-                        "search         search      search"  1fr /
-                        1fr             9fr         1fr
+            "search         search      search"  1fr /
+            1fr             9fr         1fr
     }
 
     /* ------ NO SE MUESTRA EN QUERY ------- */
@@ -258,7 +258,7 @@ a {
         display: none;
     }
 
-    /* ------ menu hamburguesa ------- */  
+    /* ------ menu hamburguesa ------- */
 
     .burger {
         display: flex;
@@ -281,8 +281,8 @@ a {
         color: var(--azul);
     }
 
-    /* ------ usuario ------- */  
-    
+    /* ------ usuario ------- */
+
     .user-query {
         display: flex;
         justify-content: right;
@@ -303,7 +303,7 @@ a {
         width: 100%;
     }
 
-   /*  --------Funcionalidad burguer----------- */
+    /*  --------Funcionalidad burguer----------- */
 
     .hamburger-toggle:checked ~ .menu {
         display: block;
@@ -311,17 +311,17 @@ a {
 
     .menu {
         position: absolute;
-        top: 50px; 
+        top: 50px;
         left: 0;
         right: 0;
         background-color: var(--verde);
         z-index: 1;
-        transform: translateY(-200%); 
-        transition: transform 0.3s ease-in-out; 
+        transform: translateY(-200%);
+        transition: transform 0.3s ease-in-out;
     }
 
     .hamburger-toggle:checked ~ .menu {
-        transform: translateY(0); 
+        transform: translateY(0);
     }
 
     .menu nav {
@@ -341,6 +341,19 @@ a {
 }
 
 /* ------- MAIN - LOG IN --------- */
+
+.alert {
+    padding: 15px;
+    margin-bottom: 20px;
+    border: 1px solid transparent;
+    border-radius: 4px;
+}
+
+.alert-success {
+    color: #155724;
+    background-color: #d4edda;
+    border-color: #c3e6cb;
+}
 
 main {
     margin: 0 10px;
@@ -395,11 +408,11 @@ main button{
 
 main button[type="submit"] {
     background-color: var(--verde);
-} 
+}
 
 main button[type="button"] {
     background-color: var(--azul);
-} 
+}
 
 main button[type="submit"]:hover {
     background-color: #69c76c;
@@ -409,7 +422,7 @@ main button[type="button"]:hover {
     background-color: #262d6d;
 }
 
-main input:focus { 
+main input:focus {
     box-shadow: 2px 2px 6px lightgrey;
     outline: none;
 }
@@ -453,7 +466,7 @@ hr {
         padding: 8px;
     }
 
-    main input:focus { 
+    main input:focus {
         box-shadow: none;
         outline: none;
     }
@@ -465,9 +478,6 @@ footer {
     background-color: black;
     padding: 30px 0;
     color: white;
-    position: fixed;
-    width: 100%;
-    bottom: 0;
 }
 
 .footer-container {

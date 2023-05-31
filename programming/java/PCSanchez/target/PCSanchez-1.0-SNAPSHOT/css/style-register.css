@@ -338,10 +338,10 @@ a {
 /* ------- MAIN - REGISTRO --------- */
 
 .fondo-rojo {
-    background-color: orange; /* Código de color para el rojo ferrari */
-    color: white; /* Texto en color blanco para resaltar */
-    padding: 10px; /* Espacio alrededor del contenido */
-    border-radius: 5px; /* Borde redondeado para un aspecto más atractivo */
+    background-color: #f8d7da;
+    color: #721c24;
+    padding: 10px;
+    border-radius: 5px;
 }
 
 body {

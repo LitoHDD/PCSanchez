@@ -29,7 +29,14 @@
 <%@ page import="dto.Refrigeracion" %>
 <%@ page import="dto.TarjetaGrafica" %>
 <%
-    int codigoArticulo = Integer.parseInt(request.getParameter("codigo"));
+    String codigoArticuloParam = request.getParameter("codigo");
+
+    if (codigoArticuloParam == null || codigoArticuloParam.isEmpty()) {
+        response.sendRedirect("error.jsp");
+        return;
+    }
+
+    int codigoArticulo = Integer.parseInt(codigoArticuloParam);
 
     SobremesaDAO sobremesaDAO = new SobremesaDAO();
     Sobremesa sobremesa = sobremesaDAO.getByCodigo(codigoArticulo);
@@ -166,6 +173,17 @@
             <% }%>
         </header>
         <div class="general">
+            <%
+                String error = request.getParameter("error");
+                if (error != null && error.equals("1")) {%>
+            <div class="fondo-rojo">
+                <center>Ha ocurrido un error. Por favor, vuelve a intentarlo.</center>
+            </div>
+            <%} else if (error != null && error.equals("cantidad")) {%>
+            <div class="fondo-rojo">
+                <center>Introduce una cantidad válida.</center>
+            </div>
+            <%}%>
             <div>
                 <section class="producto">
                     <figure class="foto">
@@ -189,7 +207,7 @@
                                     <li>Gratis-24h</li>
                                     <li>Gratis</li>
                                         <% if (session.getAttribute("loggedIn") != null && (boolean) session.getAttribute("loggedIn")) { %>
-                                    <li><input id="number" type="number" name="cantidad" value="1" /></li>
+                                    <li><input id="number" type="number" name="cantidad" value="1" min="1" oninput="validarCantidad(event)" /></li>
                                         <% }%>
                                 </ul>
                             </section>
@@ -391,6 +409,7 @@
                 </div>
             </div>
         </footer>
+        <script src="js/validar-cantidad.js"></script>
         <script src="js/autocompletar.js"></script>
         <script src="js/buscar-categorias.js"></script>
     </body>
