@@ -1,6 +1,5 @@
 package controlador;
 
-import com.google.gson.Gson;
 import dao.ArticuloDAO;
 import dao.CategoriaDAO;
 import dto.Articulo;
@@ -26,7 +25,9 @@ public class AutoCompletarServlet extends HttpServlet {
         this.articuloDAO = new ArticuloDAO();
         this.categoriaDAO = new CategoriaDAO();
     }
-
+    
+    @SuppressWarnings("unchecked")
+    @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         String query = request.getParameter("query");
@@ -39,7 +40,6 @@ public class AutoCompletarServlet extends HttpServlet {
                     .filter(categoria -> categoria.getNombre().toLowerCase().contains(query.toLowerCase()))
                     .collect(Collectors.toList());
         } catch (SQLException ex) {
-            ex.printStackTrace();
             throw new ServletException(ex);
         }
 

@@ -227,7 +227,7 @@ Author     : sergio
                     <input type="text" id="ciudad" name="ciudad" autocomplete="on" placeholder="Introduce tu ciudad">
                     <section class="privacy">
                         <input type="checkbox" id="privacy-policy" name="privacy-policy">
-                        <label for="privacy-policy">He leído y acepto la <a href="./PrivacyViejo.html">política de privacidad</a>.</label>
+                        <label for="privacy-policy">He leído y acepto la <a href="./privacy.jsp">política de privacidad</a>.</label>
                     </section>
                     <button type="submit">REGISTRARSE</button>
                 </form>
