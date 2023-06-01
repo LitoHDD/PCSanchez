@@ -19,7 +19,9 @@ The main objectives of the project are:
 [![Oracle DataBase](https://img.shields.io/badge/Oracle-DB-%23F00000.svg?logo=oracle&logoColor=white&style=for-the-badge)](https://github.com/LitoHDD/PCSanchez)
 
 ## 🤝 Contributors
-[![LitoHDD](https://img.shields.io/github/contributors/LitoHDD/PCSanchez?color=blueviolet&label=LitoHDD&logo=github&style=for-the-badge)](https://github.com/LitoHDD)
+
+[![Contributors](https://contrib.rocks/image?repo=LitoHDD/PCSanchez&max=12)](https://github.com/LitoHDD/PCSanchez/graphs/contributors)<br>
+[![LitoHDD](https://img.shields.io/github/contributors/LitoHDD/PCSanchez?color=blueviolet&label=LitoHDD&logo=github&style=for-the-badge)](https://github.com/LitoHDD)<br>
 [![longinoojeda](https://img.shields.io/github/contributors/longinoojeda/PCSanchez?color=blueviolet&label=longinoojeda&logo=github&style=for-the-badge)](https://github.com/longinoojeda)
 
 ## 📄 License
