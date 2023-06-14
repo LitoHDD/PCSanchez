@@ -11,8 +11,9 @@
 <%
     String codigoArticuloParam = request.getParameter("codigo");
     String queryParam = request.getParameter("query");
+    String categoryParameter = request.getParameter("categoria");
 
-    if ((codigoArticuloParam == null || codigoArticuloParam.isEmpty()) && (queryParam == null || queryParam.isEmpty())) {
+    if ((codigoArticuloParam == null || codigoArticuloParam.isEmpty()) && (queryParam == null || queryParam.isEmpty()) && (categoryParameter == null || categoryParameter.isEmpty())) {
         response.sendRedirect("error.jsp");
         return;
     }
