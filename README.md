@@ -18,7 +18,7 @@ The main objectives of the project are:
 [![JAVASCRIPT](https://img.shields.io/badge/JAVASCRIPT-yellow.svg?logo=javascript&logoColor=white&style=for-the-badge)](https://github.com/LitoHDD/PCSanchez)
 [![Oracle DataBase](https://img.shields.io/badge/Oracle-DB-%23F00000.svg?logo=oracle&logoColor=white&style=for-the-badge)](https://github.com/LitoHDD/PCSanchez)
 
-## 🤝 Contributors
+## 🤝 Contributors.
 
 [![GitHub contributors](https://img.shields.io/github/contributors/LitoHDD/PCSanchez?style=for-the-badge)](https://github.com/LitoHDD/PCSanchez/graphs/contributors)<br>
 [![Contributors](https://contrib.rocks/image?repo=LitoHDD/PCSanchez&max=12)](https://github.com/LitoHDD/PCSanchez/graphs/contributors)
