@@ -20,9 +20,8 @@ The main objectives of the project are:
 
 ## 🤝 Contributors
 
-[![Contributors](https://contrib.rocks/image?repo=LitoHDD/PCSanchez&max=12)](https://github.com/LitoHDD/PCSanchez/graphs/contributors)<br>
-[![LitoHDD](https://img.shields.io/github/contributors/LitoHDD/PCSanchez?color=blueviolet&label=LitoHDD&logo=github&style=for-the-badge)](https://github.com/LitoHDD)<br>
-[![longinoojeda](https://img.shields.io/github/contributors/longinoojeda/PCSanchez?color=blueviolet&label=longinoojeda&logo=github&style=for-the-badge)](https://github.com/longinoojeda)
+[![GitHub contributors](https://img.shields.io/github/contributors/LitoHDD/PCSanchez?style=for-the-badge)](https://github.com/LitoHDD/PCSanchez/graphs/contributors)<br>
+[![Contributors](https://contrib.rocks/image?repo=LitoHDD/PCSanchez&max=12)](https://github.com/LitoHDD/PCSanchez/graphs/contributors)
 
 ## 📄 License
 This project is under the MIT License. Please refer to the LICENSE file for more information.
